@@ -3,21 +3,22 @@ import { NavLink } from 'react-router-dom'
 
 //assets
 import logo from '../../assets/branding/logo.svg'
-// import profile from '../../assets/icons/profile.png'
+import profileIcon from '../../assets/icons/profile.png'
 
 // css
 import styles from './Landing.module.css'
 
 const Landing = ({ user, profile }) => {
   if (!user) return <img src={logo} alt="appliCANt logo" />
-
   if (!profile) return <p>Loading profile...</p>
+
+  const photo = profile.photo ? profile.photo : profileIcon
 
   return (
     <main className={styles.container}>
       <section className={styles.profile}>
         <div className={styles.info}>
-          <img src={profile.photo} alt="user" />
+          <img src={photo} alt="user" />
           <h2>{profile.name}</h2>
         </div>
         <div className="resume">
