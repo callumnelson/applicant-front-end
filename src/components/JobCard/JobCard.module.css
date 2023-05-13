@@ -4,6 +4,14 @@
   justify-content: space-evenly;
 }
 
+.details {
+  cursor: pointer;
+}
+
 .job div {
   width: calc(100%/6);
+}
+
+.selected {
+  background-color: yellow;
 }

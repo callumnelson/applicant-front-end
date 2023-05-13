@@ -26,10 +26,6 @@ const Jobs = ({user, }) => {
   const handleSearchChange = (e) => {
     setSearch(e.target.value)
   }
-
-  const handleSelectJob = (job) => {
-    setSelectedJob(job)
-  }
   
   if (!jobs) return <h1>Loading...</h1>
 
@@ -75,6 +71,8 @@ const Jobs = ({user, }) => {
               key={job._id} 
               className={styles.jobCard} 
               job={job}
+              selectedJob={selectedJob}
+              setSelectedJob={setSelectedJob}
             />
           ))}
         </div>
