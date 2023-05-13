@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Jobs from './pages/Jobs/Jobs'
 import Resources from './pages/Resources/Resources'
+import Logout from './pages/Logout/Logout'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -87,6 +88,10 @@ function App() {
         <Route
           path="/auth/login"
           element={<Login handleAuthEvt={handleAuthEvt} />}
+        />
+        <Route 
+          path="/auth/logout"
+          element={<Logout />}
         />
         <Route
           path="/auth/change-password"

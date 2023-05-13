@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  height: 90vh;
+  height: 92vh;
 }
 
 
@@ -18,13 +18,18 @@
 }
 
 .info {
-  margin: 5vmin;
+  margin: 2vmin;
 }
 
 .info > img {
   height: 15vw;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.info > h2 {
+  margin-top: 2vmin;
+  margin-bottom: 0;
 }
 
 .right {
@@ -39,8 +44,8 @@
 .right > div {
   width: 55vw;
   text-align: center;
-  background-color: beige;
-  margin: 4vmin;
+  background-color: rgba(255, 255, 255, 0.472);
+  padding: 4vmin;
 }
 
 ul {
