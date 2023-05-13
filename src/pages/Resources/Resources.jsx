@@ -10,24 +10,27 @@ import styles from './Resources.module.css'
 // components
 
 
-const Jobs = ({user, }) => {
-  const [resources, setResources] = useState([])
+const Resources = ({user, }) => {
+
+  const [resources, setResources] = useState(null)
 
   useEffect(() => {
     const fetchResources = async () => {
-      const data = await resourceService.getAll()
-      setResources(data.resources)
+      const data = await resourceService.index()
+      setResources(data)
     }
     fetchResources()
   }, [])
   
+  if (!resources) return <h1>Loading...</h1>
+
   return ( 
     <main className={styles.container}>
       <section>
-        <h1>Jobs List</h1>
+        <h1>Resources List</h1>
         {resources.map(resource => (
           <div key={resource._id}>
-            <h2>{resource.title}</h2>
+            <h2>{resource.name}</h2>
           </div>
         ) )}
 
@@ -38,5 +41,5 @@ const Jobs = ({user, }) => {
     </main>
   )
 }
- 
-export default Jobs
+
+export default Resources
