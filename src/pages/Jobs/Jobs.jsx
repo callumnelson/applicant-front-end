@@ -12,6 +12,7 @@ import styles from './Jobs.module.css'
 
 const Jobs = ({user, }) => {
   const [jobs, setJobs] = useState(null)
+  const [search, setSearch] = useState("")
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -20,20 +21,38 @@ const Jobs = ({user, }) => {
     }
     fetchJobs()
   }, [])
+
+  const handleSearchChange = () => {
+    //filter list when search
+  }
   
   if (!jobs) return <h1>Loading...</h1>
 
   return ( 
     <main className={styles.container}>
-      <section>
-        <h1>Jobs List</h1>
-        {jobs.map(job => (
-          <div key={job._id}>
-            <h1>{job.title}</h1>
+      <section className={styles.jobs}>
+        <nav>
+          <h1>Jobs</h1>
+          <div>
+            <input
+              type="text"
+              value={search}
+              name="search"
+              placeholder="Search..."
+              onChange={handleSearchChange}
+              />
+            <button>Add Job</button>
           </div>
-        ))}
+        </nav>
+        <div className={styles.jobsContainer}>
+          {jobs.map(job => (
+            <div key={job._id} className={styles.jobCard}>
+              <h1>{job.title}</h1>
+            </div>
+          ))}
+        </div>
       </section>
-      <section>
+      <section className={styles.notes}>
         <h1>Notes</h1>
       </section>
     </main>
