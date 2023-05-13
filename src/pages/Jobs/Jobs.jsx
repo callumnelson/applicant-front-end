@@ -1,12 +1,11 @@
 // npm modules
 import { useState, useEffect } from "react"
 
-
 // services
 import * as jobService from '../../services/jobsService'
 
 // styles
-
+import styles from './Jobs.module.css'
 
 // components
 
@@ -23,7 +22,7 @@ const Jobs = ({user, }) => {
   }, [])
   
   return ( 
-    <main>
+    <main className={styles.container}>
       <section>
         <h1>Jobs List</h1>
         {jobs.map(job => (
