@@ -2,23 +2,51 @@
 //css
 import styles from './ResourceCard.module.css'
 
-const ResourceCard = ({selectedResource, resource}) => {
+const ResourceCard = ({setSelectedResource, selectedResource, resource}) => {
 
-  return (   
-    <div className={styles.resource}>
-      <div>
-        <h4>{resource.name}</h4>
+  const selected = selectedResource && selectedResource._id === resource._id 
+
+  const handleSelect = () => {
+    if (selected) {
+      setSelectedResource(null)
+    }
+    else {
+      setSelectedResource(resource)
+    }
+  }
+  
+
+  return (  
+    <>
+      <div className={
+        `${styles.resource} 
+        ${selected? styles.selected : ''}`
+        }>
+        <span>
+          <p
+          onClick={() => handleSelect()}
+          >
+            {selected ? '⬆️' : '⬇️' }</p>
+        </span>
+        <div className={styles.name}>
+          <p>{resource.name}</p>
+        </div>
+        <div className={styles.category}>
+          <p>{resource.category}</p>
+        </div>
+        <div className={styles.rating}>
+          <p>{resource.averageRating}</p>
+        </div>
+        <div className={styles.link}>
+          <p>{resource.link}</p>
+        </div>
       </div>
-      <div>
-        <h4>{resource.category}</h4>
-      </div>
-      <div>
-        <h4>{resource.averageRating}</h4>
-      </div>
-      <div>
-        <h4>{resource.link}</h4>
-      </div>
-    </div>
+      {selected && 
+        <div className={styles.details}>
+          Look at those deeets!
+        </div>
+      }
+    </>
   )
 }
 

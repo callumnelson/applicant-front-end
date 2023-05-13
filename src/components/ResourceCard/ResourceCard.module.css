@@ -13,5 +13,8 @@
   justify-content: space-between;
   gap: 10px;
   border: 1px solid black;
-  text-align: center;
+}
+
+.selected {
+  background-color: lightblue;
 }

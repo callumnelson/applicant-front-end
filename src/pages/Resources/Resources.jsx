@@ -53,22 +53,26 @@ const Resources = ({user, }) => {
 
         <div className={styles.table}>
           <header>
-            <div>
-              <h3>Name</h3>
+            <div className={styles.name}>
+              <h4>Name</h4>
             </div>
-            <div>
-              <h3>Category</h3>
+            <div className={styles.category}>
+              <h4>Category</h4>
             </div>
-            <div>
-              <h3>Average Rating</h3>
+            <div className={styles.rating}>
+              <h4>Average Rating</h4>
             </div>
-            <div>
-              <h3>Link</h3>
+            <div className={styles.link}>
+              <h4>Link</h4>
             </div>
           </header>
-          
+
           {resources.map(resource => (
-            <ResourceCard key={resource._id} resource={resource} selectedResource={selectedResource}/>
+            <ResourceCard key={resource._id} 
+            resource={resource} 
+            selectedResource={selectedResource} 
+            setSelectedResource={setSelectedResource}
+            />
           ))}
 
         </div>
