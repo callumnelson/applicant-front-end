@@ -32,8 +32,6 @@ const Landing = ({ user, profile }) => {
       </section>
       <section className={styles.right}>
         <div className={styles.resources}>
-          {profile.starredResources.map((resource) =>
-          )}
           <h3>Starred Resources</h3>
           <ul>
             <li>Resource</li>
