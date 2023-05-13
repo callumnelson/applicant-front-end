@@ -1,47 +1,114 @@
-input {
-  margin-left: 16px;
-  padding: 4px 8px;
-  font-size: 16px;
-  width: 300px;
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.container p { margin: 0; padding: 0px 0 10px; }
+
+.container img {
+  width: 65%;
+  max-width: 500px;
+}
+
+.container section {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  padding: 28px 21px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container section:first-child {
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background-color: #fdfeff;
+}
+
+.container section:nth-child(2) {
+  overflow: scroll;
+  justify-content: center;
+}
+
+.container input {
+  margin: 7px 0px 7px 0px;
+}
+
+.container input, button { 
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid rgb(220, 220, 220);
+}
+
+.container div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container label {
+  font-weight: 600;
+  margin: 0px 0px 7px 0px;
+}
+
+.container button {
+  color: white;
+  font-weight: 600;
+  background: #00a0df;
+  margin: 7px 0px 0px 0px;
+  cursor: pointer;
+}
+
+.container button:disabled {
+  color: rgb(200, 200, 200);
+  background-color: #f8f8f8;
+  cursor: not-allowed;
+}
+
+.container a {
+  border: none;
+  font-size: 14px;
+  background: none;
+  font-weight: 500;
+  margin-top: 14px;
+  text-align: center;
+  color: rgb(200, 200, 200);
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid #00a0df;
 }
 
 input[type="file"] {
   padding: 0;
+  border: none;
 }
 
-.container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+input::file-selector-button { 
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 14px 28px;
+  margin-right: 28px;
+  text-align: center;
+  border: 1px solid rgb(220, 220, 220);
+  cursor: pointer;
 }
 
-.message {
-  margin-top: 0;
-  height: 20px;
-  color: #dd1b16;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 50px;
-}
-
-.label {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.button {
-  margin-left: 16px;
-}
-
-.form > label:last-of-type {
-  margin-bottom: 16px;
+@media only screen and (max-width: 912px) {
+  .container section {
+    width: 100%;
+  }
+  .container section:first-child {
+    display: none;
+  }
+  .container form {
+    min-width: 100%;
+  }
 }
