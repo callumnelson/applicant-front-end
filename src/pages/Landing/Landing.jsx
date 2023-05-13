@@ -11,14 +11,14 @@ import styles from './Landing.module.css'
 const Landing = ({ user, profile }) => {
   if (!user) return <img src={logo} alt="appliCANt logo" />
 
-  console.log(profile)
+  if (!profile) return <p>Loading profile...</p>
 
   return (
     <main className={styles.container}>
       <section className={styles.profile}>
         <div className={styles.info}>
-          {/* <img src={profile.photo} alt="user" /> */}
-          {/* <h2>{profile.name}</h2> */}
+          <img src={profile.photo} alt="user" />
+          <h2>{profile.name}</h2>
         </div>
         <div className="resume">
           <h3>My Resume</h3>
