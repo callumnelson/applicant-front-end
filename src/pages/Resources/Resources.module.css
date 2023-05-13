@@ -6,11 +6,13 @@ main.container {
 section.resources {
   width: 75%;
   background-color: gray;
+  overflow: scroll;
 }
 
 section.notes {
   width: 25%;
   background-color: white;
+  overflow: scroll;
 }
 
 .container nav {
