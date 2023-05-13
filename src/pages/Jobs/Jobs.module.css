@@ -37,4 +37,10 @@ nav div {
 
 .table header {
   display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.table header > div {
+  width: calc(100%/6);
 }

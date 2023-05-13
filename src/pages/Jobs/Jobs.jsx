@@ -8,10 +8,11 @@ import * as jobsService from '../../services/jobsService'
 import styles from './Jobs.module.css'
 
 // components
-
+import JobCard from "../../components/JobCard/JobCard"
 
 const Jobs = ({user, }) => {
   const [jobs, setJobs] = useState(null)
+  const [selectedJob, setSelectedJob] = useState(null)
   const [search, setSearch] = useState("")
 
   useEffect(() => {
@@ -24,6 +25,10 @@ const Jobs = ({user, }) => {
 
   const handleSearchChange = (e) => {
     setSearch(e.target.value)
+  }
+
+  const handleSelectJob = (job) => {
+    setSelectedJob(job)
   }
   
   if (!jobs) return <h1>Loading...</h1>
@@ -46,17 +51,31 @@ const Jobs = ({user, }) => {
         </nav>
         <div className={styles.table}>
           <header>
-            <p>Title</p>
-            <p>Company</p>
-            <p>Listing</p>
-            <p>Status</p>
-            <p>Priority</p>
-            <p>Salary</p>
+            <div className={styles.title}>
+              <h4>Title</h4>
+            </div>
+            <div className={styles.company}>
+              <h4>Company</h4>
+            </div>
+            <div className={styles.listing}>
+              <h4>Listing</h4>
+            </div>
+            <div className={styles.status}>
+              <h4>Status</h4>
+            </div>
+            <div className={styles.priority}>
+              <h4>Priority</h4>
+            </div>
+            <div className={styles.salary}>
+              <h4>Salary</h4>
+            </div>
           </header>
           {jobs.map(job => (
-            <div key={job._id} className={styles.jobCard}>
-              <h1>{job.title}</h1>
-            </div>
+            <JobCard 
+              key={job._id} 
+              className={styles.jobCard} 
+              job={job}
+            />
           ))}
         </div>
       </section>

@@ -1,0 +1,9 @@
+.job {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.job div {
+  width: calc(100%/6);
+}
