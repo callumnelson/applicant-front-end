@@ -11,7 +11,7 @@ import styles from './Jobs.module.css'
 
 
 const Jobs = ({user, }) => {
-  const [jobs, setJobs] = useState([])
+  const [jobs, setJobs] = useState(null)
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -21,6 +21,8 @@ const Jobs = ({user, }) => {
     fetchJobs()
   }, [])
   
+  if (!jobs) return <h1>Loading...</h1>
+
   return ( 
     <main className={styles.container}>
       <section>
