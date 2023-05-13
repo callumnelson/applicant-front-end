@@ -21,11 +21,11 @@ const Landing = ({ user, profile }) => {
           <h2>{profile.name}</h2>
         </div>
         <div className="resume">
-          <h3>Resume</h3>
+          <h3>My Resume</h3>
             <p>add resume</p>
         </div>
         <div className="brand">
-          <h3>Branding Statement</h3>
+          <h3>My Branding Statement</h3>
             <p>add statement</p>
         </div>
       <NavLink to="/auth/change-password">Change Password</NavLink>
