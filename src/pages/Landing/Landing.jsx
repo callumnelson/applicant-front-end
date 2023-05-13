@@ -10,9 +10,14 @@ import styles from './Landing.module.css'
 const Landing = ({ user }) => {
   if (!user) return <img src={logo} alt="appliCANt logo" />
 
+  console.log(user)
+
   return (
     <main className={styles.container}>
-      <h1>hello, {user ? user.name : 'friend'}</h1>
+      <div className="profile-info">
+        <img src={user.photo} alt="user" />
+        <h3>{user.name}</h3>
+      </div>
       <NavLink to="/auth/change-password">Change Password</NavLink>
     </main>
   )
