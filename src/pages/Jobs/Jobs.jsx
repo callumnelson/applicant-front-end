@@ -32,6 +32,7 @@ const Jobs = ({user, }) => {
   const handleAddJob = async (newJobFormData) => {
     const newJob = await jobsService.create(newJobFormData)
     setJobs([newJob, ...jobs])
+    setAddJob(false)
   }
   
   if (!jobs) return <h1>Loading...</h1>
@@ -77,7 +78,12 @@ const Jobs = ({user, }) => {
               <h4>Salary</h4>
             </div>
           </header>
-          {addJob && <NewJob handleAddJob={handleAddJob}/>}
+          {addJob && 
+            <NewJob 
+              handleAddJob={handleAddJob} 
+              setAddJob={setAddJob}
+            />
+          }
           {jobs.map(job => (
             <JobCard 
               key={job._id}

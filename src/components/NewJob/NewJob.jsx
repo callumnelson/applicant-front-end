@@ -4,7 +4,7 @@ import { useState } from "react"
 // css
 import styles from './NewJob.module.css'
 
-const NewJob = ({handleAddJob}) => {
+const NewJob = ({handleAddJob, setAddJob}) => {
   const [formData, setFormData] = useState({
     title: '',
     company: '',
@@ -24,7 +24,8 @@ const NewJob = ({handleAddJob}) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <form onSubmit={handleSubmit}>
         <div className={styles.title}>
           <input
             required
@@ -85,7 +86,7 @@ const NewJob = ({handleAddJob}) => {
           >
             <option value="Dream Job">Dream Job</option>
             <option value="Great Option">Great Option</option>
-            <option value="Totally Fine">Preparing Materials</option>
+            <option value="Totally Fine">Totally Fine</option>
             <option value="Will Pay Bills">Will Pay Bills</option>
           </select>
         </div>
@@ -99,13 +100,10 @@ const NewJob = ({handleAddJob}) => {
             onChange={handleChange}
           />
         </div>
-        <button
-          onClick={() => setAddJob(false)}
-        >
-          Cancel
-        </button>
+        <button onClick={() => setAddJob(false)}>Cancel</button>
         <button type="submit">SUBMIT</button>
       </form>
+    </div>
   )
 }
  

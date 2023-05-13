@@ -32,8 +32,8 @@ const JobCard = ({selectedJob, job, setSelectedJob}) => {
         <div className={styles.company}>
           <p>{job.company}</p>
         </div>
-        <div className={styles.listing}>
-          <p>{job.listing}</p>
+        <div className={styles.jobListing}>
+          <p>{job.jobListing}</p>
         </div>
         <div className={styles.status}>
           <p>{job.status}</p>
