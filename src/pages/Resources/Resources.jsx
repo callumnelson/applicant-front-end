@@ -13,6 +13,7 @@ import styles from './Resources.module.css'
 const Resources = ({user, }) => {
 
   const [resources, setResources] = useState(null)
+  const [search, setSearch] = useState('')
 
   useEffect(() => {
     const fetchResources = async () => {
@@ -21,21 +22,52 @@ const Resources = ({user, }) => {
     }
     fetchResources()
   }, [])
+
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value)
+  }
   
   if (!resources) return <h1>Loading...</h1>
 
   return ( 
     <main className={styles.container}>
-      <section>
+      <section className={styles.resources}>
+
+
+        <nav>
+          <h1>Resources</h1>
+          <div>
+            <input 
+              type="text" 
+              name="search"
+              value={search}
+              onChange={handleSearchChange}
+              placeholder='search' />
+            <button>Add Resource</button>
+          </div>
+        </nav>
+
+
+
+        <div className={styles.table}>
+          <header>
+            <h3>Name</h3>
+            <h3>Category</h3>
+            <h3>Average Rating</h3>
+            <h3>Link</h3>
+          </header>
+        </div>
+
+
+
         <h1>Resources List</h1>
         {resources.map(resource => (
           <div key={resource._id}>
             <h2>{resource.name}</h2>
           </div>
-        ) )}
-
+        ))}
       </section>
-      <section>
+      <section className={styles.notes}>
         <h1>Notes</h1>
       </section>
     </main>
