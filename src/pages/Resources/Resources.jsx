@@ -9,6 +9,7 @@ import styles from './Resources.module.css'
 
 // components
 import ResourceCard from "../../components/ResourceCard/ResourceCard"
+import NewResource from "../../components/NewResource/NewResource"
 
 
 const Resources = ({user, }) => {
@@ -16,6 +17,7 @@ const Resources = ({user, }) => {
   const [resources, setResources] = useState(null)
   const [selectedResource, setSelectedResource] = useState(null)
   const [search, setSearch] = useState('')
+  const [addResource, setAddResource] = useState(false)
 
   useEffect(() => {
     const fetchResources = async () => {
@@ -28,7 +30,13 @@ const Resources = ({user, }) => {
   const handleSearchChange = (e) => {
     setSearch(e.target.value)
   }
-  
+
+  const handleAddResource = async (newResourceFormData) => {
+    const newResource = await resourceService.create(newResourceFormData)
+    setResources([newResource, ...resources])
+    setAddResource(false)
+  }
+
   if (!resources) return <h1>Loading...</h1>
 
   return ( 
@@ -38,7 +46,9 @@ const Resources = ({user, }) => {
         <nav>
           <h1>Resources</h1>
           <div>
-            <button>
+            <button
+              onClick={() => setAddResource(true)}
+            >
               Add Resource
             </button>
             <input 
@@ -47,7 +57,6 @@ const Resources = ({user, }) => {
               value={search}
               onChange={handleSearchChange}
               placeholder='search' />
-            <button>Add Resource</button>
           </div>
         </nav>
 
@@ -66,6 +75,12 @@ const Resources = ({user, }) => {
               <h4>Link</h4>
             </div>
           </header>
+
+          {addResource &&  
+            <NewResource 
+              handleAddResource={handleAddResource} setAddResource={setAddResource}
+            />
+          }
 
           {resources.map(resource => (
             <ResourceCard key={resource._id} 
