@@ -3,24 +3,31 @@ import { NavLink } from 'react-router-dom'
 
 //assets
 import logo from '../../assets/branding/logo.svg'
+// import profile from '../../assets/icons/profile.png'
 
 // css
 import styles from './Landing.module.css'
 
-const Landing = ({ user }) => {
+const Landing = ({ user, profile }) => {
   if (!user) return <img src={logo} alt="appliCANt logo" />
 
-  console.log(user)
+  console.log(profile)
 
   return (
     <main className={styles.container}>
       <div className={styles.profile}>
-        <img src={user.photo} alt="user" />
-        <h2>{user.name}</h2>
-        <h3>Resume:</h3>
-          <p>add resume</p>
-        <h3>Branding Statement:</h3>
-          <p>add statement</p>
+        <div className={styles.info}>
+          <img src={profile.photo} alt="user" />
+          <h2>{profile.name}</h2>
+        </div>
+        <div className="resume">
+          <h3>Resume:</h3>
+            <p>add resume</p>
+        </div>
+        <div className="brand">
+          <h3>Branding Statement:</h3>
+            <p>add statement</p>
+        </div>
       <NavLink to="/auth/change-password">Change Password</NavLink>
       </div>
       <section>

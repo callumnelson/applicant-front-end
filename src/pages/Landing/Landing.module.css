@@ -7,17 +7,28 @@
 
 
 .profile {
-  border: 2px solid black;
   width: 33vw;
   height: 100%;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
+  background-color: rgba(139, 169, 186, 0.436);
+}
+
+.info {
+  margin: 5vmin;
+}
+
+.info > img {
+  height: 15vw;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .container > section {
-  width: 66vw;
+  width: 67vw;
   text-align: center;
 }
 
