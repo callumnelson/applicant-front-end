@@ -1,3 +1,46 @@
-main.container {
+.container {
   display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+nav {
+  display: flex;
+  background-color: aqua;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav div {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 10px;
+}
+
+.jobs:first-child {
+  width: 75%;
+  height: 100%;
+  background-color: white;
+}
+
+.notes:nth-child(2) {
+  width: 25%;
+  height: 100%;
+  background-color: darkgray;
+}
+
+.table {
+  margin: 10px;
+  border: 1px solid gray;
+}
+
+.table header {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.table header > div {
+  width: calc(100%/6);
 }
