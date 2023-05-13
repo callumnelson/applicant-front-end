@@ -1,4 +1,4 @@
-main.container {
+.container {
   display: flex;
   width: 100%;
   height: 100%;
@@ -18,14 +18,23 @@ nav div {
   margin: 10px;
 }
 
-section.jobs:first-child {
+.jobs:first-child {
   width: 75%;
   height: 100%;
   background-color: white;
 }
 
-section.notes:nth-child(2) {
+.notes:nth-child(2) {
   width: 25%;
   height: 100%;
   background-color: darkgray;
+}
+
+.table {
+  margin: 10px;
+  border: 1px solid gray;
+}
+
+.table header {
+  display: flex;
 }

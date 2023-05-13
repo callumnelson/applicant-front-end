@@ -22,8 +22,8 @@ const Jobs = ({user, }) => {
     fetchJobs()
   }, [])
 
-  const handleSearchChange = () => {
-    //filter list when search
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value)
   }
   
   if (!jobs) return <h1>Loading...</h1>
@@ -44,7 +44,15 @@ const Jobs = ({user, }) => {
             <button>Add Job</button>
           </div>
         </nav>
-        <div className={styles.jobsContainer}>
+        <div className={styles.table}>
+          <header>
+            <p>Title</p>
+            <p>Company</p>
+            <p>Listing</p>
+            <p>Status</p>
+            <p>Priority</p>
+            <p>Salary</p>
+          </header>
           {jobs.map(job => (
             <div key={job._id} className={styles.jobCard}>
               <h1>{job.title}</h1>
