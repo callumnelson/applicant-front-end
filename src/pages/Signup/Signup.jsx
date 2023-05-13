@@ -5,6 +5,9 @@ import { Link, useNavigate } from 'react-router-dom'
 // services
 import * as authService from '../../services/authService'
 
+// assets
+import logo from '../../assets/branding/logo.svg'
+
 // css
 import styles from './Signup.module.css'
 
@@ -80,7 +83,7 @@ const Signup = ({ handleAuthEvt }) => {
   return (
     <main className={styles.container}>
       <section>
-        LOGO
+        <img src={logo} alt="An owl sitting on a sign" />
       </section>
       <section>
         <form autoComplete="off" onSubmit={handleSubmit}>
