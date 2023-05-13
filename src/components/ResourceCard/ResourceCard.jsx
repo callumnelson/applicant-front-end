@@ -43,7 +43,12 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource}) => {
       </div>
       {selected && 
         <div className={styles.details}>
-          Look at those deeets!
+          <div className={styles.instructions}>
+          Instructions: {resource.instructions}
+          </div>
+          <div>
+            {resource.reviews.length} Reviews
+          </div>
         </div>
       }
     </>
