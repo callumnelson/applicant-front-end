@@ -32,7 +32,7 @@ const JobCard = ({selectedJob, job, setSelectedJob}) => {
         <div className={styles.company}>
           <p>{job.company}</p>
         </div>
-        <div className={styles.listin}>
+        <div className={styles.listing}>
           <p>{job.listing}</p>
         </div>
         <div className={styles.status}>
@@ -47,9 +47,42 @@ const JobCard = ({selectedJob, job, setSelectedJob}) => {
       </div>
       {
         selected &&
+        <>
         <div className={styles.details}>
-          <h1>Look at my details!!</h1>
+          <div className={styles.resume}>
+            <p>{job.resume}</p>
+          </div>
+          <div className={styles.coverLetter}>
+            <p>{job.coverLetter}</p>
+          </div>
+          <div className={styles.contactName}>
+            <p>{job.contactName}</p>
+          </div>
+          <div className={styles.contactEmail}>
+            <p>{job.contactEmail}</p>
+          </div>
         </div>
+        <div className={styles.notebuttons}>
+          <button>
+            Resume
+          </button>
+          <button>
+            Interview Qs
+          </button>
+          <button>
+            Skills
+          </button>
+          <button>
+            To-Dos
+          </button>
+          <button>
+            Networking
+          </button>
+          <button>
+            General
+          </button>
+        </div>
+        </>
       }
     </>
   )
