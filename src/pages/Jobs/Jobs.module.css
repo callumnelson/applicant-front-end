@@ -4,16 +4,17 @@
   height: 100%;
 }
 
-nav {
+.container nav {
   display: flex;
-  background-color: aqua;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
-nav div {
+.container nav > div {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  min-width: 20%;
   gap: 20px;
   margin: 10px;
 }
