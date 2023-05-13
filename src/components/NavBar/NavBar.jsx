@@ -1,22 +1,39 @@
 // npm modules
 import { NavLink } from 'react-router-dom'
 
+// css
+import styles from './NavBar.module.css'
+
 const NavBar = ({ user, handleLogout }) => {
+
+  const publicLinks = (
+    <ul>
+      <li><NavLink to="/auth/login">LOG IN</NavLink></li>
+      <li><NavLink to="/auth/signup">SIGN UP</NavLink></li>
+    </ul>
+  )
+
+  const protectedLinks = (
+    <ul>
+      <li>
+        <NavLink to="/profiles">ADMIN</NavLink>
+      </li>
+      <li>
+        <NavLink to="/jobs">JOBS</NavLink>
+      </li>
+      <li>
+        <NavLink to="/resources">RESOURCES</NavLink>
+      </li>
+      <li>
+        <NavLink to="/auth/logout" onClick={handleLogout}>LOG OUT</NavLink>
+      </li>
+    </ul>
+  )
+
   return (
-    <nav>
-      {user ?
-        <ul>
-          <li>Welcome, {user.name}</li>
-          <li><NavLink to="/profiles">Profiles</NavLink></li>
-          <li><NavLink to="" onClick={handleLogout}>LOG OUT</NavLink></li>
-          <li><NavLink to="/auth/change-password">Change Password</NavLink></li>
-        </ul>
-      :
-        <ul>
-          <li><NavLink to="/auth/login">Log In</NavLink></li>
-          <li><NavLink to="/auth/signup">Sign Up</NavLink></li>
-        </ul>
-      }
+    <nav className={styles.container}>
+      <NavLink to="/">LOGO HERE</NavLink>
+      {user ? protectedLinks : publicLinks}
     </nav>
   )
 }
