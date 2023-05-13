@@ -17,8 +17,8 @@ const Landing = ({ user, profile }) => {
     <main className={styles.container}>
       <section className={styles.profile}>
         <div className={styles.info}>
-          <img src={profile.photo} alt="user" />
-          <h2>{profile.name}</h2>
+          {/* <img src={profile.photo} alt="user" /> */}
+          {/* <h2>{profile.name}</h2> */}
         </div>
         <div className="resume">
           <h3>My Resume</h3>
