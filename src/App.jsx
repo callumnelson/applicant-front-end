@@ -48,6 +48,7 @@ function App() {
 
   const handleAuthEvt = () => {
     setUser(authService.getUser())
+
   }
 
   return (
