@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react"
 
 // services
-import * as jobService from '../../services/jobsService'
+import * as jobsService from '../../services/jobsService'
 
 // styles
 import styles from './Jobs.module.css'
@@ -15,7 +15,7 @@ const Jobs = ({user, }) => {
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const data = await jobService.index()
+      const data = await jobsService.index()
       setJobs(data)
     }
     fetchJobs()
@@ -39,5 +39,5 @@ const Jobs = ({user, }) => {
     </main>
   )
 }
- 
+
 export default Jobs
