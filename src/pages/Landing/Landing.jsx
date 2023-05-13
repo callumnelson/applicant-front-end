@@ -10,11 +10,11 @@ import styles from './Landing.module.css'
 const Landing = ({ user }) => {
   if (!user) return <img src={logo} alt="appliCANt logo" />
 
-  console.log(user.profile)
+  console.log(user)
 
   return (
     <main className={styles.container}>
-      <div className="profile-info">
+      <div className={styles.profile}>
         <img src={user.photo} alt="user" />
         <h2>{user.name}</h2>
         <h3>Resume:</h3>
@@ -23,22 +23,24 @@ const Landing = ({ user }) => {
           <p>add statement</p>
       <NavLink to="/auth/change-password">Change Password</NavLink>
       </div>
-      <div className="resources">
-        <h3>Starred Resources:</h3>
-        <ul>
-          <li>Resource</li>
-          <li>Resource</li>
-          <li>Resource</li>
-        </ul>
-      </div>
-      <div className='jobs'>
-        <h3>Applications I'm Working On:</h3>
-        <ul>
-          <li>Job</li>
-          <li>Job</li>
-          <li>Job</li>
-        </ul>
-      </div>
+      <section>
+        <div className="resources">
+          <h3>Starred Resources:</h3>
+          <ul>
+            <li>Resource</li>
+            <li>Resource</li>
+            <li>Resource</li>
+          </ul>
+        </div>
+        <div className='jobs'>
+          <h3>Applications I'm Working On:</h3>
+          <ul>
+            <li>Job</li>
+            <li>Job</li>
+            <li>Job</li>
+          </ul>
+        </div>
+      </section>
     </main>
   )
 }

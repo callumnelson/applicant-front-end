@@ -17,6 +17,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as profileService from './services/profileService'
 
 // styles
 import './App.css'
@@ -33,6 +34,7 @@ function App() {
 
   const handleAuthEvt = () => {
     setUser(authService.getUser())
+
   }
 
   return (
