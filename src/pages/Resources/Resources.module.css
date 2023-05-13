@@ -1,0 +1,41 @@
+main.container {
+  display: flex;
+}
+
+section.resources {
+  width: 75%;
+  background-color: gray;
+}
+
+section.notes {
+  width: 25%;
+  background-color: white;
+}
+
+nav {
+  background-color: blue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav div {
+  margin-right: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.table {
+  border: 1px solid black;
+}
+
+.table header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
