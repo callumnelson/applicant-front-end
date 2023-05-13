@@ -8,6 +8,7 @@ import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
 import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import Jobs from './pages/Jobs/Jobs'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -15,6 +16,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as jobService from './services/jobsService'
 
 // styles
 import './App.css'
@@ -43,6 +45,14 @@ function App() {
           element={
             <ProtectedRoute user={user}>
               <Profiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/jobs"
+          element={
+            <ProtectedRoute user={user}>
+              <Jobs user={user}/>
             </ProtectedRoute>
           }
         />

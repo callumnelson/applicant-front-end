@@ -90,7 +90,7 @@ const deleteNote = async (jobId, noteId) => {
   }
 }
 
-{
+export {
   index,
   create,
   update,
