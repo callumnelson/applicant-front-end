@@ -3,3 +3,9 @@
   align-items: center;
   flex-direction: column;
 }
+
+
+.container > div {
+  border: 2px solid black;
+}
+
