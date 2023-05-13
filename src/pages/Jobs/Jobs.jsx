@@ -9,11 +9,13 @@ import styles from './Jobs.module.css'
 
 // components
 import JobCard from "../../components/JobCard/JobCard"
+import NewJob from "../../components/NewJob/NewJob"
 
 const Jobs = ({user, }) => {
   const [jobs, setJobs] = useState(null)
   const [selectedJob, setSelectedJob] = useState(null)
   const [search, setSearch] = useState("")
+  const [addJob, setAddJob] = useState(false)
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -25,6 +27,11 @@ const Jobs = ({user, }) => {
 
   const handleSearchChange = (e) => {
     setSearch(e.target.value)
+  }
+
+  const handleAddJob = async (newJobFormData) => {
+    const newJob = await jobsService.create(newJobFormData)
+    setJobs([newJob, ...jobs])
   }
   
   if (!jobs) return <h1>Loading...</h1>
@@ -42,7 +49,11 @@ const Jobs = ({user, }) => {
               placeholder="Search..."
               onChange={handleSearchChange}
               />
-            <button>Add Job</button>
+            <button
+              onClick={() => setAddJob(true)}
+            >
+              Add Job
+            </button>
           </div>
         </nav>
         <div className={styles.table}>
@@ -66,10 +77,10 @@ const Jobs = ({user, }) => {
               <h4>Salary</h4>
             </div>
           </header>
+          {addJob && <NewJob handleAddJob={handleAddJob}/>}
           {jobs.map(job => (
             <JobCard 
-              key={job._id} 
-              className={styles.jobCard} 
+              key={job._id}
               job={job}
               selectedJob={selectedJob}
               setSelectedJob={setSelectedJob}
