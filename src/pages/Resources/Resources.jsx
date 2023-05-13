@@ -57,7 +57,6 @@ const Resources = ({user, }) => {
               value={search}
               onChange={handleSearchChange}
               placeholder='search' />
-            <button>Add Resource</button>
           </div>
         </nav>
 

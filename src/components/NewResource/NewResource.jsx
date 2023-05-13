@@ -22,54 +22,58 @@ const NewResource = ({handleAddResource, setAddResource}) => {
   }
 
   return (
-    <div className={styles.resource}>
+    <div>
       <form onSubmit={handleSubmit}>
-        <div className={styles.name}>
-          <input
-            required
+        <div className={styles.resource}>
+          <div className={styles.name}>
+            <input
+              required
+              type="text"
+              name="name"
+              id="title-input"
+              value={formData.title}
+              placeholder="Name"
+              onChange={handleChange}
+            />
+          </div>
+          <div className={styles.category}>
+            <select
+              required
+              name="category"
+              id="category-input"
+              value={formData.category}
+              onChange={handleChange}
+            >
+              <option value="Networking">Networking</option>
+              <option value="Interviewing">Interviewing</option>
+              <option value="Job Search">Job Search</option>
+              <option value="Resumes">Resumes</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div className={styles.link}>
+            <input 
             type="text"
-            name="name"
-            id="title-input"
-            value={formData.title}
-            placeholder="Name"
+            name="link"
+            id="link-input"
+            value={formData.link}
+            placeholder="URL Link to Resource"
             onChange={handleChange}
-          />
+            />
+          </div>
         </div>
-        <div className={styles.category}>
-          <select
-            required
-            name="category"
-            id="category-input"
-            value={formData.category}
-            onChange={handleChange}
-          >
-            <option value="Networking">Networking</option>
-            <option value="Interviewing">Interviewing</option>
-            <option value="Job Search">Job Search</option>
-            <option value="Resumes">Resumes</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <div className={styles.link}>
-          <input 
-          type="text"
-          name="link"
-          id="link-input"
-          value={formData.link}
-          placeholder="URL Link to Resource"
-          onChange={handleChange}
-          />
-        </div>
-        <div>
-          <textarea
-            required
-            type="text"
-            name="instructions"
-            id="text-input"
-            value={formData.instructions}
-            placeholder="instructions"
-            onChange={handleChange}
-          />
+        <div className={styles.details}>
+          <div className={styles.instructions}>
+            <textarea
+              required
+              type="text"
+              name="instructions"
+              id="text-input"
+              value={formData.instructions}
+              placeholder="instructions"
+              onChange={handleChange}
+            />
+          </div>
         </div>
         <button
           onClick={() => setAddResource(false)}
