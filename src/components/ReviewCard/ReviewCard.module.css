@@ -1,0 +1,8 @@
+.container {
+  background-color: aqua;
+  margin: 10px;
+}
+
+.container img {
+  width: 40px;
+}

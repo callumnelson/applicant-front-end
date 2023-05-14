@@ -10,6 +10,7 @@ import styles from './Resources.module.css'
 // components
 import ResourceCard from "../../components/ResourceCard/ResourceCard"
 import ResourceForm from "../../components/ResourceForm/ResourceForm"
+import Reviews from "../../components/Reviews/Reviews"
 
 
 const Resources = ({user, }) => {
@@ -121,7 +122,10 @@ const Resources = ({user, }) => {
         </div>
       </section>
       <section className={styles.notes}>
-        <h1>Notes</h1>
+        <Reviews 
+          selectedResource={selectedResource}
+          user={user}
+        />
       </section>
     </main>
   )
