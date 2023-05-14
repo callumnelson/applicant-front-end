@@ -2,6 +2,7 @@
 import styles from './Reviews.module.css'
 
 import ReviewCard from '../ReviewCard/ReviewCard'
+import ReviewForm from '../ReviewForm/ReviewForm'
 
 const Reviews = ({selectedResource}) => {
 
@@ -12,8 +13,15 @@ const Reviews = ({selectedResource}) => {
   return (  
     <div className={styles.reviews}>
       <div>
-        {selectedResource.reviews.length} Reviews
-        {selectedResource.averageRating} average rating
+        <div>
+          {selectedResource.reviews.length} Reviews
+        </div>
+        <div>
+          {selectedResource.averageRating} average rating
+        </div>
+      </div>
+      <div>
+        <ReviewForm />
       </div>
       {selectedResource.reviews.map(review =>
         <div key={review._id}>
