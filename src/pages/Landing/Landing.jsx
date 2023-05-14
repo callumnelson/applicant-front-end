@@ -21,7 +21,7 @@ const Landing = ({ user, profile }) => {
   if (!profile) return <p>Loading profile...</p>
 
   const photo = profile.photo ? profile.photo : profileIcon
-  console.log(profile)
+  console.log(profile.baseResume)
   return (
     <main className={styles.container}>
       <section className={styles.profile}>
