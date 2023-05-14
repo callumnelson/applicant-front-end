@@ -1,5 +1,5 @@
 // components
-
+import NoteCard from '../NoteCard/NoteCard'
 
 // css
 import styles from './Notes.module.css'
@@ -13,12 +13,13 @@ const Notes = ({selectedJob, notesCategory}) => {
   return (
     <>
       <h2>{notesCategory} Notes ({notesToDisplay.length})</h2>
-      <div className={styles.notes}>
+      <div className={styles.container}>
         {notesToDisplay.map(note => (
-          <div key={note._id}>
-            <h3>{note.title}</h3>
-            <p>{note.content}</p>
-          </div>
+          <NoteCard 
+            key={note._id}
+            note={note}
+          > 
+          </NoteCard>
         ))}
       </div>
     </>
