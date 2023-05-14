@@ -33,11 +33,11 @@ const Landing = ({ user, profile }) => {
         </div>
         <div className="resume">
           <h3>My Resume</h3>
-            <ResumeForm />
+            {profile.baseResume ? profile.baseResume : <ResumeForm /> }
         </div>
         <div className="brand">
           <h3>My Branding Statement</h3>
-            <BrandForm />
+            {profile.brandStatement ? profile.brandStatement : <BrandForm /> }
         </div>
       <NavLink to="/auth/change-password">Change Password</NavLink>
       </section>
