@@ -9,13 +9,13 @@ const Reviews = ({selectedResource, user}) => {
   const [buttonState, setButtonState] = useState('')
 
 
-  useEffect(() => {
-    
+  // useEffect(() => {
 
-    if (selectedResource.reviews.author === user._id) {
-      setButtonState('edit')
-    }
-  }, [user])
+
+  //   if (selectedResource.reviews?.author === user._id) {
+  //     setButtonState('edit')
+  //   }
+  // }, [user])
 
   if (!selectedResource) return <p>Selected a resource to see it's reviews</p>
 
