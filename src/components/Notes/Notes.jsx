@@ -12,7 +12,7 @@ const Notes = ({selectedJob, notesCategory}) => {
 
   return (
     <>
-      <h1>Notes ({notesToDisplay.length})</h1>
+      <h2>{notesCategory} Notes ({notesToDisplay.length})</h2>
       <div className={styles.notes}>
         {notesToDisplay.map(note => (
           <div key={note._id}>
