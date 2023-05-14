@@ -42,6 +42,11 @@ const Jobs = ({user, }) => {
     setEditedJob(null)
   }
 
+  const handleDeleteJob = async (job) => {
+    const deletedJob = await jobsService.deleteJob(job._id)
+    setJobs(jobs.filter(j => j._id !== deletedJob._id))
+  }
+
   const handleClickAddJob = () => {
     setAddJob(true)
     setSelectedJob(null)
@@ -111,6 +116,7 @@ const Jobs = ({user, }) => {
               selectedJob={selectedJob}
               setSelectedJob={setSelectedJob}
               setEditedJob={setEditedJob}
+              handleDeleteJob={handleDeleteJob}
             />
           ))}
         </div>
