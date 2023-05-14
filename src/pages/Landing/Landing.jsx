@@ -57,17 +57,19 @@ const Landing = ({ user, profile }) => {
                 <h4>Link</h4>
               </div>
             </header>
-            {(!profile.starredResources.length) ?
-              <h4>No starred resources</h4> :
-              profile.starredResources.map(resource =>
-                <ResourceCard 
-                  key={resource._id} 
-                  resource={resource}
-                  selectedResource={selectedResource} 
-                  setSelectedResource={setSelectedResource}
-                />
-              )
-            }
+            <div className={styles.list}>
+              {(!profile.starredResources.length) ?
+                <h4>No starred resources</h4> :
+                profile.starredResources.map(resource =>
+                  <ResourceCard 
+                    key={resource._id} 
+                    resource={resource}
+                    selectedResource={selectedResource} 
+                    setSelectedResource={setSelectedResource}
+                  />
+                )
+              }
+            </div>
           </div>
         </div>
         <div className={styles.jobs}>
@@ -93,17 +95,19 @@ const Landing = ({ user, profile }) => {
                 <h4>Salary</h4>
               </div>
             </header>
-            {(!profile.applications.length) ?
-              <h4>No jobs</h4> :
-              profile.applications.map(job =>
-                <JobCard 
-                key={job._id} 
-                job={job} 
-                setSelectedJob={setSelectedJob}
-                selectedJob={selectedJob}
-                />
-              )
-            }
+            <div className={styles.list}>
+              {(!profile.applications.length) ?
+                <h4>No jobs</h4> :
+                profile.applications.map(job =>
+                  <JobCard 
+                  key={job._id} 
+                  job={job} 
+                  setSelectedJob={setSelectedJob}
+                  selectedJob={selectedJob}
+                  />
+                )
+              }
+            </div>
           </div>
         </div>
       </section>
