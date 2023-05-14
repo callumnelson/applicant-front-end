@@ -4,7 +4,7 @@ import { useState } from "react"
 // css
 import styles from './JobCard.module.css'
 
-const JobCard = ({selectedJob, job, setSelectedJob}) => {
+const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob}) => {
   const selected = selectedJob && selectedJob._id === job._id
   
   const handleSelect = () => {
@@ -43,6 +43,11 @@ const JobCard = ({selectedJob, job, setSelectedJob}) => {
         </div>
         <div className={styles.salary}>
           <p>{job.salary}</p>
+        </div>
+        <div>
+          <p
+            onClick={() => setEditedJob(job)}
+          >✏️</p>
         </div>
       </div>
       {

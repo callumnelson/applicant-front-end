@@ -9,13 +9,14 @@ import styles from './Jobs.module.css'
 
 // components
 import JobCard from "../../components/JobCard/JobCard"
-import NewJob from "../../components/NewJob/NewJob"
+import JobForm from "../../components/JobForm/JobForm"
 
 const Jobs = ({user, }) => {
   const [jobs, setJobs] = useState(null)
   const [selectedJob, setSelectedJob] = useState(null)
   const [search, setSearch] = useState("")
   const [addJob, setAddJob] = useState(false)
+  const [editedJob, setEditedJob] = useState(null)
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -29,10 +30,21 @@ const Jobs = ({user, }) => {
     setSearch(e.target.value)
   }
 
-  const handleAddJob = async (newJobFormData) => {
-    const newJob = await jobsService.create(newJobFormData)
-    setJobs([newJob, ...jobs])
+  const handleAddJob = async (newJobFormFormData) => {
+    const JobForm = await jobsService.create(newJobFormFormData)
+    setJobs([JobForm, ...jobs])
     setAddJob(false)
+  }
+
+  const handleUpdateJob = async (updatedJobFormData) => {
+    const updatedJob = await jobsService.update(updatedJobFormData)
+    setJobs(jobs.map(j => j._id === updatedJob._id ? updatedJob : j))
+    setEditedJob(null)
+  }
+
+  const handleClickAddJob = () => {
+    setAddJob(true)
+    setSelectedJob(null)
   }
   
   if (!jobs) return <h1>Loading...</h1>
@@ -51,7 +63,7 @@ const Jobs = ({user, }) => {
               onChange={handleSearchChange}
               />
             <button
-              onClick={() => setAddJob(true)}
+              onClick={handleClickAddJob}
             >
               Add Job
             </button>
@@ -79,17 +91,26 @@ const Jobs = ({user, }) => {
             </div>
           </header>
           {addJob && 
-            <NewJob 
+            <JobForm 
               handleAddJob={handleAddJob} 
               setAddJob={setAddJob}
             />
           }
           {jobs.map(job => (
+            editedJob && job._id === editedJob._id ?
+            <JobForm 
+              key={job._id}
+              editedJob={editedJob}
+              setEditedJob={setEditedJob}
+              handleUpdateJob={handleUpdateJob}
+            />
+            :
             <JobCard 
               key={job._id}
               job={job}
               selectedJob={selectedJob}
               setSelectedJob={setSelectedJob}
+              setEditedJob={setEditedJob}
             />
           ))}
         </div>

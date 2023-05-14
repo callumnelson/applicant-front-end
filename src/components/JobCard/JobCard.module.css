@@ -30,3 +30,7 @@
   display: flex;
   margin-left: 20px;
 }
+
+.editbutton:hover {
+  cursor: pointer;
+}

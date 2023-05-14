@@ -2,10 +2,12 @@
 import { useState } from "react"
 
 // css
-import styles from './NewJob.module.css'
+import styles from './JobForm.module.css'
 
-const NewJob = ({handleAddJob, setAddJob}) => {
-  const [formData, setFormData] = useState({
+const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdateJob}) => {
+
+  const [formData, setFormData] = useState(
+    editedJob ? editedJob : {
     title: '',
     company: '',
     jobListing: '',
@@ -20,7 +22,13 @@ const NewJob = ({handleAddJob, setAddJob}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-		handleAddJob(formData)
+    if (editedJob) handleUpdateJob(formData)
+		else handleAddJob(formData)
+  }
+
+  const handleCancel = () => {
+    if (editedJob) setEditedJob(null)
+    else setAddJob(false)
   }
 
   return (
@@ -105,7 +113,6 @@ const NewJob = ({handleAddJob, setAddJob}) => {
         <div className={styles.detailsCard}>
           <div className={styles.contactName}>
             <input
-              required
               type="text"
               name="contactName"
               id="contactName-input"
@@ -116,7 +123,6 @@ const NewJob = ({handleAddJob, setAddJob}) => {
           </div>
           <div className={styles.contactEmail}>
             <input
-              required
               type="text"
               name="contactEmail"
               id="contactEmail-input"
@@ -127,7 +133,6 @@ const NewJob = ({handleAddJob, setAddJob}) => {
           </div>
           <div className={styles.jobResume}>
             <input
-              required
               type="text"
               name="jobResume"
               id="jobResume-input"
@@ -138,7 +143,6 @@ const NewJob = ({handleAddJob, setAddJob}) => {
           </div>
           <div className={styles.jobCoverLetter}>
             <input
-              required
               type="text"
               name="jobCoverLetter"
               id="jobCoverLetter-input"
@@ -148,11 +152,11 @@ const NewJob = ({handleAddJob, setAddJob}) => {
             />
           </div>
         </div>
-        <button onClick={() => setAddJob(false)}>Cancel</button>
+        <button onClick={handleCancel}>Cancel</button>
         <button type="submit">SUBMIT</button>
       </form>
     </div>
   )
 }
  
-export default NewJob
+export default JobForm
