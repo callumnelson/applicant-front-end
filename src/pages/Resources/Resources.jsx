@@ -49,6 +49,11 @@ const Resources = ({user, }) => {
     setEditedResource(null)
   }
 
+  const handleDeleteResource = async (resource) => {
+    const deletedResource = await resourceService.deleteResource(resource._id)
+    setResources(resources.filter(r => r._id !== deletedResource._id))
+  }
+
   if (!resources) return <h1>Loading...</h1>
 
   return ( 
@@ -109,6 +114,7 @@ const Resources = ({user, }) => {
                 selectedResource={selectedResource} 
                 setSelectedResource={setSelectedResource}
                 setEditedResource={setEditedResource}
+                handleDeleteResource={handleDeleteResource}
             />   
           ))}
 
