@@ -38,13 +38,32 @@ async function getProfile(user) {
       headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
     })
     return await res.json()
-  } catch (error) {
+  } catch (err) {
     throw new Error(err)
   }
 }
+
+async function addResume(profile, resumeFormData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${profile}/resume`, {
+      method: 'POST',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(resumeFormData),
+    })
+    return await res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 
 export { 
   getAllProfiles, 
   addPhoto,
   getProfile,
+  addResume,
+  // getResume,
 }

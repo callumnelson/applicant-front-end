@@ -2,6 +2,9 @@
 import { NavLink } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
+//services
+import * as profileService from '../../services/profileService'
+
 //components
 import JobCard from '../../components/JobCard/JobCard'
 import ResourceCard from '../../components/ResourceCard/ResourceCard'
@@ -18,12 +21,27 @@ import styles from './Landing.module.css'
 const Landing = ({ user, profile }) => {
   const [selectedJob, setSelectedJob] = useState(null)
   const [selectedResource, setSelectedResource] = useState(null)
+  const [resume, setResume] = useState(null)
 
+  useEffect(() => {
+    const fetchResume = async () => {
+      const data = await profileService.getResume()
+      setResume(data)
+    }
+    fetchResume()
+  }, [])
+
+  const handleAddResume = async (profile, resumeFormData) => {
+    const newResume = await profileService.createResume(profile._id, resumeFormData)
+    setResume(newResume)
+  }
+  
   if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
   const photo = profile.photo ? profile.photo : profileIcon
-  console.log(profile.baseResume)
+
+
   return (
     <main className={styles.container}>
       <section className={styles.profile}>
@@ -33,11 +51,18 @@ const Landing = ({ user, profile }) => {
         </div>
         <div className="resume">
           <h3>My Resume</h3>
-            {profile.baseResume ? profile.baseResume : <ResumeForm /> }
+            {resume ? resume : 
+              <ResumeForm 
+                handleAddResume={handleAddResume}
+              /> 
+            }
         </div>
         <div className="brand">
           <h3>My Branding Statement</h3>
-            {profile.brandStatement ? profile.brandStatement : <BrandForm /> }
+            {profile.brandStatement ? profile.brandStatement : 
+              <BrandForm
+              /> 
+            }
         </div>
       <NavLink to="/auth/change-password">Change Password</NavLink>
       </section>
