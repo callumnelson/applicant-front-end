@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 //components
 import JobCard from '../../components/JobCard/JobCard'
 import ResourceCard from '../../components/ResourceCard/ResourceCard'
+import ResumeForm from '../../components/ResumeForm/ResumeForm'
+import BrandForm from '../../components/BrandForm/BrandForm'
 
 //assets
 import logo from '../../assets/branding/logo.svg'
@@ -31,11 +33,11 @@ const Landing = ({ user, profile }) => {
         </div>
         <div className="resume">
           <h3>My Resume</h3>
-            <p>add resume</p>
+            <ResumeForm />
         </div>
         <div className="brand">
           <h3>My Branding Statement</h3>
-            <p>add statement</p>
+            <BrandForm />
         </div>
       <NavLink to="/auth/change-password">Change Password</NavLink>
       </section>
