@@ -29,8 +29,19 @@
 .notebuttons {
   display: flex;
   margin-left: 20px;
+  gap: 10px;
+}
+
+.notebuttons button {
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.notebuttons button:hover {
+  cursor: pointer;
 }
 
 .edit:hover, .delete:hover {
   cursor: pointer;
 }
+

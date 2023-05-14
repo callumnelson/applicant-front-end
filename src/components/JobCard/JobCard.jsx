@@ -1,15 +1,26 @@
-// npm modules
-import { useState } from "react"
+// components
+import NotesCategoryButton from '../NotesCategoryButton/NotesCategoryButton'
 
 // css
 import styles from './JobCard.module.css'
 
-const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob}) => {
+const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob, notesCategory, setNotesCategory}) => {
   const selected = selectedJob && selectedJob._id === job._id
+  const notesCategories = ['Resume', 'Interview Qs', 'Skills', 'To-Do', 'Networking', 'General']
   
-  const handleSelect = () => {
+  const handleSelectJob = () => {
     if(selected) setSelectedJob(null)
     else setSelectedJob(job)
+    setNotesCategory("Resume")
+  }
+
+  const handleChangeEditedJob = () => {
+    setEditedJob(job)
+    setSelectedJob(null)
+  }
+
+  const handleNoteCategoryChange = (e) => {
+    setNotesCategory(e.target.value)
   }
 
   return (
@@ -21,7 +32,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
         <span>
           <p
             className={styles.dropdown}
-            onClick={handleSelect}
+            onClick={handleSelectJob}
           >
             {selected ? "⬆️": "⬇️"}
           </p>
@@ -46,7 +57,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
         </div>
         <span>
           <p className={styles.edit}
-            onClick={() => setEditedJob(job)}
+            onClick={handleChangeEditedJob}
           >
             ✏️
           </p>
@@ -77,24 +88,14 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           </div>
         </div>
         <div className={styles.notebuttons}>
-          <button>
-            Resume
-          </button>
-          <button>
-            Interview Qs
-          </button>
-          <button>
-            Skills
-          </button>
-          <button>
-            To-Dos
-          </button>
-          <button>
-            Networking
-          </button>
-          <button>
-            General
-          </button>
+          {notesCategories.map(category => (
+            <NotesCategoryButton 
+              key={category}
+              notesCategory={notesCategory}
+              category={category}
+              handleNoteCategoryChange={handleNoteCategoryChange}
+            />
+          ))}
         </div>
         </>
       }
