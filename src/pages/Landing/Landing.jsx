@@ -1,3 +1,7 @@
+//components
+import JobCard from '../../components/JobCard/JobCard'
+import ResourceCard from '../../components/ResourceCard/ResourceCard'
+
 // npm modules
 import { NavLink } from 'react-router-dom'
 
@@ -13,7 +17,7 @@ const Landing = ({ user, profile }) => {
   if (!profile) return <p>Loading profile...</p>
 
   const photo = profile.photo ? profile.photo : profileIcon
-
+  console.log(profile)
   return (
     <main className={styles.container}>
       <section className={styles.profile}>
@@ -34,19 +38,16 @@ const Landing = ({ user, profile }) => {
       <section className={styles.right}>
         <div className={styles.resources}>
           <h3>Starred Resources</h3>
-          <ul>
-            <li>Resource</li>
-            <li>Resource</li>
-            <li>Resource</li>
-          </ul>
+          {profile.starredResources.map(resource =>
+              <ResourceCard key={resource._id} resource={resource}/>
+            )}
+
         </div>
         <div className={styles.jobs}>
           <h3>Applications I'm Working On</h3>
-          <ul>
-            <li>Job</li>
-            <li>Job</li>
-            <li>Job</li>
-          </ul>
+          {profile.applications.map(job =>
+            <JobCard key={job._id} job={job} />
+          )}
         </div>
       </section>
     </main>
