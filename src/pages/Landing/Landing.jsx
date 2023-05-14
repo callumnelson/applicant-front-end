@@ -40,7 +40,6 @@ const Landing = ({ user, profile }) => {
       <NavLink to="/auth/change-password">Change Password</NavLink>
       </section>
       <section className={styles.right}>
-
         <div className={styles.resources}>
           <h3>Starred Resources</h3>
           <div className={styles.table}>
@@ -58,14 +57,17 @@ const Landing = ({ user, profile }) => {
                 <h4>Link</h4>
               </div>
             </header>
-            {profile.starredResources.map(resource =>
+            {(!profile.starredResources.length) ?
+              <h4>No starred resources</h4> :
+              profile.starredResources.map(resource =>
                 <ResourceCard 
                   key={resource._id} 
                   resource={resource}
                   selectedResource={selectedResource} 
                   setSelectedResource={setSelectedResource}
                 />
-              )}
+              )
+            }
           </div>
         </div>
         <div className={styles.jobs}>
