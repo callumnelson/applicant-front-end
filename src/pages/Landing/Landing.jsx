@@ -15,6 +15,7 @@ import styles from './Landing.module.css'
 
 const Landing = ({ user, profile }) => {
   const [selectedJob, setSelectedJob] = useState(null)
+  const [selectedResource, setSelectedResource] = useState(null)
 
   if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
@@ -61,6 +62,8 @@ const Landing = ({ user, profile }) => {
                 <ResourceCard 
                   key={resource._id} 
                   resource={resource}
+                  selectedResource={selectedResource} 
+                  setSelectedResource={setSelectedResource}
                 />
               )}
           </div>
