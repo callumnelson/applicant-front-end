@@ -14,6 +14,11 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
     setNotesCategory("Resume")
   }
 
+  const handleChangeEditedJob = () => {
+    setEditedJob(job)
+    setSelectedJob(null)
+  }
+
   const handleNoteCategoryChange = (e) => {
     setNotesCategory(e.target.value)
   }
@@ -52,7 +57,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
         </div>
         <span>
           <p className={styles.edit}
-            onClick={() => setEditedJob(job)}
+            onClick={handleChangeEditedJob}
           >
             ✏️
           </p>

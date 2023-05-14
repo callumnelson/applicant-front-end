@@ -53,6 +53,12 @@ const Jobs = ({user, }) => {
     setAddJob(true)
     setSelectedJob(null)
   }
+
+  const handleAddNote = async (job, noteFormData) => {
+    const updatedJob = await jobsService.createNote(job._id, noteFormData)
+    setJobs(jobs.map(j => j._id === updatedJob._id ? updatedJob : j))
+    setSelectedJob(updatedJob)
+  }
   
   if (!jobs) return <h1>Loading...</h1>
 
@@ -130,6 +136,7 @@ const Jobs = ({user, }) => {
           selectedJob={selectedJob} 
           notesCategory={notesCategory}
           setNotesCategory={setNotesCategory}
+          handleAddNote={handleAddNote}
         />
       </section>
     </main>

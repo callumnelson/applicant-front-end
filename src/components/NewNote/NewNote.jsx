@@ -4,9 +4,9 @@ import { useState } from "react"
 // css 
 import styles from './NewNote.module.css'
 
-const NewNote = ({notesCategory, handleAddNote}) => {
+const NewNote = ({selectedJob, notesCategory, handleAddNote}) => {
   const [formData, setFormData] = useState({ 
-    notesCategory,
+    category: notesCategory,
     title: '',
     content: '' 
   })
@@ -17,7 +17,7 @@ const NewNote = ({notesCategory, handleAddNote}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    handleAddNote(formData)
+    handleAddNote(selectedJob, formData)
     setFormData({ ...formData, title: '', content: '' })
   }
 
@@ -29,7 +29,7 @@ const NewNote = ({notesCategory, handleAddNote}) => {
         name="title"
         id="title-input"
         value={formData.title}
-        placeholder="Add a Note"
+        placeholder="Note title"
         onChange={handleChange}
       />
       <textarea
