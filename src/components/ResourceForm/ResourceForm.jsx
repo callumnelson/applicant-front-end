@@ -2,10 +2,11 @@
 import { useState } from "react"
 
 // css
-import styles from './NewResource.module.css'
+import styles from './ResourceForm.module.css'
 
-const NewResource = ({handleAddResource, setAddResource}) => {
-  const [formData, setFormData ] = useState({
+const ResourceForm = ({handleAddResource, setAddResource, editedResource, handleUpdateResource, setEditedResource}) => {
+  const [formData, setFormData ] = useState(
+    editedResource ? editedResource : {
     name: '',
     link: '',
     category: 'Networking',
@@ -18,7 +19,19 @@ const NewResource = ({handleAddResource, setAddResource}) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-		handleAddResource(formData)
+    if (editedResource) {
+      handleUpdateResource(formData)
+    } else {
+      handleAddResource(formData)
+    }
+  }
+
+  const handleCancel = () => {
+    if (editedResource) {
+      setEditedResource(null)
+    } else {
+      setAddResource(false)
+    }
   }
 
   return (
@@ -31,7 +44,7 @@ const NewResource = ({handleAddResource, setAddResource}) => {
               type="text"
               name="name"
               id="title-input"
-              value={formData.title}
+              value={formData.name}
               placeholder="Name"
               onChange={handleChange}
             />
@@ -76,7 +89,7 @@ const NewResource = ({handleAddResource, setAddResource}) => {
           </div>
         </div>
         <button
-          onClick={() => setAddResource(false)}
+          onClick={() => handleCancel()}
         >
           Cancel
         </button>
@@ -86,4 +99,4 @@ const NewResource = ({handleAddResource, setAddResource}) => {
   )
 }
 
-export default NewResource
+export default ResourceForm

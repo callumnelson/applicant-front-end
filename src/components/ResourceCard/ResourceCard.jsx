@@ -2,7 +2,7 @@
 //css
 import styles from './ResourceCard.module.css'
 
-const ResourceCard = ({setSelectedResource, selectedResource, resource}) => {
+const ResourceCard = ({setSelectedResource, selectedResource, resource, setEditedResource}) => {
 
   const selected = selectedResource && selectedResource._id === resource._id 
 
@@ -39,6 +39,11 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource}) => {
         </div>
         <div className={styles.link}>
           <p>{resource.link}</p>
+        </div>
+        <div>
+          <p
+            onClick={() => setEditedResource(resource)}
+          >✎</p>
         </div>
       </div>
       {selected && 
