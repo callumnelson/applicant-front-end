@@ -1,14 +1,24 @@
+import { useState, useEffect } from 'react'
 
 import styles from './Reviews.module.css'
 
 import ReviewCard from '../ReviewCard/ReviewCard'
 import ReviewForm from '../ReviewForm/ReviewForm'
 
-const Reviews = ({selectedResource}) => {
+const Reviews = ({selectedResource, user}) => {
+  const [buttonState, setButtonState] = useState('')
+
+
+  useEffect(() => {
+    
+
+    if (selectedResource.reviews.author === user._id) {
+      setButtonState('edit')
+    }
+  }, [user])
 
   if (!selectedResource) return <p>Selected a resource to see it's reviews</p>
 
-  console.log(selectedResource)
 
   return (  
     <div className={styles.reviews}>
@@ -19,6 +29,11 @@ const Reviews = ({selectedResource}) => {
         <div>
           {selectedResource.averageRating} average rating
         </div>
+      </div>
+      <div>
+        <button
+          onClick={() => setButtonState('new')}
+        >New Review</button>
       </div>
       <div>
         <ReviewForm />

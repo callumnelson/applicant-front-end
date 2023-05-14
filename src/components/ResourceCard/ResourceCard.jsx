@@ -14,6 +14,11 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
       setSelectedResource(resource)
     }
   }
+
+  const handleChangeToEditResource = () => {
+    setEditedResource(resource)
+    setSelectedResource(null)
+  }
   
 
   return (  
@@ -41,7 +46,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           <p>{resource.link}</p>
         </div>
           <span
-            onClick={() => setEditedResource(resource)}
+            onClick={() => handleChangeToEditResource()}
           >✎</span>
           <span
             onClick={() => handleDeleteResource(resource)}
