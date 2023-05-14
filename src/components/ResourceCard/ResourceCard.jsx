@@ -19,7 +19,6 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
     setEditedResource(resource)
     setSelectedResource(null)
   }
-  
 
   return (  
     <>

@@ -6,16 +6,20 @@ import ReviewCard from '../ReviewCard/ReviewCard'
 import ReviewForm from '../ReviewForm/ReviewForm'
 
 const Reviews = ({selectedResource, user}) => {
-  const [buttonState, setButtonState] = useState('')
+  const [buttonState, setButtonState] = useState('new')
+  const [reviewFormVisible, setReviewFormVisible] = useState(true)
 
+  console.log(selectedResource?.reviews)
 
-  // useEffect(() => {
+  useEffect(() => {
+    const userReviewCheck = selectedResource?.reviews.some(review => review.author === user._id)
+    if (userReviewCheck) {
+      setButtonState('edit')
+    } else {
+      setButtonState('new')
+    }
+  }, [user])
 
-
-  //   if (selectedResource.reviews?.author === user._id) {
-  //     setButtonState('edit')
-  //   }
-  // }, [user])
 
   if (!selectedResource) return <p>Selected a resource to see it's reviews</p>
 
@@ -31,13 +35,14 @@ const Reviews = ({selectedResource, user}) => {
         </div>
       </div>
       <div>
-        <button
-          onClick={() => setButtonState('new')}
-        >New Review</button>
+        {buttonState === 'new' && <button>New Review</button>}
+        {buttonState === 'edit' && <button>Edit Review</button>}
       </div>
-      <div>
-        <ReviewForm />
-      </div>
+      {reviewFormVisible && 
+        <div>
+          <ReviewForm />
+        </div>
+      }
       {selectedResource.reviews.map(review =>
         <div key={review._id}>
           <ReviewCard review={review} />
