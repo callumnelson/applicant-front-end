@@ -9,7 +9,7 @@ import styles from './Resources.module.css'
 
 // components
 import ResourceCard from "../../components/ResourceCard/ResourceCard"
-import NewResource from "../../components/NewResource/NewResource"
+import ResourceForm from "../../components/ResourceForm/ResourceForm"
 
 
 const Resources = ({user, }) => {
@@ -18,6 +18,7 @@ const Resources = ({user, }) => {
   const [selectedResource, setSelectedResource] = useState(null)
   const [search, setSearch] = useState('')
   const [addResource, setAddResource] = useState(false)
+  const [editedResource, setEditedResource] = useState(null)
 
   useEffect(() => {
     const fetchResources = async () => {
@@ -31,10 +32,26 @@ const Resources = ({user, }) => {
     setSearch(e.target.value)
   }
 
+  const handleClickAddResource = () => {
+    setAddResource(true)
+    setSelectedResource(null)
+  }
+
   const handleAddResource = async (newResourceFormData) => {
     const newResource = await resourceService.create(newResourceFormData)
     setResources([newResource, ...resources])
     setAddResource(false)
+  }
+
+  const handleUpdateResource = async (updatedResourceFormData) => {
+    const updatedResource = await resourceService.update(updatedResourceFormData)
+    setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
+    setEditedResource(null)
+  }
+
+  const handleDeleteResource = async (resource) => {
+    const deletedResource = await resourceService.deleteResource(resource._id)
+    setResources(resources.filter(r => r._id !== deletedResource._id))
   }
 
   if (!resources) return <h1>Loading...</h1>
@@ -47,7 +64,7 @@ const Resources = ({user, }) => {
           <h1>Resources</h1>
           <div>
             <button
-              onClick={() => setAddResource(true)}
+              onClick={() => handleClickAddResource()}
             >
               Add Resource
             </button>
@@ -77,17 +94,28 @@ const Resources = ({user, }) => {
           </header>
 
           {addResource &&  
-            <NewResource 
+            <ResourceForm 
               handleAddResource={handleAddResource} setAddResource={setAddResource}
             />
           }
 
           {resources.map(resource => (
-            <ResourceCard key={resource._id} 
-            resource={resource} 
-            selectedResource={selectedResource} 
-            setSelectedResource={setSelectedResource}
-            />
+
+            editedResource && editedResource._id === resource._id ?
+              <ResourceForm 
+                key={resource._id} 
+                editedResource={editedResource}
+                setEditedResource={setEditedResource}
+                handleUpdateResource={handleUpdateResource}
+              /> : 
+              <ResourceCard 
+                key={resource._id} 
+                resource={resource} 
+                selectedResource={selectedResource} 
+                setSelectedResource={setSelectedResource}
+                setEditedResource={setEditedResource}
+                handleDeleteResource={handleDeleteResource}
+            />   
           ))}
 
         </div>
