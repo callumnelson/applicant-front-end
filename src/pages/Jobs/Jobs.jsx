@@ -18,7 +18,7 @@ const Jobs = ({user, }) => {
   const [search, setSearch] = useState("")
   const [addJob, setAddJob] = useState(false)
   const [editedJob, setEditedJob] = useState(null)
-  const [notesCategory, setNotesCategory] = useState("All")
+  const [notesCategory, setNotesCategory] = useState("Resume")
 
   useEffect(() => {
     const fetchJobs = async () => {

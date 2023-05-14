@@ -8,7 +8,7 @@ const Notes = ({selectedJob, notesCategory}) => {
   
   if (!selectedJob) return <p>Select a job to see your notes :)</p>
 
-  const notesToDisplay = notesCategory === "All" ? selectedJob.notes : selectedJob.notes.filter(n => n.category === notesCategory)
+  const notesToDisplay = selectedJob.notes.filter(n => n.category === notesCategory)
 
   return (
     <>
