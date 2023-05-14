@@ -93,14 +93,17 @@ const Landing = ({ user, profile }) => {
                 <h4>Salary</h4>
               </div>
             </header>
-            {profile.applications.map(job =>
-              <JobCard 
-              key={job._id} 
-              job={job} 
-              setSelectedJob={setSelectedJob}
-              selectedJob={selectedJob}
-              />
-            )}
+            {(!profile.applications.length) ?
+              <h4>No jobs</h4> :
+              profile.applications.map(job =>
+                <JobCard 
+                key={job._id} 
+                job={job} 
+                setSelectedJob={setSelectedJob}
+                selectedJob={selectedJob}
+                />
+              )
+            }
           </div>
         </div>
       </section>
