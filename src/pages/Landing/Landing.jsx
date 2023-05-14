@@ -39,15 +39,34 @@ const Landing = ({ user, profile }) => {
       <NavLink to="/auth/change-password">Change Password</NavLink>
       </section>
       <section className={styles.right}>
+
         <div className={styles.resources}>
           <h3>Starred Resources</h3>
-          {profile.starredResources.map(resource =>
-              <ResourceCard key={resource._id} resource={resource}/>
-            )}
-
+          <div className={styles.table}>
+            <header>
+              <div className={styles.name}>
+                <h4>Name</h4>
+              </div>
+              <div className={styles.category}>
+                <h4>Category</h4>
+              </div>
+              <div className={styles.rating}>
+                <h4>Average Rating</h4>
+              </div>
+              <div className={styles.link}>
+                <h4>Link</h4>
+              </div>
+            </header>
+            {profile.starredResources.map(resource =>
+                <ResourceCard 
+                  key={resource._id} 
+                  resource={resource}
+                />
+              )}
+          </div>
         </div>
         <div className={styles.jobs}>
-          <h3>Applications I'm Working On</h3>
+          <h3>My Newest Applications</h3>
           <div className={styles.table}>
             <header>
               <div className={styles.title}>
@@ -68,15 +87,16 @@ const Landing = ({ user, profile }) => {
               <div className={styles.salary}>
                 <h4>Salary</h4>
               </div>
-          </header>
-
-          </div>
-          {profile.applications.map(job =>
-            <JobCard 
+            </header>
+            {profile.applications.map(job =>
+              <JobCard 
               key={job._id} 
               job={job} 
-              setSelectedJob={setSelectedJob}/>
-          )}
+              setSelectedJob={setSelectedJob}
+              selectedJob={selectedJob}
+              />
+            )}
+          </div>
         </div>
       </section>
     </main>
