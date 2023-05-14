@@ -18,7 +18,7 @@ const Jobs = ({user, }) => {
   const [search, setSearch] = useState("")
   const [addJob, setAddJob] = useState(false)
   const [editedJob, setEditedJob] = useState(null)
-  const [noteCategory, setNoteCategory] = useState("All")
+  const [notesCategory, setNotesCategory] = useState("All")
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -119,14 +119,18 @@ const Jobs = ({user, }) => {
               setSelectedJob={setSelectedJob}
               setEditedJob={setEditedJob}
               handleDeleteJob={handleDeleteJob}
-              noteCategory={noteCategory}
-              setNoteCategory={setNoteCategory}
+              notesCategory={notesCategory}
+              setNotesCategory={setNotesCategory}
             />
           ))}
         </div>
       </section>
       <section className={styles.notes}>
-        <Notes selectedJob={selectedJob} />
+        <Notes 
+          selectedJob={selectedJob} 
+          notesCategory={notesCategory}
+          setNotesCategory={setNotesCategory}
+        />
       </section>
     </main>
   )
