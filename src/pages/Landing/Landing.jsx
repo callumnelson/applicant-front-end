@@ -1,9 +1,10 @@
+// npm modules
+import { NavLink } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+
 //components
 import JobCard from '../../components/JobCard/JobCard'
 import ResourceCard from '../../components/ResourceCard/ResourceCard'
-
-// npm modules
-import { NavLink } from 'react-router-dom'
 
 //assets
 import logo from '../../assets/branding/logo.svg'
@@ -13,6 +14,8 @@ import profileIcon from '../../assets/icons/profile.png'
 import styles from './Landing.module.css'
 
 const Landing = ({ user, profile }) => {
+  const [selectedJob, setSelectedJob] = useState(null)
+
   if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
@@ -45,8 +48,34 @@ const Landing = ({ user, profile }) => {
         </div>
         <div className={styles.jobs}>
           <h3>Applications I'm Working On</h3>
+          <div className={styles.table}>
+            <header>
+              <div className={styles.title}>
+                <h4>Title</h4>
+              </div>
+              <div className={styles.company}>
+                <h4>Company</h4>
+              </div>
+              <div className={styles.listing}>
+                <h4>Listing</h4>
+              </div>
+              <div className={styles.status}>
+                <h4>Status</h4>
+              </div>
+              <div className={styles.priority}>
+                <h4>Priority</h4>
+              </div>
+              <div className={styles.salary}>
+                <h4>Salary</h4>
+              </div>
+          </header>
+
+          </div>
           {profile.applications.map(job =>
-            <JobCard key={job._id} job={job} />
+            <JobCard 
+              key={job._id} 
+              job={job} 
+              setSelectedJob={setSelectedJob}/>
           )}
         </div>
       </section>
