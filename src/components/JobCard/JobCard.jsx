@@ -4,12 +4,16 @@ import { useState } from "react"
 // css
 import styles from './JobCard.module.css'
 
-const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob}) => {
+const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob, noteCategory, setNoteCategory}) => {
   const selected = selectedJob && selectedJob._id === job._id
   
-  const handleSelect = () => {
+  const handleSelectJob = () => {
     if(selected) setSelectedJob(null)
     else setSelectedJob(job)
+  }
+
+  const handleNoteCategoryChange = (e) => {
+    setNoteCategory(e.target.value)
   }
 
   return (
@@ -21,7 +25,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
         <span>
           <p
             className={styles.dropdown}
-            onClick={handleSelect}
+            onClick={handleSelectJob}
           >
             {selected ? "⬆️": "⬇️"}
           </p>
@@ -77,22 +81,53 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           </div>
         </div>
         <div className={styles.notebuttons}>
-          <button>
+          <button
+            className={noteCategory==="All" ? styles.selectednote : ''}
+            onClick={handleNoteCategoryChange}
+            value={"All"}
+          >
+            All
+          </button>
+          <button
+            className={noteCategory==="Resume" ? styles.selectednote : ''}
+            onClick={handleNoteCategoryChange}
+            value={"Resume"}
+          >
             Resume
           </button>
-          <button>
+          <button
+            className={noteCategory==="Interview Qs" ? styles.selectednote : ''}
+            onClick={handleNoteCategoryChange}
+            value={"Interview Qs"}
+          >
             Interview Qs
           </button>
-          <button>
+          <button
+            className={noteCategory==="Skills" ? styles.selectednote : ''}
+            onClick={handleNoteCategoryChange}
+            value={"Skills"}
+          >
             Skills
           </button>
-          <button>
+          <button
+            className={noteCategory==="To-Dos" ? styles.selectednote : ''}
+            onClick={handleNoteCategoryChange}
+            value={"To-Dos"}
+          >
             To-Dos
           </button>
-          <button>
+          <button
+            className={noteCategory==="Networking" ? styles.selectednote : ''}
+            onClick={handleNoteCategoryChange}
+            value={"Networking"}
+          >
             Networking
           </button>
-          <button>
+          <button
+            className={noteCategory==="General" ? styles.selectednote : ''}
+            onClick={handleNoteCategoryChange}
+            value={"General"}
+          >
             General
           </button>
         </div>

@@ -34,3 +34,8 @@
 .edit:hover, .delete:hover {
   cursor: pointer;
 }
+
+.selectednote {
+  background-color: darkblue;
+  color: white;
+}

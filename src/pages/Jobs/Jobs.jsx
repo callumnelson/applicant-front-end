@@ -10,6 +10,7 @@ import styles from './Jobs.module.css'
 // components
 import JobCard from "../../components/JobCard/JobCard"
 import JobForm from "../../components/JobForm/JobForm"
+import Notes from "../../components/Notes/Notes"
 
 const Jobs = ({user, }) => {
   const [jobs, setJobs] = useState(null)
@@ -17,6 +18,7 @@ const Jobs = ({user, }) => {
   const [search, setSearch] = useState("")
   const [addJob, setAddJob] = useState(false)
   const [editedJob, setEditedJob] = useState(null)
+  const [noteCategory, setNoteCategory] = useState("All")
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -117,12 +119,14 @@ const Jobs = ({user, }) => {
               setSelectedJob={setSelectedJob}
               setEditedJob={setEditedJob}
               handleDeleteJob={handleDeleteJob}
+              noteCategory={noteCategory}
+              setNoteCategory={setNoteCategory}
             />
           ))}
         </div>
       </section>
       <section className={styles.notes}>
-        <h1>Notes</h1>
+        <Notes selectedJob={selectedJob} />
       </section>
     </main>
   )
