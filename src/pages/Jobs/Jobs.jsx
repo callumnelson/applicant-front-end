@@ -11,6 +11,7 @@ import styles from './Jobs.module.css'
 import JobCard from "../../components/JobCard/JobCard"
 import JobForm from "../../components/JobForm/JobForm"
 import Notes from "../../components/Notes/Notes"
+import JobsHeader from "../../components/JobsHeader/JobsHeader"
 
 const Jobs = ({user, profile, setProfile}) => {
   const [displayedJobs, setDisplayedJobs] = useState([])
@@ -137,21 +138,11 @@ const Jobs = ({user, profile, setProfile}) => {
           </div>
         </nav>
         <div className={styles.table}>
-          <header>
-            {headers.map(header => (
-              <div key={header.col} className={styles[header]}>
-                <h4 
-                  id={header.schemaName}
-                  onClick={handleUpdateSort}
-                >
-                  {header.col} {sort.schemaName === header.schemaName ? 
-                    sort.order > 0 ? 
-                      '⌃' : '⌄'
-                    : ''}
-                </h4>
-              </div>
-            ))}
-          </header>
+          <JobsHeader 
+            headers={headers}
+            handleUpdateSort={handleUpdateSort}
+            sort={sort}
+          />
           {addJob && 
             <JobForm 
               handleAddJob={handleAddJob} 
