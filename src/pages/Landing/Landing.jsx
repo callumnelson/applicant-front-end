@@ -21,24 +21,34 @@ import styles from './Landing.module.css'
 const Landing = ({ user, profile, setProfile }) => {
   const [selectedJob, setSelectedJob] = useState(null)
   const [selectedResource, setSelectedResource] = useState(null)
-  // const [resume, setResume] = useState(null)
-  // const [brandStatement, setBrandStatement] = useState(null)
-
-  console.log()
+  const [displayResumeForm, setDisplayResumeForm] = useState(false)
+  const [displayBrandForm, setDisplayBrandForm] = useState(false)
 
   const handleAddResume = async (resumeFormData) => {
     const updatedProfileResume = await profileService.createResume(user, resumeFormData)
     setProfile(updatedProfileResume)
+    setDisplayResumeForm(false)
   }
 
   const handleAddBrand = async (brandFormData) => {
     const updatedProfileBrand = await profileService.createBrandStatement(user, brandFormData)
     setProfile(updatedProfileBrand)
+    setDisplayBrandForm(false)
+  }
+
+  function handleResumeClick() {
+    setDisplayResumeForm(true)
+
+  }
+  function handleBrandClick() {
+    setDisplayBrandForm(true)
   }
 
   if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
+
+  console.log(profile.baseResume)
   const photo = profile.photo ? profile.photo : profileIcon
   const resume = profile.baseResume
   const brandStatement = profile.brandStatement
@@ -56,20 +66,29 @@ const Landing = ({ user, profile, setProfile }) => {
         </div>
         <div className="resume">
           <h3>My Resume</h3>
-            {resume ? 
-              resume : 
-              <ResumeForm 
-                handleAddResume={handleAddResume}
-              /> 
-            }
+          {(!resume) || displayResumeForm ? 
+            <ResumeForm
+              handleAddResume={handleAddResume}
+            /> 
+          : 
+            <p>
+              {resume} 
+              <button onClick={handleResumeClick}>✏️</button>
+            </p>
+          }
         </div>
         <div className="brand">
           <h3>My Branding Statement</h3>
-            {brandStatement ? brandStatement : 
-              <BrandForm
-                handleAddBrand={handleAddBrand}
-              /> 
-            }
+          {(!brandStatement) || displayBrandForm ? 
+            <BrandForm
+              handleAddBrand={handleAddBrand}
+            />
+          : 
+            <p> 
+              {brandStatement} 
+              <button onClick={handleBrandClick}>✏️</button>
+            </p>
+          }
         </div>
       <NavLink to="/auth/change-password">Change Password</NavLink>
       </section>
