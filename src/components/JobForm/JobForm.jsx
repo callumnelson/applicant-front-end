@@ -13,7 +13,11 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
     jobListing: '',
     status: 'Interested',
     priority: 'Dream Job',
-    salary: 50000
+    salary: 50000,
+    contactName: '',
+    contactEmail: '',
+    jobResume: '',
+    jobCoverLetter: ''
   })
 
   const handleChange = (evt) => {
