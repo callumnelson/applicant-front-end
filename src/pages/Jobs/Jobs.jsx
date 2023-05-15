@@ -13,10 +13,11 @@ import JobForm from "../../components/JobForm/JobForm"
 import Notes from "../../components/Notes/Notes"
 
 const Jobs = ({user, profile, setProfile}) => {
-  
-  const [jobs, setJobs] = useState(null)
+  const [displayedJobs, setDisplayedJobs] = useState([])
+  const [allJobs, setAllJobs] = useState([])
   const [selectedJob, setSelectedJob] = useState(null)
   const [search, setSearch] = useState("")
+  const [sort, setSort] = useState({schemaName: "title", order: 1})
   const [addJob, setAddJob] = useState(false)
   const [editedJob, setEditedJob] = useState(null)
   const [notesCategory, setNotesCategory] = useState("Resume")
@@ -24,33 +25,48 @@ const Jobs = ({user, profile, setProfile}) => {
   useEffect(() => {
     const fetchJobs = async () => {
       const data = await jobsService.index()
-      setJobs(data)
+      setDisplayedJobs(data.sort((a, b) => a.title.localeCompare(b.title)))
+      setAllJobs(data.sort((a, b) => a.title.localeCompare(b.title)))
     }
     fetchJobs()
   }, [])
 
+  const headers = [{col: 'Title', schemaName: 'title'}, 
+    {col: 'Company', schemaName: 'company'}, 
+    {col: 'Listing', schemaName: 'jobListing'}, 
+    {col: 'Status', schemaName: 'status'},
+    {col: 'Priority', schemaName: 'priority'}, 
+    {col: 'Salary', schemaName: 'salary'}]
+
   const handleSearchChange = (e) => {
-    setSearch(e.target.value)
+    const searchTerm = e.target.value
+    setSelectedJob(null)
+    setEditedJob(null)
+    setAddJob(null)
+    setSearch(searchTerm)
+    setDisplayedJobs(allJobs.filter(j => j.title.toLowerCase().includes(searchTerm.toLowerCase())))
   }
 
   const handleAddJob = async (newJobFormData) => {
     const newJob = await jobsService.create(newJobFormData)
-    setJobs([newJob, ...jobs])
+    setDisplayedJobs([newJob, ...displayedJobs])
     setAddJob(false)
-    setProfile({...profile, applications: [newJob, ...jobs]})
+    setProfile({...profile, applications: [newJob, ...allJobs]})
   }
 
   const handleUpdateJob = async (updatedJobFormData) => {
     const updatedJob = await jobsService.update(updatedJobFormData)
-    setJobs(jobs.map(j => j._id === updatedJob._id ? updatedJob : j))
+    setDisplayedJobs(displayedJobs.map(j => j._id === updatedJob._id ? updatedJob : j))
+    setAllJobs(allJobs.map(j => j._id === updatedJob._id ? updatedJob : j))
     setEditedJob(null)
-    setProfile({...profile, applications: jobs.map(j => j._id === updatedJob._id ? updatedJob : j)})
+    setProfile({...profile, applications: allJobs.map(j => j._id === updatedJob._id ? updatedJob : j)})
   }
 
   const handleDeleteJob = async (job) => {
     const deletedJob = await jobsService.deleteJob(job._id)
-    setJobs(jobs.filter(j => j._id !== deletedJob._id))
-    setProfile({...profile, applications: jobs.filter(j => j._id !== deletedJob._id)})
+    setDisplayedJobs(displayedJobs.filter(j => j._id !== deletedJob._id))
+    setAllJobs(allJobs.filter(j => j._id !== deletedJob._id))
+    setProfile({...profile, applications: allJobs.filter(j => j._id !== deletedJob._id)})
   }
 
   const handleClickAddJob = () => {
@@ -60,20 +76,42 @@ const Jobs = ({user, profile, setProfile}) => {
 
   const handleAddNote = async (job, noteFormData) => {
     const updatedJob = await jobsService.createNote(job._id, noteFormData)
-    setJobs(jobs.map(j => j._id === updatedJob._id ? updatedJob : j))
+    setDisplayedJobs(displayedJobs.map(j => j._id === updatedJob._id ? updatedJob : j))
+    setAllJobs(allJobs.map(j => j._id === updatedJob._id ? updatedJob : j))
     setSelectedJob(updatedJob)
-    setProfile({...profile, applications: jobs.map(j => j._id === updatedJob._id ? updatedJob : j)})
+    setProfile({...profile, applications: allJobs.map(j => j._id === updatedJob._id ? updatedJob : j)})
   }
 
   const handleDeleteNote = async (job, noteToDelete) => {
-    console.log(job, noteToDelete)
     const updatedJob = await jobsService.deleteNote(job._id, noteToDelete._id)
-    setJobs(jobs.map(j => j._id === updatedJob._id ? updatedJob : j))
+    setDisplayedJobs(displayedJobs.map(j => j._id === updatedJob._id ? updatedJob : j))
+    setAllJobs(allJobs.map(j => j._id === updatedJob._id ? updatedJob : j))
     setSelectedJob(updatedJob)
-    setProfile({...profile, applications: jobs.map(j => j._id === updatedJob._id ? updatedJob : j)})
+    setProfile({...profile, applications: allJobs.map(j => j._id === updatedJob._id ? updatedJob : j)})
+  }
+
+  const handleUpdateSort = (e) => {
+    const clickedCol = e.target.id
+    const newSortOrder = clickedCol === sort.schemaName ? 
+      sort.order * -1 : 1
+    setSort({schemaName: clickedCol, order: newSortOrder})
+    const sortedJobs = [...displayedJobs].sort((a, b) => {
+      if (clickedCol === 'salary'){
+        return newSortOrder > 0 ? 
+          a[clickedCol] - b[clickedCol]
+            :
+          b[clickedCol] - a[clickedCol]
+      }else {
+        return newSortOrder > 0 ? 
+          a[clickedCol].localeCompare(b[clickedCol])
+            :
+          b[clickedCol].localeCompare(a[clickedCol])
+      }
+    })
+    setDisplayedJobs(sortedJobs)
   }
   
-  if (!jobs) return <h1>Loading...</h1>
+  if (!allJobs) return <h1>Loading...</h1>
 
   return ( 
     <main className={styles.container}>
@@ -97,24 +135,19 @@ const Jobs = ({user, profile, setProfile}) => {
         </nav>
         <div className={styles.table}>
           <header>
-            <div className={styles.title}>
-              <h4>Title</h4>
-            </div>
-            <div className={styles.company}>
-              <h4>Company</h4>
-            </div>
-            <div className={styles.listing}>
-              <h4>Listing</h4>
-            </div>
-            <div className={styles.status}>
-              <h4>Status</h4>
-            </div>
-            <div className={styles.priority}>
-              <h4>Priority</h4>
-            </div>
-            <div className={styles.salary}>
-              <h4>Salary</h4>
-            </div>
+            {headers.map(header => (
+              <div key={header.col} className={styles[header]}>
+                <h4 
+                  id={header.schemaName}
+                  onClick={handleUpdateSort}
+                >
+                  {header.col} {sort.schemaName === header.schemaName ? 
+                    sort.order > 0 ? 
+                      '⌃' : '⌄'
+                    : ''}
+                </h4>
+              </div>
+            ))}
           </header>
           {addJob && 
             <JobForm 
@@ -122,7 +155,7 @@ const Jobs = ({user, profile, setProfile}) => {
               setAddJob={setAddJob}
             />
           }
-          {jobs.map(job => (
+          {displayedJobs.map(job => (
             editedJob && job._id === editedJob._id ?
             <JobForm 
               key={job._id}
