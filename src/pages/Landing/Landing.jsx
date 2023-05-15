@@ -39,6 +39,9 @@ const Landing = ({ user, profile }) => {
 
   const photo = profile.photo ? profile.photo : profileIcon
 
+  const jobsToDisplay = profile.applications.sort((a, b) => (
+    new Date(b.updatedAt) - new Date(a.updatedAt)
+  )).slice(0, 3)
 
   return (
     <main className={styles.container}>
@@ -124,7 +127,7 @@ const Landing = ({ user, profile }) => {
             <div className={styles.list}>
               {(!profile.applications.length) ?
                 <h4>No jobs</h4> :
-                profile.applications.map(job =>
+                jobsToDisplay.map(job =>
                   <JobCard 
                   key={job._id} 
                   job={job} 
