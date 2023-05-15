@@ -21,8 +21,8 @@ import styles from './Landing.module.css'
 const Landing = ({ user, profile, setProfile }) => {
   const [selectedJob, setSelectedJob] = useState(null)
   const [selectedResource, setSelectedResource] = useState(null)
-  const [resume, setResume] = useState(profile.baseResume)
-  const [brandStatement, setBrandStatement] = useState(profile.brandStatement)
+  const [resume, setResume] = useState(null)
+  const [brandStatement, setBrandStatement] = useState(null)
 
   const handleAddResume = async (resumeFormData) => {
     const updatedProfileResume = await profileService.createResume(user, resumeFormData)
