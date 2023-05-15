@@ -129,14 +129,17 @@ const Landing = ({ user, profile, setProfile }) => {
           <h3>My Newest Applications</h3>
           <div className={styles.table}>
             <header>
+              <div className={styles.date}>
+                <h4>Date Created</h4>
+              </div>
               <div className={styles.title}>
                 <h4>Title</h4>
               </div>
               <div className={styles.company}>
                 <h4>Company</h4>
               </div>
-              <div className={styles.listing}>
-                <h4>Listing</h4>
+              <div className={styles.salary}>
+                <h4>Salary</h4>
               </div>
               <div className={styles.status}>
                 <h4>Status</h4>
@@ -144,8 +147,10 @@ const Landing = ({ user, profile, setProfile }) => {
               <div className={styles.priority}>
                 <h4>Priority</h4>
               </div>
-              <div className={styles.salary}>
-                <h4>Salary</h4>
+              <div className={styles.jobListing}>
+                <h4>Listing</h4>
+              </div>
+              <div className={styles.buttons}>
               </div>
             </header>
             <div className={styles.list}>
