@@ -55,6 +55,11 @@ const Resources = ({user, }) => {
     setResources(resources.filter(r => r._id !== deletedResource._id))
   }
 
+  const handleAddReview = async (selectedResource, reviewFormData) => {
+    const newReview = await resourceService.createReview(selectedResource._id, reviewFormData)
+    setSelectedResource({...selectedResource, reviews: [newReview, ...selectedResource.reviews]})
+  }
+
   if (!resources) return <h1>Loading...</h1>
 
   return ( 
@@ -125,6 +130,7 @@ const Resources = ({user, }) => {
         <Reviews 
           selectedResource={selectedResource}
           user={user}
+          handleAddReview={handleAddReview}
         />
       </section>
     </main>

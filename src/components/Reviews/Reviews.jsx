@@ -5,13 +5,13 @@ import styles from './Reviews.module.css'
 import ReviewCard from '../ReviewCard/ReviewCard'
 import ReviewForm from '../ReviewForm/ReviewForm'
 
-const Reviews = ({selectedResource, user}) => {
+const Reviews = ({selectedResource, user, handleAddReview}) => {
   const [buttonState, setButtonState] = useState('new')
   const [reviewFormVisible, setReviewFormVisible] = useState(false)
   const [userReview, setUserReview] = useState(null)
   const [showButton, setShowButton] = useState(true)
 
-  console.log(selectedResource?.reviews)
+  console.log(handleAddReview, 'handleAddReview')
 
   useEffect(() => {
     const userReviewCheck = selectedResource?.reviews.some(review => review.author === user._id)
@@ -53,7 +53,7 @@ const Reviews = ({selectedResource, user}) => {
       </div>
       {reviewFormVisible && 
         <div>
-          <ReviewForm setReviewFormVisible={setReviewFormVisible} setShowButton={setShowButton} />
+          <ReviewForm setReviewFormVisible={setReviewFormVisible} setShowButton={setShowButton} handleAddReview={handleAddReview} selectedResource={selectedResource} />
         </div>
       }
       {selectedResource.reviews.map(review =>
