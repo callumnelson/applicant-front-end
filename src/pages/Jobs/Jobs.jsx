@@ -64,6 +64,14 @@ const Jobs = ({user, profile, setProfile}) => {
     setSelectedJob(updatedJob)
     setProfile({...profile, applications: jobs.map(j => j._id === updatedJob._id ? updatedJob : j)})
   }
+
+  const handleDeleteNote = async (job, noteToDelete) => {
+    console.log(job, noteToDelete)
+    const updatedJob = await jobsService.deleteNote(job._id, noteToDelete._id)
+    setJobs(jobs.map(j => j._id === updatedJob._id ? updatedJob : j))
+    setSelectedJob(updatedJob)
+    setProfile({...profile, applications: jobs.map(j => j._id === updatedJob._id ? updatedJob : j)})
+  }
   
   if (!jobs) return <h1>Loading...</h1>
 
@@ -142,6 +150,7 @@ const Jobs = ({user, profile, setProfile}) => {
           notesCategory={notesCategory}
           setNotesCategory={setNotesCategory}
           handleAddNote={handleAddNote}
+          handleDeleteNote={handleDeleteNote}
         />
       </section>
     </main>
