@@ -95,25 +95,7 @@ const Jobs = ({profile, setProfile}) => {
     const newSortOrder = clickedCol === sort.schemaName ? 
       sort.order * -1 : 1
     setSort({schemaName: clickedCol, order: newSortOrder})
-    const sortedJobs = [...displayedJobs].sort((a, b) => {
-      if (clickedCol === 'salary'){
-        return newSortOrder > 0 ? 
-          a[clickedCol] - b[clickedCol]
-            :
-          b[clickedCol] - a[clickedCol]
-      }else if(clickedCol === 'createdAt'){
-        return newSortOrder > 0 ? 
-          new Date(b[clickedCol]) - new Date(a[clickedCol])
-            :
-            new Date(a[clickedCol]) - new Date(b[clickedCol])
-      }
-      else {
-        return newSortOrder > 0 ? 
-          a[clickedCol].localeCompare(b[clickedCol])
-            :
-          b[clickedCol].localeCompare(a[clickedCol])
-      }
-    })
+    const sortedJobs = [...displayedJobs].sort((a, b) => sortJobs(a, b, clickedCol, newSortOrder))
     setDisplayedJobs(sortedJobs)
   }
 
@@ -121,32 +103,49 @@ const Jobs = ({profile, setProfile}) => {
     const searchTerm = e.target.value
     setSelectedJob(null)
     setEditedJob(null)
-    setAddJob(null)
+    setAddJob(false)
     setSearch(searchTerm)
-    setDisplayedJobs(allJobs.filter(j => (
-      j.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      j.company.toLowerCase().includes(searchTerm.toLowerCase())
-    )))
+    setDisplayedJobs(
+      allJobs.filter(j => (
+      (j.title.toLowerCase().includes(searchTerm.toLowerCase()) 
+      ||
+      j.company.toLowerCase().includes(searchTerm.toLowerCase()))
+      && 
+      j.status.includes(filter.status) 
+      && 
+      j.priority.includes(filter.priority)
+      ))
+      .sort((a, b) => sortJobs(a, b, sort.schemaName, sort.order))
+    )
   }
 
   const handleUpdateFilter = (e, schemaName) => {
     const newFilter = {...filter, [schemaName]: e.target.value}
     setFilter(newFilter)
-    //If we already have a filter, filter the filtered jobs, otherwise filter all jobs
-    console.log('Old filter>>', filter)
-    console.log('New filter>>', newFilter)
-    const jobsToFilter = filter.status || filter.priority ? 
-      [...displayedJobs] : [...allJobs]
-    console.log(jobsToFilter)
-    setDisplayedJobs(jobsToFilter.filter(j => {
-      if (newFilter.status && newFilter.priority){
-        return j.status === newFilter.status && j.priority === newFilter.priority
-      } else if (newFilter.status) {
-        return j.status === newFilter.status
-      } else if (newFilter.priority) {
-        return j.priority === newFilter.priority
-      }
-    }))
+    setDisplayedJobs(allJobs.filter(j => (
+      j.status.includes(newFilter.status) && j.priority.includes(newFilter.priority)
+    )))
+  }
+
+  const sortJobs = (a, b, sortCol, sortOrder) => {
+    console.log(sortCol, sortOrder)
+    if (sortCol === 'salary'){
+      return sortOrder > 0 ? 
+        a[sortCol] - b[sortCol]
+          :
+        b[sortCol] - a[sortCol]
+    }else if(sortCol === 'createdAt'){
+      return sortOrder > 0 ? 
+        new Date(b[sortCol]) - new Date(a[sortCol])
+          :
+          new Date(a[sortCol]) - new Date(b[sortCol])
+    }
+    else {
+      return sortOrder > 0 ? 
+        a[sortCol].localeCompare(b[sortCol])
+          :
+        b[sortCol].localeCompare(a[sortCol])
+    }
   }
   
   if (!allJobs) return <h1>Loading...</h1>
