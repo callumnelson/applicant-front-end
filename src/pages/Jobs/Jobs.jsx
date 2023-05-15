@@ -12,7 +12,8 @@ import JobCard from "../../components/JobCard/JobCard"
 import JobForm from "../../components/JobForm/JobForm"
 import Notes from "../../components/Notes/Notes"
 
-const Jobs = ({user, }) => {
+const Jobs = ({user, profile, setProfile}) => {
+  
   const [jobs, setJobs] = useState(null)
   const [selectedJob, setSelectedJob] = useState(null)
   const [search, setSearch] = useState("")
@@ -32,21 +33,24 @@ const Jobs = ({user, }) => {
     setSearch(e.target.value)
   }
 
-  const handleAddJob = async (newJobFormFormData) => {
-    const JobForm = await jobsService.create(newJobFormFormData)
-    setJobs([JobForm, ...jobs])
+  const handleAddJob = async (newJobFormData) => {
+    const newJob = await jobsService.create(newJobFormData)
+    setJobs([newJob, ...jobs])
     setAddJob(false)
+    setProfile({...profile, applications: [newJob, ...jobs]})
   }
 
   const handleUpdateJob = async (updatedJobFormData) => {
     const updatedJob = await jobsService.update(updatedJobFormData)
     setJobs(jobs.map(j => j._id === updatedJob._id ? updatedJob : j))
     setEditedJob(null)
+    setProfile({...profile, applications: jobs.map(j => j._id === updatedJob._id ? updatedJob : j)})
   }
 
   const handleDeleteJob = async (job) => {
     const deletedJob = await jobsService.deleteJob(job._id)
     setJobs(jobs.filter(j => j._id !== deletedJob._id))
+    setProfile({...profile, applications: jobs.filter(j => j._id !== deletedJob._id)})
   }
 
   const handleClickAddJob = () => {
@@ -58,6 +62,7 @@ const Jobs = ({user, }) => {
     const updatedJob = await jobsService.createNote(job._id, noteFormData)
     setJobs(jobs.map(j => j._id === updatedJob._id ? updatedJob : j))
     setSelectedJob(updatedJob)
+    setProfile({...profile, applications: jobs.map(j => j._id === updatedJob._id ? updatedJob : j)})
   }
   
   if (!jobs) return <h1>Loading...</h1>
