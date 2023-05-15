@@ -47,12 +47,9 @@ const Landing = ({ user, profile, setProfile }) => {
   if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
-
-  console.log(profile.baseResume)
   const photo = profile.photo ? profile.photo : profileIcon
   const resume = profile.baseResume
   const brandStatement = profile.brandStatement
-
   const jobsToDisplay = profile.applications.sort((a, b) => (
     new Date(b.updatedAt) - new Date(a.updatedAt)
   )).slice(0, 3)
@@ -71,9 +68,9 @@ const Landing = ({ user, profile, setProfile }) => {
               handleAddResume={handleAddResume}
             /> 
           : 
-            <p>
+            <p className={styles.personalcontent}>
               {resume} 
-              <button onClick={handleResumeClick}>✏️</button>
+              <button className={styles.edit} onClick={handleResumeClick}>✏️</button>
             </p>
           }
         </div>
@@ -84,13 +81,15 @@ const Landing = ({ user, profile, setProfile }) => {
               handleAddBrand={handleAddBrand}
             />
           : 
-            <p> 
+            <p className={styles.personalcontent}> 
               {brandStatement} 
-              <button onClick={handleBrandClick}>✏️</button>
+              <button className={styles.edit} onClick={handleBrandClick}>✏️</button>
             </p>
           }
         </div>
-      <NavLink to="/auth/change-password">Change Password</NavLink>
+      <NavLink to="/auth/change-password">
+        Change Password
+      </NavLink>
       </section>
       <section className={styles.right}>
         <div className={styles.resources}>
@@ -158,10 +157,10 @@ const Landing = ({ user, profile, setProfile }) => {
                 <h4>No jobs</h4> :
                 jobsToDisplay.map(job =>
                   <JobCard 
-                  key={job._id} 
-                  job={job} 
-                  setSelectedJob={setSelectedJob}
-                  selectedJob={selectedJob}
+                    key={job._id} 
+                    job={job} 
+                    setSelectedJob={setSelectedJob}
+                    selectedJob={selectedJob}
                   />
                 )
               }
