@@ -1,6 +1,6 @@
 // npm modules
 import { NavLink } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 //services
 import * as profileService from '../../services/profileService'
@@ -18,15 +18,17 @@ import profileIcon from '../../assets/icons/profile.png'
 // css
 import styles from './Landing.module.css'
 
-const Landing = ({ user, profile}) => {
+const Landing = ({ user, profile, setProfile }) => {
   const [selectedJob, setSelectedJob] = useState(null)
   const [selectedResource, setSelectedResource] = useState(null)
-  const [resume, setResume] = useState(null)
-  const [brandStatement, setBrandStatement] = useState(null)
+  const [resume, setResume] = useState(profile.baseResume)
+  const [brandStatement, setBrandStatement] = useState(profile.brandStatement)
 
   const handleAddResume = async (resumeFormData) => {
     const updatedProfileResume = await profileService.createResume(user, resumeFormData)
     setResume(updatedProfileResume.baseResume)
+    const resume = updatedProfileResume.baseResume
+    return resume
   }
 
   const handleAddBrand = async (brandFormData) => {
@@ -37,9 +39,13 @@ const Landing = ({ user, profile}) => {
   if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
+  console.log('resume', resume)
+  console.log('db resume', profile.baseResume)
+  console.log('brandStatement', brandStatement)
+  console.log('db brandStatement', profile.brandStatement)
+
   const photo = profile.photo ? profile.photo : profileIcon
-  const baseResume = profile.baseResume ? profile.baseResume : ''
-  const brand = profile.brandStatement ? profile.brandStatement : ''
+
 
   const jobsToDisplay = profile.applications.sort((a, b) => (
     new Date(b.updatedAt) - new Date(a.updatedAt)
@@ -54,7 +60,8 @@ const Landing = ({ user, profile}) => {
         </div>
         <div className="resume">
           <h3>My Resume</h3>
-            {baseResume ? baseResume : 
+            {resume ? 
+              resume : 
               <ResumeForm 
                 handleAddResume={handleAddResume}
               /> 
@@ -62,7 +69,7 @@ const Landing = ({ user, profile}) => {
         </div>
         <div className="brand">
           <h3>My Branding Statement</h3>
-            {brand ? brand : 
+            {brandStatement ? brandStatement : 
               <BrandForm
                 handleAddBrand={handleAddBrand}
               /> 
