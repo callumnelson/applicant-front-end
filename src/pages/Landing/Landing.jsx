@@ -21,31 +21,25 @@ import styles from './Landing.module.css'
 const Landing = ({ user, profile, setProfile }) => {
   const [selectedJob, setSelectedJob] = useState(null)
   const [selectedResource, setSelectedResource] = useState(null)
-  const [resume, setResume] = useState(null)
-  const [brandStatement, setBrandStatement] = useState(null)
+  // const [resume, setResume] = useState(null)
+  // const [brandStatement, setBrandStatement] = useState(null)
 
   const handleAddResume = async (resumeFormData) => {
     const updatedProfileResume = await profileService.createResume(user, resumeFormData)
-    setResume(updatedProfileResume.baseResume)
-    const resume = updatedProfileResume.baseResume
-    return resume
+    setProfile(updatedProfileResume)
   }
 
   const handleAddBrand = async (brandFormData) => {
     const updatedProfileBrand = await profileService.createBrandStatement(user, brandFormData)
-    setBrandStatement(updatedProfileBrand.brandStatement)
+    setProfile(updatedProfileBrand)
   }
 
   if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
-  console.log('resume', resume)
-  console.log('db resume', profile.baseResume)
-  console.log('brandStatement', brandStatement)
-  console.log('db brandStatement', profile.brandStatement)
-
   const photo = profile.photo ? profile.photo : profileIcon
-
+  const resume = profile.baseResume
+  const brandStatement = profile.brandStatement
 
   const jobsToDisplay = profile.applications.sort((a, b) => (
     new Date(b.updatedAt) - new Date(a.updatedAt)
