@@ -5,24 +5,12 @@ import styles from './Reviews.module.css'
 import ReviewCard from '../ReviewCard/ReviewCard'
 import ReviewForm from '../ReviewForm/ReviewForm'
 
-const Reviews = ({selectedResource, user, handleAddReview}) => {
-  const [buttonState, setButtonState] = useState('new')
+const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview}) => {
   const [reviewFormVisible, setReviewFormVisible] = useState(false)
-  const [userReview, setUserReview] = useState(null)
   const [showButton, setShowButton] = useState(true)
 
-  console.log(handleAddReview, 'handleAddReview')
 
-  useEffect(() => {
-    const userReviewCheck = selectedResource?.reviews.some(review => review.author === user._id)
-    if (userReviewCheck) {
-      setUserReview(userReviewCheck)
-      setButtonState('edit')
-    } else {
-      setUserReview(null)
-      setButtonState('new')
-    }
-  }, [user])
+  const userReview = selectedResource?.reviews.find(review => review.author._id === user.profile)
 
   const handleReviewButtonClick = () => {
     setReviewFormVisible(true)
@@ -53,7 +41,13 @@ const Reviews = ({selectedResource, user, handleAddReview}) => {
       </div>
       {reviewFormVisible && 
         <div>
-          <ReviewForm setReviewFormVisible={setReviewFormVisible} setShowButton={setShowButton} handleAddReview={handleAddReview} selectedResource={selectedResource} />
+          <ReviewForm 
+          setReviewFormVisible={setReviewFormVisible} setShowButton={setShowButton} 
+          handleAddReview={handleAddReview} 
+          selectedResource={selectedResource}
+          handleUpdateReview={handleUpdateReview}
+          userReview={userReview}
+          />
         </div>
       }
       {selectedResource.reviews.map(review =>

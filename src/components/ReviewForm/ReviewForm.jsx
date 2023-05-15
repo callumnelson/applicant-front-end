@@ -2,10 +2,11 @@ import { useState } from "react"
 
 import styles from './ReviewForm.module.css'
 
-const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, handleAddReview }) => {
+const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, handleAddReview, handleUpdateReview, userReview }) => {
 
-  const [formData, setFormData ] = useState({
-    rating: 0,
+  const [formData, setFormData ] = useState(
+    userReview ? userReview : {
+    rating: 1,
     content: '',
   })
 
@@ -15,12 +16,15 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-    console.log(formData)
-    handleAddReview(selectedResource, formData)
+    if (userReview) {
+      handleUpdateReview(selectedResource, userReview, formData)
+    } else {
+      handleAddReview(selectedResource, formData)
+    }
     setReviewFormVisible(false)
     setShowButton(true)
     setFormData({
-      rating: 0,
+      rating: 1,
       content: '',
     })
   }
