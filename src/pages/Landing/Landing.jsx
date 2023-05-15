@@ -21,32 +21,35 @@ import styles from './Landing.module.css'
 const Landing = ({ user, profile, setProfile }) => {
   const [selectedJob, setSelectedJob] = useState(null)
   const [selectedResource, setSelectedResource] = useState(null)
-  const [resume, setResume] = useState(null)
-  const [brandStatement, setBrandStatement] = useState(null)
+  const [displayResumeForm, setDisplayResumeForm] = useState(false)
+  const [displayBrandForm, setDisplayBrandForm] = useState(false)
 
   const handleAddResume = async (resumeFormData) => {
     const updatedProfileResume = await profileService.createResume(user, resumeFormData)
-    setResume(updatedProfileResume.baseResume)
-    const resume = updatedProfileResume.baseResume
-    return resume
+    setProfile(updatedProfileResume)
+    setDisplayResumeForm(false)
   }
 
   const handleAddBrand = async (brandFormData) => {
     const updatedProfileBrand = await profileService.createBrandStatement(user, brandFormData)
-    setBrandStatement(updatedProfileBrand.brandStatement)
+    setProfile(updatedProfileBrand)
+    setDisplayBrandForm(false)
+  }
+
+  function handleResumeClick() {
+    setDisplayResumeForm(true)
+
+  }
+  function handleBrandClick() {
+    setDisplayBrandForm(true)
   }
 
   if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
-  console.log('resume', resume)
-  console.log('db resume', profile.baseResume)
-  console.log('brandStatement', brandStatement)
-  console.log('db brandStatement', profile.brandStatement)
-
   const photo = profile.photo ? profile.photo : profileIcon
-
-
+  const resume = profile.baseResume
+  const brandStatement = profile.brandStatement
   const jobsToDisplay = profile.applications.sort((a, b) => (
     new Date(b.updatedAt) - new Date(a.updatedAt)
   )).slice(0, 3)
@@ -60,22 +63,33 @@ const Landing = ({ user, profile, setProfile }) => {
         </div>
         <div className="resume">
           <h3>My Resume</h3>
-            {resume ? 
-              resume : 
-              <ResumeForm 
-                handleAddResume={handleAddResume}
-              /> 
-            }
+          {(!resume) || displayResumeForm ? 
+            <ResumeForm
+              handleAddResume={handleAddResume}
+            /> 
+          : 
+            <p className={styles.personalcontent}>
+              {resume} 
+              <button className={styles.edit} onClick={handleResumeClick}>✏️</button>
+            </p>
+          }
         </div>
         <div className="brand">
           <h3>My Branding Statement</h3>
-            {brandStatement ? brandStatement : 
-              <BrandForm
-                handleAddBrand={handleAddBrand}
-              /> 
-            }
+          {(!brandStatement) || displayBrandForm ? 
+            <BrandForm
+              handleAddBrand={handleAddBrand}
+            />
+          : 
+            <p className={styles.personalcontent}> 
+              {brandStatement} 
+              <button className={styles.edit} onClick={handleBrandClick}>✏️</button>
+            </p>
+          }
         </div>
-      <NavLink to="/auth/change-password">Change Password</NavLink>
+      <NavLink to="/auth/change-password">
+        Change Password
+      </NavLink>
       </section>
       <section className={styles.right}>
         <div className={styles.resources}>
@@ -114,14 +128,17 @@ const Landing = ({ user, profile, setProfile }) => {
           <h3>My Newest Applications</h3>
           <div className={styles.table}>
             <header>
+              <div className={styles.date}>
+                <h4>Date Created</h4>
+              </div>
               <div className={styles.title}>
                 <h4>Title</h4>
               </div>
               <div className={styles.company}>
                 <h4>Company</h4>
               </div>
-              <div className={styles.listing}>
-                <h4>Listing</h4>
+              <div className={styles.salary}>
+                <h4>Salary</h4>
               </div>
               <div className={styles.status}>
                 <h4>Status</h4>
@@ -129,8 +146,10 @@ const Landing = ({ user, profile, setProfile }) => {
               <div className={styles.priority}>
                 <h4>Priority</h4>
               </div>
-              <div className={styles.salary}>
-                <h4>Salary</h4>
+              <div className={styles.jobListing}>
+                <h4>Listing</h4>
+              </div>
+              <div className={styles.buttons}>
               </div>
             </header>
             <div className={styles.list}>
@@ -138,10 +157,10 @@ const Landing = ({ user, profile, setProfile }) => {
                 <h4>No jobs</h4> :
                 jobsToDisplay.map(job =>
                   <JobCard 
-                  key={job._id} 
-                  job={job} 
-                  setSelectedJob={setSelectedJob}
-                  selectedJob={selectedJob}
+                    key={job._id} 
+                    job={job} 
+                    setSelectedJob={setSelectedJob}
+                    selectedJob={selectedJob}
                   />
                 )
               }
