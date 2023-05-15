@@ -5,23 +5,19 @@ import styles from './Reviews.module.css'
 import ReviewCard from '../ReviewCard/ReviewCard'
 import ReviewForm from '../ReviewForm/ReviewForm'
 
-const Reviews = ({selectedResource, user}) => {
-  const [buttonState, setButtonState] = useState('new')
-  const [reviewFormVisible, setReviewFormVisible] = useState(true)
-
-  console.log(selectedResource?.reviews)
-
-  useEffect(() => {
-    const userReviewCheck = selectedResource?.reviews.some(review => review.author === user._id)
-    if (userReviewCheck) {
-      setButtonState('edit')
-    } else {
-      setButtonState('new')
-    }
-  }, [user])
+const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, handleDeleteReview}) => {
+  const [reviewFormVisible, setReviewFormVisible] = useState(false)
+  const [showButton, setShowButton] = useState(true)
 
 
-  if (!selectedResource) return <p>Selected a resource to see it's reviews</p>
+  const userReview = selectedResource?.reviews.find(review => review.author._id === user.profile)
+
+  const handleReviewButtonClick = () => {
+    setReviewFormVisible(true)
+    setShowButton(false)
+  }
+
+  if (!selectedResource) return <p>Select a resource to see it's reviews</p>
 
 
   return (  
@@ -30,17 +26,34 @@ const Reviews = ({selectedResource, user}) => {
         <div>
           {selectedResource.reviews.length} Reviews
         </div>
-        <div>
-          {selectedResource.averageRating} average rating
-        </div>
+        {selectedResource.reviews.length ? 
+          <div>
+          {selectedResource.averageRating.toFixed(1)} average rating
+          </div> :
+          <div>
+            Be The First To Review!
+          </div>
+        }
       </div>
       <div>
-        {buttonState === 'new' && <button>New Review</button>}
-        {buttonState === 'edit' && <button>Edit Review</button>}
+        {showButton && (
+          userReview ? (
+            <button onClick={() => handleReviewButtonClick()}>✎</button>
+          ) : (
+            <button onClick={() => handleReviewButtonClick()}>+</button>
+          )
+        )}
       </div>
       {reviewFormVisible && 
         <div>
-          <ReviewForm />
+          <ReviewForm 
+          setReviewFormVisible={setReviewFormVisible} setShowButton={setShowButton} 
+          handleAddReview={handleAddReview} 
+          selectedResource={selectedResource}
+          handleUpdateReview={handleUpdateReview}
+          userReview={userReview}
+          handleDeleteReview={handleDeleteReview}
+          />
         </div>
       }
       {selectedResource.reviews.map(review =>
