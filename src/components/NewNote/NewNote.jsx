@@ -5,6 +5,7 @@ import { useState } from "react"
 import styles from './NewNote.module.css'
 
 const NewNote = ({selectedJob, notesCategory, handleAddNote}) => {
+
   const [formData, setFormData] = useState({ 
     title: '',
     content: '' 
