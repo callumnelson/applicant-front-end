@@ -7,7 +7,7 @@
 
 
 .profile {
-  width: 33vw;
+  width: 30vw;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -23,6 +23,7 @@
 
 .info > img {
   height: 15vw;
+  width: 15vw;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -34,7 +35,7 @@
 
 .right {
   height: 100%;
-  width: 67vw;
+  width: 70vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -43,12 +44,23 @@
 
 .right > div {
   width: 55vw;
+  height: 35vh;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.472);
-  padding: 4vmin;
+  padding: 1vmin 4vmin;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.table header {
+  background-color: rgba(255, 255, 255, 0.472);
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 50px;
 }
+
+.list {
+  height: 20vh;
+  overflow-y: scroll;
+}
+

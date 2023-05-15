@@ -69,7 +69,11 @@ function App() {
           path="/jobs"
           element={
             <ProtectedRoute user={user}>
-              <Jobs user={user}/>
+              <Jobs 
+                user={user}
+                profile={profile}
+                setProfile={setProfile}
+              />
             </ProtectedRoute>
           }
         />
@@ -77,7 +81,11 @@ function App() {
           path="/resources"
           element={
             <ProtectedRoute user={user}>
-              <Resources user={user}/>
+              <Resources 
+                user={user}
+                profile={profile}
+                setProfile={setProfile}
+              />
             </ProtectedRoute>
           }
         />
