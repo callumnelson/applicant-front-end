@@ -19,6 +19,7 @@ const Jobs = ({profile, setProfile}) => {
   const [selectedJob, setSelectedJob] = useState(null)
   const [search, setSearch] = useState("")
   const [sort, setSort] = useState({schemaName: "createdAt", order: 1})
+  const [filter, setFilter] = useState({status: "", priority: ""})
   const [addJob, setAddJob] = useState(false)
   const [editedJob, setEditedJob] = useState(null)
   const [notesCategory, setNotesCategory] = useState("Resume")
@@ -48,7 +49,7 @@ const Jobs = ({profile, setProfile}) => {
     setDisplayedJobs([newJob, ...allJobs])
     setAllJobs([newJob, ...allJobs])
     setSearch("")
-    setSort()
+    setSort({schemaName: "createdAt", order: 1})
     setAddJob(false)
     setProfile({...profile, applications: [newJob, ...allJobs]})
   }
@@ -129,11 +130,23 @@ const Jobs = ({profile, setProfile}) => {
   }
 
   const handleUpdateFilter = (e, schemaName) => {
-    const filtered = e.target.value ? 
-      allJobs.filter(j => j[schemaName] === e.target.value)
-      :
-      [...allJobs]
-    setDisplayedJobs(filtered)
+    const newFilter = {...filter, [schemaName]: e.target.value}
+    setFilter(newFilter)
+    //If we already have a filter, filter the filtered jobs, otherwise filter all jobs
+    console.log('Old filter>>', filter)
+    console.log('New filter>>', newFilter)
+    const jobsToFilter = filter.status || filter.priority ? 
+      [...displayedJobs] : [...allJobs]
+    console.log(jobsToFilter)
+    setDisplayedJobs(jobsToFilter.filter(j => {
+      if (newFilter.status && newFilter.priority){
+        return j.status === newFilter.status && j.priority === newFilter.priority
+      } else if (newFilter.status) {
+        return j.status === newFilter.status
+      } else if (newFilter.priority) {
+        return j.priority === newFilter.priority
+      }
+    }))
   }
   
   if (!allJobs) return <h1>Loading...</h1>
@@ -171,26 +184,28 @@ const Jobs = ({profile, setProfile}) => {
               setAddJob={setAddJob}
             />
           }
-          {displayedJobs.map(job => (
-            editedJob && job._id === editedJob._id ?
-            <JobForm 
-              key={job._id}
-              editedJob={editedJob}
-              setEditedJob={setEditedJob}
-              handleUpdateJob={handleUpdateJob}
-            />
-            :
-            <JobCard 
-              key={job._id}
-              job={job}
-              selectedJob={selectedJob}
-              setSelectedJob={setSelectedJob}
-              setEditedJob={setEditedJob}
-              handleDeleteJob={handleDeleteJob}
-              notesCategory={notesCategory}
-              setNotesCategory={setNotesCategory}
-            />
-          ))}
+          <section>
+            {displayedJobs.map(job => (
+              editedJob && job._id === editedJob._id ?
+              <JobForm 
+                key={job._id}
+                editedJob={editedJob}
+                setEditedJob={setEditedJob}
+                handleUpdateJob={handleUpdateJob}
+              />
+              :
+              <JobCard 
+                key={job._id}
+                job={job}
+                selectedJob={selectedJob}
+                setSelectedJob={setSelectedJob}
+                setEditedJob={setEditedJob}
+                handleDeleteJob={handleDeleteJob}
+                notesCategory={notesCategory}
+                setNotesCategory={setNotesCategory}
+              />
+            ))}
+          </section>
         </div>
       </section>
       <section className={styles.notes}>
