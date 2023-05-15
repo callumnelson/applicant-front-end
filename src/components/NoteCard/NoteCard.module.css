@@ -6,3 +6,17 @@
   padding: 10px;
   width: 90%;
 }
+
+.container h4 {
+  margin: 0;
+}
+
+.container header > p:hover {
+  cursor: pointer;
+}
+
+.container header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
