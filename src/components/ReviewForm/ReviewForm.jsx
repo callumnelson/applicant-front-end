@@ -60,12 +60,16 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
         </select>
         </div>
         <div>
-          <button
-            onClick={() => handleDeleteReview(selectedResource, userReview)}
-          >
-            Delete
+          {userReview && 
+            <button
+              onClick={() => handleDeleteReview(selectedResource, userReview)}
+            >
+              Delete
+            </button>
+          } 
+          <button type="submit" >
+            {userReview ? 'Update' : 'Submit'}
           </button>
-          <button type="submit" >SUBMIT</button>
         </div>
       </form>
     </div>
