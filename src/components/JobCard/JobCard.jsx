@@ -38,13 +38,16 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           </p>
         </span>
         <div className={styles.title}>
+          <p>{new Date(job.createdAt).toLocaleDateString()}</p>
+        </div>
+        <div className={styles.title}>
           <p>{job.title}</p>
         </div>
         <div className={styles.company}>
           <p>{job.company}</p>
         </div>
-        <div className={styles.jobListing}>
-          <p>{job.jobListing}</p>
+        <div className={styles.salary}>
+          <p>{job.salary}</p>
         </div>
         <div className={styles.status}>
           <p>{job.status}</p>
@@ -52,8 +55,8 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
         <div className={styles.priority}>
           <p>{job.priority}</p>
         </div>
-        <div className={styles.salary}>
-          <p>{job.salary}</p>
+        <div className={styles.jobListing}>
+          <p>{job.jobListing}</p>
         </div>
         <span>
           <p className={styles.edit}
