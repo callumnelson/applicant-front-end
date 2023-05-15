@@ -44,7 +44,10 @@ const Jobs = ({user, profile, setProfile}) => {
     setEditedJob(null)
     setAddJob(null)
     setSearch(searchTerm)
-    setDisplayedJobs(allJobs.filter(j => j.title.toLowerCase().includes(searchTerm.toLowerCase())))
+    setDisplayedJobs(allJobs.filter(j => (
+      j.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      j.company.toLowerCase().includes(searchTerm.toLowerCase())
+    )))
   }
 
   const handleAddJob = async (newJobFormData) => {

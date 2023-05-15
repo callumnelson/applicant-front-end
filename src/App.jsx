@@ -36,7 +36,7 @@ function App() {
     }
     const fetchProfile = async () => {
       const data = await profileService.getProfile(user)
-      setProfile({...data, appsToDisplay: data.applications})
+      setProfile(data)
     }
     fetchProfile()
   }, [user])
