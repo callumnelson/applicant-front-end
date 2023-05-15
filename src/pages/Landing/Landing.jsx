@@ -25,8 +25,8 @@ const Landing = ({ user, profile }) => {
   const [brandStatement, setBrandStatement] = useState(null)
 
   const handleAddResume = async (resumeFormData) => {
-    const newResume = await profileService.createResume(user, resumeFormData)
-    setResume(newResume)
+    const updatedProfile = await profileService.createResume(user, resumeFormData)
+    setResume(updatedProfile.baseResume)
   }
 
   const handleAddBrand = async (brandFormData) => {

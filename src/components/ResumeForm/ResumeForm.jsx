@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from './ResumeForm.module.css'
 
 const ResumeForm = ({handleAddResume}) => {
-  const [formData, setFormData] = useState({resume: ''})
+  const [formData, setFormData] = useState({baseResume: ''})
 
   const handleChange = (evt) => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
@@ -12,17 +12,17 @@ const ResumeForm = ({handleAddResume}) => {
   const handleSubmit = (evt) => {
     evt.preventDefault()
     handleAddResume(formData)
-    setFormData({resume: ''})
+    setFormData({baseResume: ''})
   }
 
   return ( 
     <main className={styles.form}>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="resume"></label>
+        <label htmlFor="baseResume"></label>
         <input 
           type="text" 
-          name="resume" 
-          value={formData.resume} 
+          name="baseResume" 
+          value={formData.baseResume} 
           placeholder="Add link to resume"
           autoComplete="off"
           onChange={handleChange}
