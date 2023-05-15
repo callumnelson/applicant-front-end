@@ -13,7 +13,7 @@ import JobForm from "../../components/JobForm/JobForm"
 import Notes from "../../components/Notes/Notes"
 import JobsHeader from "../../components/JobsHeader/JobsHeader"
 
-const Jobs = ({user, profile, setProfile}) => {
+const Jobs = ({profile, setProfile}) => {
   const [displayedJobs, setDisplayedJobs] = useState([])
   const [allJobs, setAllJobs] = useState([])
   const [selectedJob, setSelectedJob] = useState(null)
