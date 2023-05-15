@@ -18,7 +18,7 @@ const Jobs = ({profile, setProfile}) => {
   const [allJobs, setAllJobs] = useState([])
   const [selectedJob, setSelectedJob] = useState(null)
   const [search, setSearch] = useState("")
-  const [sort, setSort] = useState({schemaName: "title", order: 1})
+  const [sort, setSort] = useState({schemaName: "createdAt", order: 1})
   const [addJob, setAddJob] = useState(false)
   const [editedJob, setEditedJob] = useState(null)
   const [notesCategory, setNotesCategory] = useState("Resume")
@@ -26,34 +26,29 @@ const Jobs = ({profile, setProfile}) => {
   useEffect(() => {
     const fetchJobs = async () => {
       const data = await jobsService.index()
-      setDisplayedJobs(data.sort((a, b) => a.title.localeCompare(b.title)))
-      setAllJobs(data.sort((a, b) => a.title.localeCompare(b.title)))
+      setDisplayedJobs(data.sort((a, b) => (
+        new Date(b.createdAt) - new Date(a.createdAt))
+      ))
+      setAllJobs(data)
     }
     fetchJobs()
   }, [])
 
-  const headers = [{col: 'Title', schemaName: 'title'}, 
+  const headers = [{col: 'Created', schemaName: 'createdAt'},
+    {col: 'Title', schemaName: 'title'}, 
     {col: 'Company', schemaName: 'company'}, 
-    {col: 'Listing', schemaName: 'jobListing'}, 
+    {col: 'Salary', schemaName: 'salary'},
     {col: 'Status', schemaName: 'status'},
     {col: 'Priority', schemaName: 'priority'}, 
-    {col: 'Salary', schemaName: 'salary'}]
-
-  const handleSearchChange = (e) => {
-    const searchTerm = e.target.value
-    setSelectedJob(null)
-    setEditedJob(null)
-    setAddJob(null)
-    setSearch(searchTerm)
-    setDisplayedJobs(allJobs.filter(j => (
-      j.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      j.company.toLowerCase().includes(searchTerm.toLowerCase())
-    )))
-  }
+    {col: 'Listing', schemaName: 'jobListing'}, 
+  ]
 
   const handleAddJob = async (newJobFormData) => {
     const newJob = await jobsService.create(newJobFormData)
-    setDisplayedJobs([newJob, ...displayedJobs])
+    setDisplayedJobs([newJob, ...allJobs])
+    setAllJobs([newJob, ...allJobs])
+    setSearch("")
+    setSort()
     setAddJob(false)
     setProfile({...profile, applications: [newJob, ...allJobs]})
   }
@@ -105,7 +100,13 @@ const Jobs = ({profile, setProfile}) => {
           a[clickedCol] - b[clickedCol]
             :
           b[clickedCol] - a[clickedCol]
-      }else {
+      }else if(clickedCol === 'createdAt'){
+        return newSortOrder > 0 ? 
+          new Date(b[clickedCol]) - new Date(a[clickedCol])
+            :
+            new Date(a[clickedCol]) - new Date(b[clickedCol])
+      }
+      else {
         return newSortOrder > 0 ? 
           a[clickedCol].localeCompare(b[clickedCol])
             :
@@ -113,6 +114,26 @@ const Jobs = ({profile, setProfile}) => {
       }
     })
     setDisplayedJobs(sortedJobs)
+  }
+
+  const handleSearchChange = (e) => {
+    const searchTerm = e.target.value
+    setSelectedJob(null)
+    setEditedJob(null)
+    setAddJob(null)
+    setSearch(searchTerm)
+    setDisplayedJobs(allJobs.filter(j => (
+      j.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      j.company.toLowerCase().includes(searchTerm.toLowerCase())
+    )))
+  }
+
+  const handleUpdateFilter = (e, schemaName) => {
+    const filtered = e.target.value ? 
+      allJobs.filter(j => j[schemaName] === e.target.value)
+      :
+      [...allJobs]
+    setDisplayedJobs(filtered)
   }
   
   if (!allJobs) return <h1>Loading...</h1>
@@ -142,6 +163,7 @@ const Jobs = ({profile, setProfile}) => {
             headers={headers}
             handleUpdateSort={handleUpdateSort}
             sort={sort}
+            handleUpdateFilter={handleUpdateFilter}
           />
           {addJob && 
             <JobForm 
