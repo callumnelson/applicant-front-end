@@ -55,6 +55,25 @@ const Resources = ({user, }) => {
     setResources(resources.filter(r => r._id !== deletedResource._id))
   }
 
+  const handleAddReview = async (selectedResource, reviewFormData) => {
+    const updatedResource = await resourceService.createReview(selectedResource._id, reviewFormData)
+    setSelectedResource(updatedResource)
+    setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
+  }
+
+  const handleUpdateReview = async (selectedResource, review, updatedReviewFormData) => {
+    const updatedResource = await resourceService.updateReview(selectedResource._id, review._id, updatedReviewFormData)
+    setSelectedResource(updatedResource)
+    setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
+  }
+
+  const handleDeleteReview = async (selectedResource, review) => {
+    const updatedResource = await resourceService.deleteReview(selectedResource._id, review._id)
+    setSelectedResource(updatedResource)
+    setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
+  }
+
+
   if (!resources) return <h1>Loading...</h1>
 
   return ( 
@@ -125,6 +144,9 @@ const Resources = ({user, }) => {
         <Reviews 
           selectedResource={selectedResource}
           user={user}
+          handleAddReview={handleAddReview}
+          handleUpdateReview={handleUpdateReview}
+          handleDeleteReview={handleDeleteReview}
         />
       </section>
     </main>
