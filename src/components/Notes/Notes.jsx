@@ -5,7 +5,7 @@ import NewNote from '../NewNote/NewNote'
 // css
 import styles from './Notes.module.css'
 
-const Notes = ({selectedJob, notesCategory, handleAddNote}) => {
+const Notes = ({selectedJob, notesCategory, handleAddNote, handleDeleteNote}) => {
   
   if (!selectedJob) return <p>Select a job to see your notes</p>
 
@@ -24,6 +24,8 @@ const Notes = ({selectedJob, notesCategory, handleAddNote}) => {
           <NoteCard 
             key={note._id}
             note={note}
+            handleDeleteNote={handleDeleteNote}
+            selectedJob={selectedJob}
           > 
           </NoteCard>
         ))}

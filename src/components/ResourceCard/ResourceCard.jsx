@@ -39,7 +39,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           <p>{resource.category}</p>
         </div>
         <div className={styles.rating}>
-          <p>{resource.averageRating}</p>
+          <p>{resource.averageRating?.toFixed(1)}</p>
         </div>
         <div className={styles.link}>
           <p>{resource.link}</p>
