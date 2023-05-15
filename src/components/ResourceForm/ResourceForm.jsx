@@ -4,7 +4,7 @@ import { useState } from "react"
 // css
 import styles from './ResourceForm.module.css'
 
-const ResourceForm = ({handleAddResource, setAddResource, editedResource, handleUpdateResource, setEditedResource}) => {
+const ResourceForm = ({handleAddResource, setAddResource, editedResource, handleUpdateResource, setEditedResource, setSearch}) => {
   const [formData, setFormData ] = useState(
     editedResource ? editedResource : {
     name: '',

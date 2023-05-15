@@ -14,8 +14,8 @@ import Reviews from "../../components/Reviews/Reviews"
 
 
 const Resources = ({user, }) => {
-
   const [resources, setResources] = useState(null)
+  const [displayedResources, setDisplayedResources] = useState([])
   const [selectedResource, setSelectedResource] = useState(null)
   const [search, setSearch] = useState('')
   const [addResource, setAddResource] = useState(false)
@@ -25,12 +25,16 @@ const Resources = ({user, }) => {
     const fetchResources = async () => {
       const data = await resourceService.index()
       setResources(data)
+      setDisplayedResources(data)
     }
     fetchResources()
   }, [])
 
   const handleSearchChange = (e) => {
+    setSelectedResource(null)
     setSearch(e.target.value)
+    const filteredResources = resources.filter(resource => resource.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    setDisplayedResources(filteredResources)
   }
 
   const handleClickAddResource = () => {
@@ -40,41 +44,50 @@ const Resources = ({user, }) => {
 
   const handleAddResource = async (newResourceFormData) => {
     const newResource = await resourceService.create(newResourceFormData)
+    setDisplayedResources([newResource, ...resources])
     setResources([newResource, ...resources])
     setAddResource(false)
+    setSearch('')
   }
 
   const handleUpdateResource = async (updatedResourceFormData) => {
     const updatedResource = await resourceService.update(updatedResourceFormData)
+    setDisplayedResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
     setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
     setEditedResource(null)
+    setSearch('')
   }
 
   const handleDeleteResource = async (resource) => {
     const deletedResource = await resourceService.deleteResource(resource._id)
+    setDisplayedResources(resources.filter(r => r._id !== deletedResource._id))
     setResources(resources.filter(r => r._id !== deletedResource._id))
+    setSearch('')
   }
 
   const handleAddReview = async (selectedResource, reviewFormData) => {
     const updatedResource = await resourceService.createReview(selectedResource._id, reviewFormData)
     setSelectedResource(updatedResource)
+    setDisplayedResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
     setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
   }
 
   const handleUpdateReview = async (selectedResource, review, updatedReviewFormData) => {
     const updatedResource = await resourceService.updateReview(selectedResource._id, review._id, updatedReviewFormData)
     setSelectedResource(updatedResource)
+    setDisplayedResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
     setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
   }
 
   const handleDeleteReview = async (selectedResource, review) => {
     const updatedResource = await resourceService.deleteReview(selectedResource._id, review._id)
     setSelectedResource(updatedResource)
+    setDisplayedResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
     setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
   }
 
 
-  if (!resources) return <h1>Loading...</h1>
+  if (!displayedResources) return <h1>Loading...</h1>
 
   return ( 
     <main className={styles.container}>
@@ -116,10 +129,11 @@ const Resources = ({user, }) => {
           {addResource &&  
             <ResourceForm 
               handleAddResource={handleAddResource} setAddResource={setAddResource}
+              setSearch={setSearch}
             />
           }
 
-          {resources.map(resource => (
+          {displayedResources.map(resource => (
 
             editedResource && editedResource._id === resource._id ?
               <ResourceForm 
