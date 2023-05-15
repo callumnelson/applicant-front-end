@@ -62,7 +62,7 @@ function App() {
             <Landing 
               user={user} 
               profile={profile}
-              setprofile={setProfile}
+              setProfile={setProfile}
             />
           } 
         />
