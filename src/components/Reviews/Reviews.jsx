@@ -9,6 +9,7 @@ const Reviews = ({selectedResource, user}) => {
   const [buttonState, setButtonState] = useState('new')
   const [reviewFormVisible, setReviewFormVisible] = useState(false)
   const [userReview, setUserReview] = useState(null)
+  const [showButton, setShowButton] = useState(true)
 
   console.log(selectedResource?.reviews)
 
@@ -23,8 +24,12 @@ const Reviews = ({selectedResource, user}) => {
     }
   }, [user])
 
+  const handleReviewButtonClick = () => {
+    setReviewFormVisible(true)
+    setShowButton(false)
+  }
 
-  if (!selectedResource) return <p>Selected a resource to see it's reviews</p>
+  if (!selectedResource) return <p>Select a resource to see it's reviews</p>
 
 
   return (  
@@ -38,19 +43,17 @@ const Reviews = ({selectedResource, user}) => {
         </div>
       </div>
       <div>
-        {userReview ?
-          <button
-            onClick={() => setReviewFormVisible(!reviewFormVisible)}
-          >✎</button>
-          :
-          <button
-            onClick={() => setReviewFormVisible(!reviewFormVisible)}
-          >+</button>
-        }
+        {showButton && (
+          userReview ? (
+            <button onClick={() => handleReviewButtonClick()}>✎</button>
+          ) : (
+            <button onClick={() => handleReviewButtonClick()}>+</button>
+          )
+        )}
       </div>
       {reviewFormVisible && 
         <div>
-          <ReviewForm />
+          <ReviewForm setReviewFormVisible={setReviewFormVisible} setShowButton={setShowButton} />
         </div>
       }
       {selectedResource.reviews.map(review =>

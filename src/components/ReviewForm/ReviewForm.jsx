@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import styles from './ReviewForm.module.css'
 
-const ReviewForm = () => {
+const ReviewForm = ({setReviewFormVisible, setShowButton }) => {
 
   const [formData, setFormData ] = useState({
     rating: 0,
@@ -13,7 +13,16 @@ const ReviewForm = () => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
 
-  const handleSubmit = (evt) => {}
+  const handleSubmit = (evt) => {
+    evt.preventDefault()
+    console.log(formData)
+    setReviewFormVisible(false)
+    setShowButton(true)
+    setFormData({
+      rating: 0,
+      content: '',
+    })
+  }
 
 
   return (  
@@ -44,6 +53,9 @@ const ReviewForm = () => {
           <option value={4}>4</option>
           <option value={5}>5</option> 
         </select>
+        </div>
+        <div>
+          <button type="submit" >SUBMIT</button>
         </div>
       </form>
     </div>
