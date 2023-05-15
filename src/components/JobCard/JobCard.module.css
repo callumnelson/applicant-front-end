@@ -2,7 +2,25 @@
   display: flex;
   width: 100%;
   align-items: center;
-  height: 100px;
+  height: 75px;
+  background-color: var(--card-background);
+  margin-bottom: 2px;
+  border-radius: 5px;
+}
+
+.job div > p {
+  font-size: 14px;
+  color: black;
+  font-weight: 500;
+}
+
+.job span {
+  width: 30px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dropdown {
@@ -11,7 +29,7 @@
 
 .job div {
   display: flex;
-  width: calc(100%/6);
+  width: calc(100%/7);
   justify-content: start;
 }
 
@@ -29,19 +47,8 @@
 .notebuttons {
   display: flex;
   margin-left: 20px;
-  gap: 10px;
-}
-
-.notebuttons button {
-  padding: 10px;
-  border-radius: 20px;
-}
-
-.notebuttons button:hover {
-  cursor: pointer;
 }
 
 .edit:hover, .delete:hover {
   cursor: pointer;
 }
-
