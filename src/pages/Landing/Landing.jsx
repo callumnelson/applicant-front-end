@@ -18,26 +18,28 @@ import profileIcon from '../../assets/icons/profile.png'
 // css
 import styles from './Landing.module.css'
 
-const Landing = ({ user, profile }) => {
+const Landing = ({ user, profile}) => {
   const [selectedJob, setSelectedJob] = useState(null)
   const [selectedResource, setSelectedResource] = useState(null)
   const [resume, setResume] = useState(null)
   const [brandStatement, setBrandStatement] = useState(null)
 
   const handleAddResume = async (resumeFormData) => {
-    const updatedProfile = await profileService.createResume(user, resumeFormData)
-    setResume(updatedProfile.baseResume)
+    const updatedProfileResume = await profileService.createResume(user, resumeFormData)
+    setResume(updatedProfileResume.baseResume)
   }
 
   const handleAddBrand = async (brandFormData) => {
-    const newBrandStatement = await profileService.createBrandStatement(user, brandFormData)
-    setBrandStatement(newBrandStatement)
+    const updatedProfileBrand = await profileService.createBrandStatement(user, brandFormData)
+    setBrandStatement(updatedProfileBrand.brandStatement)
   }
 
   if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
   const photo = profile.photo ? profile.photo : profileIcon
+  const baseResume = profile.baseResume ? profile.baseResume : ''
+  const brand = profile.brandStatement ? profile.brandStatement : ''
 
   const jobsToDisplay = profile.applications.sort((a, b) => (
     new Date(b.updatedAt) - new Date(a.updatedAt)
@@ -52,7 +54,7 @@ const Landing = ({ user, profile }) => {
         </div>
         <div className="resume">
           <h3>My Resume</h3>
-            {resume ? resume : 
+            {baseResume ? baseResume : 
               <ResumeForm 
                 handleAddResume={handleAddResume}
               /> 
@@ -60,7 +62,7 @@ const Landing = ({ user, profile }) => {
         </div>
         <div className="brand">
           <h3>My Branding Statement</h3>
-            {brandStatement ? brandStatement : 
+            {brand ? brand : 
               <BrandForm
                 handleAddBrand={handleAddBrand}
               /> 

@@ -56,7 +56,15 @@ function App() {
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route path="/" element={<Landing user={user} profile={profile} />} />
+        <Route 
+          path="/" 
+          element={
+            <Landing 
+              user={user} 
+              profile={profile} 
+            />
+          } 
+        />
         <Route
           path="/profiles"
           element={
