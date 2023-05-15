@@ -7,15 +7,18 @@ import ReviewForm from '../ReviewForm/ReviewForm'
 
 const Reviews = ({selectedResource, user}) => {
   const [buttonState, setButtonState] = useState('new')
-  const [reviewFormVisible, setReviewFormVisible] = useState(true)
+  const [reviewFormVisible, setReviewFormVisible] = useState(false)
+  const [userReview, setUserReview] = useState(null)
 
   console.log(selectedResource?.reviews)
 
   useEffect(() => {
     const userReviewCheck = selectedResource?.reviews.some(review => review.author === user._id)
     if (userReviewCheck) {
+      setUserReview(userReviewCheck)
       setButtonState('edit')
     } else {
+      setUserReview(null)
       setButtonState('new')
     }
   }, [user])
@@ -35,8 +38,15 @@ const Reviews = ({selectedResource, user}) => {
         </div>
       </div>
       <div>
-        {buttonState === 'new' && <button>New Review</button>}
-        {buttonState === 'edit' && <button>Edit Review</button>}
+        {userReview ?
+          <button
+            onClick={() => setReviewFormVisible(!reviewFormVisible)}
+          >✎</button>
+          :
+          <button
+            onClick={() => setReviewFormVisible(!reviewFormVisible)}
+          >+</button>
+        }
       </div>
       {reviewFormVisible && 
         <div>
