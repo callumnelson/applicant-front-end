@@ -5,7 +5,7 @@ import styles from './Reviews.module.css'
 import ReviewCard from '../ReviewCard/ReviewCard'
 import ReviewForm from '../ReviewForm/ReviewForm'
 
-const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview}) => {
+const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, handleDeleteReview}) => {
   const [reviewFormVisible, setReviewFormVisible] = useState(false)
   const [showButton, setShowButton] = useState(true)
 
@@ -26,9 +26,14 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview}) 
         <div>
           {selectedResource.reviews.length} Reviews
         </div>
-        <div>
-          {selectedResource.averageRating} average rating
-        </div>
+        {selectedResource.reviews.length ? 
+          <div>
+          {selectedResource.averageRating.toFixed(1)} average rating
+          </div> :
+          <div>
+            Be The First To Review!
+          </div>
+        }
       </div>
       <div>
         {showButton && (
@@ -47,6 +52,7 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview}) 
           selectedResource={selectedResource}
           handleUpdateReview={handleUpdateReview}
           userReview={userReview}
+          handleDeleteReview={handleDeleteReview}
           />
         </div>
       }

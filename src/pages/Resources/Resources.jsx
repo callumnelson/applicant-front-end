@@ -67,6 +67,13 @@ const Resources = ({user, }) => {
     setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
   }
 
+  const handleDeleteReview = async (selectedResource, review) => {
+    const updatedResource = await resourceService.deleteReview(selectedResource._id, review._id)
+    setSelectedResource(updatedResource)
+    setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
+  }
+
+
   if (!resources) return <h1>Loading...</h1>
 
   return ( 
@@ -139,6 +146,7 @@ const Resources = ({user, }) => {
           user={user}
           handleAddReview={handleAddReview}
           handleUpdateReview={handleUpdateReview}
+          handleDeleteReview={handleDeleteReview}
         />
       </section>
     </main>
