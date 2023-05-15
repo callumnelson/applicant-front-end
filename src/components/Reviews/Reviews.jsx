@@ -5,7 +5,7 @@ import styles from './Reviews.module.css'
 import ReviewCard from '../ReviewCard/ReviewCard'
 import ReviewForm from '../ReviewForm/ReviewForm'
 
-const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, handleDeleteReview}) => {
+const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, handleDeleteReview, setSelectedResource}) => {
   const [reviewFormVisible, setReviewFormVisible] = useState(false)
   const [showButton, setShowButton] = useState(true)
 
@@ -15,6 +15,23 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
   const handleReviewButtonClick = () => {
     setReviewFormVisible(true)
     setShowButton(false)
+  }
+
+
+  const handleReviewSort = (evt) => {
+    const sortType = evt.target.value
+    const sortedReviews = [...selectedResource.reviews].sort((a, b) => {
+      if (sortType === 'newest') {
+        return new Date(b.updatedAt) - new Date(a.updatedAt)
+      } else if (sortType === 'oldest') {
+        return new Date(a.updatedAt) - new Date(b.updatedAt)
+      } else if (sortType === 'highest') {
+        return b.rating - a.rating
+      } else if (sortType === 'lowest') {
+        return a.rating - b.rating
+      }
+    })
+    setSelectedResource({...selectedResource, reviews: sortedReviews})
   }
 
   if (!selectedResource) return <p>Select a resource to see it's reviews</p>
@@ -29,6 +46,17 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
         {selectedResource.reviews.length ? 
           <div>
           {selectedResource.averageRating.toFixed(1)} average rating
+          <label htmlFor="rating-selector"></label>
+          <select 
+            id='rating-selector'
+            name='rating-selector'
+            onChange={handleReviewSort}
+          >
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="highest">Highest</option>
+            <option value="lowest">Lowest</option>
+          </select>
           </div> :
           <div>
             Be The First To Review!

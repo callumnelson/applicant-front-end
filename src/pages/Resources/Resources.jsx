@@ -147,6 +147,7 @@ const Resources = ({user, }) => {
           handleAddReview={handleAddReview}
           handleUpdateReview={handleUpdateReview}
           handleDeleteReview={handleDeleteReview}
+          setSelectedResource={setSelectedResource}
         />
       </section>
     </main>
