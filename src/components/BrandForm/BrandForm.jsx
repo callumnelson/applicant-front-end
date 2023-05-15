@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import styles from './BrandForm.module.css'
 
-const BrandForm = () => {
+const BrandForm = ({handleAddBrand}) => {
   const [formData, setFormData] = useState({brand: ''})
 
   const handleChange = (evt) => {
@@ -11,7 +11,8 @@ const BrandForm = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-
+    handleAddBrand(formData)
+    setFormData({brand: ''})
   }
 
   return ( 
@@ -22,10 +23,11 @@ const BrandForm = () => {
           type="text" 
           name="brand" 
           value={formData.brand} 
-          placeholder="Add link to branding statement" 
+          placeholder="Add link to branding statement"
+          autoComplete="off"
           onChange={handleChange}
         />
-        <button type="submit">SUBMIT</button>
+        <button type="submit">✅</button>
       </form>
     </main>
   )

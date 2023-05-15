@@ -22,20 +22,18 @@ const Landing = ({ user, profile }) => {
   const [selectedJob, setSelectedJob] = useState(null)
   const [selectedResource, setSelectedResource] = useState(null)
   const [resume, setResume] = useState(null)
+  const [brandStatement, setBrandStatement] = useState(null)
 
-  useEffect(() => {
-    const fetchResume = async () => {
-      const data = await profileService.getResume()
-      setResume(data)
-    }
-    fetchResume()
-  }, [])
-
-  const handleAddResume = async (profile, resumeFormData) => {
-    const newResume = await profileService.createResume(profile._id, resumeFormData)
+  const handleAddResume = async (resumeFormData) => {
+    const newResume = await profileService.createResume(user, resumeFormData)
     setResume(newResume)
   }
-  
+
+  const handleAddBrand = async (brandFormData) => {
+    const newBrandStatement = await profileService.createBrandStatement(user, brandFormData)
+    setBrandStatement(newBrandStatement)
+  }
+
   if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
@@ -59,8 +57,9 @@ const Landing = ({ user, profile }) => {
         </div>
         <div className="brand">
           <h3>My Branding Statement</h3>
-            {profile.brandStatement ? profile.brandStatement : 
+            {brandStatement ? brandStatement : 
               <BrandForm
+                handleAddBrand={handleAddBrand}
               /> 
             }
         </div>

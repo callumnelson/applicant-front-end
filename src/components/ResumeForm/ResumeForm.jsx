@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import styles from './ResumeForm.module.css'
 
-const BrandForm = () => {
+const ResumeForm = ({handleAddResume}) => {
   const [formData, setFormData] = useState({resume: ''})
 
   const handleChange = (evt) => {
@@ -11,7 +11,8 @@ const BrandForm = () => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
-
+    handleAddResume(formData)
+    setFormData({resume: ''})
   }
 
   return ( 
@@ -22,13 +23,14 @@ const BrandForm = () => {
           type="text" 
           name="resume" 
           value={formData.resume} 
-          placeholder="Add link to resume" 
+          placeholder="Add link to resume"
+          autoComplete="off"
           onChange={handleChange}
         />
-        <button type="submit">SUBMIT</button>
+        <button type="submit">✅</button>
       </form>
     </main>
   )
 }
 
-export default BrandForm
+export default ResumeForm

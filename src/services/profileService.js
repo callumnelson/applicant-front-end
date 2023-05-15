@@ -43,9 +43,9 @@ async function getProfile(user) {
   }
 }
 
-async function addResume(profile, resumeFormData) {
+async function createResume(user, resumeFormData) {
   try {
-    const res = await fetch(`${BASE_URL}/${profile}/resume`, {
+    const res = await fetch(`${BASE_URL}/${user.profile}/resume`, {
       method: 'POST',
       headers: { 
         'Authorization': `Bearer ${tokenService.getToken()}`,
@@ -53,7 +53,23 @@ async function addResume(profile, resumeFormData) {
       },
       body: JSON.stringify(resumeFormData),
     })
-    return await res.json()
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
+async function createBrandStatement(user, brandFormData) {
+  try {
+    const res = await fetch(`${BASE_URL}/${user.profile}/brand`, {
+      method: 'POST',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(brandFormData),
+    })
+    return res.json()
   } catch (err) {
     throw new Error(err)
   }
@@ -64,6 +80,6 @@ export {
   getAllProfiles, 
   addPhoto,
   getProfile,
-  addResume,
-  // getResume,
+  createResume,
+  createBrandStatement
 }
