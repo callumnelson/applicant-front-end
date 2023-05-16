@@ -68,7 +68,7 @@
   padding-left: 30px;
   margin-bottom: 2px;
   margin-top: -2px;
-  background-color: rgb(244, 244, 244);
+  background-color: white;
   height: 0;
   opacity: 0.5;
   transition: all 0.5s ease-in-out;
@@ -99,18 +99,48 @@
   width: 70%;
 }
 
+.contact {
+  width: 100%;
+}
+
+.contact img {
+  height: 50px;
+  margin-right: 20px;
+}
+
+.contact header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: start;
+}
+
+.contact h3 {
+  margin: 0;
+}
+
+.contact p {
+  padding-left: 20px;
+}
+
 .notebuttons {
   display: flex;
   flex-direction: column;
   margin-left: 20px;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 .notebuttons > div {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 20px;
+  margin: auto 20px;
+}
+
+.notebuttons h3 {
+  margin: 0;
+  line-height: 50px;
 }
 
 .edit:hover, .delete:hover {

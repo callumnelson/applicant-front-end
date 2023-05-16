@@ -4,6 +4,9 @@ import NotesCategoryButton from '../NotesCategoryButton/NotesCategoryButton'
 // css
 import styles from './JobCard.module.css'
 
+// assets
+import profileIcon from '../../assets/icons/profile.png'
+
 const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob, notesCategory, setNotesCategory}) => {
   const selected = selectedJob && selectedJob._id === job._id
   const notesCategories = ['Resume', 'Interview Qs', 'Skills', 'To-Do', 'Networking', 'General']
@@ -78,8 +81,11 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
       </div>
       <div className={`${styles.details} ${selected ? styles.show : ''}`}>
         <div>
-          <div>
-            <h3>Contact Info</h3>
+          <div className={styles.contact}>
+            <header>
+              <img src={profileIcon} alt="Profile Icon" />
+              <h3>Contact Info</h3>
+            </header>
             <div className={styles.contactName}>
               <p>Name: {job.contactName}</p>
             </div>
@@ -97,7 +103,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           </div>
         </div>
         <div className={styles.notebuttons}>
-          <h3>Notes</h3>
+          <h3>📝 Notes</h3>
           <div>
             {notesCategories.map(category => (
               <NotesCategoryButton 
