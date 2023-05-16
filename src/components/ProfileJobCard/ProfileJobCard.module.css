@@ -1,0 +1,41 @@
+.job {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  height: 7vh;
+  background-color: var(--card-background);
+  margin-bottom: 2px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.job div {
+  display: flex;
+  width: calc(100%/7);
+  justify-content: center;
+}
+
+.job div > p {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 20px;
+  letter-spacing: .05em;
+}
+
+.dream-job {
+  background-color: darkgreen;
+  color: white;
+}
+
+.great-option {
+  background-color: lightgreen;
+}
+
+.totally-fine {
+  background-color: rgb(230, 240, 122);
+}
+
+.will-pay-bills {
+  background-color: rgb(238, 204, 119);
+}

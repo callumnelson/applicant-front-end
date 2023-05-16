@@ -6,10 +6,10 @@ import { useState } from 'react'
 import * as profileService from '../../services/profileService'
 
 //components
-import JobCard from '../../components/JobCard/JobCard'
-import ResourceCard from '../../components/ResourceCard/ResourceCard'
 import ResumeForm from '../../components/ResumeForm/ResumeForm'
 import BrandForm from '../../components/BrandForm/BrandForm'
+import ProfileJobCard from '../../components/ProfileJobCard/ProfileJobCard'
+import ProfileResourceCard from '../../components/ProfileResourceCard/ProfileResourceCard'
 
 //assets
 import logo from '../../assets/branding/logo.svg'
@@ -19,8 +19,6 @@ import profileIcon from '../../assets/icons/profile.png'
 import styles from './Landing.module.css'
 
 const Landing = ({ user, profile, setProfile }) => {
-  const [selectedJob, setSelectedJob] = useState(null)
-  const [selectedResource, setSelectedResource] = useState(null)
   const [displayResumeForm, setDisplayResumeForm] = useState(false)
   const [displayBrandForm, setDisplayBrandForm] = useState(false)
 
@@ -59,53 +57,55 @@ const Landing = ({ user, profile, setProfile }) => {
       <section className={styles.profile}>
         <div className={styles.info}>
           <img src={photo} alt="user" />
-          <h2>{profile.name}</h2>
+          <h1>{profile.name}</h1>
         </div>
-        <div className="resume">
-          <h3>My Resume</h3>
+        <div className={styles.resume}>
+          <h2>My Resume:</h2>
           {(!resume) || displayResumeForm ? 
             <ResumeForm
               handleAddResume={handleAddResume}
             /> 
           : 
-            <p className={styles.personalcontent}>
-              {resume} 
+            <div className={styles.personalcontent}>
+              <a href={resume.toString()}>fuck</a>
               <button className={styles.edit} onClick={handleResumeClick}>✏️</button>
-            </p>
+            </div>
           }
         </div>
-        <div className="brand">
-          <h3>My Branding Statement</h3>
+        <div className={styles.brand}>
+          <h2>My Brand Statement:</h2>
           {(!brandStatement) || displayBrandForm ? 
             <BrandForm
               handleAddBrand={handleAddBrand}
             />
           : 
-            <p className={styles.personalcontent}> 
-              {brandStatement} 
+            <div className={styles.personalcontent}> 
+              <a href={brandStatement.toString()}>this is worse than i thought</a>
               <button className={styles.edit} onClick={handleBrandClick}>✏️</button>
-            </p>
+            </div>
           }
         </div>
-      <NavLink to="/auth/change-password">
-        Change Password
-      </NavLink>
+      <div className={styles.password}> 
+        <NavLink to="/auth/change-password">
+          Change Password
+        </NavLink>
+      </div>
       </section>
       <section className={styles.right}>
         <div className={styles.resources}>
-          <h3>Starred Resources</h3>
+          <h3 className={styles.tabletitle}>My Starred Resources</h3>
           <div className={styles.table}>
             <header>
-              <div className={styles.name}>
+              <div className={styles.title}>
                 <h4>Name</h4>
               </div>
-              <div className={styles.category}>
+              <div className={styles.title}>
                 <h4>Category</h4>
               </div>
-              <div className={styles.rating}>
+              <div className={styles.title}>
                 <h4>Average Rating</h4>
               </div>
-              <div className={styles.link}>
+              <div className={styles.title}>
                 <h4>Link</h4>
               </div>
             </header>
@@ -113,11 +113,9 @@ const Landing = ({ user, profile, setProfile }) => {
               {(!profile.starredResources.length) ?
                 <h4>No starred resources</h4> :
                 profile.starredResources.map(resource =>
-                  <ResourceCard 
+                  <ProfileResourceCard 
                     key={resource._id} 
                     resource={resource}
-                    selectedResource={selectedResource} 
-                    setSelectedResource={setSelectedResource}
                   />
                 )
               }
@@ -125,42 +123,38 @@ const Landing = ({ user, profile, setProfile }) => {
           </div>
         </div>
         <div className={styles.jobs}>
-          <h3>My Newest Applications</h3>
+          <h3 className={styles.tabletitle}>My Most Recent Applications</h3>
           <div className={styles.table}>
-            <header>
-              <div className={styles.date}>
-                <h4>Date Created</h4>
+            <header className={styles.jobsheader}>
+              <div className={styles.title}>
+                <h4>Date Added</h4>
               </div>
               <div className={styles.title}>
                 <h4>Title</h4>
               </div>
-              <div className={styles.company}>
+              <div className={styles.title}>
                 <h4>Company</h4>
               </div>
-              <div className={styles.salary}>
+              <div className={styles.title}>
                 <h4>Salary</h4>
               </div>
-              <div className={styles.status}>
+              <div className={styles.title}>
                 <h4>Status</h4>
               </div>
-              <div className={styles.priority}>
+              <div className={styles.title}>
                 <h4>Priority</h4>
               </div>
-              <div className={styles.jobListing}>
+              <div className={styles.title}>
                 <h4>Listing</h4>
-              </div>
-              <div className={styles.buttons}>
               </div>
             </header>
             <div className={styles.list}>
               {(!profile.applications.length) ?
                 <h4>No jobs</h4> :
                 jobsToDisplay.map(job =>
-                  <JobCard 
+                  <ProfileJobCard 
                     key={job._id} 
                     job={job} 
-                    setSelectedJob={setSelectedJob}
-                    selectedJob={selectedJob}
                   />
                 )
               }
