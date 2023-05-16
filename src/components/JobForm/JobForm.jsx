@@ -36,9 +36,14 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} autoComplete="off">
         <div className={styles.row}>
+          <div>
+            <p>
+              Job Info
+            </p>
+          </div>
           <div className={styles.title}>
             <input
               required
@@ -61,14 +66,13 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
               onChange={handleChange}
             />
           </div>
-          <div className={styles.jobListing}>
+          <div className={styles.salary}>
             <input
               required
-              type="text"
-              name="jobListing"
-              id="jobListing-input"
-              value={formData.jobListing}
-              placeholder="Listing link"
+              type="number"
+              name="salary"
+              id="salary-input"
+              value={formData.salary}
               onChange={handleChange}
             />
           </div>
@@ -103,18 +107,24 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
               <option value="Will Pay Bills">Will Pay Bills</option>
             </select>
           </div>
-          <div className={styles.salary}>
+          <div className={styles.jobListing}>
             <input
               required
-              type="number"
-              name="salary"
-              id="salary-input"
-              value={formData.salary}
+              type="text"
+              name="jobListing"
+              id="jobListing-input"
+              value={formData.jobListing}
+              placeholder="Listing link"
               onChange={handleChange}
             />
           </div>
         </div>
         <div className={styles.detailsCard}>
+          <div>
+            <p>
+              Job Details
+            </p>
+          </div>
           <div className={styles.contactName}>
             <input
               type="text"
@@ -155,9 +165,13 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
               onChange={handleChange}
             />
           </div>
+          <div>
+            <button onClick={handleCancel}>X</button>
+          </div>
+          <div>
+            <button type="submit">➕</button>
+          </div>
         </div>
-        <button onClick={handleCancel}>Cancel</button>
-        <button type="submit">SUBMIT</button>
       </form>
     </div>
   )
