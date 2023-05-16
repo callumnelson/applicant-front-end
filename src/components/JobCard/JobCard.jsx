@@ -93,17 +93,22 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
               <p>Email: {job.contactEmail}</p>
             </div>
           </div>
-          <div>
+          <div className={styles.documents}>
+            <header>
+              <h3>📄 Documents</h3>
+            </header>
             <div className={styles.resume}>
-              <p>{job.resume}</p>
+              <p>Resume: {job.resume}</p>
             </div>
             <div className={styles.coverLetter}>
-              <p>{job.coverLetter}</p>
+              <p>Cover Letter: {job.coverLetter}</p>
             </div>
           </div>
         </div>
         <div className={styles.notebuttons}>
-          <h3>📝 Notes</h3>
+          <header>
+            <h3>📝 Notes</h3>
+          </header>
           <div>
             {notesCategories.map(category => (
               <NotesCategoryButton 
