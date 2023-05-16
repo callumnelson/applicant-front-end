@@ -21,7 +21,7 @@ import styles from './Landing.module.css'
 
 const Landing = ({ user, profile, setProfile }) => {
   const [selectedJob, setSelectedJob] = useState(null)
-  const [selectedResource, setSelectedResource] = useState(null)
+  // const [selectedResource, setSelectedResource] = useState(null)
   const [displayResumeForm, setDisplayResumeForm] = useState(false)
   const [displayBrandForm, setDisplayBrandForm] = useState(false)
 
@@ -111,7 +111,7 @@ const Landing = ({ user, profile, setProfile }) => {
               </div>
             </header>
             <div className={styles.list}>
-              {(!profile.starredResources.length) ?
+              {/* {(!profile.starredResources.length) ?
                 <h4>No starred resources</h4> :
                 profile.starredResources.map(resource =>
                   <ResourceCard 
@@ -121,12 +121,12 @@ const Landing = ({ user, profile, setProfile }) => {
                     setSelectedResource={setSelectedResource}
                   />
                 )
-              }
+              } */}
             </div>
           </div>
         </div>
         <div className={styles.jobs}>
-          <h3>My Newest Applications</h3>
+          <h3>My Most Recent Applications</h3>
           <div className={styles.table}>
             <header>
               <div className={styles.date}>
@@ -157,11 +157,9 @@ const Landing = ({ user, profile, setProfile }) => {
               {(!profile.applications.length) ?
                 <h4>No jobs</h4> :
                 jobsToDisplay.map(job =>
-                  <JobCard 
+                  <ProfileJobCard 
                     key={job._id} 
                     job={job} 
-                    setSelectedJob={setSelectedJob}
-                    selectedJob={selectedJob}
                   />
                 )
               }
