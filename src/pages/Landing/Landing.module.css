@@ -29,12 +29,25 @@
 
 .info > h1 {
   margin-top: 1vmin;
-  margin-bottom: 4vmin;
-  letter-spacing: .05em;
+  margin-bottom: 0;
+  letter-spacing: .1rem;
+}
+
+.password {
+  margin: 0;
+  padding: .1vmin;
+  background-color: rgba(217, 238, 241, 0.323);
+  border-radius: 5px;
+}
+
+.password > a {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .1rem;
 }
 
 .resume, .brand {
-  background-color: rgba(217, 238, 241, 0.671);
+  background-color: rgba(217, 238, 241, 0.361);
   height: 20vh;
   width: 65%;
   padding: 2vmin;
@@ -64,10 +77,6 @@
   padding: 0;
   background-color: white;
   margin-left: auto;
-}
-
-.password {
-  margin-bottom: 1vh;
 }
 
 .right {

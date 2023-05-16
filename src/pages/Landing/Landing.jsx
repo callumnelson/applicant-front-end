@@ -60,6 +60,11 @@ const Landing = ({ user, profile, setProfile }) => {
         <div className={styles.info}>
           <img src={photo} alt="user" />
           <h1>{profile.name}</h1>
+          <p className={styles.password}> 
+            <NavLink to="/auth/change-password">
+              Change Password
+            </NavLink>
+          </p>
         </div>
         <div className={styles.resume}>
           <h2>My Resume:</h2>
@@ -87,11 +92,7 @@ const Landing = ({ user, profile, setProfile }) => {
             </div>
           }
         </div>
-      <div className={styles.password}> 
-        <NavLink to="/auth/change-password">
-          Change Password
-        </NavLink>
-      </div>
+
       </section>
       <section className={styles.right}>
         <div className={styles.resources}>
@@ -125,7 +126,7 @@ const Landing = ({ user, profile, setProfile }) => {
           </div>
         </div>
         <div className={styles.jobs}>
-          <h3 className={styles.tabletitle}>My Most Recent Applications</h3>
+          <h3 className={styles.tabletitle}>My 3 Most Recent Applications</h3>
           <div className={styles.table}>
             <header className={styles.jobsheader}>
               <div className={styles.title}>
