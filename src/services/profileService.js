@@ -106,6 +106,19 @@ const removeStarredResource = async (user, resource) => {
   }
 }
 
+const deleteProfile = async (profileId) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${profileId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
 
 export { 
   getAllProfiles, 
@@ -115,4 +128,5 @@ export {
   createBrandStatement,
   addStarredResource,
   removeStarredResource,
+  deleteProfile,
 }

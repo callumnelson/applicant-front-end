@@ -19,7 +19,7 @@ const NavBar = ({ user, handleLogout }) => {
   const protectedLinks = (
     <ul>
       <li>
-        <NavLink to="/profiles">ADMIN</NavLink>
+        <NavLink to="/admin">ADMIN</NavLink>
       </li>
       <li>
         <NavLink to="/jobs">JOBS</NavLink>
