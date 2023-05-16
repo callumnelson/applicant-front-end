@@ -2,9 +2,11 @@
 //css
 import styles from './ResourceCard.module.css'
 
-const ResourceCard = ({setSelectedResource, selectedResource, resource, setEditedResource, handleDeleteResource, profile, setProfile, handleAddStarredResource, user}) => {
+const ResourceCard = ({setSelectedResource, selectedResource, resource, setEditedResource, handleDeleteResource, profile, setProfile, handleAddStarredResource, user, handleRemoveStarredResource}) => {
 
   const selected = selectedResource && selectedResource._id === resource._id 
+
+  const alreadyStarred = profile?.starredResources?.some(r => r === resource._id)
 
   const handleSelect = () => {
     if (selected) {
@@ -20,10 +22,14 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
     setSelectedResource(null)
   }
 
-  const handleAddStarredResourceClick = () => {
-    console.log('hello')
-    handleAddStarredResource(user, resource)
-    setProfile({...profile, starredResources: [...profile.starredResources, resource]})
+  const handleStarredResourceClick = () => {
+    if (alreadyStarred) {
+      handleRemoveStarredResource(user, resource)
+      setProfile({...profile, starredResources: profile.starredResources.filter(r => r !== resource._id)})
+    } else {
+      handleAddStarredResource(user, resource)
+      setProfile({...profile, starredResources: [...profile.starredResources, resource]})
+    }
   }
 
   return (  
@@ -60,8 +66,10 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
             onClick={() => handleDeleteResource(resource)}
           >🗑️</span>
           <span
-            onClick={() => handleAddStarredResourceClick()}
-          >⭐</span>
+            onClick={() => handleStarredResourceClick()}
+          >
+            {alreadyStarred ? '★' : '☆' }
+          </span>
       </div>
       {selected && 
         <div className={styles.details}>
