@@ -56,6 +56,11 @@ function App() {
     const updatedProfile = await profileService.addStarredResource(user, resource)
     setProfile(updatedProfile)
   }
+
+  const handleRemoveStarredResource = async (user, resource) => {
+    const updatedProfile = await profileService.removeStarredResource(user, resource)
+    setProfile(updatedProfile)
+  }
   
 
   return (
@@ -101,6 +106,7 @@ function App() {
                 profile={profile}
                 setProfile={setProfile}
                 handleAddStarredResource={handleAddStarredResource}
+                handleRemoveStarredResource={handleRemoveStarredResource}
               />
             </ProtectedRoute>
           }
