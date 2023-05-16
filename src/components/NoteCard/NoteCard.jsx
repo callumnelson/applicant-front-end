@@ -1,10 +1,15 @@
 // css
 import styles from './NoteCard.module.css'
 
-const NoteCard = ({note}) => {
+const NoteCard = ({note, handleDeleteNote, selectedJob}) => {
   return (
     <div className={styles.container}>
-      <h4>{note.title}</h4>
+      <header>
+        <h4>{note.title}</h4>
+        <p
+          onClick={() => handleDeleteNote(selectedJob, note)}
+        >🗑️</p>
+      </header>
       <p>{note.content}</p>
       <p>{new Date(note.createdAt).toLocaleDateString()}</p>
     </div>

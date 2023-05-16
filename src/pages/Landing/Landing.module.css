@@ -64,3 +64,17 @@
   overflow-y: scroll;
 }
 
+.personalcontent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.edit {
+  width: 2vw;
+  height: 2vw;
+  padding: 0;
+  background-color: beige;
+}

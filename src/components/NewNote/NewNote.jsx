@@ -7,19 +7,20 @@ import styles from './NewNote.module.css'
 const NewNote = ({selectedJob, notesCategory, handleAddNote}) => {
 
   const [formData, setFormData] = useState({ 
-    category: notesCategory,
     title: '',
     content: '' 
   })
 
   const handleChange = (evt) => {
-    setFormData({ ...formData, [evt.target.name]: evt.target.value })
+    setFormData({ ...formData, [evt.target.name]: evt.target.value})
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    formData.category = notesCategory
+    console.log('New note before submit:', formData)
     handleAddNote(selectedJob, formData)
-    setFormData({ ...formData, title: '', content: '' })
+    setFormData({ title: '', content: '' })
   }
 
   return (
