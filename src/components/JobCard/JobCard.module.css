@@ -10,8 +10,26 @@
 
 .job div > p {
   font-size: 14px;
-  color: black;
   font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+.dream-job {
+  background-color: lightblue;
+}
+
+.great-option {
+  background-color: darkgreen;
+  color: white;
+}
+
+.totally-fine {
+  background-color: lightgreen;
+}
+
+.will-pay-bills {
+  background-color: yellowgreen;
 }
 
 .job span {

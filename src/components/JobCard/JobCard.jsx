@@ -53,7 +53,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           <p>{job.status}</p>
         </div>
         <div className={styles.priority}>
-          <p>{job.priority}</p>
+          <p className={styles[job.priority.toLowerCase().replaceAll(' ','-')]}>{job.priority}</p>
         </div>
         <div className={styles.jobListing}>
           <p>{job.jobListing}</p>
