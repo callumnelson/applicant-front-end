@@ -117,7 +117,7 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
               name="jobListing"
               id="jobListing-input"
               value={formData.jobListing}
-              placeholder="Listing link"
+              placeholder="Listing url"
               onChange={handleChange}
             />
           </div>
@@ -162,7 +162,7 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
                 name="jobResume"
                 id="jobResume-input"
                 value={formData.jobResume}
-                placeholder="Resume Link"
+                placeholder="Resume url"
                 onChange={handleChange}
               />
             </div>
@@ -173,7 +173,7 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
                 name="jobCoverLetter"
                 id="jobCoverLetter-input"
                 value={formData.jobCoverLetter}
-                placeholder="Cover Letter Link"
+                placeholder="Cover Letter url"
                 onChange={handleChange}
               />
             </div>

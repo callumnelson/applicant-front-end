@@ -19,7 +19,6 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
 
   const handleChangeEditedJob = () => {
     setEditedJob(job)
-    setSelectedJob(null)
   }
 
   const handleNoteCategoryChange = (e) => {
