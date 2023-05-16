@@ -156,7 +156,7 @@ const Jobs = ({profile, setProfile}) => {
     <main className={styles.container}>
       <section className={styles.jobs}>
         <nav>
-          <h1>Jobs</h1>
+          <h1>Jobs ({displayedJobs.length})</h1>
           <div>
             <input
               className={styles.search}
