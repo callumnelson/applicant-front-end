@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"
 
 import styles from './ResumeForm.module.css'
 
@@ -16,8 +16,8 @@ const ResumeForm = ({handleAddResume}) => {
   }
 
   return ( 
-    <main className={styles.form}>
-      <form onSubmit={handleSubmit}>
+    <main >
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="baseResume"></label>
         <input 
           type="text" 

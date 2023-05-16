@@ -1,0 +1,16 @@
+.form {
+  padding: 2vmin 0;
+  font: 14px;
+  background-color: aliceblue;
+}
+
+.form > input {
+  width: 80%;
+  margin: 1vmin auto;
+}
+
+.form > button {
+  padding: 0;
+  width: 2.5vw;
+  margin: auto;
+}
