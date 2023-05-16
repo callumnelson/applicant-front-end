@@ -166,7 +166,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   }
 
 
-  if (!displayedResources) return <h1>Loading...</h1>
+  if (!displayedResources || !profile) return <h1>Loading...</h1>
 
   return ( 
     <main className={styles.container}>
@@ -175,11 +175,13 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
         <nav>
           <h1>Resources</h1>
           <div>
-            <button
+            {profile?.role > 100 &&
+              <button
               onClick={() => handleClickAddResource()}
-            >
+              >
               Add Resource
-            </button>
+              </button>
+            }
             <input 
               type="text" 
               name="search"

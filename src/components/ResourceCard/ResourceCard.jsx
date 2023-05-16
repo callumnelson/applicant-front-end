@@ -6,7 +6,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
 
   const selected = selectedResource && selectedResource._id === resource._id 
 
-  const alreadyStarred = profile?.starredResources?.some(r => r === resource._id)
+  const alreadyStarred = profile.starredResources?.some(r => r === resource._id)
 
   const handleSelect = () => {
     if (selected) {
@@ -31,6 +31,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
       setProfile({...profile, starredResources: [...profile.starredResources, resource]})
     }
   }
+
 
   return (  
     <>
@@ -59,12 +60,16 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
         <div className={styles.link}>
           <p>{resource.link}</p>
         </div>
-          <span
-            onClick={() => handleChangeToEditResource()}
-          >✎</span>
-          <span
-            onClick={() => handleDeleteResource(resource)}
-          >🗑️</span>
+          {(profile._id === resource.owner || profile?.role > 200) &&
+            <>
+              <span
+                onClick={() => handleChangeToEditResource()}
+              >✎</span>
+              <span
+                onClick={() => handleDeleteResource(resource)}
+              >🗑️</span>
+            </>
+          }
           <span
             onClick={() => handleStarredResourceClick()}
           >
