@@ -6,10 +6,10 @@ import { useState } from 'react'
 import * as profileService from '../../services/profileService'
 
 //components
-// import ResourceCard from '../../components/ResourceCard/ResourceCard'
 import ResumeForm from '../../components/ResumeForm/ResumeForm'
 import BrandForm from '../../components/BrandForm/BrandForm'
 import ProfileJobCard from '../../components/ProfileJobCard/ProfileJobCard'
+import ProfileResourceCard from '../../components/ProfileResourceCard/ProfileResourceCard'
 
 //assets
 import logo from '../../assets/branding/logo.svg'
@@ -19,7 +19,6 @@ import profileIcon from '../../assets/icons/profile.png'
 import styles from './Landing.module.css'
 
 const Landing = ({ user, profile, setProfile }) => {
-  // const [selectedResource, setSelectedResource] = useState(null)
   const [displayResumeForm, setDisplayResumeForm] = useState(false)
   const [displayBrandForm, setDisplayBrandForm] = useState(false)
 
@@ -111,17 +110,15 @@ const Landing = ({ user, profile, setProfile }) => {
               </div>
             </header>
             <div className={styles.list}>
-              {/* {(!profile.starredResources.length) ?
+              {(!profile.starredResources.length) ?
                 <h4>No starred resources</h4> :
                 profile.starredResources.map(resource =>
-                  <ResourceCard 
+                  <ProfileResourceCard 
                     key={resource._id} 
                     resource={resource}
-                    selectedResource={selectedResource} 
-                    setSelectedResource={setSelectedResource}
                   />
                 )
-              } */}
+              }
             </div>
           </div>
         </div>
