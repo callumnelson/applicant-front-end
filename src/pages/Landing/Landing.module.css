@@ -107,6 +107,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.resourcesheader > div {
+  width: calc(100%/4);
+}
+
+.jobsheader > div {
   width: calc(100%/7);
 }
 
@@ -118,5 +125,10 @@
 }
 
 .list {
-  height: 25vh;
+  height: 22vh;
+  overflow: hidden;
+}
+
+.list:hover {
+  overflow-y: auto;
 }

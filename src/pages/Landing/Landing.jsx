@@ -97,7 +97,7 @@ const Landing = ({ user, profile, setProfile }) => {
         <div className={styles.resources}>
           <h3 className={styles.tabletitle}>My Starred Resources</h3>
           <div className={styles.table}>
-            <header>
+            <header className={styles.resourcesheader}>
               <div className={styles.title}>
                 <h4>Date Added</h4>
               </div>
