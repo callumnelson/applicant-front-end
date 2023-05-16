@@ -2,8 +2,8 @@ import { useState } from "react"
 
 import styles from './BrandForm.module.css'
 
-const BrandForm = ({handleAddBrand}) => {
-  const [formData, setFormData] = useState({brandStatement: ''})
+const BrandForm = ({handleAddBrand, brandStatement}) => {
+  const [formData, setFormData] = useState({brandStatement: `${brandStatement}`})
 
   const handleChange = (evt) => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
@@ -12,7 +12,6 @@ const BrandForm = ({handleAddBrand}) => {
   const handleSubmit = (evt) => {
     evt.preventDefault()
     handleAddBrand(formData)
-    setFormData({brandStatement: ''})
   }
 
   return ( 

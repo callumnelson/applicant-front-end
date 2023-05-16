@@ -2,8 +2,8 @@ import { useState } from "react"
 
 import styles from './ResumeForm.module.css'
 
-const ResumeForm = ({handleAddResume}) => {
-  const [formData, setFormData] = useState({baseResume: ''})
+const ResumeForm = ({handleAddResume, resume}) => {
+  const [formData, setFormData] = useState({baseResume: `${resume}`})
 
   const handleChange = (evt) => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
@@ -12,7 +12,6 @@ const ResumeForm = ({handleAddResume}) => {
   const handleSubmit = (evt) => {
     evt.preventDefault()
     handleAddResume(formData)
-    setFormData({baseResume: ''})
   }
 
   return ( 

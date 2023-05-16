@@ -35,12 +35,13 @@
 
 .password {
   margin: 0;
-  padding: .1vmin;
-  background-color: rgba(217, 238, 241, 0.323);
-  border-radius: 5px;
 }
 
 .password > a {
+  margin: 0;
+  padding: .5vmin 1vmin;
+  background-color: rgba(217, 238, 241, 0.323);
+  border-radius: 5px;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: .1rem;
@@ -148,4 +149,8 @@
 
 .list:hover {
   overflow-y: auto;
+}
+
+.password > a:hover {
+  background-color: rgba(217, 238, 241, 0.803);
 }

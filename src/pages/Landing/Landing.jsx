@@ -12,7 +12,6 @@ import ProfileJobCard from '../../components/ProfileJobCard/ProfileJobCard'
 import ProfileResourceCard from '../../components/ProfileResourceCard/ProfileResourceCard'
 
 //assets
-import logo from '../../assets/branding/logo.svg'
 import profileIcon from '../../assets/icons/profile.png'
 
 // css
@@ -53,8 +52,6 @@ const Landing = ({ user, profile, setProfile }) => {
 
   if (!profile) return <p>Loading profile...</p>
 
-  console.log(profile)
-
   const photo = profile.photo ? profile.photo : profileIcon
   const resume = profile.baseResume
   const brandStatement = profile.brandStatement
@@ -78,6 +75,7 @@ const Landing = ({ user, profile, setProfile }) => {
           <h2>My Resume:</h2>
           {(!resume) || displayResumeForm ? 
             <ResumeForm
+              resume={resume}
               handleAddResume={handleAddResume}
             /> 
           : 
@@ -91,6 +89,7 @@ const Landing = ({ user, profile, setProfile }) => {
           <h2>My Brand Statement:</h2>
           {(!brandStatement) || displayBrandForm ? 
             <BrandForm
+              brandStatement={brandStatement}
               handleAddBrand={handleAddBrand}
             />
           : 
