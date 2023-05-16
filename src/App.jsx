@@ -62,8 +62,6 @@ function App() {
     const updatedProfile = await profileService.removeStarredResource(user, resource)
     setProfile(updatedProfile)
   }
-  
-  if (!profile) return <Loading />
 
   return (
     <>
