@@ -45,6 +45,8 @@ const Landing = ({ user, profile, setProfile }) => {
   if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
+  console.log(profile)
+
   const photo = profile.photo ? profile.photo : profileIcon
   const resume = profile.baseResume
   const brandStatement = profile.brandStatement
@@ -97,13 +99,13 @@ const Landing = ({ user, profile, setProfile }) => {
           <div className={styles.table}>
             <header>
               <div className={styles.title}>
+                <h4>Date Added</h4>
+              </div>
+              <div className={styles.title}>
                 <h4>Name</h4>
               </div>
               <div className={styles.title}>
                 <h4>Category</h4>
-              </div>
-              <div className={styles.title}>
-                <h4>Average Rating</h4>
               </div>
               <div className={styles.title}>
                 <h4>Link</h4>
