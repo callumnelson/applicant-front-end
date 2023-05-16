@@ -22,15 +22,31 @@
 }
 
 .info > img {
-  height: 15vw;
-  width: 15vw;
+  height: 17vw;
+  width: 17vw;
   object-fit: cover;
   border-radius: 50%;
 }
 
-.info > h2 {
+.info > h1 {
   margin-top: 2vmin;
   margin-bottom: 0;
+  letter-spacing: .05em;
+}
+
+.personalcontent{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.edit {
+  width: 2vw;
+  height: 2vw;
+  padding: 0;
+  background-color: beige;
 }
 
 .right {
@@ -84,18 +100,4 @@
   height: 25vh;
 }
 
-.personalcontent{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-}
-
-.edit {
-  width: 2vw;
-  height: 2vw;
-  padding: 0;
-  background-color: beige;
-}
 

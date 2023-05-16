@@ -60,7 +60,7 @@ const Landing = ({ user, profile, setProfile }) => {
           <img src={photo} alt="user" />
           <h1>{profile.name}</h1>
         </div>
-        <div className="resume">
+        <div className={styles.resume}>
           <h2>My Resume</h2>
           {(!resume) || displayResumeForm ? 
             <ResumeForm
@@ -73,17 +73,17 @@ const Landing = ({ user, profile, setProfile }) => {
             </p>
           }
         </div>
-        <div className="brand">
+        <div className={styles.brand}>
           <h2>My Branding Statement</h2>
           {(!brandStatement) || displayBrandForm ? 
             <BrandForm
               handleAddBrand={handleAddBrand}
             />
           : 
-            <p className={styles.personalcontent}> 
-              {brandStatement} 
+            <div className={styles.personalcontent}> 
+              <a>{brandStatement} </a>
               <button className={styles.edit} onClick={handleBrandClick}>✏️</button>
-            </p>
+            </div>
           }
         </div>
       <NavLink to="/auth/change-password">
