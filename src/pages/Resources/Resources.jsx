@@ -59,7 +59,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
     setDisplayedResources([newResource, ...resources])
     setResources([newResource, ...resources])
     setAddResource(false)
-    setSearch('')
+    resetFilters()
   }
 
   const handleUpdateResource = async (updatedResourceFormData) => {
@@ -67,13 +67,21 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
     setDisplayedResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
     setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
     setEditedResource(null)
-    setSearch('')
+    resetFilters()
   }
 
   const handleDeleteResource = async (resource) => {
     const deletedResource = await resourceService.deleteResource(resource._id)
     setDisplayedResources(resources.filter(r => r._id !== deletedResource._id))
     setResources(resources.filter(r => r._id !== deletedResource._id))
+    resetFilters()
+  }
+
+  const resetFilters = () => {
+    setNameSort(false)
+    setRatingSort(false)
+    setDateSort(true)
+    setCategoryFilter('')
     setSearch('')
   }
 
