@@ -13,7 +13,7 @@ import ResourceForm from "../../components/ResourceForm/ResourceForm"
 import Reviews from "../../components/Reviews/Reviews"
 
 
-const Resources = ({user, profile, setProfile, handleAddStarredResource }) => {
+const Resources = ({user, profile, setProfile, handleAddStarredResource, handleRemoveStarredResource }) => {
   const [resources, setResources] = useState(null)
   const [displayedResources, setDisplayedResources] = useState([])
   const [selectedResource, setSelectedResource] = useState(null)
@@ -28,7 +28,6 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource }) => {
   useEffect(() => {
     const fetchResources = async () => {
       const data = await resourceService.index()
-      console.log(data)
       const sortedByDateData = data.sort((a, b) => 
         new Date(b.updatedAt) - new Date(a.updatedAt)
       )
@@ -246,6 +245,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource }) => {
                 setProfile={setProfile}
                 handleAddStarredResource={handleAddStarredResource}
                 user={user}
+                handleRemoveStarredResource={handleRemoveStarredResource}
             />   
           ))}
 
