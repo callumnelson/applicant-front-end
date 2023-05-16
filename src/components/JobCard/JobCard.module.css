@@ -2,7 +2,44 @@
   display: flex;
   width: 100%;
   align-items: center;
-  height: 100px;
+  height: 75px;
+  background-color: var(--card-background);
+  margin-bottom: 2px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.job div > p {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.dream-job {
+  background-color: darkgreen;
+  color: white;
+}
+
+.great-option {
+  background-color: lightgreen;
+}
+
+.totally-fine {
+  background-color: rgb(230, 240, 122);
+}
+
+.will-pay-bills {
+  background-color: rgb(238, 204, 119);
+}
+
+.job span {
+  width: 30px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dropdown {
@@ -11,37 +48,101 @@
 
 .job div {
   display: flex;
-  width: calc(100%/6);
+  width: calc(100%/7);
   justify-content: start;
 }
 
 .selected {
-  background-color: yellow;
+  background-color: rgb(208, 242, 255);
+  box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+  z-index: 2;
+  -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+  -webkit-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+  transition: all 0.5s ease-in-out;
 }
 
 .details {
   display: flex;
-  flex-direction: column;
   align-items: start;
-  margin-left: 20px;
+  justify-content: space-between;
+  padding-left: 30px;
+  margin-bottom: 2px;
+  margin-top: -2px;
+  background-color: white;
+  height: 0;
+  opacity: 0.5;
+  transition: all 0.5s ease-in-out;
+}
+
+.details * {
+  display: none;
+}
+
+.show {
+  display: flex;
+  height: 150px;
+  opacity: 1;
+  padding-top: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.show * {
+  display: block;
+}
+
+.details > div:first-child {
+  width: 30%;
+  display: flex;
+}
+
+.details > div:nth-child(2) {
+  width: 70%;
+}
+
+.contact {
+  width: 100%;
+}
+
+.contact img {
+  height: 50px;
+  margin-right: 20px;
+}
+
+.contact header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: start;
+}
+
+.contact h3 {
+  margin: 0;
+}
+
+.contact p {
+  padding-left: 20px;
 }
 
 .notebuttons {
   display: flex;
+  flex-direction: column;
   margin-left: 20px;
-  gap: 10px;
+  flex-wrap: wrap;
+  height: 100%;
 }
 
-.notebuttons button {
-  padding: 10px;
-  border-radius: 20px;
+.notebuttons > div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto 20px;
 }
 
-.notebuttons button:hover {
-  cursor: pointer;
+.notebuttons h3 {
+  margin: 0;
+  line-height: 50px;
 }
 
 .edit:hover, .delete:hover {
   cursor: pointer;
 }
-

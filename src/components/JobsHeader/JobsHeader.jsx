@@ -8,9 +8,9 @@ const JobsHeader = ({headers, sort, handleUpdateSort, handleUpdateFilter}) => {
   }
   
   return (
-    <header>
+    <header className={styles.container}>
       {headers.map(header => (
-        <div key={header.col} className={styles[header]}>
+        <div key={header.col}>
           {['createdAt', 'title', 'company', 'salary'].includes(header.schemaName) ?
             <h4 
               id={header.schemaName}

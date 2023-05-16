@@ -128,7 +128,6 @@ const Jobs = ({profile, setProfile}) => {
   }
 
   const sortJobs = (a, b, sortCol, sortOrder) => {
-    console.log(sortCol, sortOrder)
     if (sortCol === 'salary'){
       return sortOrder > 0 ? 
         a[sortCol] - b[sortCol]
@@ -157,6 +156,7 @@ const Jobs = ({profile, setProfile}) => {
           <h1>Jobs</h1>
           <div>
             <input
+              className={styles.search}
               type="text"
               value={search}
               name="search"

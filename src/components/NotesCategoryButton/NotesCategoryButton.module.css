@@ -1,5 +1,19 @@
+.container {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px 5px;
+  height: 40px;
+  width: 100px;
+  margin: 0 5px;
+}
+
+.container:hover {
+  cursor: pointer;
+  border: 2px solid var(--primary);
+  transition: border 0.5s;
+}
 
 .selectednote {
-  background-color: darkblue;
+  background-color: var(--background);
   color: white;
 }
