@@ -5,7 +5,7 @@ const NoteCard = ({note, handleDeleteNote, selectedJob}) => {
   return (
     <div className={styles.container}>
       <header>
-        <h4>{note.title}</h4>
+        <h2>{note.title}</h2>
         <p
           onClick={() => handleDeleteNote(selectedJob, note)}
         >🗑️</p>
