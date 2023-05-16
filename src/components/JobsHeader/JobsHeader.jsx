@@ -18,7 +18,7 @@ const JobsHeader = ({headers, sort, handleUpdateSort, handleUpdateFilter}) => {
             >
               {header.col} {sort.schemaName === header.schemaName ? 
                 sort.order > 0 ? 
-                  '⌃' : '⌄'
+                  '↓' : '↑'
                 : ''}
             </h4>
           : ['status', 'priority'].includes(header.schemaName) ?
