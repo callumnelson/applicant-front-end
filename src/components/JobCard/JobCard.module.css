@@ -62,16 +62,17 @@
 
 .details {
   display: none;
-  flex-direction: column;
   align-items: start;
+  justify-content: space-between;
   padding-left: 30px;
+  padding-top: 10px;
   margin-bottom: 2px;
   margin-top: -2px;
   background-color: rgb(244, 244, 244);
   position: relative;
   top: -150px;
   height: 150px;
-  transition-duration: 4s;
+  transition-duration: .5s;
   transition-property: transform;
 }
 
@@ -80,9 +81,27 @@
   transform: translate(0, 100%);
 }
 
+.details > div:first-child {
+  width: 40%;
+}
+
+.details > div:nth-child(2) {
+  width: 60%;
+}
+
+
 .notebuttons {
   display: flex;
+  flex-direction: column;
   margin-left: 20px;
+  flex-wrap: wrap;
+}
+
+.notebuttons > div {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 20px;
 }
 
 .edit:hover, .delete:hover {

@@ -78,28 +78,36 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
       </div>
       <div className={`${styles.details} ${selected ? styles.show : ''}`}>
         <div>
-          <div className={styles.contactName}>
-            <p>{job.contactName}</p>
+          <div>
+            <h3>Contact Info</h3>
+            <div className={styles.contactName}>
+              <p>Name: {job.contactName}</p>
+            </div>
+            <div className={styles.contactEmail}>
+              <p>Email: {job.contactEmail}</p>
+            </div>
           </div>
-          <div className={styles.contactEmail}>
-            <p>{job.contactEmail}</p>
-          </div>
-          <div className={styles.resume}>
-            <p>{job.resume}</p>
-          </div>
-          <div className={styles.coverLetter}>
-            <p>{job.coverLetter}</p>
+          <div>
+            <div className={styles.resume}>
+              <p>{job.resume}</p>
+            </div>
+            <div className={styles.coverLetter}>
+              <p>{job.coverLetter}</p>
+            </div>
           </div>
         </div>
         <div className={styles.notebuttons}>
-          {notesCategories.map(category => (
-            <NotesCategoryButton 
-              key={category}
-              notesCategory={notesCategory}
-              category={category}
-              handleNoteCategoryChange={handleNoteCategoryChange}
-            />
-          ))}
+          <h3>Notes</h3>
+          <div>
+            {notesCategories.map(category => (
+              <NotesCategoryButton 
+                key={category}
+                notesCategory={notesCategory}
+                category={category}
+                handleNoteCategoryChange={handleNoteCategoryChange}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
