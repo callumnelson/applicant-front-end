@@ -61,24 +61,24 @@
 }
 
 .details {
-  display: none;
+  display: flex;
   align-items: start;
   justify-content: space-between;
   padding-left: 30px;
-  padding-top: 10px;
   margin-bottom: 2px;
   margin-top: -2px;
   background-color: rgb(244, 244, 244);
-  position: relative;
-  top: -150px;
-  height: 150px;
-  transition-duration: .5s;
-  transition-property: transform;
+  height: 0;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
 }
 
 .show {
+  height: 150px;
+  opacity: 1;
+  padding-top: 10px;
+  transition: all 0.5s ease-in-out;
   display: flex;
-  transform: translate(0, 100%);
 }
 
 .details > div:first-child {

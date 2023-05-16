@@ -7,6 +7,12 @@
   min-width: 100px;
 }
 
+.container:hover {
+  cursor: pointer;
+  border: 2px solid var(--primary);
+  transition: border 0.5s;
+}
+
 .selectednote {
   background-color: var(--background);
   color: white;
