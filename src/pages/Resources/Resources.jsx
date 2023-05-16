@@ -13,7 +13,7 @@ import ResourceForm from "../../components/ResourceForm/ResourceForm"
 import Reviews from "../../components/Reviews/Reviews"
 
 
-const Resources = ({user, }) => {
+const Resources = ({user, profile, setProfile, handleAddStarredResource }) => {
   const [resources, setResources] = useState(null)
   const [displayedResources, setDisplayedResources] = useState([])
   const [selectedResource, setSelectedResource] = useState(null)
@@ -149,6 +149,10 @@ const Resources = ({user, }) => {
                 setSelectedResource={setSelectedResource}
                 setEditedResource={setEditedResource}
                 handleDeleteResource={handleDeleteResource}
+                profile={profile}
+                setProfile={setProfile}
+                handleAddStarredResource={handleAddStarredResource}
+                user={user}
             />   
           ))}
 

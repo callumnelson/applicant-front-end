@@ -52,6 +52,12 @@ function App() {
 
   }
 
+  const handleAddStarredResource = async (user, resource) => {
+    const updatedProfile = await profileService.addStarredResource(user, resource)
+    setProfile(updatedProfile)
+  }
+  
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
@@ -94,6 +100,7 @@ function App() {
                 user={user}
                 profile={profile}
                 setProfile={setProfile}
+                handleAddStarredResource={handleAddStarredResource}
               />
             </ProtectedRoute>
           }
