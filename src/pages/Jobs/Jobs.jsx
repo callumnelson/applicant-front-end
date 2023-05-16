@@ -17,8 +17,8 @@ import Notes from "../../components/Notes/Notes"
 import JobsHeader from "../../components/JobsHeader/JobsHeader"
 
 const Jobs = ({profile, setProfile}) => {
-  const [displayedJobs, setDisplayedJobs] = useState([])
-  const [allJobs, setAllJobs] = useState([])
+  const [displayedJobs, setDisplayedJobs] = useState(null)
+  const [allJobs, setAllJobs] = useState(null)
   const [selectedJob, setSelectedJob] = useState(null)
   const [search, setSearch] = useState("")
   const [sort, setSort] = useState({schemaName: "createdAt", order: 1})
@@ -150,7 +150,7 @@ const Jobs = ({profile, setProfile}) => {
     }
   }
   
-  if (!allJobs.length) return <Loading />
+  if (!allJobs) return <Loading />
 
   return ( 
     <main className={styles.container}>

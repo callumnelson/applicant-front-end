@@ -7,6 +7,9 @@ import logo from '../../assets/branding/logo.svg'
 // css
 import styles from './NavBar.module.css'
 
+// pages
+import Loading from '../../pages/Loading/Loading'
+
 const NavBar = ({ user, profile, handleLogout }) => {
 
   const publicLinks = (
@@ -19,7 +22,7 @@ const NavBar = ({ user, profile, handleLogout }) => {
   const protectedLinks = (
     <ul>
       {
-        profile.role > 200 ?
+        user && profile && profile.role > 200 ?
         <li>
           <NavLink to="/admin">ADMIN</NavLink>
         </li>
