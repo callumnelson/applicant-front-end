@@ -75,11 +75,44 @@ async function createBrandStatement(user, brandFormData) {
   }
 }
 
+async function addStarredResource (user, resource) {
+  try {
+    const res = await fetch(`${BASE_URL}/${user.profile}/starred`, {
+      method: 'POST',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(resource),
+    })
+    return res.json()
+  }
+  catch (err) {
+    throw new Error(err)
+  }
+}
+
+const removeStarredResource = async (user, resource) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${user.profile}/reviews/${resource._id}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+    })
+    return res.json()
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 
 export { 
   getAllProfiles, 
   addPhoto,
   getProfile,
   createResume,
-  createBrandStatement
+  createBrandStatement,
+  addStarredResource,
+  removeStarredResource,
 }
