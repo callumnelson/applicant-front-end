@@ -58,6 +58,7 @@
   z-index: 2;
   -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
   -webkit-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+  transition: all 0.5s ease-in-out;
 }
 
 .details {
@@ -69,26 +70,34 @@
   margin-top: -2px;
   background-color: rgb(244, 244, 244);
   height: 0;
-  opacity: 0;
+  opacity: 0.5;
   transition: all 0.5s ease-in-out;
 }
 
+.details * {
+  display: none;
+}
+
 .show {
+  display: flex;
   height: 150px;
   opacity: 1;
   padding-top: 10px;
   transition: all 0.5s ease-in-out;
-  display: flex;
+}
+
+.show * {
+  display: block;
 }
 
 .details > div:first-child {
-  width: 40%;
+  width: 30%;
+  display: flex;
 }
 
 .details > div:nth-child(2) {
-  width: 60%;
+  width: 70%;
 }
-
 
 .notebuttons {
   display: flex;
