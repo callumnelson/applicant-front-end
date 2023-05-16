@@ -7,6 +7,9 @@ import * as jobsService from '../../services/jobsService'
 // styles
 import styles from './Jobs.module.css'
 
+// pages
+import Loading from "../Loading/Loading"
+
 // components
 import JobCard from "../../components/JobCard/JobCard"
 import JobForm from "../../components/JobForm/JobForm"
@@ -147,7 +150,7 @@ const Jobs = ({profile, setProfile}) => {
     }
   }
   
-  if (!allJobs) return <h1>Loading...</h1>
+  if (!allJobs.length) return <Loading />
 
   return ( 
     <main className={styles.container}>
