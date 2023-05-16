@@ -6,31 +6,40 @@ import NewNote from '../NewNote/NewNote'
 import styles from './Notes.module.css'
 
 const Notes = ({selectedJob, notesCategory, handleAddNote, handleDeleteNote}) => {
-  
-  if (!selectedJob) return <p>Select a job to see your notes</p>
 
-  const notesToDisplay = selectedJob.notes.filter(n => n.category === notesCategory)
+  const notesToDisplay = selectedJob ? selectedJob.notes.filter(n => n.category === notesCategory) : []
 
   return (
-    <>
-      <h2>{notesCategory} Notes ({notesToDisplay.length})</h2>
-      <NewNote 
+    <div className={styles.container}>
+      {
+        !selectedJob ?
+        <nav>
+          <h1>Notes</h1>
+        </nav>
+        :
+      <>
+        <nav>
+          <h1>{notesCategory} Notes ({notesToDisplay.length})</h1>
+        </nav>
+        <NewNote 
         selectedJob={selectedJob}
         handleAddNote={handleAddNote}
         notesCategory={notesCategory}
-      />
-      <div className={styles.container}>
-        {notesToDisplay.map(note => (
-          <NoteCard 
+        />
+        <div>
+          {notesToDisplay.map(note => (
+            <NoteCard 
             key={note._id}
             note={note}
             handleDeleteNote={handleDeleteNote}
             selectedJob={selectedJob}
-          > 
-          </NoteCard>
-        ))}
-      </div>
-    </>
+            > 
+            </NoteCard>
+          ))}
+        </div>
+      </> 
+      }
+    </div>
   )
 }
  
