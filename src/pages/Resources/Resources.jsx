@@ -70,11 +70,10 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
     resetFilters()
   }
 
-  const handleDeleteResource = async (resource) => {
+  const handleDeleteResource = async (resource, resourcesDisplayed = displayedResources) => {
     const deletedResource = await resourceService.deleteResource(resource._id)
-    setDisplayedResources(resources.filter(r => r._id !== deletedResource._id))
+    setDisplayedResources(resourcesDisplayed.filter(r => r._id !== deletedResource._id))
     setResources(resources.filter(r => r._id !== deletedResource._id))
-    resetFilters()
   }
 
   const resetFilters = () => {
