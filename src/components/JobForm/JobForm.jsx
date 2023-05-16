@@ -183,7 +183,9 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
               <button onClick={handleCancel}>X</button>
             </div>
             <div>
-              <button type="submit">➕</button>
+              <button type="submit">
+                {editedJob ? '✔️' : '➕'}
+              </button>
             </div>
           </div>
         </div>
