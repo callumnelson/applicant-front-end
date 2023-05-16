@@ -20,12 +20,20 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource }) => {
   const [search, setSearch] = useState('')
   const [addResource, setAddResource] = useState(false)
   const [editedResource, setEditedResource] = useState(null)
+  const [catergoryFilter, setCategoryFilter] = useState('')
+  const [nameSort, setNameSort] = useState(false)
+  const [ratingSort, setRatingSort] = useState(false)
+  const [dateSort, setDateSort] = useState(true)
 
   useEffect(() => {
     const fetchResources = async () => {
       const data = await resourceService.index()
-      setResources(data)
-      setDisplayedResources(data)
+      console.log(data)
+      const sortedByDateData = data.sort((a, b) => 
+        new Date(b.updatedAt) - new Date(a.updatedAt)
+      )
+      setResources(sortedByDateData)
+      setDisplayedResources(sortedByDateData)
     }
     fetchResources()
   }, [])
@@ -33,8 +41,13 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource }) => {
   const handleSearchChange = (e) => {
     setSelectedResource(null)
     setSearch(e.target.value)
-    const filteredResources = resources.filter(resource => resource.name.toLowerCase().includes(e.target.value.toLowerCase()))
-    setDisplayedResources(filteredResources)
+    const searchFilteredResources = resources.filter(resource => resource.name.toLowerCase().includes(e.target.value.toLowerCase()))
+    if (catergoryFilter === '') {
+      setDisplayedResources(searchFilteredResources)
+    } else {
+      const categoryFilteredResources = searchFilteredResources.filter(resource => resource.category === catergoryFilter)
+      setDisplayedResources(categoryFilteredResources)
+    }
   }
 
   const handleClickAddResource = () => {
@@ -86,6 +99,66 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource }) => {
     setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
   }
 
+  const handleCategoryFilterChange = (e) => {
+    setNameSort(false)
+    setRatingSort(false)
+    setDateSort(true)
+    setCategoryFilter(e.target.value)
+    if (e.target.value === '') {
+      const searchFilteredResources = resources.filter(resource => resource.name.toLowerCase().includes(search.toLowerCase()))
+      setDisplayedResources(searchFilteredResources)
+    } else {
+      const categoryFilteredResources = resources.filter(resource => resource.category === e.target.value)
+      const searchFilteredResources = categoryFilteredResources.filter(resource => resource.name.toLowerCase().includes(search.toLowerCase()))
+      setDisplayedResources(searchFilteredResources)
+    }
+  }
+
+  const handleSortByName = () => {
+    setNameSort(!nameSort)
+    if (nameSort) {
+      const sortedResources = [...displayedResources].sort((a, b) => 
+        a.name.toLowerCase() > b.name.toLowerCase() ? 1 : -1
+      )
+      setDisplayedResources(sortedResources)
+    } else {
+      const sortedResources = [...displayedResources].sort((a, b) => 
+        a.name.toLowerCase() < b.name.toLowerCase() ? 1 : -1
+      )
+      setDisplayedResources(sortedResources)
+    }
+  }
+
+  const handleSortByRating = () => {
+    setRatingSort(!ratingSort)
+    if (ratingSort) {
+      const sortedResources = [...displayedResources].sort((a, b) => 
+        a.averageRating < b.averageRating ? 1 : -1
+      )
+      setDisplayedResources(sortedResources)
+    } else {
+      const sortedResources = [...displayedResources].sort((a, b) => 
+        a.averageRating > b.averageRating ? 1 : -1
+      )
+      setDisplayedResources(sortedResources)
+    }
+  }
+
+  const handleSortByDate = () => {
+    setDateSort(!dateSort)
+    if (dateSort) {
+      const sortedResources = [...displayedResources].sort((a, b) => 
+        new Date(a.updatedAt) < new Date(b.updatedAt) ? 1 : -1
+      )
+      setDisplayedResources(sortedResources)
+    } else {
+      const sortedResources = [...displayedResources].sort((a, b) => 
+        new Date(a.updatedAt) > new Date(b.updatedAt) ? 1 : -1
+      )
+      setDisplayedResources(sortedResources)
+    }
+  }
+
 
   if (!displayedResources) return <h1>Loading...</h1>
 
@@ -112,14 +185,34 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource }) => {
 
         <div className={styles.table}>
           <header>
+            <div className="updated-at">
+              <h4
+                onClick={() => handleSortByDate()}
+              >Last Updated</h4>
+            </div>
             <div className={styles.name}>
-              <h4>Name</h4>
+              <h4
+                onClick={() => handleSortByName()}
+              >Name</h4>
             </div>
             <div className={styles.category}>
-              <h4>Category</h4>
+              <select 
+                value={catergoryFilter}
+                onChange={handleCategoryFilterChange}
+              >
+                <option value="">All</option>
+                <option value="Networking">Networking</option>
+                <option value="Interviewing">Interviewing</option>
+                <option value="Job Search">Job Search</option>
+                <option value="Resumes">Resumes</option>
+                <option value="Other">Other</option>
+              </select>
             </div>
             <div className={styles.rating}>
-              <h4>Average Rating</h4>
+              <h4
+                value='rating'
+                onClick={() => handleSortByRating()}
+              >Average Rating</h4>
             </div>
             <div className={styles.link}>
               <h4>Link</h4>
