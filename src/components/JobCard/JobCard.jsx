@@ -1,3 +1,6 @@
+// npm modules
+import { Link } from 'react-router-dom'
+
 // components
 import NotesCategoryButton from '../NotesCategoryButton/NotesCategoryButton'
 
@@ -19,6 +22,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
 
   const handleChangeEditedJob = () => {
     setEditedJob(job)
+    if (job._id !== selectedJob._id) setSelectedJob(null)
   }
 
   const handleNoteCategoryChange = (e) => {
@@ -61,7 +65,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           <p className={styles[job.priority.toLowerCase().replaceAll(' ','-')]}>{job.priority}</p>
         </div>
         <div className={styles.jobListing}>
-          <p>{job.jobListing}</p>
+          <p><Link to={job.jobListing}>Posting</Link></p>
         </div>
         <span>
           <p className={styles.edit}
@@ -97,10 +101,20 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
               <h3>📄 Documents</h3>
             </header>
             <div className={styles.resume}>
-              <p>Resume: {job.resume}</p>
+              <p>Resume:
+                {
+                  job.resume &&
+                  <Link to={job.resume}>📄</Link>
+                } 
+              </p>
             </div>
             <div className={styles.coverLetter}>
-              <p>Cover Letter: {job.coverLetter}</p>
+              <p>Cover Letter: 
+                {    
+                  job.coverLetter &&
+                  <Link to={job.coverLetter}>📄</Link>
+                } 
+              </p>
             </div>
           </div>
         </div>
