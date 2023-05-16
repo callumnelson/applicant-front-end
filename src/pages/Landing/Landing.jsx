@@ -6,7 +6,7 @@ import { useState } from 'react'
 import * as profileService from '../../services/profileService'
 
 //components
-import ResourceCard from '../../components/ResourceCard/ResourceCard'
+// import ResourceCard from '../../components/ResourceCard/ResourceCard'
 import ResumeForm from '../../components/ResumeForm/ResumeForm'
 import BrandForm from '../../components/BrandForm/BrandForm'
 import ProfileJobCard from '../../components/ProfileJobCard/ProfileJobCard'
@@ -61,34 +61,36 @@ const Landing = ({ user, profile, setProfile }) => {
           <h1>{profile.name}</h1>
         </div>
         <div className={styles.resume}>
-          <h2>My Resume</h2>
+          <h2>My Resume:</h2>
           {(!resume) || displayResumeForm ? 
             <ResumeForm
               handleAddResume={handleAddResume}
             /> 
           : 
-            <p className={styles.personalcontent}>
-              {resume} 
+            <div className={styles.personalcontent}>
+              <a href={resume.toString()}>fuck</a>
               <button className={styles.edit} onClick={handleResumeClick}>✏️</button>
-            </p>
+            </div>
           }
         </div>
         <div className={styles.brand}>
-          <h2>My Branding Statement</h2>
+          <h2>My Brand Statement:</h2>
           {(!brandStatement) || displayBrandForm ? 
             <BrandForm
               handleAddBrand={handleAddBrand}
             />
           : 
             <div className={styles.personalcontent}> 
-              <a>{brandStatement} </a>
+              <a href={brandStatement.toString()}>this is worse than i thought</a>
               <button className={styles.edit} onClick={handleBrandClick}>✏️</button>
             </div>
           }
         </div>
-      <NavLink to="/auth/change-password">
-        Change Password
-      </NavLink>
+      <div className={styles.password}> 
+        <NavLink to="/auth/change-password">
+          Change Password
+        </NavLink>
+      </div>
       </section>
       <section className={styles.right}>
         <div className={styles.resources}>

@@ -7,51 +7,73 @@
 
 
 .profile {
-  width: 30vw;
+  width: 27vw;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   background-color: rgba(42, 54, 62, 0.429);
 }
 
 .info {
-  margin: 2vmin;
+  margin-top: 5vmin;
 }
 
 .info > img {
-  height: 17vw;
-  width: 17vw;
+  height: 13vw;
+  width: 13vw;
   object-fit: cover;
   border-radius: 50%;
 }
 
 .info > h1 {
-  margin-top: 2vmin;
-  margin-bottom: 0;
+  margin-top: 1vmin;
+  margin-bottom: 4vmin;
   letter-spacing: .05em;
 }
 
-.personalcontent{
+.resume, .brand {
+  background-color: rgba(217, 238, 241, 0.671);
+  height: 20vh;
+  width: 65%;
+  padding: 2vmin;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+}
+
+.profile > div > h2 {
   font-size: 20px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  margin-top: 0;
+}
+
+.personalcontent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 70%;
 }
 
 .edit {
   width: 2vw;
   height: 2vw;
   padding: 0;
-  background-color: beige;
+  background-color: white;
+  margin-left: auto;
+}
+
+.password {
+  margin-bottom: 1vh;
 }
 
 .right {
   height: 100%;
-  width: 70vw;
+  width: 73vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -59,7 +81,7 @@
 }
 
 .right > div {
-  width: 60vw;
+  width: 65vw;
   height: 37vh;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.472);
@@ -99,5 +121,3 @@
 .list {
   height: 25vh;
 }
-
-
