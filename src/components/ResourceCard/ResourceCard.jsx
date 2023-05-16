@@ -2,7 +2,7 @@
 //css
 import styles from './ResourceCard.module.css'
 
-const ResourceCard = ({setSelectedResource, selectedResource, resource, setEditedResource, handleDeleteResource}) => {
+const ResourceCard = ({setSelectedResource, selectedResource, resource, setEditedResource, handleDeleteResource, profile, setProfile, handleAddStarredResource, user}) => {
 
   const selected = selectedResource && selectedResource._id === resource._id 
 
@@ -18,6 +18,12 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
   const handleChangeToEditResource = () => {
     setEditedResource(resource)
     setSelectedResource(null)
+  }
+
+  const handleAddStarredResourceClick = () => {
+    console.log('hello')
+    handleAddStarredResource(user, resource)
+    setProfile({...profile, starredResources: [...profile.starredResources, resource]})
   }
 
   return (  
@@ -50,6 +56,9 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           <span
             onClick={() => handleDeleteResource(resource)}
           >🗑️</span>
+          <span
+            onClick={() => handleAddStarredResourceClick()}
+          >⭐</span>
       </div>
       {selected && 
         <div className={styles.details}>
