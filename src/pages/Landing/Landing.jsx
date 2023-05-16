@@ -6,7 +6,6 @@ import { useState } from 'react'
 import * as profileService from '../../services/profileService'
 
 //components
-import JobCard from '../../components/JobCard/JobCard'
 import ResourceCard from '../../components/ResourceCard/ResourceCard'
 import ResumeForm from '../../components/ResumeForm/ResumeForm'
 import BrandForm from '../../components/BrandForm/BrandForm'
@@ -20,7 +19,6 @@ import profileIcon from '../../assets/icons/profile.png'
 import styles from './Landing.module.css'
 
 const Landing = ({ user, profile, setProfile }) => {
-  const [selectedJob, setSelectedJob] = useState(null)
   // const [selectedResource, setSelectedResource] = useState(null)
   const [displayResumeForm, setDisplayResumeForm] = useState(false)
   const [displayBrandForm, setDisplayBrandForm] = useState(false)
@@ -130,7 +128,7 @@ const Landing = ({ user, profile, setProfile }) => {
           <div className={styles.table}>
             <header className={styles.jobsheader}>
               <div className={styles.title}>
-                <h4>Date Created</h4>
+                <h4>Date Added</h4>
               </div>
               <div className={styles.title}>
                 <h4>Title</h4>

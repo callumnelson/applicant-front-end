@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   align-items: center;
-  height: 75px;
+  height: 7vh;
   background-color: var(--card-background);
   margin-bottom: 2px;
   border-radius: 5px;
@@ -16,10 +16,11 @@
 }
 
 .job div > p {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
   padding: 5px 10px;
   border-radius: 20px;
+  letter-spacing: .05em;
 }
 
 .dream-job {

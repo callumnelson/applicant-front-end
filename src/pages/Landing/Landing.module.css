@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-  height: 92vh;
+  height: 100%;
 }
 
 
@@ -51,8 +51,8 @@
 }
 
 .tabletitle {
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 600;
   letter-spacing: .05em;
 }
 
@@ -76,7 +76,7 @@
 .title > h4 {
   padding: 0;
   margin: 0;
-  font-size: 18px;
+  font-size: 16px;
   letter-spacing: .07em;
 }
 
