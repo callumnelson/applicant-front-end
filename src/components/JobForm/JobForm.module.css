@@ -1,7 +1,6 @@
 .container {
   background-color: var(--card-background);
   border-radius: 5px;
-  padding: 5px;
   margin-bottom: 2px;
   box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
   -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
@@ -20,15 +19,17 @@
   width: 100%;
   padding-left: 30px;
   padding-right: 60px;
+  border-radius: 5px;
+  background-color: rgb(208, 242, 255);
 }
 
-.row > div, .detailsCard > div {
+.row > div {
   width: calc(100% / 7);
 }
 
 .row > div input, .row > div select {
   width: 90%;
-  height: 75%;
+  height: 60%;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid var(--primary);
@@ -37,23 +38,62 @@
 .detailsCard {
   display: flex;
   align-items: center;
-  height: 75px;
+  height: 150px;
   width: 100%;
   padding-left: 30px;
   padding-right: 60px;
 }
 
-.detailsCard > div input, .detailsCard > div select {
-  width: 90%;
-  height: 75%;
+.contact, .documents {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+  width: 30%;
+  padding: 0 10px;
+}
+
+.contact img {
+  height: 50px;
+  margin-right: 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: end;
+  width: 40%;
+}
+
+.contact header, .documents header, .buttons header {
+  height: 50px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: start;
+}
+
+.contact h3, .documents h3, .contact p, .documents p {
+  margin: 0;
+}
+
+.contact p, .documents p {
+  font-size: 14px;
+}
+
+.contact input, .documents input {
+  margin-left: 20px;
+  height: 30px;
+  width: 50%;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid var(--primary);
 }
 
-.detailsCard > div:nth-last-child(1), .detailsCard > div:nth-last-child(2) {
+.contact div, .documents div {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .detailsCard > div button {
@@ -62,26 +102,26 @@
   width: 50px;
   height: 50px;
   padding: 0;
-  margin: 0;
+  margin: 0 20px;
   cursor: pointer;
 }
 
-.detailsCard > div:nth-last-child(1) button {
-  border: 2px solid lightgreen;
-}
-
-.detailsCard > div:nth-last-child(2) button {
+.buttons div:first-child button {
   border: 2px solid lightcoral;
 }
 
-.detailsCard > div:nth-last-child(1) button:hover {
-  background-color:  lightgreen;
-  border: 2px solid lightgray;
-  transition: all .25s ease-in-out;
+.buttons div:last-child button {
+  border: 2px solid lightgreen;
 }
 
-.detailsCard > div:nth-last-child(2) button:hover {
-  background-color:  lightcoral;
+.buttons div:first-child button:hover {
   border: 2px solid lightgray;
-  transition: all .25s ease-in-out;
+  background-color: lightcoral;
+  transition: all 0.25s ease-in-out;
+}
+
+.buttons div:last-child button:hover {
+  border: 2px solid lightgray;
+  background-color: lightgreen;
+  transition: all 0.25s ease-in-out;
 }

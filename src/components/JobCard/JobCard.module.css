@@ -79,6 +79,10 @@
   display: none;
 }
 
+.details > div {
+  display: flex;
+}
+
 .show {
   display: flex;
   height: 150px;
@@ -92,16 +96,16 @@
 }
 
 .details > div:first-child {
-  width: 30%;
+  width: 60%;
   display: flex;
 }
 
 .details > div:nth-child(2) {
-  width: 70%;
+  width: 40%;
 }
 
-.contact {
-  width: 100%;
+.contact, .documents {
+  width: 50%;
 }
 
 .contact img {
@@ -109,18 +113,19 @@
   margin-right: 20px;
 }
 
-.contact header {
+.contact header, .documents header, .notebuttons header {
+  height: 50px;
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: start;
 }
 
-.contact h3 {
+.contact h3, .documents h3 {
   margin: 0;
 }
 
-.contact p {
+.contact p, .documents p {
   padding-left: 20px;
 }
 

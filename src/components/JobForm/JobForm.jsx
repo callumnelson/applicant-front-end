@@ -4,6 +4,9 @@ import { useState } from "react"
 // css
 import styles from './JobForm.module.css'
 
+// assets
+import profileIcon from '../../assets/icons/profile.png'
+
 const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdateJob}) => {
 
   const [formData, setFormData] = useState(
@@ -120,56 +123,68 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
           </div>
         </div>
         <div className={styles.detailsCard}>
-          <div>
-            <p>
-              Job Details
-            </p>
+          <div className={styles.contact}>
+            <header>
+              <img src={profileIcon} alt="Profile Icon" />
+              <h3>Contact Info</h3>
+            </header>
+            <div className={styles.contactName}>
+              <p>Name: </p>
+              <input
+                type="text"
+                name="contactName"
+                id="contactName-input"
+                value={formData.contactName}
+                placeholder="Contact Name"
+                onChange={handleChange}
+              />
+            </div>
+            <div className={styles.contactEmail}>
+              <p>Email: </p>
+              <input
+                type="text"
+                name="contactEmail"
+                id="contactEmail-input"
+                value={formData.contactEmail}
+                placeholder="Contact Email"
+                onChange={handleChange}
+              />
+            </div>
           </div>
-          <div className={styles.contactName}>
-            <input
-              type="text"
-              name="contactName"
-              id="contactName-input"
-              value={formData.contactName}
-              placeholder="Contact Name"
-              onChange={handleChange}
-            />
+          <div className={styles.documents}>
+            <header>
+              <h3>📄 Documents</h3>
+            </header>
+            <div className={styles.jobResume}>
+              <p>Resume: </p>
+              <input
+                type="text"
+                name="jobResume"
+                id="jobResume-input"
+                value={formData.jobResume}
+                placeholder="Resume Link"
+                onChange={handleChange}
+              />
+            </div>
+            <div className={styles.jobCoverLetter}>
+              <p>Cover Letter: </p>
+              <input
+                type="text"
+                name="jobCoverLetter"
+                id="jobCoverLetter-input"
+                value={formData.jobCoverLetter}
+                placeholder="Cover Letter Link"
+                onChange={handleChange}
+              />
+            </div>
           </div>
-          <div className={styles.contactEmail}>
-            <input
-              type="text"
-              name="contactEmail"
-              id="contactEmail-input"
-              value={formData.contactEmail}
-              placeholder="Contact Email"
-              onChange={handleChange}
-            />
-          </div>
-          <div className={styles.jobResume}>
-            <input
-              type="text"
-              name="jobResume"
-              id="jobResume-input"
-              value={formData.jobResume}
-              placeholder="Resume Link"
-              onChange={handleChange}
-            />
-          </div>
-          <div className={styles.jobCoverLetter}>
-            <input
-              type="text"
-              name="jobCoverLetter"
-              id="jobCoverLetter-input"
-              value={formData.jobCoverLetter}
-              placeholder="Cover Letter Link"
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <button onClick={handleCancel}>X</button>
-          </div>
-          <div>
-            <button type="submit">➕</button>
+          <div className={styles.buttons}>
+            <div>
+              <button onClick={handleCancel}>X</button>
+            </div>
+            <div>
+              <button type="submit">➕</button>
+            </div>
           </div>
         </div>
       </form>
