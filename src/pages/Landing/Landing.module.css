@@ -56,6 +56,14 @@
   justify-content: center;
 }
 
+.resume {
+  margin-top: 3vmin;
+}
+
+.brand {
+  margin-bottom: 5.5vmin;
+}
+
 .profile > div > h2 {
   font-size: 20px;
   font-weight: 600;

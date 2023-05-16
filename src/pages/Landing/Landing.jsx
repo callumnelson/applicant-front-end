@@ -1,6 +1,6 @@
 // npm modules
-import { NavLink } from 'react-router-dom'
-import { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 //services
 import * as profileService from '../../services/profileService'
@@ -22,6 +22,15 @@ const Landing = ({ user, profile, setProfile }) => {
   const [displayResumeForm, setDisplayResumeForm] = useState(false)
   const [displayBrandForm, setDisplayBrandForm] = useState(false)
 
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!user) {
+      setProfile(null)
+      navigate('/auth/login')
+    }
+  }, [user])
+
   const handleAddResume = async (resumeFormData) => {
     const updatedProfileResume = await profileService.createResume(user, resumeFormData)
     setProfile(updatedProfileResume)
@@ -42,7 +51,6 @@ const Landing = ({ user, profile, setProfile }) => {
     setDisplayBrandForm(true)
   }
 
-  if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
   console.log(profile)
@@ -74,7 +82,7 @@ const Landing = ({ user, profile, setProfile }) => {
             /> 
           : 
             <div className={styles.personalcontent}>
-              <a href={resume.toString()}>fuck</a>
+              <a href={resume.toString()}>cute resume icon</a>
               <button className={styles.edit} onClick={handleResumeClick}>✏️</button>
             </div>
           }
@@ -87,12 +95,11 @@ const Landing = ({ user, profile, setProfile }) => {
             />
           : 
             <div className={styles.personalcontent}> 
-              <a href={brandStatement.toString()}>this is worse than i thought</a>
+              <a href={brandStatement.toString()}>cute brand statement icon</a>
               <button className={styles.edit} onClick={handleBrandClick}>✏️</button>
             </div>
           }
         </div>
-
       </section>
       <section className={styles.right}>
         <div className={styles.resources}>
