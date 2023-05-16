@@ -5,7 +5,7 @@
   background-color: white;
   padding: 10px;
   border-radius: 5px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .container form div {
@@ -40,4 +40,8 @@
   border-radius: 5px;
   margin: 5px 0px 5px 0px;
   border: 1px solid var(--border);
+}
+
+.container form textarea {
+  min-height: 75px;
 }
