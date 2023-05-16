@@ -38,6 +38,9 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           >
             {selected ? '⬆️' : '⬇️' }</p>
         </span>
+        <div className='updated-at'>
+          <p>{new Date(resource.updatedAt).toLocaleDateString()}</p>
+        </div>
         <div className={styles.name}>
           <p>{resource.name}</p>
         </div>
