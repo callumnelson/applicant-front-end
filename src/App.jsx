@@ -6,11 +6,12 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
 import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
+import Admin from './pages/Admin/Admin'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Jobs from './pages/Jobs/Jobs'
 import Resources from './pages/Resources/Resources'
 import Logout from './pages/Logout/Logout'
+import Loading from './pages/Loading/Loading'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -61,11 +62,10 @@ function App() {
     const updatedProfile = await profileService.removeStarredResource(user, resource)
     setProfile(updatedProfile)
   }
-  
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar user={user} profile={profile} handleLogout={handleLogout} />
       <Routes>
         <Route 
           path="/" 
@@ -78,10 +78,10 @@ function App() {
           } 
         />
         <Route
-          path="/profiles"
+          path="/admin"
           element={
             <ProtectedRoute user={user}>
-              <Profiles />
+              <Admin profile={profile} />
             </ProtectedRoute>
           }
         />
