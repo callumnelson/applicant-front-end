@@ -11,6 +11,7 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Jobs from './pages/Jobs/Jobs'
 import Resources from './pages/Resources/Resources'
 import Logout from './pages/Logout/Logout'
+import Loading from './pages/Loading/Loading'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -62,10 +63,11 @@ function App() {
     setProfile(updatedProfile)
   }
   
+  if (!profile) return <Loading />
 
   return (
     <>
-      <NavBar user={user} handleLogout={handleLogout} />
+      <NavBar user={user} profile={profile} handleLogout={handleLogout} />
       <Routes>
         <Route 
           path="/" 
