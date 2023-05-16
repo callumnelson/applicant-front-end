@@ -1,3 +1,43 @@
 .container {
   display: flex;
+  justify-content: space-between;
+  width: 90%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.container form div {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.container form {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.container form button {
+  background-color: lightgreen;
+  border: 0.5px solid gray;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.container form input, .container form textarea {
+  border: 0.5px solid gray;
+  width: 100%;
+  resize: vertical;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px 0px 5px 0px;
+  border: 1px solid var(--border);
 }

@@ -24,27 +24,31 @@ const NewNote = ({selectedJob, notesCategory, handleAddNote}) => {
   }
 
   return (
-    <form className={styles.container} onSubmit={handleSubmit}>
-      <input
-        required
-        type="text"
-        name="title"
-        id="title-input"
-        value={formData.title}
-        placeholder="Note title"
-        onChange={handleChange}
-      />
-      <textarea
-        required
-        type="text"
-        name="content"
-        id="content-input"
-        value={formData.content}
-        placeholder="Type your note here..."
-        onChange={handleChange}
-      />
-      <button type="submit">✅</button>
-    </form>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input
+            required
+            type="text"
+            name="title"
+            id="title-input"
+            value={formData.title}
+            placeholder="Note title"
+            onChange={handleChange}
+          />
+          <textarea
+            required
+            type="text"
+            name="content"
+            id="content-input"
+            value={formData.content}
+            placeholder="Type your note here..."
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">➕</button>
+      </form>
+    </div>
   )
 }
 
