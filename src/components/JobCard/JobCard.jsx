@@ -23,6 +23,9 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
     setNotesCategory(e.target.value)
   }
 
+  const currOpts = { style: 'currency', currency: 'USD', notation: 'compact'}
+  const currFormat = new Intl.NumberFormat('en-US', currOpts)
+
   return (
     <>
       <div
@@ -47,7 +50,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           <p>{job.company}</p>
         </div>
         <div className={styles.salary}>
-          <p>{job.salary}</p>
+          <p>{currFormat.format(job.salary)}</p>
         </div>
         <div className={styles.status}>
           <p>{job.status}</p>
