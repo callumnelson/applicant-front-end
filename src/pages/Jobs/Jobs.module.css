@@ -43,8 +43,8 @@
   cursor: pointer;
 }
 
-.jobs nav input::selection {
-  height: 400px;
+.jobs nav input:focus, .jobs nav button:hover {
+  border: 2px solid var(--primary)
 }
 
 .jobs:first-child {
