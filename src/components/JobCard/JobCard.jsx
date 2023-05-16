@@ -27,7 +27,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
   const currFormat = new Intl.NumberFormat('en-US', currOpts)
 
   return (
-    <>
+    <div>
       <div
         className={
             `${styles.job} ${selected ? styles.selected : ''}`
@@ -76,21 +76,19 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           </p>
         </span>
       </div>
-      {
-        selected &&
-        <>
-        <div className={styles.details}>
-          <div className={styles.resume}>
-            <p>{job.resume}</p>
-          </div>
-          <div className={styles.coverLetter}>
-            <p>{job.coverLetter}</p>
-          </div>
+      <div className={`${styles.details} ${selected ? styles.show : ''}`}>
+        <div>
           <div className={styles.contactName}>
             <p>{job.contactName}</p>
           </div>
           <div className={styles.contactEmail}>
             <p>{job.contactEmail}</p>
+          </div>
+          <div className={styles.resume}>
+            <p>{job.resume}</p>
+          </div>
+          <div className={styles.coverLetter}>
+            <p>{job.coverLetter}</p>
           </div>
         </div>
         <div className={styles.notebuttons}>
@@ -103,9 +101,8 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
             />
           ))}
         </div>
-        </>
-      }
-    </>
+      </div>
+    </div>
   )
 }
  
