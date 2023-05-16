@@ -26,7 +26,7 @@
   margin: 10px 0;
 }
 
-.container input {
+.resources input {
   border-radius: 5px;
   border: none;
   padding-left: 10px;
@@ -34,7 +34,7 @@
   height: 40px;
 }
 
-.container button {
+.resources button {
   width: 150px;
   height: 40px;
   background-color: var(--background);
@@ -44,36 +44,122 @@
   cursor: pointer;
 }
 
+.resources button:hover {
+  border: 2px solid var(--primary)
+}
+
+.resources input:focus {
+  border: 2px solid var(--primary)
+}
+
 section.resources {
   width: 75%;
   background-color: gray;
   overflow: scroll;
 }
 
-section.notes {
+section.reviews {
   width: 25%;
   background-color: white;
   overflow: scroll;
 }
 
-.table {
-  border: 1px solid black;
+.resources:first-child {
+  width: 75%;
+  height: 100%;
 }
+
+.table {
+  margin: 10px;
+  height: calc(100% - 86px);
+}
+
+.table section {
+  height: calc(100% - 50px);
+  overflow: scroll;
+}
+
+.table h4 {
+  margin: 0;
+}
+
 
 .table header {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
+  background-color: var(--card-background);
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  padding-left: 30px;
+  margin-bottom: 5px;
+  padding-right: 60px;
+  box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+  -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+  -webkit-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
 }
 
-.table > header > div {
-  width: 20%;
+.table > header div {
   display: flex;
-  flex-direction: row;
+  justify-content: start;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  border: 1px solid black;
-  text-align: center;
+  height: 100%;
+  padding-left: px;
+}
+
+.date {
+  width: 10%;
+  padding-right: 2%;
+}
+
+.date:hover {
+  background-color: aliceblue;
+}
+
+.name {
+  width: 25%;
+  margin-right: 2%;
+  padding-left: 1%
+}
+
+.name:hover {
+  background-color: aliceblue;
+}
+
+.category {
+  width: 15%;
+  padding-right: 2%;
+}
+
+.category select {
+  border: 3px solid aliceblue;
+  border-radius: 5px;
+  height: 75%;
+  width: 90%;
+}
+
+.rating {
+  width: 10%;
+  padding-right: 2%;
+  padding-left: 1%;
+}
+
+.rating:hover {
+  background-color: aliceblue;
+}
+
+.link {
+  padding-left: 1%;
+  width: 37%;
+}
+
+.table h4 {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 900;
+  width: 100%;
+  height: 100%;
 }

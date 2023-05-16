@@ -171,11 +171,10 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   return ( 
     <main className={styles.container}>
       <section className={styles.resources}>
-
         <nav>
           <h1>Resources</h1>
           <div>
-            {profile?.role > 100 &&
+            {profile.role > 100 &&
               <button
               onClick={() => handleClickAddResource()}
               >
@@ -190,10 +189,9 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
               placeholder='search' />
           </div>
         </nav>
-
         <div className={styles.table}>
           <header>
-            <div className="updated-at">
+            <div className={styles.date}>
               <h4
                 onClick={() => handleSortByDate()}
               >Last Updated</h4>
@@ -226,41 +224,39 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
               <h4>Link</h4>
             </div>
           </header>
-
           {addResource &&  
             <ResourceForm 
               handleAddResource={handleAddResource} setAddResource={setAddResource}
               setSearch={setSearch}
             />
           }
-
-          {displayedResources.map(resource => (
-
-            editedResource && editedResource._id === resource._id ?
-              <ResourceForm 
-                key={resource._id} 
-                editedResource={editedResource}
-                setEditedResource={setEditedResource}
-                handleUpdateResource={handleUpdateResource}
-              /> : 
-              <ResourceCard 
-                key={resource._id} 
-                resource={resource} 
-                selectedResource={selectedResource} 
-                setSelectedResource={setSelectedResource}
-                setEditedResource={setEditedResource}
-                handleDeleteResource={handleDeleteResource}
-                profile={profile}
-                setProfile={setProfile}
-                handleAddStarredResource={handleAddStarredResource}
-                user={user}
-                handleRemoveStarredResource={handleRemoveStarredResource}
-            />   
-          ))}
-
+          <section>
+            {displayedResources.map(resource => (
+              editedResource && editedResource._id === resource._id ?
+                <ResourceForm 
+                  key={resource._id} 
+                  editedResource={editedResource}
+                  setEditedResource={setEditedResource}
+                  handleUpdateResource={handleUpdateResource}
+                /> : 
+                <ResourceCard 
+                  key={resource._id} 
+                  resource={resource} 
+                  selectedResource={selectedResource} 
+                  setSelectedResource={setSelectedResource}
+                  setEditedResource={setEditedResource}
+                  handleDeleteResource={handleDeleteResource}
+                  profile={profile}
+                  setProfile={setProfile}
+                  handleAddStarredResource={handleAddStarredResource}
+                  user={user}
+                  handleRemoveStarredResource={handleRemoveStarredResource}
+              />   
+            ))}
+          </section>
         </div>
       </section>
-      <section className={styles.notes}>
+      <section className={styles.reviews}>
         <Reviews 
           selectedResource={selectedResource}
           user={user}
