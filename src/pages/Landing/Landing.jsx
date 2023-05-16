@@ -10,6 +10,7 @@ import JobCard from '../../components/JobCard/JobCard'
 import ResourceCard from '../../components/ResourceCard/ResourceCard'
 import ResumeForm from '../../components/ResumeForm/ResumeForm'
 import BrandForm from '../../components/BrandForm/BrandForm'
+import ProfileJobCard from '../../components/ProfileJobCard/ProfileJobCard'
 
 //assets
 import logo from '../../assets/branding/logo.svg'
