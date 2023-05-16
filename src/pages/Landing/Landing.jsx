@@ -109,7 +109,7 @@ const Landing = ({ user, profile, setProfile }) => {
                 <h4>Link</h4>
               </div>
             </header>
-            {/* <div className={styles.list}>
+            <div className={styles.list}>
               {(!profile.starredResources.length) ?
                 <h4>No starred resources</h4> :
                 profile.starredResources.map(resource =>
@@ -121,7 +121,7 @@ const Landing = ({ user, profile, setProfile }) => {
                   />
                 )
               }
-            </div> */}
+            </div>
           </div>
         </div>
         <div className={styles.jobs}>
