@@ -1,6 +1,47 @@
-main.container {
+.container {
   display: flex;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+}
+
+.container nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 10px;
+  background-color: rgb(241, 241, 241, 0.429);
+}
+
+.container nav h1 {
+  margin: 0;
+}
+
+.container nav > div {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  min-width: 20%;
+  margin: 10px 0;
+}
+
+.container input {
+  border-radius: 5px;
+  border: none;
+  padding-left: 10px;
+  width: 200px;
+  height: 40px;
+}
+
+.container button {
+  width: 150px;
+  height: 40px;
+  background-color: var(--background);
+  color: white;
+  font-weight: 600;
+  padding: 5px;
+  cursor: pointer;
 }
 
 section.resources {
@@ -13,25 +54,6 @@ section.notes {
   width: 25%;
   background-color: white;
   overflow: scroll;
-}
-
-.container nav {
-  background-color: blue;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%
-}
-
-.container nav > div {
-  margin-right: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  gap: 10px;
-  width: 20%;
 }
 
 .table {
