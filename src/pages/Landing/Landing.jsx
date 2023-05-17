@@ -23,13 +23,15 @@ const Landing = ({ user, profile, setProfile }) => {
   const [displayBrandForm, setDisplayBrandForm] = useState(false)
 
   const navigate = useNavigate()
-  console.log(profile)
+
   useEffect(() => {
     if (!user) {
       setProfile(null)
       navigate('/auth/login')
+    } else {
+      setProfile(profile)
     }
-  }, [user])
+  }, [user, profile])
 
   const handleAddResume = async (resumeFormData) => {
     const updatedProfileResume = await profileService.createResume(user, resumeFormData)
@@ -39,7 +41,7 @@ const Landing = ({ user, profile, setProfile }) => {
 
   const handleAddBrand = async (brandFormData) => {
     const updatedProfileBrand = await profileService.createBrandStatement(user, brandFormData)
-    // setProfile(updatedProfileBrand)
+    setProfile({...profile, updatedProfileBrand})
     setDisplayBrandForm(false)
   }
 
@@ -156,7 +158,7 @@ const Landing = ({ user, profile, setProfile }) => {
                 <h4>Priority</h4>
               </div>
               <div className={styles.title}>
-                <h4>Listing</h4>
+                <h4>Link</h4>
               </div>
             </header>
             <div className={styles.list}>
