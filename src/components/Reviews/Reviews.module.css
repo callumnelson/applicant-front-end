@@ -10,9 +10,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 39px;
+  line-height: 60px;
   width: 100%;
   background-color: rgb(241, 241, 241, 0.429);
+}
+
+.nav > h1 {
+  margin: 0;
 }
 
 .header {
@@ -20,7 +24,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 18%;
+  /* height: 100%; */
   width: 100%;
 }
 
@@ -31,7 +35,7 @@
   justify-content: flex-start;
   width: 90%;
   overflow: hidden;
-  height: 75%;
+  height: 100%;
 }
 
 .reviews:hover {
