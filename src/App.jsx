@@ -61,8 +61,6 @@ function App() {
 
   const handleRemoveStarredResource = async (resource, user) => {
     const unstarredResource = await resourceService.removeStarredResource(resource, user)
-    console.log(unstarredResource, 'unstarredResource')
-    console.log(profile.starredResources, 'profile.starredResources')
     setProfile({...profile, starredResources: profile.starredResources.filter(r => r._id !== unstarredResource._id)})
   }
 

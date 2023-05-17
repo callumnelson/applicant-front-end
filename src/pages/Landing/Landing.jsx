@@ -32,8 +32,8 @@ const Landing = ({ user, profile, setProfile }) => {
   }, [user])
 
   const handleAddResume = async (resumeFormData) => {
-    const updatedProfileResume = await profileService.createResume(user, resumeFormData)
-    setProfile({...updatedProfileResume})
+    const newResume = await profileService.createResume(user, resumeFormData)
+    setProfile({...profile, ...newResume})
     setDisplayResumeForm(false)
   }
   
@@ -59,7 +59,7 @@ const Landing = ({ user, profile, setProfile }) => {
   const jobsToDisplay = profile.applications.sort((a, b) => (
     new Date(b.updatedAt) - new Date(a.updatedAt)
   )).slice(0, 3)
-
+  
   return (
     <main className={styles.container}>
       <section className={styles.profile}>
@@ -160,7 +160,7 @@ const Landing = ({ user, profile, setProfile }) => {
               </div>
             </header>
             <div className={styles.list}>
-              {/* {(!profile.applications.length) ?
+              {(!profile.applications.length) ?
                 <h4>No jobs</h4> :
                 jobsToDisplay.map(job =>
                   <ProfileJobCard 
@@ -168,7 +168,7 @@ const Landing = ({ user, profile, setProfile }) => {
                     job={job} 
                   />
                 )
-              } */}
+              }
             </div>
           </div>
         </div>
