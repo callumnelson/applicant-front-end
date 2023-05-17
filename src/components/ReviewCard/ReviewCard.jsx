@@ -2,6 +2,8 @@ import { useState } from 'react'
 
 import styles from './ReviewCard.module.css'
 
+import profileIcon from '../../assets/icons/circle-user.png'
+
 const ReviewCard = ({ review }) => {
   const [expanded, setExpanded] = useState(false);
 
@@ -12,7 +14,7 @@ const ReviewCard = ({ review }) => {
   return (  
     <div className={styles.container}>
       <div className={styles.author}>
-        <img src={review.author.photo} alt="Review Author Profile Image" />
+        <img src={review.author.photo ? review.author.photo : profileIcon} alt="Review Author Profile Image" />
         {' '}
         <span className={styles.name}>
           {review.author.name}
