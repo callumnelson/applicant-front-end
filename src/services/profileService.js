@@ -75,37 +75,6 @@ async function createBrandStatement(user, brandFormData) {
   }
 }
 
-async function addStarredResource (user, resource) {
-  try {
-    const res = await fetch(`${BASE_URL}/${user.profile}/starredResources`, {
-      method: 'POST',
-      headers: { 
-        'Authorization': `Bearer ${tokenService.getToken()}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(resource),
-    })
-    return res.json()
-  }
-  catch (err) {
-    throw new Error(err)
-  }
-}
-
-const removeStarredResource = async (user, resource) => {
-  try {
-    const res = await fetch(`${BASE_URL}/${user.profile}/starredResources/${resource._id}`, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${tokenService.getToken()}`,
-      },
-    })
-    return res.json()
-  } catch (err) {
-    throw new Error(err)
-  }
-}
-
 const deleteProfile = async (profileId) => {
   try {
     const res = await fetch(`${BASE_URL}/${profileId}`, {
@@ -126,7 +95,5 @@ export {
   getProfile,
   createResume,
   createBrandStatement,
-  addStarredResource,
-  removeStarredResource,
   deleteProfile,
 }

@@ -106,6 +106,37 @@ const updateReview = async (resourceId, reviewId, reviewFormData) => {
   }
 }
 
+const addStarredResource = async (resource, user) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${resource._id}/starredResources/${user.profile}`, {
+      method: 'POST',
+      headers: { 
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(resource),
+    })
+    return res.json()
+  }
+  catch (err) {
+    throw new Error(err)
+  }
+}
+
+const removeStarredResource = async (resource, user) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${resource._id}/starredResources/${user.profile}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`,
+      },
+    })
+    return res.json()
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 export {
   index,
   create,
@@ -113,5 +144,7 @@ export {
   deleteResource,
   createReview,
   deleteReview,
-  updateReview
+  updateReview, 
+  addStarredResource,
+  removeStarredResource,
 }

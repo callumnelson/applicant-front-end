@@ -24,11 +24,9 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
 
   const handleStarredResourceClick = async () => {
     if (alreadyStarred) {
-      await handleRemoveStarredResource(user, resource)
-      setProfile({...profile, starredResources: profile.starredResources.filter(r => r !== resource._id)})
+      await handleRemoveStarredResource(resource, user)
     } else {
-      await handleAddStarredResource(user, resource)
-      setProfile({...profile, starredResources: [...profile.starredResources, resource]})
+      await handleAddStarredResource(resource, user)
     }
   }
 

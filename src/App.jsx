@@ -20,6 +20,7 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 // services
 import * as authService from './services/authService'
 import * as profileService from './services/profileService'
+import * as resourceService from './services/resourcesService'
 
 // styles
 import './App.css'
@@ -53,12 +54,16 @@ function App() {
 
   }
 
-  const handleAddStarredResource = async (user, resource) => {
-    const updatedProfile = await profileService.addStarredResource(user, resource)
+  const handleAddStarredResource = async (resource, user) => {
+    const starredResource = await resourceService.addStarredResource(resource, user)
+    setProfile({...profile, starredResources: [starredResource, ...profile.starredResources]})
   }
 
-  const handleRemoveStarredResource = async (user, resource) => {
-    const updatedProfile = await profileService.removeStarredResource(user, resource)
+  const handleRemoveStarredResource = async (resource, user) => {
+    const unstarredResource = await resourceService.removeStarredResource(resource, user)
+    console.log(unstarredResource, 'unstarredResource')
+    console.log(profile.starredResources, 'profile.starredResources')
+    setProfile({...profile, starredResources: profile.starredResources.filter(r => r._id !== unstarredResource._id)})
   }
 
   return (
