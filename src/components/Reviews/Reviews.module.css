@@ -12,14 +12,30 @@
   justify-content: center;
   line-height: 39px;
   width: 100%;
-  padding: 0 10px;
   background-color: rgb(241, 241, 241, 0.429);
 }
 
 .header {
   display: flex; 
   flex-direction: column;
-  text-align: center;
+  align-items: center;
+  justify-content: flex-start;
+  height: 18%;
+  width: 100%;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 90%;
+  overflow: hidden;
+  height: 75%;
+}
+
+.reviews:hover {
+  overflow-y: auto;
 }
 
 .info {
@@ -70,12 +86,4 @@
   border-radius: 5px;
   height: 30px;
   width: 90px;
-}
-
-.reviews {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
 }
