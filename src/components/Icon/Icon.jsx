@@ -9,7 +9,6 @@ import cancel from '../../assets/icons/cancel.svg'
 import uparrow from '../../assets/icons/uparrow.svg'
 import downarrow from '../../assets/icons/downarrow.svg'
 import add from '../../assets/icons/add.svg'
-import blankuser from '../../assets/icons/blankuser.svg'
 
 
 const Icon = ({ category }) => {
@@ -24,7 +23,6 @@ const Icon = ({ category }) => {
     UpArrow: uparrow,
     DownArrow: downarrow,
     Add: add,
-    BlankUser: blankuser,
   }
 
   return (

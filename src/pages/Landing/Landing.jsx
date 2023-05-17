@@ -13,7 +13,7 @@ import ProfileResourceCard from '../../components/ProfileResourceCard/ProfileRes
 import Icon from '../../components/Icon/Icon'
 
 //assets
-import profileIcon from '../../assets/icons/profile.png'
+import profileIcon from '../../assets/icons/circle-user.png'
 
 // css
 import styles from './Landing.module.css'
@@ -53,7 +53,7 @@ const Landing = ({ user, profile, setProfile }) => {
 
   if (!profile) return <p>Loading profile...</p>
 
-  const photo = profile.photo ? profile.photo : <profileIcon>
+  const photo = profile.photo ? profile.photo : profileIcon
   const resume = profile.baseResume
   const brandStatement = profile.brandStatement
   const jobsToDisplay = profile.applications.sort((a, b) => (
