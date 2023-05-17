@@ -98,11 +98,11 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
           userReview ? (
             <button
               className={styles.button}
-              onClick={() => handleReviewButtonClick()}>✎</button>
+              onClick={() => handleReviewButtonClick()}>Edit Review</button>
           ) : (
             <button
               className={styles.button} 
-              onClick={() => handleReviewButtonClick()}>✅</button>
+              onClick={() => handleReviewButtonClick()}>Add Review</button>
           )
         )}
       </div>

@@ -15,3 +15,30 @@
   height: 75px;
   resize: vertical;
 }
+
+.delete {
+  position: relative;
+  float: right; 
+}
+
+.delete:hover {
+  cursor: pointer;
+}
+
+.star:hover {
+  cursor: pointer;
+}
+
+.buttons {
+  margin: 10px 0px;
+  display: flex; 
+  justify-content: space-around;
+}
+
+.button {
+  width: 25%
+}
+
+.button:hover {
+  cursor: pointer;
+}
