@@ -64,9 +64,10 @@ const Landing = ({ user, profile, setProfile }) => {
     <main className={styles.container}>
       <section className={styles.profile}>
         <div className={styles.info}>
+      
           <img src={photo} alt="user" />
           <h1>{profile.name}</h1>
-          <p className={styles.password}> 
+          <p className={styles.password}>
             <NavLink to="/auth/change-password">
               Change Password
             </NavLink>
