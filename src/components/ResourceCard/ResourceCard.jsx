@@ -67,16 +67,18 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
             <>
               <span
                 onClick={() => handleChangeToEditResource()}
-              >✎</span>
+              ><p>✎</p></span>
               <span
                 onClick={() => handleDeleteResource(resource)}
-              >🗑️</span>
+              ><p>🗑️</p></span>
             </>
           }
           <span
             onClick={() => handleStarredResourceClick()}
           >
-            {alreadyStarred ? '★' : '☆' }
+            <p>
+              {alreadyStarred ? '★' : '☆' }
+            </p>
           </span>
       </div>
       <div className={`${styles.details} ${selected ? styles.show : ''}`}>
