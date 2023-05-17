@@ -28,20 +28,20 @@ const Landing = ({ user, profile, setProfile }) => {
     if (!user) {
       setProfile(null)
       navigate('/auth/login')
-    } else {
-      setProfile(profile)
     }
-  }, [user, profile])
+  }, [user])
 
   const handleAddResume = async (resumeFormData) => {
     const updatedProfileResume = await profileService.createResume(user, resumeFormData)
-    setProfile({...profile, updatedProfileResume})
+    console.log('updated profile back from profile service', updatedProfileResume)
+    setProfile({...updatedProfileResume})
     setDisplayResumeForm(false)
   }
-
+    console.log('profile after handle addresume', profile)
+  
   const handleAddBrand = async (brandFormData) => {
     const updatedProfileBrand = await profileService.createBrandStatement(user, brandFormData)
-    setProfile({...profile, updatedProfileBrand})
+    setProfile({...updatedProfileBrand})
     setDisplayBrandForm(false)
   }
 
@@ -162,7 +162,7 @@ const Landing = ({ user, profile, setProfile }) => {
               </div>
             </header>
             <div className={styles.list}>
-              {(!profile.applications.length) ?
+              {/* {(!profile.applications.length) ?
                 <h4>No jobs</h4> :
                 jobsToDisplay.map(job =>
                   <ProfileJobCard 
@@ -170,7 +170,7 @@ const Landing = ({ user, profile, setProfile }) => {
                     job={job} 
                   />
                 )
-              }
+              } */}
             </div>
           </div>
         </div>
