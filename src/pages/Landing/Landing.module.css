@@ -75,17 +75,28 @@
 .personalcontent {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   height: 70%;
+  margin-top: 2vmin;
+}
+
+.personalcontent > a {
+  background-color: rgba(217, 238, 241, 0.29);
+  border-radius: 45%;
+  height: 7vh;
+  width: 7vh;
 }
 
 .edit {
-  width: 2vw;
-  height: 2vw;
+  width: 4vw;
+  height: 1.2vw;
   padding: 0;
-  background-color: white;
-  margin-left: auto;
+  font-size: 12px;
+  letter-spacing: .1rem;
+  background-color: rgba(217, 238, 241, 0.203);
+  margin-top: auto;
+  cursor: pointer;
+  border: none;
 }
 
 .right {
@@ -152,5 +163,9 @@
 }
 
 .password > a:hover {
+  background-color: rgba(217, 238, 241, 0.803);
+}
+
+.edit:hover {
   background-color: rgba(217, 238, 241, 0.803);
 }

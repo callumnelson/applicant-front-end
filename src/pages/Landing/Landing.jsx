@@ -82,8 +82,8 @@ const Landing = ({ user, profile, setProfile }) => {
             /> 
           : 
             <div className={styles.personalcontent}>
-              <a href={resume.toString()}>cute resume icon</a>
-              <button className={styles.edit} onClick={handleResumeClick}><Icon category="Edit"/></button>
+              <a href={resume.toString()}><Icon category="File"/></a>
+              <button className={styles.edit} onClick={handleResumeClick}>Change</button>
             </div>
           }
         </div>
@@ -96,8 +96,8 @@ const Landing = ({ user, profile, setProfile }) => {
             />
           : 
             <div className={styles.personalcontent}> 
-              <a href={brandStatement.toString()}>cute brand statement icon</a>
-              <button className={styles.edit} onClick={handleBrandClick}><Icon category="Edit"/></button>
+              <a href={brandStatement.toString()}><Icon category="File"/></a>
+              <button className={styles.edit} onClick={handleBrandClick}>Change</button>
             </div>
           }
         </div>
