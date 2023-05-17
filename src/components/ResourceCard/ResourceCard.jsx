@@ -1,8 +1,10 @@
+// components
+import Icon from '../Icon/Icon'
 
 //css
 import styles from './ResourceCard.module.css'
 
-const ResourceCard = ({setSelectedResource, selectedResource, resource, setEditedResource, handleDeleteResource, profile, setProfile, handleAddStarredResource, user, handleRemoveStarredResource}) => {
+const ResourceCard = ({setSelectedResource, selectedResource, resource, setEditedResource, handleDeleteResource, profile, handleAddStarredResource, user, handleRemoveStarredResource}) => {
 
   const selected = selectedResource && selectedResource._id === resource._id 
 
@@ -41,7 +43,12 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           className={styles.dropdown}
           onClick={() => handleSelect()}
           >
-            {selected ? '⬆️' : '⬇️' }</p>
+            {selected ? 
+              <Icon category={'UpArrow'}/> 
+              : 
+              <Icon category={'DownArrow'}/>
+            }  
+          </p>
         </span>
         <div className={styles.date}>
           <p>{new Date(resource.updatedAt).toLocaleDateString()}</p>
@@ -64,16 +71,30 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
             <>
               <span
                 onClick={() => handleChangeToEditResource()}
-              >✎</span>
+              >
+                <p>
+                  <Icon category={'Edit'}/>
+                </p>
+              </span>
               <span
                 onClick={() => handleDeleteResource(resource)}
-              >🗑️</span>
+              >
+                <p>
+                  <Icon category={'Trash'}/>
+                </p>
+              </span>
             </>
           }
           <span
             onClick={() => handleStarredResourceClick()}
           >
-            {alreadyStarred ? '★' : '☆' }
+            <p>
+              {alreadyStarred ? 
+                <Icon category={'FilledStar'}/> 
+                : 
+                <Icon category={'Star'}/>
+              }
+            </p>
           </span>
       </div>
       <div className={`${styles.details} ${selected ? styles.show : ''}`}>
