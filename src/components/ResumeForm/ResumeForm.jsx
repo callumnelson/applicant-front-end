@@ -18,7 +18,7 @@ const ResumeForm = ({handleAddResume, resume}) => {
   return ( 
     <main >
       <form className={styles.form} onSubmit={handleSubmit}>
-        <label htmlFor="baseResume"></label>
+        <label htmlFor="standard-basic"></label>
         <TextField
           type="text"
           id="standard-basic"

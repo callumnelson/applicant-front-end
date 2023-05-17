@@ -18,7 +18,7 @@ const BrandForm = ({handleAddBrand, brandStatement}) => {
   return ( 
     <main>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <label htmlFor="brandStatement"></label>
+        <label htmlFor="standard-basic"></label>
         <TextField
           type="text"
           id="standard-basic"

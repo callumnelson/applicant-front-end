@@ -1,9 +1,12 @@
+import { Link } from 'react-router-dom'
+
 import styles from './ProfileJobCard.module.css'
+
 
 const ProfileJobCard = ({job}) => {
   const currOpts = { style: 'currency', currency: 'USD', notation: 'compact'}
   const currFormat = new Intl.NumberFormat('en-US', currOpts)
-
+  const priority = job.priority.toLowerCase().replaceAll(' ','-')
 
   return (
     <div>
@@ -14,7 +17,7 @@ const ProfileJobCard = ({job}) => {
           <p>{new Date(job.createdAt).toLocaleDateString()}</p>
         </div>
         <div className={styles.title}>
-          <p>{job.title}</p>
+          <p><Link to={`/jobs`} state={{search: `${job.title}`}}>{job.title}</Link></p>
         </div>
         <div className={styles.company}>
           <p>{job.company}</p>
@@ -26,7 +29,7 @@ const ProfileJobCard = ({job}) => {
           <p>{job.status}</p>
         </div>
         <div className={styles.priority}>
-          <p className={styles[job.priority.toLowerCase().replaceAll(' ','-')]}>{job.priority}</p>
+          <p className={styles[priority]}>{job.priority}</p>
         </div>
         <div className={styles.jobListing}>
           <p>{job.jobListing}</p>
