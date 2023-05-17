@@ -33,11 +33,9 @@ const Landing = ({ user, profile, setProfile }) => {
 
   const handleAddResume = async (resumeFormData) => {
     const updatedProfileResume = await profileService.createResume(user, resumeFormData)
-    console.log('updated profile back from profile service', updatedProfileResume)
     setProfile({...updatedProfileResume})
     setDisplayResumeForm(false)
   }
-    console.log('profile after handle addresume', profile)
   
   const handleAddBrand = async (brandFormData) => {
     const updatedProfileBrand = await profileService.createBrandStatement(user, brandFormData)
@@ -57,7 +55,7 @@ const Landing = ({ user, profile, setProfile }) => {
 
   const photo = profile.photo ? profile.photo : profileIcon
   const resume = profile.baseResume ? profile.baseResume : ''
-  const brandStatement = profile.brandStatement ? profile.brandStatment : ''
+  const brandStatement = profile.brandStatement ? profile.brandStatement : ''
   const jobsToDisplay = profile.applications.sort((a, b) => (
     new Date(b.updatedAt) - new Date(a.updatedAt)
   )).slice(0, 3)
