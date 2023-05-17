@@ -75,3 +75,7 @@
 .table h4 {
   margin: 0;
 }
+
+.table::-webkit-scrollbar-track, .notes:nth-child(2)::-webkit-scrollbar-track {
+  display: none;
+}
