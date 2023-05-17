@@ -12,7 +12,7 @@
 .job div > p {
   font-size: 14px;
   font-weight: 500;
-  padding: 5px 10px;
+  padding: 5px;
   border-radius: 20px;
 }
 
@@ -20,21 +20,25 @@
   color: var(--background);
 }
 
-.dream-job {
+#dream-job {
   background-color: darkgreen;
   color: white;
+  padding: 5px 10px;
 }
 
-.great-option {
+#great-option {
   background-color: lightgreen;
+  padding: 5px 10px;
 }
 
-.totally-fine {
+#totally-fine {
   background-color: rgb(230, 240, 122);
+  padding: 5px 10px;
 }
 
-.will-pay-bills {
+#will-pay-bills {
   background-color: rgb(238, 204, 119);
+  padding: 5px 10px;
 }
 
 .job span {

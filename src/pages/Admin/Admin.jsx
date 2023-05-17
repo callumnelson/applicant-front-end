@@ -38,7 +38,7 @@ const Admin = ({profile}) => {
 
   if (!profile || !profiles.length) return <Loading />
 
-  if (profile.role < 300) return navigate('/')
+  if (profile.role < 300) navigate('/')
   
   return (
     <main className={styles.container}>
