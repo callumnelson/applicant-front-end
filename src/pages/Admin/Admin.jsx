@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router-dom'
 // services
 import * as profileService from '../../services/profileService'
 
+//components
+import Icon from '../../components/Icon/Icon'
+
 // pages 
 import Loading from '../Loading/Loading'
 
@@ -12,7 +15,7 @@ import Loading from '../Loading/Loading'
 import styles from './Admin.module.css'
 
 // assets
-import profileIcon from '../../assets/icons/profile.png'
+import profileIcon from '../../assets/icons/circle-user.png'
 
 const Admin = ({profile}) => {
   const navigate = useNavigate()
@@ -61,7 +64,7 @@ const Admin = ({profile}) => {
                   <h2>{profile.name}</h2>
                 </div>
                 <p onClick={() => handleClickTrash(profile._id)}>
-                  🗑️
+                  <Icon category="Trash"/>
                 </p>
               </header>
               <div>

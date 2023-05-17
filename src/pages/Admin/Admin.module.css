@@ -88,7 +88,10 @@
   align-items: center;
   justify-content: space-evenly;
 }
-
+.deleting > header > p > img {
+  height: 10px;
+  width: 10px;
+}
 .deleting button {
   border-radius: 5px;
   padding: 10px 5px;

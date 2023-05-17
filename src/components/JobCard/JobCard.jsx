@@ -8,7 +8,7 @@ import NotesCategoryButton from '../NotesCategoryButton/NotesCategoryButton'
 import styles from './JobCard.module.css'
 
 // assets
-import profileIcon from '../../assets/icons/profile.png'
+import profileIcon from '../../assets/icons/circle-user.png'
 
 const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob, notesCategory, setNotesCategory}) => {
   const selected = selectedJob && selectedJob._id === job._id
