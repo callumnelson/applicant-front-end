@@ -10,6 +10,7 @@ import ResumeForm from '../../components/ResumeForm/ResumeForm'
 import BrandForm from '../../components/BrandForm/BrandForm'
 import ProfileJobCard from '../../components/ProfileJobCard/ProfileJobCard'
 import ProfileResourceCard from '../../components/ProfileResourceCard/ProfileResourceCard'
+import Icon from '../../components/Icon/Icon'
 
 //assets
 import profileIcon from '../../assets/icons/profile.png'
@@ -81,7 +82,7 @@ const Landing = ({ user, profile, setProfile }) => {
           : 
             <div className={styles.personalcontent}>
               <a href={resume.toString()}>cute resume icon</a>
-              <button className={styles.edit} onClick={handleResumeClick}>✏️</button>
+              <button className={styles.edit} onClick={handleResumeClick}><Icon category="Edit"/></button>
             </div>
           }
         </div>
@@ -95,7 +96,7 @@ const Landing = ({ user, profile, setProfile }) => {
           : 
             <div className={styles.personalcontent}> 
               <a href={brandStatement.toString()}>cute brand statement icon</a>
-              <button className={styles.edit} onClick={handleBrandClick}>✏️</button>
+              <button className={styles.edit} onClick={handleBrandClick}><Icon category="Edit"/></button>
             </div>
           }
         </div>
