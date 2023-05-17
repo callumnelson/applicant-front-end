@@ -50,40 +50,36 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
   return (  
     <div className={styles.container}>
       <nav className={styles.nav}>
-        <h1>Reviews</h1>
+        <h1>
+          Reviews
+          {(selectedResource.reviews.length > 0) && ' (' + selectedResource.reviews.length + ')'}
+        </h1>
       </nav>
       <div>
         {selectedResource.reviews.length ? 
         <>
           <header className={styles.header}>
-            <div>
-              <h2>
-                {selectedResource.averageRating.toFixed(1)}
-                {' '}
-                {Array.from({ length: Math.floor(selectedResource.averageRating) }, (_, index) => (
-                  <span key={index}>★</span>
-                ))}
-              </h2>
-              <div className={styles.sort}>
-                <div>
-                  <h2>
-                    {selectedResource.reviews.length}
-                    {' '}
-                    {selectedResource.reviews.length === 1 ? "Review" : "Reviews"}
-                  </h2>
-                </div>
-                <div>
-                  <select 
-                    id='rating-selector'
-                    name='rating-selector'
-                    onChange={handleReviewSort}
-                  >
-                    <option value="newest">Newest</option>
-                    <option value="oldest">Oldest</option>
-                    <option value="highest">Highest</option>
-                    <option value="lowest">Lowest</option>
-                  </select>
-                </div>
+            <div className={styles.info}>
+              <div className={StyleSheet.average}>
+                <h2>
+                  {selectedResource.averageRating.toFixed(1)}
+                  {' '}
+                  {Array.from({ length: Math.floor(selectedResource.averageRating) }, (_, index) => (
+                    <span key={index}>★</span>
+                  ))}
+                </h2>
+              </div>
+              <div className={styles.rating}>
+                <select 
+                  id='rating-selector'
+                  name='rating-selector'
+                  onChange={handleReviewSort}
+                >
+                  <option value="newest">Newest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="highest">Highest</option>
+                  <option value="lowest">Lowest</option>
+                </select>
               </div>
             </div>
           </header>
@@ -98,7 +94,7 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
           userReview ? (
             <button
               className={styles.button}
-              onClick={() => handleReviewButtonClick()}>Edit Review</button>
+              onClick={() => handleReviewButtonClick()}>Edit My Review</button>
           ) : (
             <button
               className={styles.button} 
