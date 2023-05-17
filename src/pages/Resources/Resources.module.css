@@ -4,7 +4,7 @@
   width: 100%;
 }
 
-.container nav {
+.nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -14,11 +14,11 @@
   background-color: rgb(241, 241, 241, 0.429);
 }
 
-.container nav h1 {
+.nav h1 {
   margin: 0;
 }
 
-.container nav > div {
+.nav > div {
   display: flex;
   justify-content: space-around;
   gap: 20px;
@@ -52,16 +52,23 @@
   border: 2px solid var(--primary)
 }
 
-section.resources {
+.resources {
   width: 75%;
-  background-color: gray;
-  overflow: scroll;
+  overflow: hidden;
 }
 
-section.reviews {
+.resources:hover {
+  overflow: auto;
+}
+
+.reviews {
   width: 25%;
-  background-color: white;
-  overflow: scroll;
+  overflow: hidden;
+  background-color: rgba(42, 54, 62, 0.429)
+}
+
+.reviews:hover {
+  overflow: auto;
 }
 
 .resources:first-child {
@@ -74,9 +81,13 @@ section.reviews {
   height: calc(100% - 86px);
 }
 
-.table section {
+.rows {
   height: calc(100% - 50px);
-  overflow: scroll;
+  overflow: hidden;
+}
+
+.rows:hover {
+  overflow: auto;
 }
 
 .table h4 {
@@ -109,8 +120,9 @@ section.reviews {
 }
 
 .date {
-  width: 10%;
+  width: 11%;
   padding-right: 2%;
+  padding-left: 1%;
 }
 
 .date:hover {
@@ -119,7 +131,7 @@ section.reviews {
 
 .name {
   width: 25%;
-  margin-right: 2%;
+  margin-right: 1%;
   padding-left: 1%
 }
 
@@ -151,7 +163,11 @@ section.reviews {
 
 .link {
   padding-left: 1%;
-  width: 37%;
+  width: 35%;
+}
+
+.link > h4:hover {
+  cursor: default;
 }
 
 .table h4 {

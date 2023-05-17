@@ -171,7 +171,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   return ( 
     <main className={styles.container}>
       <section className={styles.resources}>
-        <nav>
+        <nav className={styles.nav}>
           <h1>Resources</h1>
           <div>
             {profile.role > 100 &&
@@ -230,7 +230,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
               setSearch={setSearch}
             />
           }
-          <section>
+          <section className={styles.rows}>
             {displayedResources.map(resource => (
               editedResource && editedResource._id === resource._id ?
                 <ResourceForm 

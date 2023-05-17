@@ -41,18 +41,21 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
         }>
         <span>
           <p
+          className={styles.dropdown}
           onClick={() => handleSelect()}
           >
             {selected ? '⬆️' : '⬇️' }</p>
         </span>
-        <div className='updated-at'>
+        <div className={styles.date}>
           <p>{new Date(resource.updatedAt).toLocaleDateString()}</p>
         </div>
         <div className={styles.name}>
           <p>{resource.name}</p>
         </div>
         <div className={styles.category}>
-          <p>{resource.category}</p>
+          <p
+            className={styles[resource.category.toLowerCase().replaceAll(' ','-')]}
+          >{resource.category}</p>
         </div>
         <div className={styles.rating}>
           <p>{resource.averageRating?.toFixed(1)}</p>
@@ -76,21 +79,16 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
             {alreadyStarred ? '★' : '☆' }
           </span>
       </div>
-      {selected && 
-        <div className={styles.details}>
-          <div className={styles.instructions}>
-            <div>
-              Instructions: 
-            </div>
-            <div>
-              {resource.instructions}
-            </div>
+      <div className={`${styles.details} ${selected ? styles.show : ''}`}>
+        <div className={styles.dropdown}>
+          <div className={styles.label}>
+            <h4>Instructions:</h4> 
           </div>
-          <div>
-            {resource.reviews.length} Reviews
+          <div className={styles.instructions}>
+            {resource.instructions}
           </div>
         </div>
-      }
+      </div>
     </>
   )
 }

@@ -1,1 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  width: 300px;
+  margin-bottom: 10px;
+}
 
+.content {
+  width: 275px;
+  height: 75px;
+  resize: vertical;
+}

@@ -10,6 +10,10 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
     content: '',
   })
 
+  const handleStarHover = (rating) => {
+    setFormData({ ...formData, rating : rating })
+  }
+
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
   }
@@ -33,8 +37,9 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
   return (  
     <div className={styles.container}>
       <form onSubmit={handleSubmit}>
-        <div className={styles.content}>
+        <div>
           <textarea
+            className={styles.content}
             required
             type="text"
             name="content"
@@ -45,19 +50,35 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
           />
         </div>
         <div className={styles.rating}>
-        <select
-          required
-          name="rating"
-          id="category-input"
-          value={formData.rating}
-          onChange={handleChange}
-        >
-          <option value={1}>1</option>
-          <option value={2}>2</option>
-          <option value={3}>3</option>
-          <option value={4}>4</option>
-          <option value={5}>5</option> 
-        </select>
+          <div className={styles.stars}>
+            <span>
+              ★
+            </span>
+            <span
+              onMouseEnter={() => handleStarHover(2)}
+              onMouseLeave={() => handleStarHover(formData.rating >= 2 ? formData.rating : 1)}
+            >
+              {formData.rating >= 2 ? "★" : "☆"}
+            </span>
+            <span
+              onMouseEnter={() => handleStarHover(3)}
+              onMouseLeave={() => handleStarHover(formData.rating >= 3 ? formData.rating : 1)}
+            >
+              {formData.rating >= 3 ? "★" : "☆"}
+            </span>
+            <span
+              onMouseEnter={() => handleStarHover(4)}
+              onMouseLeave={() => handleStarHover(formData.rating >= 4 ? formData.rating : 1)}
+            >
+              {formData.rating >= 4 ? "★" : "☆"}
+            </span>
+            <span
+              onMouseEnter={() => handleStarHover(5)}
+              onMouseLeave={() => handleStarHover(formData.rating >= 5 ? formData.rating : 1)}
+            >
+              {formData.rating >= 5 ? "★" : "☆"}
+            </span>
+          </div>
         </div>
         <div>
           {userReview && 
