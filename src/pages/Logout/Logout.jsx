@@ -8,7 +8,7 @@ const Logout = () => {
   return (
     <main className={styles.container}>
       <img src={logo} alt="appliCANt logo" />
-      <h2> Come back soon </h2>
+      <h2> See you soon! </h2>
     </main>
   )
 }
