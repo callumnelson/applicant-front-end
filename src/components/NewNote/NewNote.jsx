@@ -1,6 +1,9 @@
 // npm imports
 import { useState } from "react"
 
+// components
+import Icon from "../Icon/Icon"
+
 // css 
 import styles from './NewNote.module.css'
 
@@ -46,7 +49,9 @@ const NewNote = ({selectedJob, notesCategory, handleAddNote}) => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit">➕</button>
+        <button type="submit">
+          <Icon category={'Check'} />
+        </button>
       </form>
     </div>
   )
