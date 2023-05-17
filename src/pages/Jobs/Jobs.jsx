@@ -45,7 +45,7 @@ const Jobs = ({profile, setProfile}) => {
     {col: 'Salary', schemaName: 'salary'},
     {col: 'Status', schemaName: 'status'},
     {col: 'Priority', schemaName: 'priority'}, 
-    {col: 'Listing', schemaName: 'jobListing'}, 
+    {col: 'Link', schemaName: 'jobListing'}, 
   ]
 
   const handleAddJob = async (newJobFormData) => {
