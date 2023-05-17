@@ -72,6 +72,7 @@ const Jobs = ({profile, setProfile}) => {
     setAllJobs(allJobs.filter(j => j._id !== deletedJob._id))
     setProfile({...profile, applications: allJobs.filter(j => j._id !== deletedJob._id)})
     if(allJobs.length < 2) setAddJob(true)
+    setSelectedJob(null)
   }
 
   const handleClickAddJob = () => {
