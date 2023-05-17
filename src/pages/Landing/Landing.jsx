@@ -1,6 +1,6 @@
 // npm modules
-import { NavLink } from 'react-router-dom'
-import { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 //services
 import * as profileService from '../../services/profileService'
@@ -12,7 +12,6 @@ import ProfileJobCard from '../../components/ProfileJobCard/ProfileJobCard'
 import ProfileResourceCard from '../../components/ProfileResourceCard/ProfileResourceCard'
 
 //assets
-import logo from '../../assets/branding/logo.svg'
 import profileIcon from '../../assets/icons/profile.png'
 
 // css
@@ -22,15 +21,24 @@ const Landing = ({ user, profile, setProfile }) => {
   const [displayResumeForm, setDisplayResumeForm] = useState(false)
   const [displayBrandForm, setDisplayBrandForm] = useState(false)
 
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!user) {
+      setProfile(null)
+      navigate('/auth/login')
+    }
+  }, [user])
+
   const handleAddResume = async (resumeFormData) => {
     const updatedProfileResume = await profileService.createResume(user, resumeFormData)
-    setProfile(updatedProfileResume)
+    setProfile({...profile, updatedProfileResume})
     setDisplayResumeForm(false)
   }
 
   const handleAddBrand = async (brandFormData) => {
     const updatedProfileBrand = await profileService.createBrandStatement(user, brandFormData)
-    setProfile(updatedProfileBrand)
+    // setProfile(updatedProfileBrand)
     setDisplayBrandForm(false)
   }
 
@@ -42,7 +50,6 @@ const Landing = ({ user, profile, setProfile }) => {
     setDisplayBrandForm(true)
   }
 
-  if (!user) return <img src={logo} alt="appliCANt logo" />
   if (!profile) return <p>Loading profile...</p>
 
   const photo = profile.photo ? profile.photo : profileIcon
@@ -58,16 +65,22 @@ const Landing = ({ user, profile, setProfile }) => {
         <div className={styles.info}>
           <img src={photo} alt="user" />
           <h1>{profile.name}</h1>
+          <p className={styles.password}> 
+            <NavLink to="/auth/change-password">
+              Change Password
+            </NavLink>
+          </p>
         </div>
         <div className={styles.resume}>
           <h2>My Resume:</h2>
           {(!resume) || displayResumeForm ? 
             <ResumeForm
+              resume={resume}
               handleAddResume={handleAddResume}
             /> 
           : 
             <div className={styles.personalcontent}>
-              <a href={resume.toString()}>fuck</a>
+              <a href={resume.toString()}>cute resume icon</a>
               <button className={styles.edit} onClick={handleResumeClick}>✏️</button>
             </div>
           }
@@ -76,34 +89,30 @@ const Landing = ({ user, profile, setProfile }) => {
           <h2>My Brand Statement:</h2>
           {(!brandStatement) || displayBrandForm ? 
             <BrandForm
+              brandStatement={brandStatement}
               handleAddBrand={handleAddBrand}
             />
           : 
             <div className={styles.personalcontent}> 
-              <a href={brandStatement.toString()}>this is worse than i thought</a>
+              <a href={brandStatement.toString()}>cute brand statement icon</a>
               <button className={styles.edit} onClick={handleBrandClick}>✏️</button>
             </div>
           }
         </div>
-      <div className={styles.password}> 
-        <NavLink to="/auth/change-password">
-          Change Password
-        </NavLink>
-      </div>
       </section>
       <section className={styles.right}>
         <div className={styles.resources}>
           <h3 className={styles.tabletitle}>My Starred Resources</h3>
           <div className={styles.table}>
-            <header>
+            <header className={styles.resourcesheader}>
+              <div className={styles.title}>
+                <h4>Date Added</h4>
+              </div>
               <div className={styles.title}>
                 <h4>Name</h4>
               </div>
               <div className={styles.title}>
                 <h4>Category</h4>
-              </div>
-              <div className={styles.title}>
-                <h4>Average Rating</h4>
               </div>
               <div className={styles.title}>
                 <h4>Link</h4>
@@ -123,7 +132,7 @@ const Landing = ({ user, profile, setProfile }) => {
           </div>
         </div>
         <div className={styles.jobs}>
-          <h3 className={styles.tabletitle}>My Most Recent Applications</h3>
+          <h3 className={styles.tabletitle}>My 3 Most Recent Applications</h3>
           <div className={styles.table}>
             <header className={styles.jobsheader}>
               <div className={styles.title}>
