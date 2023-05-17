@@ -55,10 +55,9 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
           {(selectedResource.reviews.length > 0) && ' (' + selectedResource.reviews.length + ')'}
         </h1>
       </nav>
-      <div>
-        {selectedResource.reviews.length ? 
-        <>
-          <header className={styles.header}>
+      <header className={styles.header}>
+          {selectedResource.reviews.length ? 
+          <>
             <div className={styles.info}>
               <div className={StyleSheet.average}>
                 <h2>
@@ -82,26 +81,26 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
                 </select>
               </div>
             </div>
+          </> :
+          <header className={styles.header}>
+            <h2>Be The First To Review!</h2>
           </header>
-        </> :
-        <header className={styles.header}>
-          <h2>Be The First To Review!</h2>
-        </header>
-        }
-      </div>
-      <div className={styles.buttons}>
-        {showButton && (
-          userReview ? (
-            <button
-              className={styles.button}
-              onClick={() => handleReviewButtonClick()}>Edit My Review</button>
-          ) : (
-            <button
-              className={styles.button} 
-              onClick={() => handleReviewButtonClick()}>Add Review</button>
-          )
-        )}
-      </div>
+          }
+
+        <div className={styles.buttons}>
+          {showButton && (
+            userReview ? (
+              <button
+                className={styles.button}
+                onClick={() => handleReviewButtonClick()}>Edit My Review</button>
+            ) : (
+              <button
+                className={styles.button} 
+                onClick={() => handleReviewButtonClick()}>Add Review</button>
+            )
+          )}
+        </div>
+      </header>
       {reviewFormVisible && 
         <div>
           <ReviewForm 
@@ -115,14 +114,11 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
           />
         </div>
       }
-      {selectedResource.reviews.map(review =>
-        <div 
-          className={styles.review}
-          key={review._id}
-        >
-          <ReviewCard review={review} />
-        </div>
-      )}
+      <section className={styles.reviews}>
+        {selectedResource.reviews.map(review =>
+          <ReviewCard key={review._id} review={review} />
+        )}
+      </section>
     </div>
   )
 }
