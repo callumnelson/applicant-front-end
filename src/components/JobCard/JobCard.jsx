@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 // components
 import NotesCategoryButton from '../NotesCategoryButton/NotesCategoryButton'
+import Icon from '../Icon/Icon'
 
 // css
 import styles from './JobCard.module.css'
@@ -43,7 +44,12 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
             className={styles.dropdown}
             onClick={handleSelectJob}
           >
-            {selected ? "⬆️": "⬇️"}
+            {
+            selected ? 
+              <Icon category={'UpArrow'}/>
+              : 
+              <Icon category={'DownArrow'}/>
+            }
           </p>
         </span>
         <div className={styles.title}>
@@ -71,14 +77,14 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           <p className={styles.edit}
             onClick={handleChangeEditedJob}
           >
-            ✏️
+            <Icon category={'Edit'} />
           </p>
         </span>
         <span>
           <p className={styles.delete}
             onClick={() => handleDeleteJob(job)}
           >
-            🗑️
+            <Icon category={'Trash'} />
           </p>
         </span>
       </div>
@@ -103,16 +109,18 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
             <div className={styles.resume}>
               <p>Resume:
                 {
-                  job.resume &&
-                  <Link to={job.resume}>📄</Link>
+                  job.jobResume &&
+                  <Link to={job.resume}>Link</Link>
                 } 
               </p>
             </div>
             <div className={styles.coverLetter}>
               <p>Cover Letter: 
                 {    
-                  job.coverLetter &&
-                  <Link to={job.coverLetter}>📄</Link>
+                  job.jobCoverLetter &&
+                  <Link to={job.coverLetter}>
+                    Link
+                  </Link>
                 } 
               </p>
             </div>
