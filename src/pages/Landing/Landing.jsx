@@ -10,6 +10,7 @@ import ResumeForm from '../../components/ResumeForm/ResumeForm'
 import BrandForm from '../../components/BrandForm/BrandForm'
 import ProfileJobCard from '../../components/ProfileJobCard/ProfileJobCard'
 import ProfileResourceCard from '../../components/ProfileResourceCard/ProfileResourceCard'
+import Icon from '../../components/Icon/Icon'
 
 //assets
 import profileIcon from '../../assets/icons/profile.png'
@@ -22,7 +23,7 @@ const Landing = ({ user, profile, setProfile }) => {
   const [displayBrandForm, setDisplayBrandForm] = useState(false)
 
   const navigate = useNavigate()
-
+  console.log(profile)
   useEffect(() => {
     if (!user) {
       setProfile(null)
@@ -63,9 +64,10 @@ const Landing = ({ user, profile, setProfile }) => {
     <main className={styles.container}>
       <section className={styles.profile}>
         <div className={styles.info}>
+      
           <img src={photo} alt="user" />
           <h1>{profile.name}</h1>
-          <p className={styles.password}> 
+          <p className={styles.password}>
             <NavLink to="/auth/change-password">
               Change Password
             </NavLink>
@@ -80,8 +82,8 @@ const Landing = ({ user, profile, setProfile }) => {
             /> 
           : 
             <div className={styles.personalcontent}>
-              <a href={resume.toString()}>cute resume icon</a>
-              <button className={styles.edit} onClick={handleResumeClick}>✏️</button>
+              <a href={resume.toString()}><Icon category="File"/></a>
+              <button className={styles.edit} onClick={handleResumeClick}>Change</button>
             </div>
           }
         </div>
@@ -94,8 +96,8 @@ const Landing = ({ user, profile, setProfile }) => {
             />
           : 
             <div className={styles.personalcontent}> 
-              <a href={brandStatement.toString()}>cute brand statement icon</a>
-              <button className={styles.edit} onClick={handleBrandClick}>✏️</button>
+              <a href={brandStatement.toString()}><Icon category="File"/></a>
+              <button className={styles.edit} onClick={handleBrandClick}>Change</button>
             </div>
           }
         </div>
