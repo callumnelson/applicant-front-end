@@ -84,7 +84,7 @@
 }
 
 .details * {
-  display: none;
+  visibility: hidden;
 }
 
 .details > div {
@@ -100,7 +100,8 @@
 }
 
 .show * {
-  display: block;
+  visibility: visible;
+  transition: visibility 0s ease-in 0.5s;
 }
 
 .details > div:first-child {
