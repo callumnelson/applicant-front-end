@@ -56,8 +56,8 @@ const Landing = ({ user, profile, setProfile }) => {
   if (!profile) return <p>Loading profile...</p>
 
   const photo = profile.photo ? profile.photo : profileIcon
-  const resume = profile.baseResume
-  const brandStatement = profile.brandStatement
+  const resume = profile.baseResume ? profile.baseResume : ''
+  const brandStatement = profile.brandStatement ? profile.brandStatment : ''
   const jobsToDisplay = profile.applications.sort((a, b) => (
     new Date(b.updatedAt) - new Date(a.updatedAt)
   )).slice(0, 3)
