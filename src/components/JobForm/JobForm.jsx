@@ -189,11 +189,7 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
             </div>
             <div>
               <button type="submit">
-                {editedJob ? 
-                  <Icon category={'Check'} />
-                  : 
-                  <Icon category={'Add'} />  
-                }
+                <Icon category={'Check'} />
               </button>
             </div>
           </div>
