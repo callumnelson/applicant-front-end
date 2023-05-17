@@ -1,6 +1,9 @@
 // npm modules
 import { useState } from "react"
 
+// components
+import Icon from "../Icon/Icon"
+
 // css
 import styles from './JobForm.module.css'
 
@@ -180,11 +183,13 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
           </div>
           <div className={styles.buttons}>
             <div>
-              <button onClick={handleCancel}>X</button>
+              <button onClick={handleCancel}>
+                <Icon category={'Cancel'}/>
+              </button>
             </div>
             <div>
               <button type="submit">
-                {editedJob ? '✔️' : '➕'}
+                <Icon category={'Check'} />
               </button>
             </div>
           </div>
