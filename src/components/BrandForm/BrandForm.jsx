@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { TextField } from "@mui/material"
 
 import styles from './BrandForm.module.css'
 
@@ -18,8 +19,12 @@ const BrandForm = ({handleAddBrand, brandStatement}) => {
     <main>
       <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="brandStatement"></label>
-        <input 
-          type="text" 
+        <TextField
+          type="text"
+          id="standard-basic"
+          label="brand statement URL"
+          variant="standard"
+          outline="none"
           name="brandStatement" 
           value={formData.brandStatement} 
           placeholder="Add link to brand statement"

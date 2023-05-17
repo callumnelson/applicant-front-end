@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { TextField } from "@mui/material"
 
 import styles from './ResumeForm.module.css'
 
@@ -18,8 +19,12 @@ const ResumeForm = ({handleAddResume, resume}) => {
     <main >
       <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="baseResume"></label>
-        <input 
-          type="text" 
+        <TextField
+          type="text"
+          id="standard-basic"
+          label="resume URL"
+          variant="standard"
+          outline="none" 
           name="baseResume" 
           value={formData.baseResume} 
           placeholder="Add link to resume"
