@@ -10,7 +10,7 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
     content: '',
   })
 
-  const handleStarHover = (rating) => {
+  const handleStarClick = (rating) => {
     setFormData({ ...formData, rating : rating })
   }
 
@@ -33,10 +33,37 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
     })
   }
 
+  const handleCancel = () => {
+    setReviewFormVisible(false)
+    setShowButton(true)
+    setFormData({
+      rating: 1,
+      content: '',
+    })
+  }
+
+  const handleDeleteClick = () => {
+    handleDeleteReview(selectedResource, userReview)
+    setReviewFormVisible(false)
+    setShowButton(true)
+    setFormData({
+      rating: 1,
+      content: '',
+    })
+  }
 
   return (  
     <div className={styles.container}>
       <form onSubmit={handleSubmit}>
+        <div className={styles.delete}>
+          {userReview && 
+            <span
+              onClick={() => handleDeleteClick()}
+            >
+              🗑️
+            </span>
+          } 
+        </div>
         <div>
           <textarea
             className={styles.content}
@@ -51,45 +78,50 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
         </div>
         <div className={styles.rating}>
           <div className={styles.stars}>
-            <span>
+            <span
+              className={styles.star}
+              onClick={() => handleStarClick(1)}
+            >
               ★
             </span>
             <span
-              onMouseEnter={() => handleStarHover(2)}
-              onMouseLeave={() => handleStarHover(formData.rating >= 2 ? formData.rating : 1)}
+              className={styles.star}
+              onClick={() => handleStarClick(2)}
             >
               {formData.rating >= 2 ? "★" : "☆"}
             </span>
             <span
-              onMouseEnter={() => handleStarHover(3)}
-              onMouseLeave={() => handleStarHover(formData.rating >= 3 ? formData.rating : 1)}
+              className={styles.star}
+              onClick={() => handleStarClick(3)}
             >
               {formData.rating >= 3 ? "★" : "☆"}
             </span>
             <span
-              onMouseEnter={() => handleStarHover(4)}
-              onMouseLeave={() => handleStarHover(formData.rating >= 4 ? formData.rating : 1)}
+              className={styles.star}
+              onClick={() => handleStarClick(4)}
             >
               {formData.rating >= 4 ? "★" : "☆"}
             </span>
             <span
-              onMouseEnter={() => handleStarHover(5)}
-              onMouseLeave={() => handleStarHover(formData.rating >= 5 ? formData.rating : 1)}
+              className={styles.star}
+              onClick={() => handleStarClick(5)}
             >
               {formData.rating >= 5 ? "★" : "☆"}
             </span>
           </div>
         </div>
-        <div>
-          {userReview && 
-            <button
-              onClick={() => handleDeleteReview(selectedResource, userReview)}
-            >
-              Delete
-            </button>
-          } 
-          <button type="submit" >
-            {userReview ? 'Update' : 'Submit'}
+        <div className={styles.buttons}>
+          <button 
+            className={styles.button}
+            type="submit" 
+          >
+            ✅
+          </button>
+          <button
+            className={styles.button}
+            onClick={() => handleCancel()}
+          >
+            ❌
           </button>
         </div>
       </form>
