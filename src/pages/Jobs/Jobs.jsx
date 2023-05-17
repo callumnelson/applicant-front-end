@@ -158,6 +158,11 @@ const Jobs = ({profile, setProfile}) => {
         <nav>
           <h1>Jobs ({displayedJobs.length})</h1>
           <div>
+            <button
+              onClick={handleClickAddJob}
+            >
+              Add Job
+            </button>
             <input
               className={styles.search}
               type="text"
@@ -166,11 +171,6 @@ const Jobs = ({profile, setProfile}) => {
               placeholder="Search..."
               onChange={handleSearchChange}
               />
-            <button
-              onClick={handleClickAddJob}
-            >
-              Add Job
-            </button>
           </div>
         </nav>
         <div className={styles.table}>

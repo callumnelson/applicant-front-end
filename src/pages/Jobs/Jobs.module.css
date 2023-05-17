@@ -59,7 +59,7 @@
   width: 25%;
   height: 100%;
   background-color: rgba(42, 54, 62, 0.429);
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 .table {
@@ -69,9 +69,13 @@
 
 .table section {
   height: calc(100% - 50px);
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 .table h4 {
   margin: 0;
+}
+
+.table::-webkit-scrollbar-track, .notes:nth-child(2)::-webkit-scrollbar-track {
+  display: none;
 }

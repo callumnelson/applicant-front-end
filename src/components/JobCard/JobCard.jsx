@@ -62,7 +62,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           <p>{job.status}</p>
         </div>
         <div className={styles.priority}>
-          <p className={styles[job.priority.toLowerCase().replaceAll(' ','-')]}>{job.priority}</p>
+          <p id={styles[job.priority.toLowerCase().replaceAll(' ','-')]}>{job.priority}</p>
         </div>
         <div className={styles.jobListing}>
           <p><Link to={job.jobListing}>Posting</Link></p>
