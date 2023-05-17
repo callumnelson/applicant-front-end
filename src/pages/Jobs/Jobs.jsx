@@ -75,6 +75,7 @@ const Jobs = ({profile, setProfile}) => {
   const handleClickAddJob = () => {
     setAddJob(true)
     setSelectedJob(null)
+    setEditedJob(null)
   }
 
   const handleAddNote = async (job, noteFormData) => {
