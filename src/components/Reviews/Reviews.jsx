@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 import styles from './Reviews.module.css'
 
@@ -34,61 +34,99 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
     setSelectedResource({...selectedResource, reviews: sortedReviews})
   }
 
-  if (!selectedResource) return <p>Select a resource to see it's reviews</p>
-
+  if (!selectedResource) return (
+    <>
+      <nav className={styles.nav}>
+          <h1>Reviews</h1>
+      </nav>
+      <header className={styles.header}>
+        <div>
+          <h2>Select a resource to see reviews</h2>
+        </div>
+      </header>
+    </>
+  )
 
   return (  
-    <div className={styles.reviews}>
+    <div className={styles.container}>
+      <nav className={styles.nav}>
+        <h1>Reviews</h1>
+      </nav>
       <div>
-        <div>
-          {selectedResource.reviews.length} Reviews
-        </div>
         {selectedResource.reviews.length ? 
-          <div>
-          {selectedResource.averageRating.toFixed(1)} average rating
-          <label htmlFor="rating-selector"></label>
-          <select 
-            id='rating-selector'
-            name='rating-selector'
-            onChange={handleReviewSort}
-          >
-            <option value="newest">Newest</option>
-            <option value="oldest">Oldest</option>
-            <option value="highest">Highest</option>
-            <option value="lowest">Lowest</option>
-          </select>
-          </div> :
-          <div>
-            Be The First To Review!
-          </div>
+        <>
+          <header className={styles.header}>
+            <div>
+              <h2>
+                {selectedResource.averageRating.toFixed(1)}
+                {' '}
+                {Array.from({ length: Math.floor(selectedResource.averageRating) }, (_, index) => (
+                  <span key={index}>⭐️</span>
+                ))}
+              </h2>
+              <div className={styles.sort}>
+                <div>
+                  <h2>
+                    {selectedResource.reviews.length}
+                    {' '}
+                    {selectedResource.reviews.length === 1 ? "Review" : "Reviews"}
+                  </h2>
+                </div>
+                <div>
+                  <select 
+                    id='rating-selector'
+                    name='rating-selector'
+                    onChange={handleReviewSort}
+                  >
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
+                    <option value="highest">Highest</option>
+                    <option value="lowest">Lowest</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </header>
+        </> :
+        <header className={styles.header}>
+          <h2>Be The First To Review!</h2>
+        </header>
         }
       </div>
-      <div>
+      <div className={styles.buttons}>
         {showButton && (
           userReview ? (
-            <button onClick={() => handleReviewButtonClick()}>✎</button>
+            <button
+              className={styles.button}
+              onClick={() => handleReviewButtonClick()}>✎</button>
           ) : (
-            <button onClick={() => handleReviewButtonClick()}>+</button>
+            <button
+              className={styles.button} 
+              onClick={() => handleReviewButtonClick()}>✅</button>
           )
         )}
       </div>
       {reviewFormVisible && 
         <div>
           <ReviewForm 
-          setReviewFormVisible={setReviewFormVisible} setShowButton={setShowButton} 
-          handleAddReview={handleAddReview} 
-          selectedResource={selectedResource}
-          handleUpdateReview={handleUpdateReview}
-          userReview={userReview}
-          handleDeleteReview={handleDeleteReview}
+            setReviewFormVisible={setReviewFormVisible} 
+            setShowButton={setShowButton} 
+            handleAddReview={handleAddReview} 
+            selectedResource={selectedResource}
+            handleUpdateReview={handleUpdateReview}
+            userReview={userReview}
+            handleDeleteReview={handleDeleteReview}
           />
         </div>
       }
       {selectedResource.reviews.map(review =>
-        <div key={review._id}>
+        <div 
+          className={styles.review}
+          key={review._id}
+        >
           <ReviewCard review={review} />
         </div>
-        )}
+      )}
     </div>
   )
 }

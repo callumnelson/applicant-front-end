@@ -1,8 +1,39 @@
 .container {
-  background-color: aqua;
-  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  width: 300px;
+  margin-bottom: 10px;
 }
 
-.container img {
+.author > img {
+  border-radius: 50%;
   width: 40px;
+
+}
+
+.author {
+  margin-bottom: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.toggle {
+  color: blue;
+  text-decoration: underline;
+  margin-top: -10px;
+}
+
+.toggle:hover {
+  cursor: pointer;
 }
