@@ -2,6 +2,8 @@ import { useState } from "react"
 
 import styles from './ReviewForm.module.css'
 
+import Icon from "../Icon/Icon"
+
 const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, handleAddReview, handleUpdateReview, userReview, handleDeleteReview }) => {
 
   const [formData, setFormData ] = useState(
@@ -59,7 +61,7 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
           <span
             onClick={() => handleDeleteClick()}
           >
-            🗑️
+            <Icon category={'Trash'} />
           </span>
         } 
       </div>
@@ -118,13 +120,13 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
             className={styles.button}
             type="submit" 
           >
-            ✅
+            <Icon category={'Check'} />
           </button>
           <button
             className={styles.button}
             onClick={() => handleCancel()}
           >
-            ❌
+            <Icon category={'Cancel'}/>
           </button>
         </div>
       </form>
