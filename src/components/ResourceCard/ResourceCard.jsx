@@ -53,7 +53,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
         </div>
         <div className={styles.category}>
           <p
-            
+            id={styles[resource.category.toLowerCase().replaceAll(' ','-')]}
           >{resource.category}</p>
         </div>
         <div className={styles.rating}>
