@@ -16,6 +16,10 @@
   border-radius: 20px;
 }
 
+.job a {
+  color: var(--background);
+}
+
 .dream-job {
   background-color: darkgreen;
   color: white;
@@ -127,6 +131,11 @@
 
 .contact p, .documents p {
   padding-left: 20px;
+  display: flex;
+}
+
+.documents p > a {
+  margin-left: 10px;
 }
 
 .notebuttons {
