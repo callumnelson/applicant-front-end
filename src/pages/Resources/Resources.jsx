@@ -230,7 +230,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
               setSearch={setSearch}
             />
           }
-          <section>
+          <section className={styles.rows}>
             {displayedResources.map(resource => (
               editedResource && editedResource._id === resource._id ?
                 <ResourceForm 

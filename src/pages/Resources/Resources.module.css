@@ -52,16 +52,22 @@
   border: 2px solid var(--primary)
 }
 
-section.resources {
+.resources {
   width: 75%;
-  background-color: gray;
-  overflow: scroll;
+  overflow: hidden;
 }
 
-section.reviews {
+.resources:hover {
+  overflow: auto;
+}
+
+.reviews {
   width: 25%;
-  background-color: white;
-  overflow: scroll;
+  overflow: hidden;
+}
+
+.reviews:hover {
+  overflow: auto;
 }
 
 .resources:first-child {
@@ -74,9 +80,13 @@ section.reviews {
   height: calc(100% - 86px);
 }
 
-.table section {
+.rows {
   height: calc(100% - 50px);
-  overflow: scroll;
+  overflow: hidden;
+}
+
+.rows:hover {
+  overflow: auto;
 }
 
 .table h4 {

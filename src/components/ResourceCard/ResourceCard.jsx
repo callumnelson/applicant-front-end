@@ -53,7 +53,9 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           <p>{resource.name}</p>
         </div>
         <div className={styles.category}>
-          <p>{resource.category}</p>
+          <p
+            className={styles[resource.category.toLowerCase().replaceAll(' ','-')]}
+          >{resource.category}</p>
         </div>
         <div className={styles.rating}>
           <p>{resource.averageRating?.toFixed(1)}</p>

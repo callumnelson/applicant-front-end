@@ -121,5 +121,31 @@
   padding: 5px 10px;
   width: 100%;
   height: 100px;
-  overflow: scroll;
+  overflow: hidden;
+}
+
+.instructions:hover {
+  overflow: auto;
+}
+
+.networking {
+  background-color: darkgreen;
+  color: white;
+}
+
+.interviewing {
+  background-color: lightgreen;
+}
+
+.job-search {
+  background-color: darkblue;
+  color: white;
+}
+
+.resumes {
+  background-color: rgb(230, 240, 122);
+}
+
+.other {
+  background-color: rgb(238, 204, 119);
 }
