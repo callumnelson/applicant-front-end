@@ -1,5 +1,10 @@
+//npm modules
 import { Link } from 'react-router-dom'
 
+//components
+import Icon from '../Icon/Icon'
+
+//css
 import styles from './ProfileJobCard.module.css'
 
 
@@ -7,6 +12,8 @@ const ProfileJobCard = ({job}) => {
   const currOpts = { style: 'currency', currency: 'USD', notation: 'compact'}
   const currFormat = new Intl.NumberFormat('en-US', currOpts)
   const priority = job.priority.toLowerCase().replaceAll(' ','-')
+  const listing = job.jobListing
+  console.log(listing)
 
   return (
     <div>
@@ -32,7 +39,7 @@ const ProfileJobCard = ({job}) => {
           <p className={styles[priority]}>{job.priority}</p>
         </div>
         <div className={styles.jobListing}>
-          <p>{job.jobListing}</p>
+          <p><a href={listing}><Icon category="Link" /></a></p>
         </div>
       </div>
     </div>
