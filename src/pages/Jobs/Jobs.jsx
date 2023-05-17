@@ -205,6 +205,7 @@ const Jobs = ({profile, setProfile}) => {
                 handleDeleteJob={handleDeleteJob}
                 notesCategory={notesCategory}
                 setNotesCategory={setNotesCategory}
+                setAddJob={setAddJob}
               />
             ))}
           </section>

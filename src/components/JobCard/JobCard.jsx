@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 // components
 import NotesCategoryButton from '../NotesCategoryButton/NotesCategoryButton'
+import Icon from '../Icon/Icon'
 
 // css
 import styles from './JobCard.module.css'
@@ -10,7 +11,7 @@ import styles from './JobCard.module.css'
 // assets
 import profileIcon from '../../assets/icons/circle-user.png'
 
-const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob, notesCategory, setNotesCategory}) => {
+const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob, notesCategory, setNotesCategory, setAddJob}) => {
   const selected = selectedJob && selectedJob._id === job._id
   const notesCategories = ['Resume', 'Interview Qs', 'Skills', 'To-Do', 'Networking', 'General']
   
@@ -22,6 +23,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
 
   const handleChangeEditedJob = () => {
     setEditedJob(job)
+    setAddJob(false)
     if (job._id !== selectedJob._id) setSelectedJob(null)
   }
 
@@ -43,7 +45,12 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
             className={styles.dropdown}
             onClick={handleSelectJob}
           >
-            {selected ? "⬆️": "⬇️"}
+            {
+            selected ? 
+              <Icon category={'UpArrow'}/>
+              : 
+              <Icon category={'DownArrow'}/>
+            }
           </p>
         </span>
         <div className={styles.title}>
@@ -71,14 +78,14 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           <p className={styles.edit}
             onClick={handleChangeEditedJob}
           >
-            ✏️
+            <Icon category={'Edit'} />
           </p>
         </span>
         <span>
           <p className={styles.delete}
             onClick={() => handleDeleteJob(job)}
           >
-            🗑️
+            <Icon category={'Trash'} />
           </p>
         </span>
       </div>
@@ -103,16 +110,18 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
             <div className={styles.resume}>
               <p>Resume:
                 {
-                  job.resume &&
-                  <Link to={job.resume}>📄</Link>
+                  job.jobResume &&
+                  <Link to={job.resume}>Link</Link>
                 } 
               </p>
             </div>
             <div className={styles.coverLetter}>
               <p>Cover Letter: 
                 {    
-                  job.coverLetter &&
-                  <Link to={job.coverLetter}>📄</Link>
+                  job.jobCoverLetter &&
+                  <Link to={job.coverLetter}>
+                    Link
+                  </Link>
                 } 
               </p>
             </div>
