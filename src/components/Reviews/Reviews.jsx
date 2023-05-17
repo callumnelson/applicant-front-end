@@ -40,9 +40,7 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
           <h1>Reviews</h1>
       </nav>
       <header className={styles.header}>
-        <div>
           <h2>Select a resource to see reviews</h2>
-        </div>
       </header>
     </>
   )

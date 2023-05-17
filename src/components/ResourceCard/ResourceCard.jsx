@@ -62,10 +62,18 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           >{resource.category}</p>
         </div>
         <div className={styles.rating}>
-          <p>{resource.averageRating?.toFixed(1)}</p>
+          <p>
+            {resource.averageRating?.toFixed(1)}
+            {' '}
+            {resource.averageRating < 2 && resource.averageRating > 1 && '★'}
+            {resource.averageRating < 3 && resource.averageRating > 2 && '★★'}
+            {resource.averageRating < 4 && resource.averageRating > 3 && '★★★'}
+            {resource.averageRating < 5 && resource.averageRating > 4 && '★★★★'}
+            {resource.averageRating === 5 && '★★★★★'}
+          </p>
         </div>
         <div className={styles.link}>
-          <p>{resource.link}</p>
+          <a href={resource.link}><Icon category={'Link'}/></a>
         </div>
           {(profile._id === resource.owner || profile?.role > 200) &&
             <>

@@ -116,17 +116,17 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
           </div>
         </div>
         <div className={styles.buttons}>
-          <button 
-            className={styles.button}
-            type="submit" 
-          >
-            <Icon category={'Check'} />
-          </button>
           <button
             className={styles.button}
             onClick={() => handleCancel()}
           >
             <Icon category={'Cancel'}/>
+          </button>
+          <button 
+            className={styles.button}
+            type="submit" 
+          >
+            <Icon category={'Check'} />
           </button>
         </div>
       </form>

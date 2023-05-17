@@ -5,11 +5,11 @@ import styles from './ReviewCard.module.css'
 import profileIcon from '../../assets/icons/circle-user.png'
 
 const ReviewCard = ({ review }) => {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false)
 
   const toggleExpand = () => {
     setExpanded(!expanded)
-  };
+  }
 
   return (  
     <div className={styles.container}>
