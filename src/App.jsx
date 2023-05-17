@@ -55,12 +55,10 @@ function App() {
 
   const handleAddStarredResource = async (user, resource) => {
     const updatedProfile = await profileService.addStarredResource(user, resource)
-    setProfile(updatedProfile)
   }
 
   const handleRemoveStarredResource = async (user, resource) => {
     const updatedProfile = await profileService.removeStarredResource(user, resource)
-    setProfile(updatedProfile)
   }
 
   return (

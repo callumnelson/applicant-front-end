@@ -6,7 +6,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
 
   const selected = selectedResource && selectedResource._id === resource._id 
 
-  const alreadyStarred = profile.starredResources?.some(r => r === resource._id)
+  const alreadyStarred = profile.starredResources?.some(r => r._id === resource._id)
 
   const handleSelect = () => {
     if (selected) {
@@ -22,16 +22,15 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
     setSelectedResource(null)
   }
 
-  const handleStarredResourceClick = () => {
+  const handleStarredResourceClick = async () => {
     if (alreadyStarred) {
-      handleRemoveStarredResource(user, resource)
+      await handleRemoveStarredResource(user, resource)
       setProfile({...profile, starredResources: profile.starredResources.filter(r => r !== resource._id)})
     } else {
-      handleAddStarredResource(user, resource)
+      await handleAddStarredResource(user, resource)
       setProfile({...profile, starredResources: [...profile.starredResources, resource]})
     }
   }
-
 
   return (  
     <>
@@ -54,7 +53,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
         </div>
         <div className={styles.category}>
           <p
-            className={styles[resource.category.toLowerCase().replaceAll(' ','-')]}
+            
           >{resource.category}</p>
         </div>
         <div className={styles.rating}>
@@ -67,18 +66,16 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
             <>
               <span
                 onClick={() => handleChangeToEditResource()}
-              ><p>✎</p></span>
+              >✎</span>
               <span
                 onClick={() => handleDeleteResource(resource)}
-              ><p>🗑️</p></span>
+              >🗑️</span>
             </>
           }
           <span
             onClick={() => handleStarredResourceClick()}
           >
-            <p>
-              {alreadyStarred ? '★' : '☆' }
-            </p>
+            {alreadyStarred ? '★' : '☆' }
           </span>
       </div>
       <div className={`${styles.details} ${selected ? styles.show : ''}`}>
