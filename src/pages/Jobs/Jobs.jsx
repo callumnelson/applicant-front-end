@@ -34,6 +34,7 @@ const Jobs = ({profile, setProfile}) => {
         new Date(b.createdAt) - new Date(a.createdAt))
       ))
       setAllJobs(data)
+      if(!data.length) setAddJob(true)
     }
     fetchJobs()
   }, [])
