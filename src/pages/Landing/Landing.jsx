@@ -13,7 +13,7 @@ import ProfileResourceCard from '../../components/ProfileResourceCard/ProfileRes
 import Icon from '../../components/Icon/Icon'
 
 //assets
-import profileIcon from '../../assets/icons/profile.png'
+import profileIcon from '../../assets/icons/circle-user.png'
 
 // css
 import styles from './Landing.module.css'

@@ -81,6 +81,11 @@
   display: none;
 }
 
+.userheader > p > img {
+  width: 2.5vw;
+  height: 2.5vw;
+}
+
 .deleting {
   display: flex;
   height: 100%;

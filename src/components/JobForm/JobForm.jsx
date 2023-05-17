@@ -5,7 +5,7 @@ import { useState } from "react"
 import styles from './JobForm.module.css'
 
 // assets
-import profileIcon from '../../assets/icons/profile.png'
+import profileIcon from '../../assets/icons/circle-user.png'
 
 const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdateJob}) => {
 
