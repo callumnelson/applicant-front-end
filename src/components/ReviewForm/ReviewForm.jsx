@@ -54,16 +54,19 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
 
   return (  
     <div className={styles.container}>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.delete}>
-          {userReview && 
-            <span
-              onClick={() => handleDeleteClick()}
-            >
-              🗑️
-            </span>
-          } 
-        </div>
+      <div className={styles.delete}>
+        {userReview && 
+          <span
+            onClick={() => handleDeleteClick()}
+          >
+            🗑️
+          </span>
+        } 
+      </div>
+      <form
+        className={styles.form} 
+        onSubmit={handleSubmit}
+      >
         <div>
           <textarea
             className={styles.content}

@@ -186,7 +186,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
               name="search"
               value={search}
               onChange={handleSearchChange}
-              placeholder='search' />
+              placeholder='Search...' />
           </div>
         </nav>
         <div className={styles.table}>
