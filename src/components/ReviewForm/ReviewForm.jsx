@@ -2,6 +2,8 @@ import { useState } from "react"
 
 import styles from './ReviewForm.module.css'
 
+import Icon from "../Icon/Icon"
+
 const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, handleAddReview, handleUpdateReview, userReview, handleDeleteReview }) => {
 
   const [formData, setFormData ] = useState(
@@ -54,16 +56,19 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
 
   return (  
     <div className={styles.container}>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.delete}>
-          {userReview && 
-            <span
-              onClick={() => handleDeleteClick()}
-            >
-              🗑️
-            </span>
-          } 
-        </div>
+      <div className={styles.delete}>
+        {userReview && 
+          <span
+            onClick={() => handleDeleteClick()}
+          >
+            <Icon category={'Trash'} />
+          </span>
+        } 
+      </div>
+      <form
+        className={styles.form} 
+        onSubmit={handleSubmit}
+      >
         <div>
           <textarea
             className={styles.content}
@@ -115,13 +120,13 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
             className={styles.button}
             type="submit" 
           >
-            ✅
+            <Icon category={'Check'} />
           </button>
           <button
             className={styles.button}
             onClick={() => handleCancel()}
           >
-            ❌
+            <Icon category={'Cancel'}/>
           </button>
         </div>
       </form>
