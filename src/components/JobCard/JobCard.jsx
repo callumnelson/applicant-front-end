@@ -11,7 +11,7 @@ import styles from './JobCard.module.css'
 // assets
 import profileIcon from '../../assets/icons/profile.png'
 
-const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob, notesCategory, setNotesCategory}) => {
+const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob, notesCategory, setNotesCategory, setAddJob}) => {
   const selected = selectedJob && selectedJob._id === job._id
   const notesCategories = ['Resume', 'Interview Qs', 'Skills', 'To-Do', 'Networking', 'General']
   
@@ -23,6 +23,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
 
   const handleChangeEditedJob = () => {
     setEditedJob(job)
+    setAddJob(false)
     if (job._id !== selectedJob._id) setSelectedJob(null)
   }
 
