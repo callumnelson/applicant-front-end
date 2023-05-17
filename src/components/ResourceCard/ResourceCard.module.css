@@ -64,7 +64,7 @@
 }
 
 .details * {
-  display: none;
+  visibility: hidden;
 }
 
 .details > div {
@@ -80,8 +80,8 @@
 }
 
 .show * {
-  display: flex;
-  flex-direction: column;
+  visibility: visible;
+  transition: visibility 0s ease-in 0.5s;
 }
 
 .label {

@@ -102,17 +102,15 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
         </div>
       </header>
       {reviewFormVisible && 
-        <div>
-          <ReviewForm 
-            setReviewFormVisible={setReviewFormVisible} 
-            setShowButton={setShowButton} 
-            handleAddReview={handleAddReview} 
-            selectedResource={selectedResource}
-            handleUpdateReview={handleUpdateReview}
-            userReview={userReview}
-            handleDeleteReview={handleDeleteReview}
-          />
-        </div>
+        <ReviewForm 
+          setReviewFormVisible={setReviewFormVisible} 
+          setShowButton={setShowButton} 
+          handleAddReview={handleAddReview} 
+          selectedResource={selectedResource}
+          handleUpdateReview={handleUpdateReview}
+          userReview={userReview}
+          handleDeleteReview={handleDeleteReview}
+        />
       }
       <section className={styles.reviews}>
         {selectedResource.reviews.map(review =>
