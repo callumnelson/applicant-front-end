@@ -65,7 +65,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           <p>{resource.averageRating?.toFixed(1)}</p>
         </div>
         <div className={styles.link}>
-          <p>{resource.link}</p>
+          <a href={resource.link}><Icon category={'Link'}/></a>
         </div>
           {(profile._id === resource.owner || profile?.role > 200) &&
             <>
