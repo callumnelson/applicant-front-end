@@ -10,7 +10,7 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
     content: '',
   })
 
-  const handleStarHover = (rating) => {
+  const handleStarClick = (rating) => {
     setFormData({ ...formData, rating : rating })
   }
 
@@ -51,30 +51,28 @@ const ReviewForm = ({setReviewFormVisible, setShowButton, selectedResource, hand
         </div>
         <div className={styles.rating}>
           <div className={styles.stars}>
-            <span>
+            <span
+              onClick={() => handleStarClick(1)}
+            >
               ★
             </span>
             <span
-              onMouseEnter={() => handleStarHover(2)}
-              onMouseLeave={() => handleStarHover(formData.rating >= 2 ? formData.rating : 1)}
+              onClick={() => handleStarClick(2)}
             >
               {formData.rating >= 2 ? "★" : "☆"}
             </span>
             <span
-              onMouseEnter={() => handleStarHover(3)}
-              onMouseLeave={() => handleStarHover(formData.rating >= 3 ? formData.rating : 1)}
+              onClick={() => handleStarClick(3)}
             >
               {formData.rating >= 3 ? "★" : "☆"}
             </span>
             <span
-              onMouseEnter={() => handleStarHover(4)}
-              onMouseLeave={() => handleStarHover(formData.rating >= 4 ? formData.rating : 1)}
+              onClick={() => handleStarClick(4)}
             >
               {formData.rating >= 4 ? "★" : "☆"}
             </span>
             <span
-              onMouseEnter={() => handleStarHover(5)}
-              onMouseLeave={() => handleStarHover(formData.rating >= 5 ? formData.rating : 1)}
+              onClick={() => handleStarClick(5)}
             >
               {formData.rating >= 5 ? "★" : "☆"}
             </span>
