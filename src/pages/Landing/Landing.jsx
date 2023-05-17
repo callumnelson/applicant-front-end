@@ -23,7 +23,7 @@ const Landing = ({ user, profile, setProfile }) => {
   const [displayBrandForm, setDisplayBrandForm] = useState(false)
 
   const navigate = useNavigate()
-
+  console.log(profile)
   useEffect(() => {
     if (!user) {
       setProfile(null)
