@@ -133,9 +133,9 @@ const Jobs = ({profile, setProfile}) => {
   const sortJobs = (a, b, sortCol, sortOrder) => {
     if (sortCol === 'salary'){
       return sortOrder > 0 ? 
-        a[sortCol] - b[sortCol]
-          :
         b[sortCol] - a[sortCol]
+          :
+        a[sortCol] - b[sortCol]
     }else if(sortCol === 'createdAt'){
       return sortOrder > 0 ? 
         new Date(b[sortCol]) - new Date(a[sortCol])

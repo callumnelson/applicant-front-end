@@ -113,11 +113,11 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
           <div className={styles.jobListing}>
             <input
               required
-              type="text"
+              type="url"
               name="jobListing"
               id="jobListing-input"
               value={formData.jobListing}
-              placeholder="Listing link"
+              placeholder="Listing url"
               onChange={handleChange}
             />
           </div>
@@ -142,7 +142,7 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
             <div className={styles.contactEmail}>
               <p>Email: </p>
               <input
-                type="text"
+                type="email"
                 name="contactEmail"
                 id="contactEmail-input"
                 value={formData.contactEmail}
@@ -158,22 +158,22 @@ const JobForm = ({handleAddJob, setAddJob, editedJob, setEditedJob, handleUpdate
             <div className={styles.jobResume}>
               <p>Resume: </p>
               <input
-                type="text"
+                type="url"
                 name="jobResume"
                 id="jobResume-input"
                 value={formData.jobResume}
-                placeholder="Resume Link"
+                placeholder="Resume url"
                 onChange={handleChange}
               />
             </div>
             <div className={styles.jobCoverLetter}>
               <p>Cover Letter: </p>
               <input
-                type="text"
+                type="url"
                 name="jobCoverLetter"
                 id="jobCoverLetter-input"
                 value={formData.jobCoverLetter}
-                placeholder="Cover Letter Link"
+                placeholder="Cover Letter url"
                 onChange={handleChange}
               />
             </div>
