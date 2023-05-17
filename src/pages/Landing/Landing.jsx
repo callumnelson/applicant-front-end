@@ -53,7 +53,7 @@ const Landing = ({ user, profile, setProfile }) => {
 
   if (!profile) return <p>Loading profile...</p>
 
-  const photo = profile.photo ? profile.photo : profileIcon
+  const photo = profile.photo ? profile.photo : <profileIcon>
   const resume = profile.baseResume
   const brandStatement = profile.brandStatement
   const jobsToDisplay = profile.applications.sort((a, b) => (
