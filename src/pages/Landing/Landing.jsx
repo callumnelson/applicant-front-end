@@ -38,10 +38,12 @@ const Landing = ({ user, profile, setProfile }) => {
   }
   
   const handleAddBrand = async (brandFormData) => {
-    const updatedProfileBrand = await profileService.createBrandStatement(user, brandFormData)
-    setProfile({...updatedProfileBrand})
+    const newBrand = await profileService.createBrandStatement(user, brandFormData)
+    console.log(newBrand)
+    setProfile({...profile, ...newBrand})
     setDisplayBrandForm(false)
   }
+  console.log('profile after adding brand', profile)
 
   function handleResumeClick() {
     setDisplayResumeForm(true)
