@@ -13,7 +13,6 @@ const ProfileJobCard = ({job}) => {
   const currFormat = new Intl.NumberFormat('en-US', currOpts)
   const priority = job.priority.toLowerCase().replaceAll(' ','-')
   const listing = job.jobListing
-  console.log(listing)
 
   return (
     <div>

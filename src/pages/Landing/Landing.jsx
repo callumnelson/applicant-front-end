@@ -28,22 +28,22 @@ const Landing = ({ user, profile, setProfile }) => {
     if (!user) {
       setProfile(null)
       navigate('/auth/login')
-    } else {
-      setProfile(profile)
     }
-  }, [user, profile])
+  }, [user])
 
   const handleAddResume = async (resumeFormData) => {
-    const updatedProfileResume = await profileService.createResume(user, resumeFormData)
-    setProfile({...profile, updatedProfileResume})
+    const newResume = await profileService.createResume(user, resumeFormData)
+    setProfile({...profile, ...newResume})
     setDisplayResumeForm(false)
   }
-
+  
   const handleAddBrand = async (brandFormData) => {
-    const updatedProfileBrand = await profileService.createBrandStatement(user, brandFormData)
-    setProfile({...profile, updatedProfileBrand})
+    const newBrand = await profileService.createBrandStatement(user, brandFormData)
+    console.log(newBrand)
+    setProfile({...profile, ...newBrand})
     setDisplayBrandForm(false)
   }
+  console.log('profile after adding brand', profile)
 
   function handleResumeClick() {
     setDisplayResumeForm(true)
@@ -56,12 +56,12 @@ const Landing = ({ user, profile, setProfile }) => {
   if (!profile) return <p>Loading profile...</p>
 
   const photo = profile.photo ? profile.photo : profileIcon
-  const resume = profile.baseResume
-  const brandStatement = profile.brandStatement
+  const resume = profile.baseResume ? profile.baseResume : ''
+  const brandStatement = profile.brandStatement ? profile.brandStatement : ''
   const jobsToDisplay = profile.applications.sort((a, b) => (
     new Date(b.updatedAt) - new Date(a.updatedAt)
   )).slice(0, 3)
-
+  
   return (
     <main className={styles.container}>
       <section className={styles.profile}>

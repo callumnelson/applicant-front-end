@@ -24,6 +24,7 @@
   width: 100%;
   height: 75px;
   resize: vertical;
+  font-family: canada-type-gibson, sans-serif;
 }
 
 .delete {
