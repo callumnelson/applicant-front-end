@@ -12,5 +12,9 @@
 
 .form > button {
   padding: 0;
-  width: 2.5vw;
+  width: 1.8vw;
+  border-radius: 50%;
+  background-color: aliceblue;
+  border: none;
+  cursor: pointer;
 }

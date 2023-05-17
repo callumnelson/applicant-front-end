@@ -1,7 +1,12 @@
+//npm modules
 import { useState } from "react"
 import { TextField } from "@mui/material"
 
+//css
 import styles from './ResumeForm.module.css'
+
+//components
+import Icon from "../Icon/Icon"
 
 const ResumeForm = ({handleAddResume, resume}) => {
   const [formData, setFormData] = useState({baseResume: `${resume}`})
@@ -31,7 +36,7 @@ const ResumeForm = ({handleAddResume, resume}) => {
           autoComplete="off"
           onChange={handleChange}
         />
-        <button type="submit">✅</button>
+        <button type="submit"><Icon category="Check"/></button>
       </form>
     </main>
   )

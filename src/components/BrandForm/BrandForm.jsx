@@ -1,7 +1,12 @@
+//npm modules
 import { useState } from "react"
 import { TextField } from "@mui/material"
 
+//css
 import styles from './BrandForm.module.css'
+
+//components
+import Icon from "../Icon/Icon"
 
 const BrandForm = ({handleAddBrand, brandStatement}) => {
   const [formData, setFormData] = useState({brandStatement: `${brandStatement}`})
@@ -31,7 +36,7 @@ const BrandForm = ({handleAddBrand, brandStatement}) => {
           autoComplete="off"
           onChange={handleChange}
         />
-        <button type="submit">✅</button>
+        <button type="submit"><Icon category="Check" /></button>
       </form>
     </main>
   )
