@@ -61,7 +61,7 @@ const Reviews = ({selectedResource, user, handleAddReview, handleUpdateReview, h
                 {selectedResource.averageRating.toFixed(1)}
                 {' '}
                 {Array.from({ length: Math.floor(selectedResource.averageRating) }, (_, index) => (
-                  <span key={index}>⭐️</span>
+                  <span key={index}>★</span>
                 ))}
               </h2>
               <div className={styles.sort}>

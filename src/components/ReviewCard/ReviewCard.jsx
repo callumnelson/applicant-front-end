@@ -21,7 +21,7 @@ const ReviewCard = ({ review }) => {
       <div>
         {' '}
         {Array.from({ length: review.rating }, (_, index) => (
-          <span key={index}>⭐️</span>
+          <span key={index}>★</span>
         ))}
         {' '}
         {new Date(review.createdAt).toLocaleDateString()}
