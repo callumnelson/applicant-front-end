@@ -8,7 +8,7 @@ import check from '../../assets/icons/check.svg'
 import cancel from '../../assets/icons/cancel.svg'
 import uparrow from '../../assets/icons/uparrow.svg'
 import downarrow from '../../assets/icons/downarrow.svg'
-
+import add from '../../assets/icons/add.svg'
 
 
 const Icon = ({ category }) => {
@@ -22,6 +22,7 @@ const Icon = ({ category }) => {
     Cancel: cancel,
     UpArrow: uparrow,
     DownArrow: downarrow,
+    Add: add,
   }
 
   return (
