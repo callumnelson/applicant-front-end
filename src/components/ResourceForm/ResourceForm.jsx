@@ -74,7 +74,8 @@ const ResourceForm = ({handleAddResource, setAddResource, editedResource, handle
           </div>
           <div className={styles.link}>
             <input 
-            type="text"
+            required
+            type="url"
             name="link"
             id="link-input"
             value={formData.link}
