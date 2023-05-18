@@ -78,7 +78,7 @@ The backend repo for **appliCANt** can be found [here](https://github.com/callum
 
 ## **Ice Box:**
 * [x] Admin portal to manage users and resources
-* [x] Redirect from landing page to specific profile page if user is logged in
+* [x] Redirect from landing page to specific profile page if a user is logged in
 * [x] Multidminesional sorting and filtering on jobs and resources
 * [ ] Add a Coach role
 * [ ] Add a Coach dashboard
