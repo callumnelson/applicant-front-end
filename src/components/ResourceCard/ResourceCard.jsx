@@ -69,10 +69,10 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           <p>
             {resource.averageRating?.toFixed(1)}
             {' '}
-            {resource.averageRating < 2 && resource.averageRating > 1 && '★'}
-            {resource.averageRating < 3 && resource.averageRating > 2 && '★★'}
-            {resource.averageRating < 4 && resource.averageRating > 3 && '★★★'}
-            {resource.averageRating < 5 && resource.averageRating > 4 && '★★★★'}
+            {resource.averageRating < 2 && resource.averageRating >= 1 && '★'}
+            {resource.averageRating < 3.0 && resource.averageRating >= 2.0 && '★★'}
+            {resource.averageRating < 4.0 && resource.averageRating >= 3.0 && '★★★'}
+            {resource.averageRating < 5.0 && resource.averageRating >= 4.0 && '★★★★'}
             {resource.averageRating === 5 && '★★★★★'}
           </p>
         </div>
