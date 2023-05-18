@@ -12,6 +12,7 @@
 .resource div {
   display: flex;
   width: 35vw;
+  height: 7vh;
   justify-content: center;
 }
 
@@ -26,6 +27,14 @@
   padding: 5px 10px;
   border-radius: 20px;
   letter-spacing: .05em;
+}
+
+.name > p {
+  width: 20vw;
+  height: 5vh;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #networking {
