@@ -70,7 +70,7 @@
 }
 
 .notselected {
-  background-color: var(--card-background);
+  color: darkgray;
 }
 
 .details {
