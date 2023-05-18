@@ -111,7 +111,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
               <div className={styles.title}>
                 <h4>Date Added</h4>
               </div>
-              <div className={styles.title}>
+              <div id={styles.name} className={styles.title}>
                 <h4>Name</h4>
               </div>
               <div className={styles.title}>
