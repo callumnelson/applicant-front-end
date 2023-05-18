@@ -115,11 +115,12 @@
 
 .contact, .documents {
   width: 50%;
+  margin: 0 5px;
 }
 
 .contact img {
-  height: 50px;
-  margin-right: 20px;
+  height: 25px;
+  margin-right: 10px;
 }
 
 .contact header, .documents header, .notebuttons header {
@@ -128,6 +129,7 @@
   width: 100%;
   align-items: center;
   justify-content: start;
+  border-bottom: 0.5px solid lightgray;
 }
 
 .contact h3, .documents h3 {
@@ -146,7 +148,7 @@
 .notebuttons {
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  margin: 0 5px;
   flex-wrap: wrap;
   height: 100%;
 }
