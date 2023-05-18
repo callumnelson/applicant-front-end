@@ -23,8 +23,8 @@
 }
 
 .info > img {
-  height: 12vw;
-  width: 12vw;
+  height: 11vw;
+  width: 11vw;
   object-fit: cover;
   border-radius: 50%;
 }
@@ -57,8 +57,9 @@
 .resume, .brand {
   background-color: rgba(217, 238, 241, 0.361);
   height: 18vh;
-  width: 20vw;
+  width: 19vw;
   padding: 1vh;
+  margin-bottom: 1vmin;
   border-radius: 3%;
   display: flex;
   flex-direction: column;
