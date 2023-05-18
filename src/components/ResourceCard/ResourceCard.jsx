@@ -4,7 +4,7 @@ import Icon from '../Icon/Icon'
 //css
 import styles from './ResourceCard.module.css'
 
-const ResourceCard = ({setSelectedResource, selectedResource, resource, setEditedResource, handleDeleteResource, profile, handleAddStarredResource, user, handleRemoveStarredResource}) => {
+const ResourceCard = ({setSelectedResource, selectedResource, resource, setEditedResource, handleDeleteResource, profile, handleAddStarredResource, user, handleRemoveStarredResource, setAddResource}) => {
 
   const selected = selectedResource && selectedResource._id === resource._id 
 
@@ -21,7 +21,8 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
 
   const handleChangeToEditResource = () => {
     setEditedResource(resource)
-    setSelectedResource(null)
+    setAddResource(false)
+    if (resource._id !== selectedResource._id) setSelectedResource(null)
   }
 
   const handleStarredResourceClick = async () => {
@@ -61,6 +62,9 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
             id={styles[resource.category.toLowerCase().replaceAll(' ','-')]}
           >{resource.category}</p>
         </div>
+        <div className={styles.link}>
+          <a href={resource.link}><Icon category={'Link'}/></a>
+        </div>
         <div className={styles.rating}>
           <p>
             {resource.averageRating?.toFixed(1)}
@@ -71,9 +75,6 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
             {resource.averageRating < 5 && resource.averageRating > 4 && '★★★★'}
             {resource.averageRating === 5 && '★★★★★'}
           </p>
-        </div>
-        <div className={styles.link}>
-          <a href={resource.link}><Icon category={'Link'}/></a>
         </div>
           {(profile._id === resource.owner || profile?.role > 200) &&
             <>
@@ -111,7 +112,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
             <h4>Instructions:</h4> 
           </div>
           <div className={styles.instructions}>
-            {resource.instructions}
+            <p>{resource.instructions}</p>
           </div>
         </div>
       </div>

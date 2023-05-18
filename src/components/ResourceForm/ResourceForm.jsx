@@ -1,10 +1,13 @@
 // npm modules
 import { useState } from "react"
 
+// components
+import Icon from "../Icon/Icon"
+
 // css
 import styles from './ResourceForm.module.css'
 
-const ResourceForm = ({handleAddResource, setAddResource, editedResource, handleUpdateResource, setEditedResource, setSearch}) => {
+const ResourceForm = ({handleAddResource, setAddResource, editedResource, handleUpdateResource, setEditedResource}) => {
   const [formData, setFormData ] = useState(
     editedResource ? editedResource : {
     name: '',
@@ -35,9 +38,14 @@ const ResourceForm = ({handleAddResource, setAddResource, editedResource, handle
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.resource}>
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <div className={styles.row}>
+          <div>
+            <p>
+              Resource Info
+            </p>
+          </div>
           <div className={styles.name}>
             <input
               required
@@ -75,25 +83,30 @@ const ResourceForm = ({handleAddResource, setAddResource, editedResource, handle
             />
           </div>
         </div>
-        <div className={styles.details}>
+        <div className={styles.detailsCard}>
           <div className={styles.instructions}>
+            <h4>Instructions:</h4>
             <textarea
               required
               type="text"
               name="instructions"
               id="text-input"
               value={formData.instructions}
-              placeholder="instructions"
+              placeholder="Type resource instructions here..."
               onChange={handleChange}
             />
           </div>
+          <div>
+            <button
+              onClick={() => handleCancel()}
+            >
+              <Icon category={'Cancel'}/>
+            </button>
+            <button type="submit">
+              <Icon category={'Check'}/>
+            </button>
+          </div>
         </div>
-        <button
-          onClick={() => handleCancel()}
-        >
-          Cancel
-        </button>
-        <button type="submit">SUBMIT</button>
       </form>
     </div>
   )

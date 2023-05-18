@@ -1,30 +1,107 @@
-.resource {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+.container {
+  background-color: var(--card-background);
+  border-radius: 5px;
+  margin-bottom: 2px;
+  box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+  -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
+  -webkit-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
 }
 
-.resource > div {
-  width: 20%;
+.container form {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  border: 1px solid black;
+  flex-direction: column;
 }
 
-.details {
+.row {
+  display: flex;
+  align-items: center;
+  height: 75px;
   width: 100%;
+  padding-left: 30px;
+  padding-right: 90px;
+  border-radius: 5px;
+  background-color: rgb(208, 242, 255);
+}
+
+.row > div {
+  width: calc(100%/ 5);
+}
+
+.row > div input, .row > div select {
+  width: 90%;
+  height: 60%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--primary);
+}
+
+.detailsCard {
+  display: flex;
+  align-items: center;
+  height: 150px;
+  width: 100%;
+  padding: 10px 60px 10px 30px;
+}
+
+.detailsCard > div button {
+  background-color: var(--card-background);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin: 0 10px;
+  cursor: pointer;
+  border: none;
 }
 
 .instructions {
-  width: 100%;
+  width: 90%;
+  padding-top: 10px;
 }
 
-.instructions > textarea {
+.instructions h4 {
+  margin: 5px 0;
+}
+
+.instructions p {
+  padding: 5px 10px;
   width: 100%;
-  height: 90%;;
+  height: 100px;
+  overflow: hidden;
+  border-top: 0.5px solid lightgray;
+}
+
+.instructions textarea {
+  border: 0.5px solid gray;
+  width: 100%;
+  min-height: 90px;
+  max-height: 90px;
+  resize: vertical;
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  margin: 5px 0px 5px 0px;
+  border: 1px solid var(--border);
+  font-family: canada-type-gibson, sans-serif;
+}
+
+.container form input:focus, .container form textarea:focus {
+  outline: none !important;
+  border: 1px solid var(--primary);
+}
+
+.detailsCard > div button img {
+  width: 100%;
+  height: 100%;
+}
+
+.detailsCard button:hover {
+  border: none;
+}
+
+.detailsCard > div:last-child {
+  display: flex;
+  width: 20%;
+  justify-content: end;
+  align-items: center;
 }

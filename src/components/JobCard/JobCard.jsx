@@ -23,6 +23,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
 
   const handleChangeEditedJob = () => {
     setEditedJob(job)
+    setSelectedJob(job)
     setAddJob(false)
     if (job._id !== selectedJob._id) setSelectedJob(null)
   }
