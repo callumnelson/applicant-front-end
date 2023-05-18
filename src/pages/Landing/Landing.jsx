@@ -65,7 +65,6 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
     <main className={styles.container}>
       <section className={styles.profile}>
         <div className={styles.info}>
-      
           <img src={photo} alt="user" />
           <h1>{profile.name}</h1>
           <p className={styles.password}>
@@ -83,7 +82,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
             /> 
           : 
             <div className={styles.personalcontent}>
-              <a href={resume.toString()}><Icon category="File"/></a>
+              <a href={resume.toString()} target="blank"><Icon category="File"/></a>
               <button className={styles.edit} onClick={handleResumeClick}>Update</button>
             </div>
           }
@@ -97,7 +96,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
             />
           : 
             <div className={styles.personalcontent}> 
-              <a href={brandStatement.toString()}><Icon category="File"/></a>
+              <a href={brandStatement.toString()} target="blank"><Icon category="File"/></a>
               <button className={styles.edit} onClick={handleBrandClick}>Update</button>
             </div>
           }

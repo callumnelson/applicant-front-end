@@ -17,30 +17,36 @@
 }
 
 .info {
-  margin-top: 5vmin;
+  margin-top: 3vmin;
+  padding: 2.5vmin 2vmin;
+  border-radius: 3%;
 }
 
 .info > img {
-  height: 13vw;
-  width: 13vw;
+  height: 12vw;
+  width: 12vw;
   object-fit: cover;
   border-radius: 50%;
 }
 
 .info > h1 {
-  margin-top: 1vmin;
-  margin-bottom: 0;
   letter-spacing: .1rem;
+  color: aliceblue;
+  margin-top: 2.5vmin;
+}
+
+.info > p {
+  margin-top: 4vmin;
 }
 
 .password {
-  margin: 1.8vmin;
+  height: 3vmin;
 }
 
 .password > a {
   margin: 0;
-  padding: .5vmin 1vmin;
-  background-color: rgba(217, 238, 241, 0.323);
+  padding: 1vmin 1vmin;
+  background-color: rgba(217, 238, 241, 0.549);
   border-radius: 5px;
   font-size: 12px;
   font-weight: 400;
@@ -49,20 +55,17 @@
 
 .resume, .brand {
   background-color: rgba(217, 238, 241, 0.361);
-  height: 20vh;
-  width: 65%;
-  padding: 2vmin;
+  height: 18vh;
+  width: 20vw;
+  padding: 1vh;
+  border-radius: 3%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-.resume {
-  margin-top: 0vmin;
-}
-
 .brand {
-  margin-bottom: 5.5vmin;
+  margin-bottom: 5vmin;
 }
 
 .profile > div > h2 {
@@ -85,11 +88,12 @@
   border-radius: 45%;
   height: 7vh;
   width: 7vh;
+  margin-bottom: 1vh;
 }
 
 .edit {
   width: 4vw;
-  height: 1.2vw;
+  height: 1.3vw;
   padding: 0;
   font-size: 12px;
   letter-spacing: .1rem;
@@ -126,7 +130,7 @@
   background-color: rgba(255, 255, 255, 0.472);
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   height: 50px;
   border-radius: 5px;
@@ -143,7 +147,7 @@
 }
 
 #name {
-  width: 29%;
+  width: 30%;
 }
 
 #name > h4 {
@@ -152,7 +156,7 @@
 }
 
 #invisible {
-  width: 7%;
+  width: 6%;
 }
 
 .jobsheader > div {
