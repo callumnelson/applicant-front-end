@@ -59,29 +59,24 @@
   width: 25%;
   height: 100%;
   background-color: rgba(42, 54, 62, 0.429);
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .table {
   margin: 10px;
-  height: calc(100% - 86px);
+  height: calc(100% - 80px);
 }
 
-.table section {
+.table > section {
   height: calc(100% - 50px);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.table > section:hover {
   overflow-y: overlay;
   overflow-x: hidden;
 }
 
-.table section::-webkit-scrollbar-track {
-  display: none;
-}
-
 .table h4 {
   margin: 0;
-}
-
-.table::-webkit-scrollbar-track, .notes:nth-child(2)::-webkit-scrollbar-track {
-  display: none;
 }

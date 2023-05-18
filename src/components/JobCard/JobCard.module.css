@@ -6,7 +6,7 @@
   background-color: var(--card-background);
   margin-bottom: 2px;
   border-radius: 5px;
-  position: relative;
+  padding-right: 15px;
 }
 
 .job div > p {
@@ -84,6 +84,7 @@
 }
 
 .details * {
+  display: none;
   visibility: hidden;
 }
 
@@ -100,8 +101,9 @@
 }
 
 .show * {
+  display: block;
   visibility: visible;
-  transition: visibility 0s ease-in 0.5s;
+  transition: all 0s ease-in 1s;
 }
 
 .details > div:first-child {

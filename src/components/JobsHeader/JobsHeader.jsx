@@ -1,7 +1,7 @@
 // css
 import styles from './JobsHeader.module.css'
 
-const JobsHeader = ({headers, sort, handleUpdateSort, handleUpdateFilter}) => {
+const JobsHeader = ({headers, sort, filter, handleUpdateSort, handleUpdateFilter}) => {
   const options = {
     status: ['Interested', 'To Apply', 'Preparing Materials', 'Applied', 'Interview', 'Rejected', 'Offer'],
     priority: ['Dream Job', 'Great Option', 'Totally Fine', 'Will Pay Bills']
@@ -22,10 +22,22 @@ const JobsHeader = ({headers, sort, handleUpdateSort, handleUpdateFilter}) => {
                 : ''}
             </h4>
           : ['status', 'priority'].includes(header.schemaName) ?
-            <select onChange={(e) => handleUpdateFilter(e, header.schemaName)}>
-              <option value="">{header.col}</option>
+            <select 
+              onChange={(e) => handleUpdateFilter(e, header.schemaName)}
+              value={filter[header.schemaName]}
+            >
+              <option 
+                value=""
+              >
+                {header.col}
+              </option>
               {options[header.schemaName].map(option => (
-                <option key={option} value={option}>{option}</option>
+                <option 
+                  key={option} 
+                  value={option} 
+                >
+                  {option}
+                </option>
               ))}
             </select>
           :

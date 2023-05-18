@@ -3,10 +3,10 @@
   width: 100%;
   align-items: center;
   height: 75px;
+  padding-right: 15px;
   background-color: var(--card-background);
   margin-bottom: 2px;
   border-radius: 5px;
-  position: relative;
 }
 
 .resource div > p {
@@ -37,21 +37,20 @@
 }
 
 .date {
-  width: calc((100%-120px)/10);
+  width: calc((100%-120px)/7.5);
 }
 
 .name {
-  width: calc((100%-120px)/2.5);
+  width: calc((100%-120px)/3);
 }
 
 .link {
-  width: calc((100%-120px)/10);
+  width: calc((100%-120px)/7.5);
 }
 
 .selected {
   background-color: rgb(208, 242, 255);
   box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
-  z-index: 2;
   -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
   -webkit-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
   transition: all 0.5s ease-in-out;
@@ -126,7 +125,7 @@
 
 .instructions:hover {
   cursor: text;
-  overflow: auto;
+  overflow: overlay;
 }
 
 #networking {
