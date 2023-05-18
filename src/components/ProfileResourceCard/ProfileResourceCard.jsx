@@ -1,4 +1,8 @@
+//css
 import styles from './ProfileResourceCard.module.css'
+
+//components
+import Icon from '../Icon/Icon'
 
 const ProfileResourceCard = ({resource}) => {
 
@@ -19,7 +23,7 @@ const ProfileResourceCard = ({resource}) => {
           <p>{resource.category}</p>
         </div>
         <div className={styles.link}>
-          <p>{resource.link}</p>
+        <p><a href={resource.link}><Icon category="Link" /></a></p>
         </div>
       </div>
     </div>
