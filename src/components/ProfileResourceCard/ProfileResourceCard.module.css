@@ -32,6 +32,7 @@
 .name > p {
   width: 20vw;
   height: 5vh;
+  text-align: left;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

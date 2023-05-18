@@ -143,7 +143,12 @@
 }
 
 #name {
-  width: 32%;
+  width: 29%;
+}
+
+#name > h4 {
+  text-align: left;
+  width: 100%;
 }
 
 #invisible {

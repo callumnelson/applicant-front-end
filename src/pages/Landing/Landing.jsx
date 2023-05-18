@@ -139,7 +139,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
           </div>
         </div>
         <div className={styles.jobs}>
-          <h3 className={styles.tabletitle}>My 3 Most Recent Applications</h3>
+          <h3 className={styles.tabletitle}>My Most Recent Applications</h3>
           <div className={styles.table}>
             <header className={styles.jobsheader}>
               <div className={styles.title}>
