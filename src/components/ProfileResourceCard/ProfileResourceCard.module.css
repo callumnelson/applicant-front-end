@@ -11,7 +11,7 @@
 
 .resource div {
   display: flex;
-  width: calc(100%/4);
+  width: calc(100%/5);
   justify-content: center;
 }
 
@@ -21,4 +21,31 @@
   padding: 5px 10px;
   border-radius: 20px;
   letter-spacing: .05em;
+}
+
+#networking {
+  background-color: darkgreen;
+  color: white;
+  padding: 5px 10px;
+}
+
+#interviewing {
+  background-color: lightgreen;
+  padding: 5px 10px;
+}
+
+#job-search {
+  background-color: darkblue;
+  color: white;
+  padding: 5px 10px;
+}
+
+#resumes {
+  background-color: rgb(230, 240, 122);
+  padding: 5px 10px;
+}
+
+#other {
+  background-color: rgb(238, 204, 119);
+  padding: 5px 10px;
 }

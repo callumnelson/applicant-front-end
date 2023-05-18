@@ -23,7 +23,9 @@ const ProfileResourceCard = ({resource, user, handleRemoveStarredResource}) => {
           <p>{resource.name}</p>
         </div>
         <div className={styles.category}>
-          <p>{resource.category}</p>
+          <p
+            id={styles[resource.category.toLowerCase().replaceAll(' ','-')]}
+          >{resource.category}</p>
         </div>
         <div className={styles.link}>
           <p><a href={resource.link}><Icon category="Link" /></a></p>
