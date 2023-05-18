@@ -146,6 +146,7 @@ const Jobs = ({profile, setProfile}) => {
     setSearch('')
     setSort({schemaName: "createdAt", order: 1})
     setDisplayedJobs([...allJobs].sort((a, b) => sortJobs(a, b, 'createdAt', 1)))
+    setFilter({status: "", priority: ""})
   }
 
   const sortJobs = (a, b, sortCol, sortOrder) => {
@@ -202,6 +203,7 @@ const Jobs = ({profile, setProfile}) => {
             handleUpdateSort={handleUpdateSort}
             sort={sort}
             handleUpdateFilter={handleUpdateFilter}
+            filter={filter}
           />
           {addJob && 
             <JobForm 
