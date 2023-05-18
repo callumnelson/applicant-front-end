@@ -30,22 +30,22 @@
 }
 
 .date, .name, .category, .rating, .link {
-  width: calc((100% - 120px)/5);
+  width: calc((100% - 90px)/5);
   padding: 5px;
   display: flex;
   justify-content: start;
 }
 
 .date {
-  width: calc((100%-120px)/7.5);
+  width: calc((100% - 90px)/7.5);
 }
 
 .name {
-  width: calc((100%-120px)/3);
+  width: calc((100% - 90px)/3);
 }
 
 .link {
-  width: calc((100%-120px)/7.5);
+  width: calc((100% - 90px)/7.5);
 }
 
 .selected {
