@@ -23,7 +23,7 @@ const ProfileJobCard = ({job}) => {
           <p>{new Date(job.createdAt).toLocaleDateString()}</p>
         </div>
         <div className={styles.title}>
-          <p><Link to={`/jobs`} state={{search: `${job.title}`}}>{job.title}</Link></p>
+          <p><Link to={`/jobs`} state={job}>{job.title}</Link></p>
         </div>
         <div className={styles.company}>
           <p>{job.company}</p>

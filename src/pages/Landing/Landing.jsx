@@ -18,7 +18,7 @@ import profileIcon from '../../assets/icons/circle-user.png'
 // css
 import styles from './Landing.module.css'
 
-const Landing = ({ user, profile, setProfile }) => {
+const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => {
   const [displayResumeForm, setDisplayResumeForm] = useState(false)
   const [displayBrandForm, setDisplayBrandForm] = useState(false)
 
@@ -43,7 +43,6 @@ const Landing = ({ user, profile, setProfile }) => {
     setProfile({...profile, ...newBrand})
     setDisplayBrandForm(false)
   }
-  console.log('profile after adding brand', profile)
 
   function handleResumeClick() {
     setDisplayResumeForm(true)
@@ -121,6 +120,8 @@ const Landing = ({ user, profile, setProfile }) => {
               <div className={styles.title}>
                 <h4>Link</h4>
               </div>
+              <div id={styles.invisible}>
+              </div>
             </header>
             <div className={styles.list}>
               {(!profile.starredResources.length) ?
@@ -129,6 +130,8 @@ const Landing = ({ user, profile, setProfile }) => {
                   <ProfileResourceCard 
                     key={resource._id} 
                     resource={resource}
+                    user={user}
+                    handleRemoveStarredResource={handleRemoveStarredResource}
                   />
                 )
               }

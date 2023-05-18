@@ -1,5 +1,6 @@
 // npm modules
 import { useState, useEffect } from "react"
+import { useLocation } from "react-router-dom"
 
 // services
 import * as jobsService from '../../services/jobsService'
@@ -17,10 +18,13 @@ import Notes from "../../components/Notes/Notes"
 import JobsHeader from "../../components/JobsHeader/JobsHeader"
 
 const Jobs = ({profile, setProfile}) => {
+  const location = useLocation()
+  const jobFromProfile = location.state
+
   const [displayedJobs, setDisplayedJobs] = useState(null)
   const [allJobs, setAllJobs] = useState(null)
   const [selectedJob, setSelectedJob] = useState(null)
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState('')
   const [sort, setSort] = useState({schemaName: "createdAt", order: 1})
   const [filter, setFilter] = useState({status: "", priority: ""})
   const [addJob, setAddJob] = useState(false)
@@ -30,14 +34,19 @@ const Jobs = ({profile, setProfile}) => {
   useEffect(() => {
     const fetchJobs = async () => {
       const data = await jobsService.index()
-      setDisplayedJobs(data.sort((a, b) => (
-        new Date(b.createdAt) - new Date(a.createdAt))
-      ))
+      if (jobFromProfile) {
+        setDisplayedJobs([jobFromProfile])
+        setSearch(jobFromProfile.title)
+      } else {
+        setDisplayedJobs(data.sort((a, b) => (
+          new Date(b.createdAt) - new Date(a.createdAt))
+        ))
+      }
       setAllJobs(data)
       if(!data.length) setAddJob(true)
     }
     fetchJobs()
-  }, [])
+  }, [jobFromProfile])
 
   const headers = [{col: 'Created', schemaName: 'createdAt'},
     {col: 'Title', schemaName: 'title'}, 
