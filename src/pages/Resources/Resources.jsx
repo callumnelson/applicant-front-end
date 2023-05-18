@@ -83,9 +83,9 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   }
 
   const resetFilters = () => {
-    setNameSort(false)
-    setRatingSort(false)
-    setDateSort(true)
+    setNameSort('none')
+    setRatingSort('none')
+    setDateSort('none')
     setCategoryFilter('')
     setSearch('')
   }
@@ -180,14 +180,23 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
     }
   }
 
+  const handleClearFilters = () => {
+    resetFilters()
+    
+    const resourcesByDate = [...resources].sort((a, b) =>
+      new Date(b.updatedAt) - new Date(a.updatedAt)
+    )
+    setDisplayedResources(resourcesByDate)
+  }
 
-  if (!displayedResources || !profile) return <h1>Loading...</h1>
+
+  if (!displayedResources || !resources || !profile) return <h1>Loading...</h1>
 
   return ( 
     <main className={styles.container}>
       <section className={styles.resources}>
         <nav className={styles.nav}>
-          <h1>Resources</h1>
+          <h1>Resources ({displayedResources?.length} of {resources.length})</h1>
           <div>
             {profile.role > 100 &&
               <button
@@ -196,6 +205,11 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
               Add Resource
               </button>
             }
+              <button
+              onClick={() => handleClearFilters()}
+              >
+              Clear Filters
+              </button>
             <input 
               type="text" 
               name="search"
