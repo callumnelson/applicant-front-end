@@ -28,6 +28,10 @@
   letter-spacing: .05em;
 }
 
+.name {
+  /* overflow: hidden; */
+}
+
 #networking {
   background-color: darkgreen;
   color: white;
