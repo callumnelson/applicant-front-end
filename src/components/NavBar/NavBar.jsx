@@ -7,9 +7,6 @@ import logo from '../../assets/branding/logo.svg'
 // css
 import styles from './NavBar.module.css'
 
-// pages
-import Loading from '../../pages/Loading/Loading'
-
 const NavBar = ({ user, profile, handleLogout }) => {
 
   const publicLinks = (
