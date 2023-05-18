@@ -13,7 +13,35 @@ The platform allows users to attach notes and documents to each application, ena
 ## Click **[HERE](https://job-applicant.netlify.app/auth/login)** to use the app
 
 ## **Current Features:**
-* First sign-in will automatically create a profile for the user
+### Profile Page: 
+* Users can upload their resume, 
+* Users can upload their brand statement
+* Users can change their password
+* Users can quickly access their starred resources
+* Users can remove starred resources
+* Users are presented with the last 3 jobs they updated within the app 
+* Users can click on a recent job and be taken to that job within the job page 
+
+### Jobs Page:
+* Users can add a new job
+* Users can edit a job
+* Users can delete a job
+* Users can search for a job by title and company
+* Users can sort jobs by job creation date, job title, company, or salary
+* Users can filter jobs by status, priority, or salary
+* Users can set and edit details of a job including contact information and  catred resumes and cover letters
+* Users add and delete notes about the job within 6 categories: resume, interview questions, skills, to-do, networking, and general
+
+### Resources Page:
+* Admins can add a new resource
+* Admins can edit a resource
+* Admins can delete a resource
+* Users can sort resources via the resource's last update, name, or average rating
+* Users can filter resources by category
+* Users can search for a resource by name
+* Users can add or remove a resource to their starred resources
+* Users can see other users' ratings of a resource
+* Users can rate a resource
 
 ## **Technologies Used:**
 
@@ -39,7 +67,9 @@ User stories that inspired the creation of this app, wireframes, and ERD can be 
 * AppliCANt uses Canada Type Gibson from [Adobe Fonts](https://fonts.adobe.com/fonts/gibson)
 
 ## **AppliCANt** was created by:
-* [Callum Nelson]()
+* [Callum Nelson](https://github.com/callumnelson)
+* [Suzanne Trammel](https://github.com/strammel33)
+* [Nicholas Manning](https://github.com/njmanning212)
 
 
 
