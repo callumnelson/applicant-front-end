@@ -23,7 +23,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   const [catergoryFilter, setCategoryFilter] = useState('')
   const [nameSort, setNameSort] = useState('none')
   const [ratingSort, setRatingSort] = useState('none')
-  const [dateSort, setDateSort] = useState('none')
+  const [dateSort, setDateSort] = useState(false)
 
   useEffect(() => {
     const fetchResources = async () => {
@@ -36,6 +36,8 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
     }
     fetchResources()
   }, [])
+
+  console.log(resources)
 
   const handleSearchChange = (e) => {
     setNameSort('none')
@@ -147,25 +149,28 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   const handleSortByRating = () => {
     setDateSort('none')
     setNameSort('none')
-    if (setRatingSort === 'none') setRatingSort(false)
+    if (setRatingSort === 'none') setRatingSort(false);
     setRatingSort(!ratingSort)
     if (ratingSort) {
-      const sortedResources = [...displayedResources].sort((a, b) => 
-        a.averageRating < b.averageRating ? 1 : -1
-      )
-      setDisplayedResources(sortedResources)
+      const sortedResources = [...displayedResources].sort((a, b) => {
+        if (!a.averageRating && b.averageRating) return 1
+        if (a.averageRating && !b.averageRating) return -1
+        return a.averageRating < b.averageRating ? 1 : -1
+      })
+      setDisplayedResources(sortedResources);
     } else {
-      const sortedResources = [...displayedResources].sort((a, b) => 
-        a.averageRating > b.averageRating ? 1 : -1
-      )
-      setDisplayedResources(sortedResources)
+      const sortedResources = [...displayedResources].sort((a, b) => {
+        if (!a.averageRating && b.averageRating) return 1
+        if (a.averageRating && !b.averageRating) return -1
+        return a.averageRating > b.averageRating ? 1 : -1
+      })
+      setDisplayedResources(sortedResources);
     }
   }
 
   const handleSortByDate = () => {
     setNameSort('none')
     setRatingSort('none')
-    if (setDateSort === 'none') setDateSort(false)
     setDateSort(!dateSort)
     if (dateSort) {
       const sortedResources = [...displayedResources].sort((a, b) => 
