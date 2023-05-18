@@ -19,7 +19,7 @@ const ProfileJobCard = ({job}) => {
       <div className={`${styles.job}`}>
         <span>
         </span>
-        <div className={styles.title}>
+        <div className={styles.date}>
           <p>{new Date(job.createdAt).toLocaleDateString()}</p>
         </div>
         <div className={styles.title}>
@@ -38,7 +38,7 @@ const ProfileJobCard = ({job}) => {
           <p className={styles[priority]}>{job.priority}</p>
         </div>
         <div className={styles.jobListing}>
-          <p><a href={listing}><Icon category="Link" /></a></p>
+          <p><a href={listing} target="blank"><Icon category="Link" /></a></p>
         </div>
       </div>
     </div>

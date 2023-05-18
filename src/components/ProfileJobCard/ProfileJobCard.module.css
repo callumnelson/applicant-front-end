@@ -23,6 +23,10 @@
   letter-spacing: .05em;
 }
 
+.title > p {
+  background-color: rgba(217, 238, 241, 0.804);
+}
+
 .dream-job {
   background-color: darkgreen;
   color: white;
@@ -38,4 +42,8 @@
 
 .will-pay-bills {
   background-color: rgb(238, 204, 119);
+}
+
+.title > p:hover {
+  background-color: rgba(194, 233, 239, 0.804);
 }
