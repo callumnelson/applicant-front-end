@@ -65,12 +65,11 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
     <main className={styles.container}>
       <section className={styles.profile}>
         <div className={styles.info}>
-      
           <img src={photo} alt="user" />
           <h1>{profile.name}</h1>
           <p className={styles.password}>
             <NavLink to="/auth/change-password">
-              Change Password
+              Change My Password
             </NavLink>
           </p>
         </div>
@@ -83,8 +82,8 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
             /> 
           : 
             <div className={styles.personalcontent}>
-              <a href={resume.toString()}><Icon category="File"/></a>
-              <button className={styles.edit} onClick={handleResumeClick}>Change</button>
+              <a href={resume.toString()} target="blank"><Icon category="File"/></a>
+              <button className={styles.edit} onClick={handleResumeClick}>Update</button>
             </div>
           }
         </div>
@@ -97,8 +96,8 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
             />
           : 
             <div className={styles.personalcontent}> 
-              <a href={brandStatement.toString()}><Icon category="File"/></a>
-              <button className={styles.edit} onClick={handleBrandClick}>Change</button>
+              <a href={brandStatement.toString()} target="blank"><Icon category="File"/></a>
+              <button className={styles.edit} onClick={handleBrandClick}>Update</button>
             </div>
           }
         </div>
@@ -111,7 +110,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
               <div className={styles.title}>
                 <h4>Date Added</h4>
               </div>
-              <div className={styles.title}>
+              <div id={styles.name} className={styles.title}>
                 <h4>Name</h4>
               </div>
               <div className={styles.title}>
@@ -139,7 +138,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
           </div>
         </div>
         <div className={styles.jobs}>
-          <h3 className={styles.tabletitle}>My 3 Most Recent Applications</h3>
+          <h3 className={styles.tabletitle}>My Most Recent Applications</h3>
           <div className={styles.table}>
             <header className={styles.jobsheader}>
               <div className={styles.title}>

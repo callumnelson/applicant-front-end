@@ -11,12 +11,14 @@
 
 .resource div {
   display: flex;
-  width: 40vw;
+  width: 35vw;
+  height: 7vh;
   justify-content: center;
 }
 
 #star {
   width: 10vw;
+  padding-right: 3vmin;
 }
 
 .resource div > p {
@@ -25,6 +27,15 @@
   padding: 5px 10px;
   border-radius: 20px;
   letter-spacing: .05em;
+}
+
+.name > p {
+  width: 20vw;
+  height: 5vh;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #networking {
@@ -52,4 +63,8 @@
 #other {
   background-color: rgb(238, 204, 119);
   padding: 5px 10px;
+}
+
+#star > p:hover {
+  cursor: pointer;
 }

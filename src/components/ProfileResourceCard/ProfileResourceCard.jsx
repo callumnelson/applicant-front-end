@@ -28,7 +28,7 @@ const ProfileResourceCard = ({resource, user, handleRemoveStarredResource}) => {
           >{resource.category}</p>
         </div>
         <div className={styles.link}>
-          <p><a href={resource.link}><Icon category="Link" /></a></p>
+          <p><a href={resource.link} target="blank"><Icon category="Link" /></a></p>
         </div>
         <div
           onClick={() => handleStarredResourceClick()}
