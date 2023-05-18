@@ -7,13 +7,20 @@
   margin: 5px 5px;
 }
 
+
+.container {
+  background-color: rgba(217, 238, 241, 0.482);
+  color: black;
+  border: none;
+}
+
 .container:hover {
+  background-color: rgba(217, 238, 241, 0.804);
+  transition: background-color 0.5s;
   cursor: pointer;
-  border: 2px solid var(--primary);
-  transition: border 0.5s;
 }
 
 .selectednote {
-  background-color: var(--background);
-  color: white;
+  border: 1.5px solid var(--background);
+  color: black;
 }

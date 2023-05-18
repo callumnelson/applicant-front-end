@@ -37,8 +37,6 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
     fetchResources()
   }, [])
 
-  console.log(resources)
-
   const handleSearchChange = (e) => {
     setNameSort('none')
     setRatingSort('none')
