@@ -1,16 +1,16 @@
-# Applicant
+# appliCANt
 
-![AppliCANt](./src/assets/images/appliCANt-screenshots.png "AppliCANt Screenshots")
+![appliCANt](./src/assets/images/appliCANt-screenshots.png "appliCANt Screenshots")
 
-Post graduation from a Software Engineering bootcamp, the search for a job can be daunting for individuals. **AppliCANt** is here to put the "CAN" in "I CAN find a job". 
+Post graduation from a Software Engineering bootcamp, the search for a job can be daunting for individuals. **appliCANt** is here to put the "CAN" in "I CAN find a job". 
 
-**AppliCANt** is a comprehensive job search tracker designed to simplify and streamline the job application process. With AppliCANt, users can effortlessly manage and organize their job applications, keeping track of crucial information such as application status, interview dates, job contact details, etc.
+**appliCANt** is a comprehensive job search tracker designed to simplify and streamline the job application process. With AppliCANt, users can effortlessly manage and organize their job applications, keeping track of crucial information such as application status, interview dates, job contact details, etc.
 
 The platform allows users to attach notes and documents to each application, enabling them to maintain a centralized repository of information related to specific jobs. 
 
-**AppliCANt** provides users with access to a wide range of curated resources and tools to enhance their job search, including resume templates, interview tips, and industry-specific advice. By combining powerful features and user-friendly functionality, AppliCANt empowers job seekers to navigate their job search journey more efficiently and effectively.
+**appliCANt** provides users with access to a wide range of curated resources and tools to enhance their job search, including resume templates, interview tips, and industry-specific advice. By combining powerful features and user-friendly functionality, **appliCANt** empowers job seekers to navigate their job search journey more efficiently and effectively.
 
-## Click **[HERE](https://job-applicant.netlify.app/auth/login)** to use the app
+## Click **[HERE](https://job-applicant.netlify.app/)** to use the app
 
 ## **Current Features:**
 Both the Profile and Job pages are unique to each user protecting potentially sensitive information. The Resources page is available to all users.
@@ -46,7 +46,7 @@ Both the Profile and Job pages are unique to each user protecting potentially se
 
 ## **Technologies Used:**
 
-**AppliCANt** is a full-stack application that uses a React front-end and a Node/Express back-end connecting with a Mongo DB database via Mongoose. The back end is deployed on Fly.io and the front end is deployed on Netlify.
+**appliCANt** is a full-stack application that uses a React front-end and a Node/Express back-end connecting with a Mongo DB database via Mongoose. The back end is deployed on Fly.io and the front end is deployed on Netlify.
 
 * JWT
 * Netlify
@@ -73,10 +73,13 @@ User stories that inspired the creation of this app, wireframes, and ERD can be 
 * [Nicholas Manning](https://github.com/njmanning212)
 
 ## Backend Repo:
-The backend repo for **AppliCANt** can be found [here](https://github.com/callumnelson/applicant-back-end)
+The backend repo for **appliCANt** can be found [here](https://github.com/callumnelson/applicant-back-end)
 
 
 ## **Ice Box:**
+* [x] Admin portal to manage users and resources
+* [x] Redirect from landing page to specific profile page if user is logged in
+* [x] Multidminesional sorting and filtering on jobs and resources
 * [ ] Add a Coach role
 * [ ] Add a Coach dashboard
 * [ ] Allow coaches to add resources
