@@ -63,17 +63,18 @@
 
 .table {
   margin: 10px;
-  height: calc(100% - 86px);
+  height: calc(100% - 80px);
 }
 
-.table section {
+.table > section {
   height: calc(100% - 50px);
   overflow-x: hidden;
   overflow-y: hidden;
 }
 
-.table section:hover {
+.table > section:hover {
   overflow-y: overlay;
+  overflow-x: hidden;
 }
 
 .table h4 {
