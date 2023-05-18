@@ -1,20 +1,21 @@
-# Applicant Front-End
+# Applicant
 
-![AppliCANt](./public/assets/images/in-the-arena-screenshots.png "AppliCANt Screenshots")
+![AppliCANt](./src/assets/images/appliCANt-screenshots.png "AppliCANt Screenshots")
 
-Post graduation from a Software Engineering bootcamp the search for a job can be daunting for individuals. **AppliCANt** is here to put the "CAN" in "I CAN find a job". 
+Post graduation from a Software Engineering bootcamp, the search for a job can be daunting for individuals. **AppliCANt** is here to put the "CAN" in "I CAN find a job". 
 
 **AppliCANt** is a comprehensive job search tracker designed to simplify and streamline the job application process. With AppliCANt, users can effortlessly manage and organize their job applications, keeping track of crucial information such as application status, interview dates, job contact details, etc.
 
 The platform allows users to attach notes and documents to each application, enabling them to maintain a centralized repository of information related to specific jobs. 
 
-**AppliCANt**provides users with access to a wide range of curated resources and tools to enhance their job search, including resume templates, interview tips, and industry-specific advice. By combining powerful features and user-friendly functionality, AppliCANt empowers job seekers to navigate their job search journey more efficiently and effectively.
+**AppliCANt** provides users with access to a wide range of curated resources and tools to enhance their job search, including resume templates, interview tips, and industry-specific advice. By combining powerful features and user-friendly functionality, AppliCANt empowers job seekers to navigate their job search journey more efficiently and effectively.
 
 ## Click **[HERE](https://job-applicant.netlify.app/auth/login)** to use the app
 
 ## **Current Features:**
+Both the Profile and Job pages are unique to each user protecting potentially sensitive information. The Resources page is available to all users.
 ### Profile Page: 
-* Users can upload their resume, 
+* Users can upload their resumes, 
 * Users can upload their brand statement
 * Users can change their password
 * Users can quickly access their starred resources
@@ -29,7 +30,7 @@ The platform allows users to attach notes and documents to each application, ena
 * Users can search for a job by title and company
 * Users can sort jobs by job creation date, job title, company, or salary
 * Users can filter jobs by status, priority, or salary
-* Users can set and edit details of a job including contact information and  catred resumes and cover letters
+* Users can set and edit details of a job including contact information and  catered resumes and cover letters
 * Users add and delete notes about the job within 6 categories: resume, interview questions, skills, to-do, networking, and general
 
 ### Resources Page:
@@ -45,7 +46,7 @@ The platform allows users to attach notes and documents to each application, ena
 
 ## **Technologies Used:**
 
-**AppliCANt** is a full stack application that uses a React front-end and a Node/Express back-end connecting with a Mongo DB database via Mongoose. The back-end is deployed on Fly.io and the front-end is deployed on Netlify.
+**AppliCANt** is a full-stack application that uses a React front-end and a Node/Express back-end connecting with a Mongo DB database via Mongoose. The back end is deployed on Fly.io and the front end is deployed on Netlify.
 
 * JWT
 * Netlify
@@ -64,14 +65,22 @@ User stories that inspired the creation of this app, wireframes, and ERD can be 
 
 ## **Attributions:**
 * UI icons in AppliCANt from [flaticon](https://www.flaticon.com/uicons/interface-icons)
-* AppliCANt uses Canada Type Gibson from [Adobe Fonts](https://fonts.adobe.com/fonts/gibson)
+* AppliCANt uses the font *Canada Type Gibson* from [Adobe Fonts](https://fonts.adobe.com/fonts/gibson)
 
 ## **AppliCANt** was created by:
 * [Callum Nelson](https://github.com/callumnelson)
 * [Suzanne Trammel](https://github.com/strammel33)
 * [Nicholas Manning](https://github.com/njmanning212)
 
+## Backend Repo:
+The backend repo for **AppliCANt** can be found [here](https://github.com/callumnelson/applicant-back-end)
 
 
 ## **Ice Box:**
-* [ ] Implement coaching feature to allow users to connect with a coach
+* [ ] Add a Coach role
+* [ ] Add a Coach dashboard
+* [ ] Allow coaches to add resources
+* [ ] Allow coaches to edit and delete resources they created
+* [ ] Allow coaches to claim students
+* [ ] Give coaches the ability to view all of their students' jobs and progress
+* [ ] Create a chat feature to allow coaches to communicate with their students both individually and in groups
