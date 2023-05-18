@@ -185,11 +185,12 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
 
   const handleClearFilters = () => {
     resetFilters()
-    
     const resourcesByDate = [...resources].sort((a, b) =>
       new Date(b.updatedAt) - new Date(a.updatedAt)
     )
+    setDateSort(false)
     setDisplayedResources(resourcesByDate)
+    setSelectedResource(null)
   }
 
 
