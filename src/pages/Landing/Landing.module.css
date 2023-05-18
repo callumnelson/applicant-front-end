@@ -31,6 +31,7 @@
 
 .info > h1 {
   letter-spacing: .1rem;
+  font-size: 30px;
   color: aliceblue;
   margin-top: 2.5vmin;
 }
@@ -46,9 +47,9 @@
 .password > a {
   margin: 0;
   padding: 1vmin 1vmin;
-  background-color: rgba(217, 238, 241, 0.549);
+  background-color: rgba(217, 238, 241, 0.678);
   border-radius: 5px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 400;
   letter-spacing: .1rem;
 }
