@@ -54,7 +54,6 @@
 
 .resources {
   width: 75%;
-  overflow: hidden;
 }
 
 .reviews {
@@ -74,16 +73,18 @@
 
 .table {
   margin: 10px;
-  height: calc(100% - 86px);
+  height: calc(100% - 80px);
 }
 
 .rows {
   height: calc(100% - 50px);
-  /* overflow: hidden; */
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .rows:hover {
-  overflow: overlay;
+  overflow-y: overlay;
+  overflow-x: hidden;
 }
 
 .table h4 {
@@ -101,6 +102,7 @@
   padding-left: 30px;
   margin-bottom: 5px;
   padding-right: 90px;
+  margin-right: 20px;
   box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
   -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
   -webkit-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
@@ -116,15 +118,15 @@
 }
 
 .date {
-  width: calc((100%-120px)/10);
+  width: calc((100%-120px)/7.5);
 }
 
 .name {
-  width: calc((100%-120px)/2.5);
+  width: calc((100%-120px)/3);
 }
 
 .link {
-  width: calc((100%-120px)/10);
+  width: calc((100%-120px)/7.5);
 }
 
 .date:hover {
