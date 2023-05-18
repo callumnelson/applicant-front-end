@@ -63,7 +63,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           >{resource.category}</p>
         </div>
         <div className={styles.link}>
-          <a href={resource.link}><Icon category={'Link'}/></a>
+          <a href={resource.link} target='blank'><Icon category={'Link'}/></a>
         </div>
         <div className={styles.rating}>
           <p>
