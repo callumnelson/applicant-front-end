@@ -1,53 +1,47 @@
 # Applicant Front-End
 
-![InTheArenaScreenshots](./public/assets/images/in-the-arena-screenshots.png "In The Arena Screenshots")
+![AppliCANt](./public/assets/images/in-the-arena-screenshots.png "AppliCANt Screenshots")
 
-**In The Arena** was developed due to the increasing concern over the mounting stress on society, impacting mental health, and resulting in two trends. First, many approaches are being developed to address these issues, but it's difficult to compare which is best and for whom. Second, there are paywalls in many apps that may discourage users from accessing helpful tools. Recognizing the fight for mental health is real and that we all need all the help we can get, **In The Arena** aims to help by equipping individuals with the right tools for the job. 
+Post graduation from a Software Engineering bootcamp the search for a job can be daunting for individuals. **AppliCANt** is here to put the "CAN" in "I CAN find a job". 
 
-**In The Arena** is an open-source app that allows individuals to contribute the tools they have found to be the most impactful and discover more tools that have helped others. 
+**AppliCANt** is a comprehensive job search tracker designed to simplify and streamline the job application process. With AppliCANt, users can effortlessly manage and organize their job applications, keeping track of crucial information such as application status, interview dates, job contact details, etc.
 
-# **[Click Here To Join](https://in-the-arena.fly.dev/)**
+The platform allows users to attach notes and documents to each application, enabling them to maintain a centralized repository of information related to specific jobs. 
 
-# **Current Features:**
+**AppliCANt**provides users with access to a wide range of curated resources and tools to enhance their job search, including resume templates, interview tips, and industry-specific advice. By combining powerful features and user-friendly functionality, AppliCANt empowers job seekers to navigate their job search journey more efficiently and effectively.
+
+## Click **[HERE](https://job-applicant.netlify.app/auth/login)** to use the app
+
+## **Current Features:**
 * First sign-in will automatically create a profile for the user
-* Users can add tools and tool types to the database
-* Users can add reviews and rate tools
-* Users can edit and delete their own reviews, ratings, tools, and tool types
-* Users/Guests can search for and view other profiles
-* Users can add/remove tools to and from their favorites list (currently capped at 3)
-* Users/Guests can sort tools by their tool type
 
+## **Technologies Used:**
 
-# **Technologies Used:**
-* OAuth(Google)
-* Fly.io
+**AppliCANt** is a full stack application that uses a React front-end and a Node/Express back-end connecting with a Mongo DB database via Mongoose. The back-end is deployed on Fly.io and the front-end is deployed on Netlify.
+
+* JWT
+* Netlify
 * Node
 * Express
-* MongoDB
-* Mongoose
-* EJS view engine
+* React
 * CSS
 * JavaScript
 * Git
 * GitHub
-* Passport
-* Docker
+* MUI
 
-# **Planning Materials:**
-User stories that inspired the creation of this app, wireframes, and ERD can be found [Here](https://trello.com/b/9mQTebGG/in-the-arena)
-
-
-# **Attributions:**
-- Background and favicon from [Canva](https://www.canva.com/p/brand262404081/)
+## **Planning Materials:**
+User stories that inspired the creation of this app, wireframes, and ERD can be found [Here](https://trello.com/b/dF61KUj4/applicant)
 
 
-# **Ice Box:**
-- [ ] Add the ability to sort tools by average rating, by type, or by both
-- [ ] Add the ability to sort reviews by rating and date created
-- [ ] Add the ability to search for tools by name, type, or both
-- [x] Add the ability to search for specific profiles
-- [ ] Add a journal feature to allow users to track their progress and reflect on their journey
-- [ ] Add a chart on the profile page for easier visualization of progress/changes
-- [ ] Add the ability to add other profiles to a friends list 
-- [ ] Add the ability to send messages to other users
-- [ ] Optimize the app for mobile use
+## **Attributions:**
+* UI icons in AppliCANt from [flaticon](https://www.flaticon.com/uicons/interface-icons)
+* AppliCANt uses Canada Type Gibson from [Adobe Fonts](https://fonts.adobe.com/fonts/gibson)
+
+## **AppliCANt** was created by:
+* [Callum Nelson]()
+
+
+
+## **Ice Box:**
+* [ ] Implement coaching feature to allow users to connect with a coach
