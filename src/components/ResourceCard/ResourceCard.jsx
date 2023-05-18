@@ -11,7 +11,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
   const alreadyStarred = profile.starredResources?.some(r => r._id === resource._id)
 
   const handleSelect = () => {
-    if (selected) {
+    if (selected === 1) {
       setSelectedResource(null)
     }
     else {
@@ -44,7 +44,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           className={styles.dropdown}
           onClick={() => handleSelect()}
           >
-            {selected ? 
+            {selected === 1 ? 
               <Icon category={'UpArrow'}/> 
               : 
               <Icon category={'DownArrow'}/>

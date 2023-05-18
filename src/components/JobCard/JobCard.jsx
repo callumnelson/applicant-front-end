@@ -16,7 +16,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
   const notesCategories = ['Resume', 'Interview Qs', 'Skills', 'To-Do', 'Networking', 'General']
   
   const handleSelectJob = () => {
-    if(selected) setSelectedJob(null)
+    if(selected === 1) setSelectedJob(null)
     else setSelectedJob(job)
     setNotesCategory("Resume")
   }
@@ -47,7 +47,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
             onClick={handleSelectJob}
           >
             {
-            selected ? 
+            selected === 1 ? 
               <Icon category={'UpArrow'}/>
               : 
               <Icon category={'DownArrow'}/>
