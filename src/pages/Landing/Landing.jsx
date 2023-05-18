@@ -39,7 +39,6 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
   
   const handleAddBrand = async (brandFormData) => {
     const newBrand = await profileService.createBrandStatement(user, brandFormData)
-    console.log(newBrand)
     setProfile({...profile, ...newBrand})
     setDisplayBrandForm(false)
   }
