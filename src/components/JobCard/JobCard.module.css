@@ -110,8 +110,8 @@
 }
 
 .details * {
-  display: none;
   visibility: hidden;
+  max-height: 0;
 }
 
 .details > div {
@@ -127,9 +127,9 @@
 }
 
 .show * {
-  display: block;
   visibility: visible;
-  transition: visibility 0s ease-in 1s;
+  max-height: 1000px;
+  transition: all 0s ease-in 0.5s;
 }
 
 .details > div:first-child {
@@ -196,3 +196,4 @@
 .edit:hover, .delete:hover {
   cursor: pointer;
 }
+
