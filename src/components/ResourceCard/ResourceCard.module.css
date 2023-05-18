@@ -36,6 +36,18 @@
   justify-content: start;
 }
 
+.date {
+  width: calc((100%-120px)/10);
+}
+
+.name {
+  width: calc((100%-120px)/2.5);
+}
+
+.link {
+  width: calc((100%-120px)/10);
+}
+
 .selected {
   background-color: rgb(208, 242, 255);
   box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);

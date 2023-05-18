@@ -115,6 +115,18 @@
   padding: 5px;
 }
 
+.date {
+  width: calc((100%-120px)/10);
+}
+
+.name {
+  width: calc((100%-120px)/2.5);
+}
+
+.link {
+  width: calc((100%-120px)/10);
+}
+
 .date:hover {
   background-color: aliceblue;
 }
