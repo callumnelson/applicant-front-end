@@ -11,7 +11,6 @@ import ChangePassword from './pages/ChangePassword/ChangePassword'
 import Jobs from './pages/Jobs/Jobs'
 import Resources from './pages/Resources/Resources'
 import Logout from './pages/Logout/Logout'
-import Loading from './pages/Loading/Loading'
 
 // components
 import NavBar from './components/NavBar/NavBar'
