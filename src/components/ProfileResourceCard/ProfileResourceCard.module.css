@@ -11,8 +11,12 @@
 
 .resource div {
   display: flex;
-  width: calc(100%/5);
+  width: 40vw;
   justify-content: center;
+}
+
+#star {
+  width: 10vw;
 }
 
 .resource div > p {

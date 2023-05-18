@@ -120,7 +120,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
               <div className={styles.title}>
                 <h4>Link</h4>
               </div>
-              <div>
+              <div id={styles.invisible}>
               </div>
             </header>
             <div className={styles.list}>

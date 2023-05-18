@@ -139,7 +139,11 @@
 }
 
 .resourcesheader > div {
-  width: calc(100%/5);
+  width: 40vw;
+}
+
+#invisible {
+  width: 10vw;
 }
 
 .jobsheader > div {

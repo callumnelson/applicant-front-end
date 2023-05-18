@@ -32,6 +32,7 @@ const ProfileResourceCard = ({resource, user, handleRemoveStarredResource}) => {
         </div>
         <div
           onClick={() => handleStarredResourceClick()}
+          id={styles.star}
         >
           <p>
             <Icon category={'FilledStar'}/>
