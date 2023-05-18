@@ -19,7 +19,7 @@ const ProfileJobCard = ({job}) => {
       <div className={`${styles.job}`}>
         <span>
         </span>
-        <div className={styles.title}>
+        <div className={styles.date}>
           <p>{new Date(job.createdAt).toLocaleDateString()}</p>
         </div>
         <div className={styles.title}>

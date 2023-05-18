@@ -11,12 +11,13 @@
 
 .resource div {
   display: flex;
-  width: 40vw;
+  width: 35vw;
   justify-content: center;
 }
 
 #star {
   width: 10vw;
+  padding-right: 3vmin;
 }
 
 .resource div > p {
