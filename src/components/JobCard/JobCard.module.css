@@ -110,8 +110,8 @@
 }
 
 .details * {
-  display: none;
   visibility: hidden;
+  max-height: 0;
 }
 
 .details > div {
@@ -128,8 +128,8 @@
 
 .show * {
   visibility: visible;
-  transition: visibility 0s ease-in 1s;
-  display: block;
+  max-height: 1000px;
+  transition: all 0s ease-in 0.5s;
 }
 
 .details > div:first-child {
