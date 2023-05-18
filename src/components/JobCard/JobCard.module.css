@@ -69,6 +69,32 @@
   transition: all 0.5s ease-in-out;
 }
 
+.notselected {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: darkgray;
+}
+
+.notselected #dream-job {
+  background-color: rgba(0, 100, 0, 0.801);
+  color: darkgray;
+}
+
+.notselected #great-option {
+  background-color: rgba(144, 238, 144, 0.801);
+}
+
+.notselected #totally-fine {
+  background-color: rgba(230, 240, 122, 0.802);
+}
+
+.notselected #will-pay-bills {
+  background-color: rgba(238, 204, 119, 0.801);
+}
+
+.notselected img {
+  opacity: .6;
+}
+
 .details {
   display: flex;
   align-items: start;
@@ -76,7 +102,7 @@
   padding-left: 30px;
   margin-bottom: 2px;
   margin-top: -2px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   height: 0;
   border-radius: 5px;
   opacity: 0.5;
@@ -103,7 +129,7 @@
 .show * {
   display: block;
   visibility: visible;
-  transition: all 0s ease-in 1s;
+  transition: visibility 0s ease-in 1s;
 }
 
 .details > div:first-child {

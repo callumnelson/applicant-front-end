@@ -101,7 +101,7 @@
   height: 50px;
   padding-left: 30px;
   margin-bottom: 5px;
-  padding-right: 90px;
+  padding-right: 105px;
   margin-right: 20px;
   box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
   -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
@@ -109,7 +109,7 @@
 }
 
 .date, .name, .category, .link, .rating {
-  width: calc((100%-120px)/5);
+  width: calc((100%)/5);
   display: flex;
   justify-content: start;
   align-items: center;
@@ -118,15 +118,15 @@
 }
 
 .date {
-  width: calc((100%-120px)/7.5);
+  width: calc((100%)/7.5);
 }
 
 .name {
-  width: calc((100%-120px)/3);
+  width: calc((100%)/3);
 }
 
 .link {
-  width: calc((100%-120px)/7.5);
+  width: calc((100%)/7.5);
 }
 
 .date:hover {

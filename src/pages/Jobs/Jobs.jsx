@@ -28,7 +28,6 @@ const Jobs = ({profile, setProfile}) => {
   const [addJob, setAddJob] = useState(false)
   const [editedJob, setEditedJob] = useState(null)
   const [notesCategory, setNotesCategory] = useState("Resume")
-  console.log(location)
 
   useEffect(() => {
     const fetchJobs = async () => {

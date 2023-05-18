@@ -30,22 +30,22 @@
 }
 
 .date, .name, .category, .rating, .link {
-  width: calc((100% - 120px)/5);
+  width: calc((100% - 90px)/5);
   padding: 5px;
   display: flex;
   justify-content: start;
 }
 
 .date {
-  width: calc((100%-120px)/7.5);
+  width: calc((100% - 90px)/7.5);
 }
 
 .name {
-  width: calc((100%-120px)/3);
+  width: calc((100% - 90px)/3);
 }
 
 .link {
-  width: calc((100%-120px)/7.5);
+  width: calc((100% - 90px)/7.5);
 }
 
 .selected {
@@ -54,6 +54,37 @@
   -moz-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
   -webkit-box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
   transition: all 0.5s ease-in-out;
+}
+
+.notselected {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: darkgray;
+}
+
+.notselected #networking {
+  background-color: rgba(0, 100, 0, 0.801);
+  color: darkgray
+}
+
+.notselected #interviewing {
+  background-color: rgba(144, 238, 144, 0.8);
+}
+
+.notselected #job-search {
+  background-color: rgba(0, 0, 139, 0.801);
+  color: darkgray
+}
+
+.notselected #resumes {
+  background-color: rgba(230, 240, 122, 0.801);
+}
+
+.notselected #other {
+  background-color: rgba(238, 204, 119, 0.8);
+}
+
+.notselected img {
+  opacity: .6;
 }
 
 .details {
