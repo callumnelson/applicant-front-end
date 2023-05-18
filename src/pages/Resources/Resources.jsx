@@ -190,7 +190,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   }
 
 
-  if (!displayedResources || !profile) return <h1>Loading...</h1>
+  if (!displayedResources || !resources || !profile) return <h1>Loading...</h1>
 
   return ( 
     <main className={styles.container}>
