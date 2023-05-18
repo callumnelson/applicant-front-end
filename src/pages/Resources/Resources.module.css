@@ -64,8 +64,7 @@
 .reviews {
   width: 25%;
   overflow: hidden;
-  background-color: rgba(42, 54, 62, 0.429);
-  height: 100%
+  background-color: rgba(42, 54, 62, 0.429)
 }
 
 .reviews:hover {

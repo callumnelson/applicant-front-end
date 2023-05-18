@@ -54,8 +54,8 @@
 }
 
 .contact img {
-  height: 50px;
-  margin-right: 20px;
+  height: 25px;
+  margin-right: 10px;
 }
 
 .buttons {
@@ -70,6 +70,7 @@
   width: 100%;
   align-items: center;
   justify-content: start;
+  border-bottom: 0.5px solid lightgray;
 }
 
 .contact h3, .documents h3, .contact p, .documents p {

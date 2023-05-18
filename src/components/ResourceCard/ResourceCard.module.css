@@ -36,12 +36,6 @@
   justify-content: start;
 }
 
-.rating {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .selected {
   background-color: rgb(208, 242, 255);
   box-shadow: -1px 5px 19px -5px rgba(0,0,0,0.25);
@@ -77,7 +71,7 @@
   display: flex;
   height: 150px;
   opacity: 1;
-  padding-top: 10px;
+  padding: 10px;
   transition: all 0.5s ease-in-out;
 }
 
@@ -110,6 +104,7 @@
   width: 100%;
   height: 100px;
   overflow: hidden;
+  border-top: 0.5px solid lightgray;
 }
 
 .instructions:hover {

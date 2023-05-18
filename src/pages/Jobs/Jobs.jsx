@@ -34,6 +34,7 @@ const Jobs = ({profile, setProfile}) => {
         new Date(b.createdAt) - new Date(a.createdAt))
       ))
       setAllJobs(data)
+      if(!data.length) setAddJob(true)
     }
     fetchJobs()
   }, [])
@@ -44,7 +45,7 @@ const Jobs = ({profile, setProfile}) => {
     {col: 'Salary', schemaName: 'salary'},
     {col: 'Status', schemaName: 'status'},
     {col: 'Priority', schemaName: 'priority'}, 
-    {col: 'Listing', schemaName: 'jobListing'}, 
+    {col: 'Link', schemaName: 'jobListing'}, 
   ]
 
   const handleAddJob = async (newJobFormData) => {
@@ -70,11 +71,14 @@ const Jobs = ({profile, setProfile}) => {
     setDisplayedJobs(displayedJobs.filter(j => j._id !== deletedJob._id))
     setAllJobs(allJobs.filter(j => j._id !== deletedJob._id))
     setProfile({...profile, applications: allJobs.filter(j => j._id !== deletedJob._id)})
+    if(allJobs.length < 2) setAddJob(true)
+    setSelectedJob(null)
   }
 
   const handleClickAddJob = () => {
     setAddJob(true)
     setSelectedJob(null)
+    setEditedJob(null)
   }
 
   const handleAddNote = async (job, noteFormData) => {
