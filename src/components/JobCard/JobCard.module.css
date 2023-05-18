@@ -127,9 +127,9 @@
 }
 
 .show * {
-  display: block;
   visibility: visible;
   transition: visibility 0s ease-in 1s;
+  display: block;
 }
 
 .details > div:first-child {
