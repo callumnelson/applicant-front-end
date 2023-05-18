@@ -4,7 +4,8 @@ import styles from './ProfileResourceCard.module.css'
 //components
 import Icon from '../Icon/Icon'
 
-const ProfileResourceCard = ({resource}) => {
+const ProfileResourceCard = ({resource, handleRemoveStarredResource}) => {
+  console.log('remove star function', handleRemoveStarredResource)
 
   const dateCreated = new Date(resource.createdAt).toLocaleDateString()
 
@@ -23,7 +24,14 @@ const ProfileResourceCard = ({resource}) => {
           <p>{resource.category}</p>
         </div>
         <div className={styles.link}>
-        <p><a href={resource.link}><Icon category="Link" /></a></p>
+          <p><a href={resource.link}><Icon category="Link" /></a></p>
+        </div>
+        <div
+          onClick={() => handleStarredResourceClick()}
+        >
+          <p>
+              <Icon category={'FilledStar'}/>
+          </p>
         </div>
       </div>
     </div>

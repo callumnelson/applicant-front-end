@@ -75,6 +75,7 @@ function App() {
               user={user} 
               profile={profile}
               setProfile={setProfile}
+              handleRemoveStarredResource={handleRemoveStarredResource}
             />
           } 
         />
