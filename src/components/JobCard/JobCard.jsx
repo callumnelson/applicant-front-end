@@ -13,7 +13,6 @@ import profileIcon from '../../assets/icons/circle-user.png'
 
 const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob, notesCategory, setNotesCategory, setAddJob}) => {
   const selected = !selectedJob ? 0 : selectedJob && selectedJob._id === job._id ? 1 : 2
-  console.log(selected)
   const notesCategories = ['Resume', 'Interview Qs', 'Skills', 'To-Do', 'Networking', 'General']
   
   const handleSelectJob = () => {

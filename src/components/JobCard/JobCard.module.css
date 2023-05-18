@@ -75,7 +75,24 @@
 }
 
 .notselected #dream-job {
+  background-color: rgba(0, 100, 0, 0.801);
   color: darkgray;
+}
+
+.notselected #great-option {
+  background-color: rgba(144, 238, 144, 0.801);
+}
+
+.notselected #totally-fine {
+  background-color: rgba(230, 240, 122, 0.802);
+}
+
+.notselected #will-pay-bills {
+  background-color: rgba(238, 204, 119, 0.801);
+}
+
+.notselected img {
+  opacity: .6;
 }
 
 .details {
