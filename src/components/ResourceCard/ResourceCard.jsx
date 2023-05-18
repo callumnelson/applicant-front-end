@@ -76,7 +76,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
             {resource.averageRating === 5 && '★★★★★'}
           </p>
         </div>
-          {(profile._id === resource.owner || profile?.role > 200) &&
+          {(profile._id === resource.owner || profile?.role > 200) ?
             <>
               <span
                 onClick={() => handleChangeToEditResource()}
@@ -92,6 +92,12 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
                   <Icon category={'Trash'}/>
                 </p>
               </span>
+            </>
+            :
+            // Placeholders to maintain spacing when user is not an admin
+            <>
+              <span></span>
+              <span></span>
             </>
           }
           <span
