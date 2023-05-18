@@ -70,8 +70,12 @@
 
 .table section {
   height: calc(100% - 50px);
-  overflow-y: auto;
+  overflow-y: overlay;
   overflow-x: hidden;
+}
+
+.table section::-webkit-scrollbar-track {
+  display: none;
 }
 
 .table h4 {
