@@ -19,7 +19,7 @@ const Notes = ({selectedJob, notesCategory, handleAddNote, handleDeleteNote}) =>
         :
       <>
         <nav>
-          <h1>{notesCategory} Notes ({notesToDisplay.length})</h1>
+          <h2>{notesCategory} Notes ({notesToDisplay.length})</h2>
         </nav>
         <NewNote 
         selectedJob={selectedJob}
