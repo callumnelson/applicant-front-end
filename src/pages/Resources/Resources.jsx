@@ -211,7 +211,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
               <button
               onClick={() => handleClearFilters()}
               >
-              Clear Filters
+              Show All
               </button>
             <input 
               type="text" 

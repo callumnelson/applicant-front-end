@@ -187,7 +187,7 @@ const Jobs = ({profile, setProfile}) => {
             <button
               onClick={handleClickClearFilters}
             >
-              Clear Filters
+              Show All
             </button>
             <input
               className={styles.search}
