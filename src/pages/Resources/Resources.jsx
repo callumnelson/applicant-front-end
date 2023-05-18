@@ -21,9 +21,9 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   const [addResource, setAddResource] = useState(false)
   const [editedResource, setEditedResource] = useState(null)
   const [catergoryFilter, setCategoryFilter] = useState('')
-  const [nameSort, setNameSort] = useState(false)
-  const [ratingSort, setRatingSort] = useState(false)
-  const [dateSort, setDateSort] = useState(true)
+  const [nameSort, setNameSort] = useState('none')
+  const [ratingSort, setRatingSort] = useState('none')
+  const [dateSort, setDateSort] = useState('none')
 
   useEffect(() => {
     const fetchResources = async () => {
@@ -38,6 +38,9 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   }, [])
 
   const handleSearchChange = (e) => {
+    setNameSort('none')
+    setRatingSort('none')
+    setDateSort('none')
     setSelectedResource(null)
     setSearch(e.target.value)
     const searchFilteredResources = resources.filter(resource => resource.name.toLowerCase().includes(e.target.value.toLowerCase()))
@@ -109,9 +112,9 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   }
 
   const handleCategoryFilterChange = (e) => {
-    setNameSort(false)
-    setRatingSort(false)
-    setDateSort(true)
+    setNameSort('none')
+    setRatingSort('none')
+    setDateSort('none')
     setCategoryFilter(e.target.value)
     if (e.target.value === '') {
       const searchFilteredResources = resources.filter(resource => resource.name.toLowerCase().includes(search.toLowerCase()))
@@ -124,6 +127,9 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   }
 
   const handleSortByName = () => {
+    setDateSort('none')
+    setRatingSort('none')
+    if (setNameSort === 'none') setNameSort(fals)
     setNameSort(!nameSort)
     if (nameSort) {
       const sortedResources = [...displayedResources].sort((a, b) => 
@@ -139,6 +145,9 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   }
 
   const handleSortByRating = () => {
+    setDateSort('none')
+    setNameSort('none')
+    if (setRatingSort === 'none') setRatingSort(false)
     setRatingSort(!ratingSort)
     if (ratingSort) {
       const sortedResources = [...displayedResources].sort((a, b) => 
@@ -154,6 +163,9 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   }
 
   const handleSortByDate = () => {
+    setNameSort('none')
+    setRatingSort('none')
+    if (setDateSort === 'none') setDateSort(false)
     setDateSort(!dateSort)
     if (dateSort) {
       const sortedResources = [...displayedResources].sort((a, b) => 
@@ -197,12 +209,16 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
             <div className={styles.date}>
               <h4
                 onClick={() => handleSortByDate()}
-              >Last Updated</h4>
+              >Last Updated 
+                {dateSort === 'none' ? '' : dateSort ? ' ↑' : ' ↓'}
+              </h4>
             </div>
             <div className={styles.name}>
               <h4
                 onClick={() => handleSortByName()}
-              >Name</h4>
+              >Name
+                {nameSort === 'none' ? '' : nameSort ? ' ↑' : ' ↓'}
+              </h4>
             </div>
             <div className={styles.category}>
               <select 
@@ -224,7 +240,9 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
               <h4
                 value='rating'
                 onClick={() => handleSortByRating()}
-              >Average Rating</h4>
+              >Average Rating
+                {ratingSort === 'none' ? '' : ratingSort ? ' ↑' : ' ↓'}
+              </h4>
             </div>
           </header>
           {addResource &&  
