@@ -17,7 +17,6 @@
 
 .job div > p {
   font-size: 14px;
-  font-weight: 500;
   padding: 5px 10px;
   border-radius: 20px;
   letter-spacing: .05em;
@@ -25,6 +24,9 @@
 
 .title > p {
   background-color: rgba(217, 238, 241, 0.804);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dream-job {
