@@ -55,7 +55,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
           <p>{new Date(resource.updatedAt).toLocaleDateString()}</p>
         </div>
         <div className={styles.name}>
-          <p>{resource.name}</p>
+          <p>{resource.name.slice(0, 60) + (resource.name.length > 60 ? '...' : '')}</p>
         </div>
         <div className={styles.category}>
           <p
