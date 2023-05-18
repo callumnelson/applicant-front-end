@@ -22,20 +22,19 @@ const JobsHeader = ({headers, sort, filter, handleUpdateSort, handleUpdateFilter
                 : ''}
             </h4>
           : ['status', 'priority'].includes(header.schemaName) ?
-            <select onChange={(e) => handleUpdateFilter(e, header.schemaName)}>
+            <select 
+              onChange={(e) => handleUpdateFilter(e, header.schemaName)}
+              value={filter[header.schemaName]}
+            >
               <option 
                 value=""
-                selected={
-                  filter[header.schemaName] === '' ? 'true' : ''
-                }
-              >{header.col}</option>
+              >
+                {header.col}
+              </option>
               {options[header.schemaName].map(option => (
                 <option 
                   key={option} 
-                  value={option}
-                  selected={
-                    filter[header.schemaName] === options[header.schemaName] ? 'true' : ''
-                  }  
+                  value={option} 
                 >
                   {option}
                 </option>

@@ -18,8 +18,7 @@ import Notes from "../../components/Notes/Notes"
 import JobsHeader from "../../components/JobsHeader/JobsHeader"
 
 const Jobs = ({profile, setProfile}) => {
-  const location = useLocation()
-  const jobFromProfile = location.state
+  const [location, setLocation] = useState(useLocation())
   const [displayedJobs, setDisplayedJobs] = useState(null)
   const [allJobs, setAllJobs] = useState(null)
   const [selectedJob, setSelectedJob] = useState(null)
@@ -29,12 +28,14 @@ const Jobs = ({profile, setProfile}) => {
   const [addJob, setAddJob] = useState(false)
   const [editedJob, setEditedJob] = useState(null)
   const [notesCategory, setNotesCategory] = useState("Resume")
+  console.log(location)
 
   useEffect(() => {
     const fetchJobs = async () => {
       const data = await jobsService.index()
-      if (jobFromProfile) {
-        setDisplayedJobs([jobFromProfile])
+      if (location.state) {
+        setDisplayedJobs([location.state])
+        setSelectedJob(location.state)
       } else {
         setDisplayedJobs(data.sort((a, b) => (
           new Date(b.createdAt) - new Date(a.createdAt))
@@ -44,7 +45,7 @@ const Jobs = ({profile, setProfile}) => {
       if(!data.length) setAddJob(true)
     }
     fetchJobs()
-  }, [jobFromProfile])
+  }, [location.state])
 
   const headers = [{col: 'Created', schemaName: 'createdAt'},
     {col: 'Title', schemaName: 'title'}, 
@@ -147,6 +148,8 @@ const Jobs = ({profile, setProfile}) => {
     setSort({schemaName: "createdAt", order: 1})
     setDisplayedJobs([...allJobs].sort((a, b) => sortJobs(a, b, 'createdAt', 1)))
     setFilter({status: "", priority: ""})
+    setLocation({...location, state: null})
+    setSelectedJob(null)
   }
 
   const sortJobs = (a, b, sortCol, sortOrder) => {
