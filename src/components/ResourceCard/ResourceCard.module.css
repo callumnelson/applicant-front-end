@@ -107,6 +107,11 @@
   border-top: 0.5px solid lightgray;
 }
 
+.instructions p {
+  font-size: 14px;
+  margin: 0;
+}
+
 .instructions:hover {
   cursor: text;
   overflow: auto;

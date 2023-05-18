@@ -63,6 +63,7 @@ const Jobs = ({profile, setProfile}) => {
     setDisplayedJobs(displayedJobs.map(j => j._id === updatedJob._id ? updatedJob : j))
     setAllJobs(allJobs.map(j => j._id === updatedJob._id ? updatedJob : j))
     setEditedJob(null)
+    setSelectedJob(updatedJob)
     setProfile({...profile, applications: allJobs.map(j => j._id === updatedJob._id ? updatedJob : j)})
   }
 

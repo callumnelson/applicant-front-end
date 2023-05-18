@@ -52,6 +52,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   const handleClickAddResource = () => {
     setAddResource(true)
     setSelectedResource(null)
+    setEditedResource(null)
   }
 
   const handleAddResource = async (newResourceFormData) => {
@@ -66,6 +67,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
     const updatedResource = await resourceService.update(updatedResourceFormData)
     setDisplayedResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
     setResources(resources.map(r => r._id === updatedResource._id ? updatedResource : r))
+    setSelectedResource(updatedResource)
     setEditedResource(null)
     resetFilters()
   }
@@ -74,6 +76,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
     const deletedResource = await resourceService.deleteResource(resource._id)
     setDisplayedResources(resourcesDisplayed.filter(r => r._id !== deletedResource._id))
     setResources(resources.filter(r => r._id !== deletedResource._id))
+    setSelectedResource(null)
   }
 
   const resetFilters = () => {
@@ -214,14 +217,14 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
                 <option value="Other">Other</option>
               </select>
             </div>
+            <div className={styles.link}>
+              <h4>Link</h4>
+            </div>
             <div className={styles.rating}>
               <h4
                 value='rating'
                 onClick={() => handleSortByRating()}
               >Average Rating</h4>
-            </div>
-            <div className={styles.link}>
-              <h4>Link</h4>
             </div>
           </header>
           {addResource &&  
@@ -251,6 +254,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
                   handleAddStarredResource={handleAddStarredResource}
                   user={user}
                   handleRemoveStarredResource={handleRemoveStarredResource}
+                  setAddResource={setAddResource}
               />   
             ))}
           </section>
