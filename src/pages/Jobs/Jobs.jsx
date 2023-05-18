@@ -20,7 +20,6 @@ import JobsHeader from "../../components/JobsHeader/JobsHeader"
 const Jobs = ({profile, setProfile}) => {
   const location = useLocation()
   const jobFromProfile = location.state
-
   const [displayedJobs, setDisplayedJobs] = useState(null)
   const [allJobs, setAllJobs] = useState(null)
   const [selectedJob, setSelectedJob] = useState(null)
@@ -36,7 +35,6 @@ const Jobs = ({profile, setProfile}) => {
       const data = await jobsService.index()
       if (jobFromProfile) {
         setDisplayedJobs([jobFromProfile])
-        setSearch(jobFromProfile.title)
       } else {
         setDisplayedJobs(data.sort((a, b) => (
           new Date(b.createdAt) - new Date(a.createdAt))
@@ -144,6 +142,12 @@ const Jobs = ({profile, setProfile}) => {
     )))
   }
 
+  const handleClickClearFilters = () => {
+    setSearch('')
+    setSort({schemaName: "createdAt", order: 1})
+    setDisplayedJobs([...allJobs].sort((a, b) => sortJobs(a, b, 'createdAt', 1)))
+  }
+
   const sortJobs = (a, b, sortCol, sortOrder) => {
     if (sortCol === 'salary'){
       return sortOrder > 0 ? 
@@ -170,12 +174,17 @@ const Jobs = ({profile, setProfile}) => {
     <main className={styles.container}>
       <section className={styles.jobs}>
         <nav>
-          <h1>Jobs ({displayedJobs.length})</h1>
+          <h1>Jobs ({displayedJobs.length} of {allJobs.length})</h1>
           <div>
             <button
               onClick={handleClickAddJob}
             >
               Add Job
+            </button>
+            <button
+              onClick={handleClickClearFilters}
+            >
+              Clear Filters
             </button>
             <input
               className={styles.search}
