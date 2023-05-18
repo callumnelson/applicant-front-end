@@ -56,6 +56,37 @@
   transition: all 0.5s ease-in-out;
 }
 
+.notselected {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: darkgray;
+}
+
+.notselected #networking {
+  background-color: rgba(0, 100, 0, 0.801);
+  color: darkgray
+}
+
+.notselected #interviewing {
+  background-color: rgba(144, 238, 144, 0.8);
+}
+
+.notselected #job-search {
+  background-color: rgba(0, 0, 139, 0.801);
+  color: darkgray
+}
+
+.notselected #resumes {
+  background-color: rgba(230, 240, 122, 0.801);
+}
+
+.notselected #other {
+  background-color: rgba(238, 204, 119, 0.8);
+}
+
+.notselected img {
+  opacity: .6;
+}
+
 .details {
   display: flex;
   align-items: start;

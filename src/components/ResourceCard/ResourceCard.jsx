@@ -6,7 +6,7 @@ import styles from './ResourceCard.module.css'
 
 const ResourceCard = ({setSelectedResource, selectedResource, resource, setEditedResource, handleDeleteResource, profile, handleAddStarredResource, user, handleRemoveStarredResource, setAddResource}) => {
 
-  const selected = selectedResource && selectedResource._id === resource._id 
+  const selected = !selectedResource ? 0 : selectedResource && selectedResource._id === resource._id ? 1 : 2
 
   const alreadyStarred = profile.starredResources?.some(r => r._id === resource._id)
 
@@ -37,7 +37,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
     <>
       <div className={
         `${styles.resource} 
-        ${selected? styles.selected : ''}`
+        ${!selected ? '' : selected === 1 ? styles.selected : styles.notselected}`
         }>
         <span>
           <p
@@ -106,7 +106,7 @@ const ResourceCard = ({setSelectedResource, selectedResource, resource, setEdite
             </p>
           </span>
       </div>
-      <div className={`${styles.details} ${selected ? styles.show : ''}`}>
+      <div className={`${styles.details} ${selected === 1 ? styles.show : ''}`}>
         <div className={styles.dropdown}>
           <div className={styles.label}>
             <h4>Instructions:</h4> 
