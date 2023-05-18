@@ -12,7 +12,8 @@ import styles from './JobCard.module.css'
 import profileIcon from '../../assets/icons/circle-user.png'
 
 const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJob, notesCategory, setNotesCategory, setAddJob}) => {
-  const selected = selectedJob && selectedJob._id === job._id
+  const selected = !selectedJob ? 0 : selectedJob && selectedJob._id === job._id ? 1 : 2
+  console.log(selected)
   const notesCategories = ['Resume', 'Interview Qs', 'Skills', 'To-Do', 'Networking', 'General']
   
   const handleSelectJob = () => {
@@ -39,7 +40,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
     <div>
       <div
         className={
-            `${styles.job} ${selected ? styles.selected : ''}`
+            `${styles.job} ${!selected ? '' : selected === 1 ? styles.selected : styles.notselected}`
           }>
         <span>
           <p
@@ -94,7 +95,7 @@ const JobCard = ({selectedJob, job, setSelectedJob, setEditedJob, handleDeleteJo
           </p>
         </span>
       </div>
-      <div className={`${styles.details} ${selected ? styles.show : ''}`}>
+      <div className={`${styles.details} ${selected === 1 ? styles.show : ''}`}>
         <div>
           <div className={styles.contact}>
             <header>
