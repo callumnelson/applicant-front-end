@@ -148,7 +148,7 @@
 .notebuttons {
   display: flex;
   flex-direction: column;
-  margin: 0 5px;
+  margin: 0 30px 0 5px;
   flex-wrap: wrap;
   height: 100%;
 }
