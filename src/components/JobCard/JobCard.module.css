@@ -70,6 +70,11 @@
 }
 
 .notselected {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: darkgray;
+}
+
+.notselected #dream-job {
   color: darkgray;
 }
 
@@ -80,7 +85,7 @@
   padding-left: 30px;
   margin-bottom: 2px;
   margin-top: -2px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   height: 0;
   border-radius: 5px;
   opacity: 0.5;
@@ -107,7 +112,7 @@
 .show * {
   display: block;
   visibility: visible;
-  transition: all 0s ease-in 1s;
+  transition: visibility 0s ease-in 1s;
 }
 
 .details > div:first-child {
