@@ -4,10 +4,12 @@ import styles from './ProfileResourceCard.module.css'
 //components
 import Icon from '../Icon/Icon'
 
-const ProfileResourceCard = ({resource, handleRemoveStarredResource}) => {
-  console.log('remove star function', handleRemoveStarredResource)
-
+const ProfileResourceCard = ({resource, user, handleRemoveStarredResource}) => {
   const dateCreated = new Date(resource.createdAt).toLocaleDateString()
+
+  const handleStarredResourceClick = async () => {
+      await handleRemoveStarredResource(resource, user)
+  }
 
   return (
     <div>
@@ -30,7 +32,7 @@ const ProfileResourceCard = ({resource, handleRemoveStarredResource}) => {
           onClick={() => handleStarredResourceClick()}
         >
           <p>
-              <Icon category={'FilledStar'}/>
+            <Icon category={'FilledStar'}/>
           </p>
         </div>
       </div>

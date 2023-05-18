@@ -128,6 +128,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
                   <ProfileResourceCard 
                     key={resource._id} 
                     resource={resource}
+                    user={user}
                     handleRemoveStarredResource={handleRemoveStarredResource}
                   />
                 )
