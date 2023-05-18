@@ -29,5 +29,10 @@
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px dashed black;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.container > div:last-child:hover {
+  overflow-y: overlay;
 }
