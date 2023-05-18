@@ -7,7 +7,6 @@
   background-color: var(--card-background);
   margin-bottom: 2px;
   border-radius: 5px;
-  position: relative;
 }
 
 .resource div > p {
