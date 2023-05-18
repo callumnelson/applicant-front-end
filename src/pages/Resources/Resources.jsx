@@ -129,7 +129,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   const handleSortByName = () => {
     setDateSort('none')
     setRatingSort('none')
-    if (setNameSort === 'none') setNameSort(fals)
+    if (setNameSort === 'none') setNameSort(false)
     setNameSort(!nameSort)
     if (nameSort) {
       const sortedResources = [...displayedResources].sort((a, b) => 
