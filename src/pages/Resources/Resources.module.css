@@ -57,10 +57,6 @@
   overflow: hidden;
 }
 
-.resources:hover {
-  overflow: auto;
-}
-
 .reviews {
   width: 25%;
   overflow: hidden;
@@ -83,11 +79,11 @@
 
 .rows {
   height: calc(100% - 50px);
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .rows:hover {
-  overflow: auto;
+  overflow: overlay;
 }
 
 .table h4 {
