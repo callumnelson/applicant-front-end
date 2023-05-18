@@ -34,7 +34,7 @@
 }
 
 .password {
-  margin: 0;
+  margin: 1.8vmin;
 }
 
 .password > a {
@@ -58,7 +58,7 @@
 }
 
 .resume {
-  margin-top: 3vmin;
+  margin-top: 0vmin;
 }
 
 .brand {

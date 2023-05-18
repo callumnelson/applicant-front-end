@@ -70,7 +70,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
           <h1>{profile.name}</h1>
           <p className={styles.password}>
             <NavLink to="/auth/change-password">
-              Change Password
+              Change My Password
             </NavLink>
           </p>
         </div>
@@ -84,7 +84,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
           : 
             <div className={styles.personalcontent}>
               <a href={resume.toString()}><Icon category="File"/></a>
-              <button className={styles.edit} onClick={handleResumeClick}>Change</button>
+              <button className={styles.edit} onClick={handleResumeClick}>Update</button>
             </div>
           }
         </div>
@@ -98,7 +98,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
           : 
             <div className={styles.personalcontent}> 
               <a href={brandStatement.toString()}><Icon category="File"/></a>
-              <button className={styles.edit} onClick={handleBrandClick}>Change</button>
+              <button className={styles.edit} onClick={handleBrandClick}>Update</button>
             </div>
           }
         </div>
