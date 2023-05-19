@@ -12,6 +12,9 @@ import ResourceCard from "../../components/ResourceCard/ResourceCard"
 import ResourceForm from "../../components/ResourceForm/ResourceForm"
 import Reviews from "../../components/Reviews/Reviews"
 
+//page
+import Loading from "../Loading/Loading"
+
 
 const Resources = ({user, profile, setProfile, handleAddStarredResource, handleRemoveStarredResource }) => {
   const [resources, setResources] = useState(null)
@@ -40,7 +43,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   const handleSearchChange = (e) => {
     setNameSort('none')
     setRatingSort('none')
-    setDateSort('none')
+    setDateSort(false)
     setSelectedResource(null)
     setSearch(e.target.value)
     const searchFilteredResources = resources.filter(resource => resource.name.toLowerCase().includes(e.target.value.toLowerCase()))
@@ -85,7 +88,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   const resetFilters = () => {
     setNameSort('none')
     setRatingSort('none')
-    setDateSort('none')
+    setDateSort(false)
     setCategoryFilter('')
     setSearch('')
   }
@@ -114,7 +117,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   const handleCategoryFilterChange = (e) => {
     setNameSort('none')
     setRatingSort('none')
-    setDateSort('none')
+    setDateSort(false)
     setCategoryFilter(e.target.value)
     if (e.target.value === '') {
       const searchFilteredResources = resources.filter(resource => resource.name.toLowerCase().includes(search.toLowerCase()))
@@ -169,7 +172,11 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   const handleSortByDate = () => {
     setNameSort('none')
     setRatingSort('none')
-    setDateSort(!dateSort)
+    if (setDateSort === 'none') {
+      setDateSort(true)
+    } else {
+      setDateSort(!dateSort)
+    }      
     if (dateSort) {
       const sortedResources = [...displayedResources].sort((a, b) => 
         new Date(a.updatedAt) < new Date(b.updatedAt) ? 1 : -1
@@ -194,7 +201,7 @@ const Resources = ({user, profile, setProfile, handleAddStarredResource, handleR
   }
 
 
-  if (!displayedResources || !resources || !profile) return <h1>Loading...</h1>
+  if (!displayedResources || !resources || !profile) return <Loading />
 
   return ( 
     <main className={styles.container}>
