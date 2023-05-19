@@ -80,6 +80,7 @@ The backend repo for **appliCANt** can be found [here](https://github.com/callum
 * [x] Admin portal to manage users and resources
 * [x] Redirect from landing page to specific profile page if a user is logged in
 * [x] Multidminesional sorting and filtering on jobs and resources
+* [ ] Add the ability for users to change their profile picture
 * [ ] Add a Coach role
 * [ ] Add a Coach dashboard
 * [ ] Allow coaches to add resources
