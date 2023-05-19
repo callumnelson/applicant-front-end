@@ -15,8 +15,8 @@ The platform allows users to attach notes and documents to each application, ena
 ## **Current Features:**
 Both the Profile and Job pages are unique to each user protecting potentially sensitive information. The Resources page is available to all users.
 ### Profile Page: 
-* Users can upload their resumes, 
-* Users can upload their brand statement
+* Users can link to their resume
+* Users can link to their brand statement
 * Users can change their password
 * Users can quickly access their starred resources
 * Users can remove starred resources
@@ -48,16 +48,23 @@ Both the Profile and Job pages are unique to each user protecting potentially se
 
 **appliCANt** is a full-stack application that uses a React front-end and a Node/Express back-end connecting with a Mongo DB database via Mongoose. The back end is deployed on Fly.io and the front end is deployed on Netlify.
 
-* JWT
-* Netlify
-* Node
-* Express
 * React
-* CSS
-* JavaScript
+* MUI
+* JWT
 * Git
 * GitHub
-* MUI
+* JavaScript
+* CSS
+* HTML
+* Netlify
+
+In addition to the technologies listed above, **appliCANt** uses the following for its back-end application:
+* MongoDB
+* Mongoose
+* bcrypt
+* Node
+* Express
+* Fly.io
 
 ## **Planning Materials:**
 User stories that inspired the creation of this app, wireframes, and ERD can be found [Here](https://trello.com/b/dF61KUj4/applicant)
