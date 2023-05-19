@@ -12,6 +12,9 @@ import ProfileJobCard from '../../components/ProfileJobCard/ProfileJobCard'
 import ProfileResourceCard from '../../components/ProfileResourceCard/ProfileResourceCard'
 import Icon from '../../components/Icon/Icon'
 
+// pages
+import Loading from '../Loading/Loading'
+
 //assets
 import profileIcon from '../../assets/icons/circle-user.png'
 
@@ -51,7 +54,7 @@ const Landing = ({ user, profile, setProfile, handleRemoveStarredResource }) => 
     setDisplayBrandForm(true)
   }
 
-  if (!profile) return <p>Loading profile...</p>
+  if (!profile) return <Loading />
 
   const photo = profile.photo ? profile.photo : profileIcon
   const resume = profile.baseResume ? profile.baseResume : ''
